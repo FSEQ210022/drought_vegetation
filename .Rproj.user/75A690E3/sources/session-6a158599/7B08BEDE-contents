@@ -1,0 +1,32 @@
+# Script para cortar Chelsa global para Chile
+# by frzambra@gmail.com
+# enero 2023
+
+library(fs)
+library(glue)
+
+# directorio producto mensual
+dir <- '/home/francisco/Descargas/envicloud/chelsa/chelsa_V2/GLOBAL/monthly/'
+
+producto <- 'tasmin'
+
+files_in <- dir_ls(glue('{dir}{producto}'),regexp = 'tif$')
+
+library(purrr)
+library(terra)
+library(sf)
+library(readr)
+library(stringr)
+
+dir_out <- '/mnt/HDD4TB_2/data/rasters/Procesados/CHELSA_v2.1/monthly'
+
+ext <- ext(rast('/mnt/HDD4TB_2/data/rasters/Procesados/CHELSA_v2.1/monthly/tas/CHELSA_tas_v2.1_19790201.tif'))
+
+files_in |> 
+  map(function(file){
+    name <- str_split_i(file,'/',11)
+    tryCatch(
+      writeRaster(crop(rast(file),ext),glue('{dir_out}/{producto}/{name}'),datatype = 'INT4S'),
+      error = function(e) NULL)
+  })
+

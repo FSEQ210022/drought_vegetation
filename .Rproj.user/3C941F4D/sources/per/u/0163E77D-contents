@@ -1,0 +1,31 @@
+library(stars)
+library(terra)
+library(fs)
+library(sf)
+dir <- '/mnt/HDD4TB_2/data/rasters/Procesados/CHELSA_v2.1/SPEI/SPEI-24/'
+files <- dir_ls(dir,regexp = '*.tif$')
+
+spei24 <- read_stars(files,along = 'time',proxy = TRUE)
+
+#pol <- st_read('data/processed_data/spatial/chile_continental.gpkg')
+
+#spei24c <- terra::mask(spei24,vect(pol))
+
+library(tmap)
+library(stars)
+library(terra)
+
+# spei24_001 <- st_warp(spei24[,,,24:283],cellsize = 0.01,crs=4326)
+# rm(spei24)
+# gc()
+   
+library(purrr)
+
+map(24:483,function(i){
+  m <- tm_shape(spei24[,,,i]) +
+    tm_raster(style = 'cont',palette = 'RdYlBu',breaks = seq(-3,3,.2)) +
+    tm_layout(legend.show = FALSE)
+  tmap_save(m,paste0('Spei24_',i,'.png'))
+})
+
+tmap_animation(m, 'spei24_p1.mp4',delay = 12)  

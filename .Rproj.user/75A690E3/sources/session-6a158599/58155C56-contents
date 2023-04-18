@@ -1,0 +1,31 @@
+
+library(terra)
+library(fs)
+library(readr)
+library(sf)
+library(glue)
+library(purrr)
+library(stringr)
+
+dir <- '/mnt/HDD4TB_2/data/rasters/Procesados/CHELSA_v2.1/monthly/'
+dir_out <- '/mnt/HDD4TB_2/data/rasters/COG/CHELSA_v2.1/monthly/'
+
+chl <- read_rds('data/rds/chile_sf.rds')
+chl <- st_transform(chl,4326)
+chl <- vect(chl)
+
+dirs <- dir_ls(glue('{dir}',regexp = 'tif$'),recurse = TRUE,type = 'directory')
+dirs_create <- str_extract(dirs,'(?<=monthly/)(.*)')
+
+dir_create(glue('{dir_out}{dirs_create}'))
+
+files <- dir_ls(dirs,recurse = TRUE,type = 'file')
+
+files |>
+  map(function(file){
+    system(glue('gdaladdo -r average -b 1 {file}'))
+    r <- mask(rast(file),chl)
+    if (grepl('SPEI|SPI',name)) r <- r*1000
+    name <- str_extract(file,'(?<=monthly/).*')
+    writeRaster(r,glue('{dir_out}{name}'),filetype = 'COG', datatype = 'INT4S',gdal = c("COMPRESS=LZW"),overwrite = TRUE)
+  })

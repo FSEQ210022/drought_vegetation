@@ -1,0 +1,512 @@
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+if(is.numeric(get[2])){
+cRaster <- cRaster[indAll[,get[2]]]
+}
+}
+return(cRaster)
+}
+cumRast(x,dates,step=16,get =c('eos',21))
+get
+get[2] <- as.numeric(get[2])
+get
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+cRaster <- cRaster[indAll[,as.numeric(get[2])]]
+}
+}
+x
+cumRast(x,dates,step=16,get =c('eos',21))
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+cRaster <- cRaster[indAll[,as.numeric(get[2])]]
+}
+return(cRaster)
+}
+cumRast(x,dates,step=16,get =c('eos',21))
+esNDVI
+message('Acmulado NDVI..')
+cl <- makeCluster(11,"SOCK")
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = 'eos',CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+stopCluster(cl)
+cl <- makeCluster(11,"SOCK")
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21),CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+stopCluster(cl)
+dates
+step
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21)
+)
+get = c('eos',21)
+as.numeric(get[2])
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+y <- as.numeric(get[2])
+cRaster <- cRaster[indAll[,y]]
+}
+return(cRaster)
+}
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21)
+)
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+y <- as.numeric(get[2])
+print(class(y))
+cRaster <- cRaster[indAll[,y]]
+}
+return(cRaster)
+}
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21)
+)
+x
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+indAll
+indAll[,21]
+class(indAll)
+cRaster
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+y <- as.numeric(get[2])
+print(class(y))
+cRaster <- cRaster[as.numeric(indAll[,y])]
+}
+return(cRaster)
+}
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21)
+)
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+y <- as.numeric(get[2])
+cRaster <- cRaster[as.numeric(indAll[,y])]
+}
+return(cRaster)
+}
+cl <- makeCluster(11,"SOCK")
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21),CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+stopCluster(cl)
+eoscNDVI
+x
+x <- as.numeric(esNDVI$values[3000,100,])
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+indAll
+isc
+apply(indAll,2,FUN=function(ix) cumsum(x[ix]))
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+cRaster
+apply(indAll,2,FUN=function(ix) cumsum(x[ix]))
+dim(indAll)
+indAll
+indAll[1,21]
+indAll[7,1:21]
+cRaster[indAll[7,1:21]]
+dim(indAll)
+x
+x <- as.numeric(esNDVI$values[3000,100,])
+cumRast(x,dates=dates,step=16)
+cumRast(x,dates=dates,step=16,get =c('eos',21))
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+y <- as.numeric(get[2])
+cRaster <- cRaster[indAll[dim(indAll)[1],y]]
+}
+return(cRaster)
+}
+cumRast(x,dates=dates,step=16,get =c('eos',21))
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+y <- as.numeric(get[2])
+cRaster <- cRaster[indAll[dim(indAll)[1],1:y]]
+}
+return(cRaster)
+}
+cumRast(x,dates=dates,step=16,get =c('eos',21))
+x <- as.numeric(esNDVI$values[3000,101,])
+x <- as.numeric(esNDVI$values[3000,99,])
+x
+cumRast(x,dates=dates,step=16,get =c('eos',21))
+cl <- makeCluster(11,"SOCK")
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21),CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+stopCluster(cl)
+source('R/functions/cumRast.R')
+cl <- makeCluster(11,"SOCK")
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21),CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+stopCluster(cl)
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+y <- as.numeric(get[2])
+ix <- indAll[dim(indAll)[1],1:y]
+cRaster <- cRaster[ix]
+}
+return(cRaster)
+}
+x <- as.numeric(esNDVI$values[3000,99,])
+cumRast(x,dates=dates,step=16,get =c('eos',21))
+cumRast <- function(x,dates,step,get = 'all'){
+NAasZero = TRUE
+#x <- as.vector(x)
+# index for the pixel where are values (not NA)
+years = max(unique(lubridate::year(dates)))-min(unique(lubridate::year(dates)))+1
+sos <- x[1]
+eos <- x[2]
+x <- x[3:length(x)]
+nl <- length(x)
+#dates of the MOD13 product between 2000 and 2002
+times <- round(365/step)
+dates2s <- as.vector(sapply(2002:2004,function(year) seq(as.Date(paste0(year,"-01-01")),as.Date(paste0(year,"-12-31")),by=step)))
+indGS <- intersect(which(dates2s >= sos),which(dates2s + step <= eos))
+indAll <- matrix(sapply(0:(years-1),function(l) indGS+times*l),ncol=years)
+cRaster <- rep(NA, length(x))
+if (all(!is.na(as.numeric(indAll)))){
+# indAll[which(indAll[,years-1] > nl),years-1] <- NA
+# indAll[which(indAll[,years] > nl),years] <- NA
+indAll[indAll > nl] <- NA
+isc <- as.numeric(indAll)
+isc <- isc[!is.na(isc)]
+if (NAasZero){ #wsto hay que modificarlo solo resulve un caso especifico
+x[x > 32700] <- 0
+x[is.na(x)] <- 0
+}
+cRaster[isc] <- as.numeric(apply(indAll,2,FUN=function(ix) cumsum(x[ix])))[1:length(isc)]
+}
+if (get[1] == 'eos'){
+y <- as.numeric(get[2])
+ix <- as.numeric(indAll[dim(indAll)[1],1:y])
+cRaster <- cRaster[ix]
+}
+return(cRaster)
+}
+cl <- makeCluster(11,"SOCK")
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21),CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+stopCluster(cl)
+eoscNDVI
+eoscNDVI <- merge(split(eoscNDVI,'dates'),name='dates')
+plot(eoscNDVI)
+# Script to calculate zcNDVI
+# by frzambra
+# April 2022
+product <- 'NDVI.MOD13Q1.006/'
+dir <- paste0('/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/',product)
+dir.ph <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/Phenology/'
+library(stars)
+library(terra)
+library(sf)
+library(snow)
+pol <- st_read('data/spatial/chile_continental.gpkg')
+pol <- st_transform(pol,32719)
+lf <- list.files(dir,pattern='*.tif$', full.names=TRUE)
+#
+ysize = 100
+sliceY <- seq(3580,22015,ysize)
+source('R/functions/cumRast.R')
+source('R/functions/getPerPixel.R')
+source('R/functions/smoothNDVI.R')
+sos <- disagg(rast(file.path(dir.ph,'SOS.Chile.S1.500m.tif')),2)
+eos <- disagg(rast(file.path(dir.ph,'EOS.Chile.S1.500m.tif')),2)
+sos_eos <- c(sos,eos)
+lapply(1:length(sliceY),function(i){
+rasterio <- list(nXOff = 6088, nYOff = sliceY[i]+1, nXSize = 3081, nYSize = ysize)
+ndvi <- read_stars(lf, along ='dates',RasterIO = rasterio)
+ndvi <- st_as_stars(ndvi)
+sos_eosC <- st_as_stars(st_crop(st_as_stars(sos_eos),ndvi)) %>% st_set_dimensions(3,name = 'dates')
+dates <- as.Date(substr(lf,67,74),"%Y%j")
+message('Suavizado NDVI...')
+cl <- makeCluster(11,"SOCK")
+NDVI_smooth <- st_apply(ndvi,1:2,smoothNDVI,n=5,CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+stopCluster(cl)
+NDVI_smooth <- st_as_stars(NDVI_smooth)
+NDVI_smooth <- merge(split(NDVI_smooth,'dates'),name='dates')
+esNDVI <- c(sos_eosC,NDVI_smooth, along = 'dates')
+rm(NDVI_smooth)
+gc()
+message('Acmulado NDVI..')
+cl <- makeCluster(11,"SOCK")
+eoscNDVI <- st_apply(esNDVI,1:2,cumRast,dates = dates, step = 16, get = c('eos',21),CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+stopCluster(cl)
+eoscNDVI <- merge(split(eoscNDVI,'dates'),name='dates')
+rm(esNDVI)
+gc()
+# message('Obteniendo cNDVI en SOS..')
+# secNDVI <- c(c(sosC,eosC,along ='dates'),cNDVI,along='dates')
+# soscNDVI <- st_apply(secNDVI,1:2,getPerPixel,dates = dates, at='eos',lead=0,step = 16,CLUSTER = cl,PROGRESS = TRUE,.fname = 'dates')
+# soscNDVI <- merge(split(soscNDVI,'dates'),name='dates')
+#
+# rm(secNDVI)
+# gc()
+message('Scale cNDVI en SOS..')
+cl <- makeCluster(11,"SOCK")
+zcNDVI <- st_apply(eoscNDVI,1:2,function(x){scale(x)[,1]},CLUSTER = cl,PROGRESS = TRUE,.fname = 'zcNDVI')
+stopCluster(cl)
+zcNDVI <- merge(split(zcNDVI,'zcNDVI'),name='zcNDVI')
+saveRDS(zcNDVI,paste0('~/.starstemp/zcNDVI_',i,'.rds'))
+rm(zcNDVI)
+gc()
+})

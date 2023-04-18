@@ -1,0 +1,18 @@
+# function to make the smoothing of NDVI time series
+# by Francisco Zambrano Bigiarini (frzambra@gmail.com)
+# December 2019
+
+smoothNDVI <- function(x,y,n=5){
+  
+  x <- c(x[(n+1):2],x,x[(length(x)-1):(length(x)-n)])
+  y <- c(y[(n+1):2],y,y[(length(y)-1):(length(y)-n)])
+  
+  df <- data.frame(x=x,y=y)
+  df.lo <- loess(y~x,df,span=7/length(x))
+  df$y.pred <- predict(df.lo,df)
+ 
+  df_out <- df[(n+1):(nrow(df)-n),]
+  
+  return(df_out$y.pred)
+}
+

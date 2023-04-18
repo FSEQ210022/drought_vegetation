@@ -1,0 +1,24 @@
+{
+    "id": "3C296D14",
+    "path": "/mnt/0FA1FA650427517A/OneDrive/R-projects/Papers/drought-vegetation/scripts/calculate_SPI_SPEI.R",
+    "project_path": "scripts/calculate_SPI_SPEI.R",
+    "type": "r_source",
+    "hash": "3477105204",
+    "contents": "",
+    "dirty": false,
+    "created": 1679346794021.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1654954345,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1654954345,
+    "read_only": false,
+    "read_only_alternatives": []
+}
