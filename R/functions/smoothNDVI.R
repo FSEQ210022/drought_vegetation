@@ -2,22 +2,27 @@
 # by Francisco Zambrano Bigiarini (frzambra@gmail.com)
 # December 2019
 
-smoothNDVI <- function(x,y,n=5){
-  
-  # x<-addLayer(x,subset(x,(nlayers(x)-1):(nlayers(x)-n)))
-  # x<-addLayer(subset(x,((1+n):2)),x)
-  
-  x <- c(x[(n+1):2],x,x[(length(x)-1):(length(x)-n)])
+smoothNDVI <- function(y,x,n=5){
+
+  x <- c((x[1]-n):(x[1]-1),x,(x[length(x)]+1):(x[length(x)]+n))
   y <- c(y[(n+1):2],y,y[(length(y)-1):(length(y)-n)])
   
-  df <- data.frame(x=x,y=y)
-  df.lo <- loess(y~x,df)
-  df$y.pred <- predict(df.lo,df)
-    #lowess(x,f=7/length(x),iter=10)$y
-    #loess(y~x,data = data.frame(x=1:length(x),y=x),span =7/length(x))$fitted
-
-  df_out <- df[(n+1):(nrow(df)-n),]
-  
-  return(df_out$y.pred)
+    df <- data.frame(x=x,y=y)
+    
+    df.lo <- tryCatch(
+      loess(y~x,df,span=7/length(x)),
+      error = function(err) NA)
+    
+    if (length(df.lo) >1){
+      if (!all(is.na(df.lo$residuals))) y.pred <- predict(df.lo,df) 
+    } else y.pred <- rep(NA,nrow(df))
+    
+    if (exists('y.pred')) y.pred <- y.pred[(n+1):(nrow(df)-n)] else y.pred <- rep(NA,nrow(df)-2*n)
+    y.pred
 }
 
+
+ # y <- runif(100)
+ # y[sample(1:100,100)] <- NA
+ # x <- 1:100
+ # smoothNDVI(y,x) |> length()

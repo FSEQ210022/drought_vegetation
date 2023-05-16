@@ -3,17 +3,20 @@ library(stars)
 library(fs)
 library(glue)
 library(terra)
-dir_out <- '/mnt/HDD4TB_2/data/rasters/Procesados/CHELSA_v2.1/monthly/'
 
-rasio <-  list(nYOff = 1, nYSize = 1000)
+dir_out <- '/mnt/md0/CHELSA_v2.1/monthly/'
 
-et <- read_stars(dir_ls(glue('{dir_out}/pet')), along = 'time',proxy = TRUE,
-                 RasterIO = rasio)
-                 
-pre <- read_stars(dir_ls(glue('{dir_out}/pre'))[2:484], along = 'time',proxy = TRUE,
-                  RasterIO = rasio)
+lf_pet <- dir_ls(glue('{dir_out}/pet'),regexp = 'tif$')
+lf_pr <- dir_ls(glue('{dir_out}/pre'),regexp = 'tif$')[2:484]
 
-D <- pre-et
+rasterio <- list(nXOff = 1522, nYOff = sliceY[i]+1, nXSize = 771, nYSize = 1536)
+
+rasio <- c(nxOff = 1,nyOff=1,nXSize = 100, nYSize=100)
+pet <- read_stars(lf_pet, along = 'dates',RasterIO = rasio)
+             
+pre <- read_stars(lf_pr, along = 'dates',RasterIO = rasio)
+
+D <- pre - 0.01*pet
 D <- st_as_stars(D)
 
 library(SPEI)

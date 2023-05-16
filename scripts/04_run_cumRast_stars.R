@@ -9,7 +9,7 @@ dir.ph <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/Phenology/'
 library(stars)
 library(sf)
 
-pol <- st_read('data/spatial/gpkg/chile_continental.gpkg')
+pol <- st_read('data/processed_data/spatial/chile_continental.gpkg')
 pol <- st_transform(pol,32719)
 lf <- list.files(dir.et,pattern='*.tif$', full.names=TRUE)
 et <- read_stars(lf[1])
