@@ -1,0 +1,11 @@
+class,R,G,B,Name
+1,77,116,31,Forest
+2,150,100,1,Shrubland
+3,255,235,176,Savanna
+4,255,180,0,Grassland
+5,186,218,254,Wetland
+6,255,131,0,Cropland
+7,250,0,0,Urban
+8,239,239,239,Snow
+9,179,179,179,Barren land
+10,0,50,200,Water
