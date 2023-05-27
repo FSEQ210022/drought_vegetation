@@ -61,3 +61,10 @@ igbpRecl[igbpRecl == 0] <- NA
 
 writeRaster(igbpRecl,paste0(dir.out,'IGBP',prop,'_reclassified.tif'),
             wopt=list(datatype='INT1U'))
+
+# landcover del último año (2021)
+
+igbp2021 <- classify(igbp[[21]],rcl=classes,include.lowest = TRUE)
+igbp2021[igbp2021 == 0] <- NA
+writeRaster(igbp2021,paste0(dir.out,'IGBP_2021_reclassified.tif'),
+            wopt=list(datatype='INT1U'))
