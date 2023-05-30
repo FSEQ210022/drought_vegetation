@@ -1,0 +1,186 @@
+---
+title: Comprehensive assessment of the climate-induced water scarcity over continental Chile
+author:
+  - name: Francisco Zambrano
+    email: francisco.zambrano@umayor.com
+    affiliation: Hemere Centro de Observación de la Tierra,Universidad Mayor
+    correspondingauthor: true
+    footnote: 1
+  - name: Bob Security
+    email: bob@example.com
+    affiliation: Another University
+  - name: Cat Memes
+    email: cat@example.com
+    affiliation: Another University
+    footnote: 2
+  - name: Derek Zoolander
+    email: derek@example.com
+    affiliation: Some Institute of Technology
+    footnote: 2
+address:
+  - code: Some Institute of Technology
+    organization: Big Wig University
+    addressline: 1 main street
+    city: Gotham
+    state: State
+    postcode: 123456
+    country: United States
+  - code: Another University
+    organization: Department
+    addressline: A street 29
+    postcode: 2054 NX
+    city: Manchester,
+    country: The Netherlands
+footnote:
+  - code: 1
+    text: "This is the first author footnote."
+  - code: 2
+    text: "Another author footnote."
+abstract: |
+  This is the abstract.
+
+  It consists of two paragraphs.
+keywords: 
+  - keyword1
+  - keyword2
+journal: "An awesome journal"
+date: "`r Sys.Date()`"
+classoption: preprint, 3p
+bibliography: references.bib
+biblio-style: "apalike"
+linenumbers: false
+numbersections: true
+# Use a CSL with `citation_package = "default"`
+# csl: https://www.zotero.org/styles/elsevier-harvard
+output: 
+  rticles::elsevier_article:
+    keep_tex: true
+    citation_package: natbib
+---
+
+```{r setup,include=FALSE}
+library(gt)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(kableExtra)
+options(gt.html_tag_check = FALSE)
+```
+
+# Version
+
+This Rmd-skeleton uses the mdpi Latex template published 2019/02. 
+However, the official template gets more frequently updated than the 'rticles'
+package. Therefore, please make sure prior to paper submission, that you're 
+using the most recent .cls, .tex and .bst files 
+(available [here](http://www.mdpi.com/authors/latex)).
+
+# Introduction
+
+In 2021, the sixth assessment report (AR6) from the working group I of the IPCC was released [@IPCC2021]. Chapter 11 [@IPCCCH112021] indicates that human-induced greenhouse gas emissions have increased the frequency and/or intensity of some weather and climate extremes. The evidence has been strengthened since AR5 [@IPCC2013]. There is high confidence that the increasing global warning can expand the land area affected by increasing drought frequency and severity [@IPCCCH112021]. Chile has been facing a persistent rainfall deficit lasting for more than ten years [@Garreaud2017] which has impacted the hydrological system [@Boisier2018], and consequently the vegetation development [@Zambrano2020].   
+ 
+Precipitation is the primary driver of drought that impacts hydrological regimes and vegetation productivity. Thus, it is commonly classified as meteorological, hydrological, and agricultural [@Wilhite1985]. Lately, it has been argued that this definition does not fully address the ecological dimensions [@Crausbay2017]. @Crausbay2017 proposed the ecological drought definition as "an episodic deficit in water availability that drives ecosystems beyond thresholds of vulnerability, impacts ecosystem services, and triggers feedback in natural and/or human systems". The AR6 [@IPCC2021] state that even if global warming is stabilized at 1.5°-2°C many parts of the world will be impacted by more severe agricultural and ecological drought. Central Chile has suffered from crop productivity failure, highlighting the growing season 2007-2008 and 2008-2009 [@Zambrano2016;@Zambrano2018], which impacted an extensive surface. But, in 2019-2020, the drought intensity reached an extreme condition at North 34°S  not seen -at least- for more than 40 years [@Zambrano2020], affecting forest, grassland, and croplands areas. The prolonged lack of precipitation within Central Chile is producing changes in the ecosystem that should study. 
+
+Satellite remote sensing [@West2019;@AghaKouchak2015] is the primary method to evaluate how meteorological drought impacts vegetation dynamics. Since the 90's multiple vegetation drought indices have been derived (VCI,[@Kogan1990]; TCI, [@Kogan1995];zNDVI, [@Peters2002]; VegDri, [@Brown2008]) that have allowed making spatiotemporal analysis. Although we can calculate those indices for any time during the year (depending on satellite revisit), there are relevant during the stage vegetation has more activity, the growing season [@Mishra2015].  Although modeling phenology is a complex task, satellites offer strategies that help to address it [@Younes2021; @Vrieling2018;@Cai2017]. Also, the land cover dynamics product MCD12Q2 from the USGS [@Friedl2019] provides some phenology metrics. Some authors have proposed indices aggregated during the season. @Meroni2017 accumulating the fractional active photosynthetic active radiation(FAPAR) between the start (SOS) and the end of the season (EOS) in the Sahel, calculate the zCFAPAR. @Zambrano2018 used the same approach but with the NDVI (Normalized Difference Vegetation Index), derivating the zcNDVI within Central Chile. Besides, land use land cover  (LULC) change can be driven by drought [@Tran2019;@Akinyemi2021]. To analyze those changes, multiple time-series LULC products exist as the MCD12Q1 [@Friedl2019] and the ESA CCI-LC [@ESA2017]. For Chile, 2014 was made a high-resolution land cover at 30m of spatial resolution [@Zhao2016]. The LULC product with the vegetation drought index can help evaluate the impact of drought on the ecosystem.   
+
+Vegetation drought indices are proxies of productivity [@Paruelo2016;@Schucknecht2017]. The main environmental variables that affect it are water supply and demand [@Mishra2015].  We measure them by precipitation and evapotranspiration (ET), commonly collected from weather stations. Usually, in developing countries (i.e., Chile), incomplete records or gaps present a challenge. But, there are satellite estimates of these variables. To evaluate drought, the World Meteorological Organization (WMO; [@WMO2012]) has proposed the Standardized Precipitation Index (SPI; [@McKee1993]), a multiscalar drought index, which has been used worldwide. For Chile, @Zambrano2017 derived and evaluated it from the product of the Climate Hazards Group InfraRed Precipitation with Station data (CHIRPS; [@Funk2015]). For water demand, it is used ET. The vegetation biomass productivity is strongly related to ET [@FAO66]. The atmospheric evaporative demand (AED) represents the maximum ET rate from a land surface (without water restriction), also known as reference ET. The recommended method for its calculation is the FAO Penman-Monteith [@Pereira2015;@Allen2005]. Due to climate change, AED is increasing, driving ET rise [@IPCCCH112021]. But, it is not always true [@Milly2016]. For example, regions where AET is highest have the lowest ET. The MOD16 product [@Running2021;@Mu2011] provides AET and ET satellite estimates and has been used to derive drought indices [@Mu2013]. Soil moisture (SM) is an Essential Climate Variable (ECV) that modulates vegetative growth. The climate change initiative (CCI) from the European Space Agency (ESA) delivers the ESA CCI SM product [@Dorigo2017] (current version 6.1), which has been helpful to monitor drought [@Zhang2019]. Besides, total water storage can be retrieved by the Gravity Recovery and Climate Experiment (GRACE), which allows analyzing water availability changes [@Ahmed2014;@Ma2017]. The water demand and supply by remote sensing can help evaluate how they have impacted vegetation productivity.      
+
+The study aims to analyze the drought impact on vegetation through Central Chile for 2000-2020, using satellite data as proxies of productivity and water demand and supply. We will evaluate LULC change and use the persistent classes within 2001-2019 (> 80%) to analyze the zcNDVI index and its interconnection with precipitation deficit, AED, ET, and vegetation cover. Finally, we will investigate if the observed changes are linked to the TWS and SM. 
+
+
+
+# Study area
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{../output/figs/map_study_con_landcover.png}
+\caption{ (\textbf{a}) Location of Central Chile and zones north (NCCH), central (CCCH), and south (SCCH) Central Chile. (\textbf{b}) Topography reference map. (\textbf{c}) Land cover classes for 2019. (\textbf{d}) Persistent land cover classess (> 80\%) for 2001-2019.}
+\end{figure}
+
+
+# Materials and Methods
+
+## Satellite data
+
+## zcNDVI and cluster zones
+
+## Landcover change and persistence
+
+## Vegetation Cover
+
+## Evapotranspiration, Soil moisture and water storage
+
+## Data analysis
+
+
+# Results
+
+
+## zcNDVI and cluster zones
+<!-- \begin{figure}[H] -->
+<!-- \includegraphics[width=\textwidth]{../figs/map_zcNDVI_ts_clusters.png} -->
+<!-- \caption{ } -->
+<!-- \end{figure} -->
+
+## Landcover Change and persistent
+
+
+```{r,echo=FALSE,fig.width =10,fig.pos='H'}
+dataLCV_ts <- readRDS('../data/processed_data/timeseries_landcover_zone_LCclass_2001-2021.rds')  
+dataLCV_trend <- readRDS('../data/processed_data/trends_landcover_2001-2021.rds')
+
+dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Cropland') %>% 
+  map(function(class){
+    a <- dataLCV_ts |> 
+      complete(LC_type) |> 
+      ungroup() |> 
+      filter(LC_type == class) |>   
+      group_by(zone,LC_type) |> 
+      select(zone,LC_type,sup_km2) |> 
+      group_split() |> 
+      setNames(c('a','b','c','d','e')) |> 
+      map(function(x) pull(x,sup_km2))
+    map(a,\(x) ifelse(is.na(x),0,x))
+})
+
+
+dataLCV_trend  |> 
+  kbl(booktabs = TRUE,digits = 1,align ='r','latex',position='!ht',
+      caption='Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface.') %>%
+  kable_styling(latex_options="scale_down") %>% 
+  kable_paper(full_width = FALSE) %>%
+  column_spec(2, image = spec_plot(dataSpark[[1]],same_lim = FALSE)
+     ) %>%
+  column_spec(3, image = spec_plot(dataSpark[[2]],same_lim = FALSE)
+    ) %>%
+  column_spec(4, image = spec_plot(dataSpark[[3]],same_lim = FALSE)
+    ) %>%
+  column_spec(5, image = spec_plot(dataSpark[[4]],same_lim = FALSE)
+    ) %>%
+  column_spec(6, image = spec_plot(dataSpark[[5]],same_lim = FALSE)
+    ) %>%
+  column_spec(7, image = spec_plot(dataSpark[[6]],same_lim = FALSE)
+    ) %>% 
+  add_header_above(c(" ",'Trend of change [$km^2 year^{-1}$]' = 6),escape =FALSE)
+```
+
+<!-- \begin{figure}[H] -->
+<!-- \centering -->
+<!-- \includegraphics[width=\textwidth]{../output/figs/LC_perZoneAndCluster.png} -->
+<!-- \caption{ } -->
+<!-- \end{figure} -->
+
+## SPI, AED, and ET
+
+## SM and Total Storage
+
+# Discussion
+
+Authors should discuss the results and how they can be interpreted in perspective of previous studies and of the working hypotheses. The findings and their implications should be discussed in the broadest context possible. Future research directions may also be highlighted.
+
+# Conclusion
+
+This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
+
+# References {-}
+

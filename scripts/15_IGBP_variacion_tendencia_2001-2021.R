@@ -1,4 +1,4 @@
-# Analyzing landcover variation through central Chile
+# Analyzing landcover variation through Chile
 # August 2021
 # by frzambra
 
@@ -23,8 +23,8 @@ classes <- matrix(c(1:17,rep(1,5),rep(2,2),rep(3,2),4,5,6,7,6,8,9,10),ncol=2)
 igbpRecl <- classify(igbp,rcl=classes,include.lowest = TRUE)
 igbpRecl[igbpRecl == 0] <- NA
 
-zones <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
-  st_transform(32719)
+zones <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') 
+
 data <- terra::extract(igbpRecl,zones)
 names(data) <- c('zone',2001:2021)
 
@@ -72,9 +72,9 @@ data3  |>
 library(tidy)
 library(broom)
 
-data3|> 
+data3 |> 
   ungroup() |>  
   nest_by(zone,LC_type) |>  
-  summarize(trend  = as.numeric(tidy(lm(sup_km2~year,data))[2,2])) |>  
+  summarize(trend  = as.numeric(tidy(lm(sup_km2~year,data))[2,2])) |> 
   pivot_wider(names_from = 'LC_type',values_from=3) |> 
-  saveRDS(.,'data/processed_data/trends_landcover_2001-2021.rds')  
+  saveRDS('data/processed_data/trends_landcover_2001-2021.rds')  
