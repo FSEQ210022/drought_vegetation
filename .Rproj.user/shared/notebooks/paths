@@ -1,5 +1,17 @@
+<<<<<<< HEAD
 /home/francisco/Documentos/R-projects/FSEQ210022/drought_vegetation/article/article.Rmd="A0112054"
 /home/francisco/Documentos/R-projects/FSEQ210022/drought_vegetation/article/article.qmd="7BF5DE91"
 /home/francisco/Documentos/R-projects/FSEQ210022/drought_vegetation/article2/article2.qmd="8FCF09EE"
 /home/francisco/Documentos/R-projects/FSEQ210022/drought_vegetation/scripts/14_IGBP_persistencia.R="C82B0966"
 /home/francisco/Documentos/R-projects/FSEQ210022/drought_vegetation/scripts/16_map_study_landcover.R="7F673204"
+=======
+/mnt/0FA1FA650427517A/OneDrive/R-projects/Papers/AgriculturalDroughtChile/R/modifying_LC_Chile.R="B6C6C7E3"
+/mnt/0FA1FA650427517A/OneDrive/R-projects/Papers/Chile-ecosystem-change-drought/R/IGBP_CHLCen_70_reclasdified_terra.R="294CA3B7"
+/mnt/0FA1FA650427517A/OneDrive/R-projects/Papers/Chile-ecosystem-change-drought/R/landcover_analysis.R="E30D710E"
+/mnt/0FA1FA650427517A/OneDrive/R-projects/Proyectos/FSEQ210022/drought-vegetation/scripts/08_smooth_NDVI_MOD13.R="A1147C7A"
+/mnt/0FA1FA650427517A/OneDrive/R-projects/Proyectos/FSEQ210022/drought-vegetation/scripts/09_landcover.R="C5EBCE33"
+/mnt/0FA1FA650427517A/OneDrive/R-projects/Proyectos/FSEQ210022/drought-vegetation/scripts/11_GRACE_download_from_txt2tif.R="D293DF7F"
+/mnt/0FA1FA650427517A/OneDrive/R-projects/Proyectos/FSEQ210022/drought-vegetation/scripts/12_GRACE_timeseries_macrozonas_1.R="1FA0C94B"
+/mnt/0FA1FA650427517A/OneDrive/R-projects/Proyectos/FSEQ210022/drought-vegetation/scripts/13_GRACE_timeseries_macrozonas_2.R="765A3746"
+/mnt/0FA1FA650427517A/OneDrive/R-projects/agrometR/R/get_agro_data.R="FAAC008B"
+>>>>>>> b50e03c (cmabios en pc oficina)

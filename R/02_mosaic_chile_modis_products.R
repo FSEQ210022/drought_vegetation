@@ -83,21 +83,21 @@ file.path(dir,datesUpdate,'/') %>% map(function(dir){
   hdf4ToTif(dir,dir.out,crs="EPSG:32719")
 })
 
-#Product MCD12Q1.006
+#Product MCD12Q1.061
 
-dir <- '/mnt/HDD4TB_2/data/rasters/raw/MODIS/MCD12Q1.006/'
-dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/IGBP.MCD12Q1.006/'
+dir <- '/mnt/raster_raw/MODIS/MCD12Q1.061/'
+dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/IGBP.MCD12Q1.061/'
 dirs <- list.files(dir,full.names=TRUE)
 
 dirs %>% map(function(dir){
   hdf4ToTif(dir,dir.out,band=1,crs="EPSG:32719")
 })
 
-#Product MCD12Q2.006
+#Product MCD12Q2.061
 
 # Cycle number
-dir <- '/mnt/HDD4TB_2/data/rasters/raw/MODIS/MCD12Q2.006/'
-dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/NumCycles.MCD12Q2.006/'
+dir <- '/mnt/raster_raw/MODIS/MCD12Q2.061/'
+dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/NumCycles.MCD12Q2.061/'
 dirs <- list.files(dir,full.names=TRUE)
 
 dirs %>% map(function(dir){
@@ -105,8 +105,8 @@ dirs %>% map(function(dir){
 })
 
 # Greenup
-dir <- '/mnt/HDD4TB_2/data/rasters/raw/MODIS/MCD12Q2.006/'
-dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/Greenup.MCD12Q2.006/'
+dir <- '/mnt/raster_raw/MODIS/MCD12Q2.061/'
+dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/Greenup.MCD12Q2.061/'
 dirs <- list.files(dir,full.names=TRUE)
 
 dirs %>% map(function(dir){
@@ -114,8 +114,8 @@ dirs %>% map(function(dir){
 })
 
 # Dormancy
-dir <- '/mnt/HDD4TB_2/data/rasters/raw/MODIS/MCD12Q2.006/'
-dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/Dormancy.MCD12Q2.006/'
+dir <- '/mnt/raster_raw/MODIS/MCD12Q2.061/'
+dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/Dormancy.MCD12Q2.061/'
 dirs <- list.files(dir,full.names=TRUE)
 
 dirs %>% map(function(dir){
