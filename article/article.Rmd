@@ -37,7 +37,7 @@ footnote:
   - code: 2
     text: "Another author footnote."
 abstract: |
-  Human-induced greenhouse gas emissions have increased the frequency and/or intensity of some weather and climate extremes globally. Chile has been affected by persistent water scarcity which has been impacting the hydrological system and vegetation development. Central Chile it is been the focus of research studies due to the diminishing of water supply, nevertheless water deficit is expanded beyond, specifically to the south of the country.  
+  Human-induced greenhouse gas emissions have increased the frequency and/or intensity of some weather and climate extremes globally. Chile has been affected by persistent water scarcity which is impacting the hydrological system and vegetation development. Central Chile it is been the focus of research studies due to the diminishing water supply, nevertheless water deficit is expanded beyond. We analyze earth observation data for 2000-2023 to do a comprehensive assessment of water scarcity in Chile.  For the analysis, continental Chile was divided into five zones from north to south.  We used the time series of MODIS for land cover change (LULC), fraction of vegetation cover (FVC), and to derive the drought index zcNDVI and zcET (standardized anomaly of cumulative NDVI and ET through the growing season); and CHELSA v2.1 dataset to derive the standardized precipitation evapotranspiration index (SPEI). We evaluate the interconnection between the productivity drought index (zcNDVI) and water demand (zcET), supply (SPEIs) and FVC. Finally, we analyzed the temporal correlation of the drought indices with total water storage (TWS) from GRACE (Gravity Recovery and Climate Experiment). Our results showed that ...  
   
 keywords: 
   - keyword1
@@ -49,12 +49,12 @@ bibliography: references.bib
 biblio-style: "apalike"
 linenumbers: false
 numbersections: true
-# Use a CSL with `citation_package = "default"`
 # csl: https://www.zotero.org/styles/elsevier-harvard
 output: 
   rticles::elsevier_article:
     keep_tex: true
     citation_package: natbib
+  word_document: default
 ---
 
 ```{r setup,include=FALSE}
