@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: article.aux
+The style file: apalike.bst
+Database file #1: references.bib
+Warning--to sort, need author or key in IPCC2021
+Warning--empty author in IPCC2021
+Warning--empty institution in ESA2017
+Warning--there's a number but no volume in McKee1993
+Warning--empty year in Running2021
+Warning--can't use both author and editor fields in IPCCCH112021
+Warning--empty year in FAO66
+Warning--empty journal in FAO66
+You've used 43 entries,
+            1935 wiz_defined-function locations,
+            767 strings with 15710 characters,
+and the built_in function-call counts, 20205 in all, are:
+= -- 1856
+> -- 1298
+< -- 13
++ -- 472
+- -- 472
+* -- 1951
+:= -- 3651
+add.period$ -- 127
+call.type$ -- 43
+change.case$ -- 449
+chr.to.int$ -- 43
+cite$ -- 52
+duplicate$ -- 588
+empty$ -- 1134
+format.name$ -- 520
+if$ -- 3737
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 42
+newline$ -- 214
+num.names$ -- 126
+pop$ -- 386
+preamble$ -- 1
+purify$ -- 451
+quote$ -- 0
+skip$ -- 423
+stack$ -- 0
+substring$ -- 1166
+swap$ -- 41
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 252
+warning$ -- 8
+while$ -- 141
+width$ -- 0
+write$ -- 545
+(There were 8 warnings)

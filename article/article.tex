@@ -4,7 +4,7 @@
 
 \usepackage[hyphens]{url}
 
-  \journal{An awesome journal} % Sets Journal name
+  \journal{Remote Sensing of Environment} % Sets Journal name
 
 \usepackage{graphicx}
 %%%%%%%%%%%%%%%% end my additions to header
@@ -85,7 +85,7 @@
 
   \title{Comprehensive assessment of the climate-induced water scarcity
 over continental Chile}
-    \author[Hemere Centro de Observación de la Tierra,Universidad
+    \author[Hemera Centro de Observación de la Tierra,Universidad
 Mayor]{Francisco Zambrano%
   \corref{cor1}%
   \fnref{1}}
@@ -102,9 +102,10 @@ Mayor]{Francisco Zambrano%
   %
   \fnref{2}}
    \ead{derek@example.com} 
-      \affiliation[Some Institute of Technology]{
-    organization={Big Wig University},addressline={1 main
-street},city={Gotham},postcode={123456},state={State},country={United
+      \affiliation[Hemera Centro de Observación de la Tierra]{
+    organization={Facultad de Ciencias, Universidad
+Mayor.},addressline={La Piramide
+5750},city={Santiago},postcode={123456},state={Huechuraba},country={United
 States},}
     \affiliation[Another University]{
     organization={Department},addressline={A street
@@ -114,9 +115,13 @@ States},}
     \fntext[2]{Another author footnote.}
   
   \begin{abstract}
-  This is the abstract.
-
-  It consists of two paragraphs.
+  Human-induced greenhouse gas emissions have increased the frequency
+  and/or intensity of some weather and climate extremes globally. Chile
+  has been affected by persistent water scarcity which has been
+  impacting the hydrological system and vegetation development. Central
+  Chile it is been the focus of research studies due to the diminishing
+  of water supply, nevertheless water deficit is expanded beyond,
+  specifically to the south of the country.
   \end{abstract}
     \begin{keyword}
     keyword1 \sep 
@@ -137,17 +142,17 @@ submission, that you're using the most recent .cls, .tex and .bst files
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-In 2021, the sixth assessment report (AR6) from the working group I of
-the IPCC was released \citep{IPCC2021}. Chapter 11 \citep{IPCCCH112021}
-indicates that human-induced greenhouse gas emissions have increased the
-frequency and/or intensity of some weather and climate extremes. The
-evidence has been strengthened since AR5 \citep{IPCC2013}. There is high
-confidence that the increasing global warning can expand the land area
-affected by increasing drought frequency and severity
-\citep{IPCCCH112021}. Chile has been facing a persistent rainfall
-deficit lasting for more than ten years \citep{Garreaud2017} which has
-impacted the hydrological system \citep{Boisier2018}, and consequently
-the vegetation development \citep{Zambrano2020}.
+The sixth assessment report (AR6) from the working group I of the IPCC
+\citep{IPCC2021} indicates that human-induced greenhouse gas emissions
+have increased the frequency and/or intensity of some weather and
+climate extremes and the evidence has been strengthened since AR5
+\citep{IPCC2013}. There is high confidence that the increasing global
+warning can expand the land area affected by increasing drought
+frequency and severity \citep{IPCCCH112021}. Chile has been facing a
+persistent rainfall deficit lasting for more than ten years
+\citep{Garreaud2017} which has impacted the hydrological system
+\citep{Boisier2018}, and consequently the vegetation development
+\citep{Zambrano2020}.
 
 Precipitation is the primary driver of drought that impacts hydrological
 regimes and vegetation productivity. Thus, it is commonly classified as
@@ -195,87 +200,97 @@ was made a high-resolution land cover at 30m of spatial resolution
 \citep{Zhao2016}. The LULC product with the vegetation drought index can
 help evaluate the impact of drought on the ecosystem.
 
-Vegetation drought indices are proxies of productivity
+Vegetation drought indices are commonly used as proxies of productivity
 \citep{Paruelo2016, Schucknecht2017}. The main environmental variables
-that affect it are water supply and demand \citep{Mishra2015}. We
-measure them by precipitation and evapotranspiration (ET), commonly
-collected from weather stations. Usually, in developing countries (i.e.,
-Chile), incomplete records or gaps present a challenge. But, there are
-satellite estimates of these variables. To evaluate drought, the World
-Meteorological Organization (WMO; \citep{WMO2012}) has proposed the
-Standardized Precipitation Index (SPI; \citep{McKee1993}), a multiscalar
-drought index, which has been used worldwide. For Chile,
-\citet{Zambrano2017} derived and evaluated it from the product of the
-Climate Hazards Group InfraRed Precipitation with Station data (CHIRPS;
-\citep{Funk2015}). For water demand, it is used ET. The vegetation
-biomass productivity is strongly related to ET \citep{FAO66}. The
-atmospheric evaporative demand (AED) represents the maximum ET rate from
-a land surface (without water restriction), also known as reference ET.
-The recommended method for its calculation is the FAO Penman-Monteith
-\citep{Pereira2015, Allen2005}. Due to climate change, AED is
-increasing, driving ET rise \citep{IPCCCH112021}. But, it is not always
-true \citep{Milly2016}. For example, regions where AET is highest have
-the lowest ET. The MOD16 product \citep{Running2021, Mu2011} provides
-AET and ET satellite estimates and has been used to derive drought
-indices \citep{Mu2013}. Soil moisture (SM) is an Essential Climate
-Variable (ECV) that modulates vegetative growth. The climate change
-initiative (CCI) from the European Space Agency (ESA) delivers the ESA
-CCI SM product \citep{Dorigo2017} (current version 6.1), which has been
-helpful to monitor drought \citep{Zhang2019}. Besides, total water
-storage can be retrieved by the Gravity Recovery and Climate Experiment
-(GRACE), which allows analyzing water availability changes
-\citep{Ahmed2014, Ma2017}. The water demand and supply by remote sensing
-can help evaluate how they have impacted vegetation productivity.
+that affect productivity are water supply and demand \citep{Mishra2015}.
+Those are measured by precipitation and evapotranspiration (ET),
+commonly collected from weather stations. Usually, in developing
+countries (i.e., Chile), incomplete records or gaps present a challenge.
+But, there are satellite estimates of these variables. To evaluate
+drought, the World Meteorological Organization (WMO; \citep{WMO2012})
+has proposed the Standardized Precipitation Index (SPI;
+\citep{McKee1993}), a multiscalar drought index, which has been used
+worldwide. For Chile, \citet{Zambrano2017} derived and evaluated it from
+the product of the Climate Hazards Group InfraRed Precipitation with
+Station data (CHIRPS; \citep{Funk2015}). For water demand, it is used
+ET. The vegetation biomass productivity is strongly related to ET
+\citep{FAO66}. The atmospheric evaporative demand (AED) represents the
+maximum ET rate from a land surface (without water restriction), also
+known as reference ET. The recommended method for its calculation is the
+FAO Penman-Monteith \citep{Pereira2015, Allen2005}. Due to climate
+change, AED is increasing, driving ET rise \citep{IPCCCH112021}. But, it
+is not always true \citep{Milly2016}. For example, regions where AET is
+highest have the lowest ET. The MOD16 product
+\citep{Running2021, Mu2011} provides AET and ET satellite estimates and
+has been used to derive drought indices \citep{Mu2013}. Soil moisture
+(SM) is an Essential Climate Variable (ECV) that modulates vegetative
+growth. The climate change initiative (CCI) from the European Space
+Agency (ESA) delivers the ESA CCI SM product \citep{Dorigo2017} (current
+version 6.1), which has been helpful to monitor drought
+\citep{Zhang2019}. Besides, total water storage can be retrieved by the
+Gravity Recovery and Climate Experiment (GRACE), which allows analyzing
+water availability changes \citep{Ahmed2014, Ma2017}. The water demand
+and supply by remote sensing can help evaluate how they have impacted
+vegetation productivity.
 
-The study aims to analyze the drought impact on vegetation through
-Central Chile for 2000-2020, using satellite data as proxies of
-productivity and water demand and supply. We will evaluate LULC change
-and use the persistent classes within 2001-2019 (\textgreater{} 80\%) to
-analyze the zcNDVI index and its interconnection with precipitation
-deficit, AED, ET, and vegetation cover. Finally, we will investigate if
-the observed changes are linked to the TWS and SM.
+We aims to analyze the climate-induced water scarcity over continental
+Chile for 2000-2023 by using estimated environmental variables of
+biomass productivity, and water demand/supply gather from earth
+observation products. The specific objective for the study are i) to
+evaluate LULC change for 2001-2021, ii) to derive and assess the
+vegetation drought index zcNDVI as a proxy of biomass productivity, iii)
+analyze the interconnection of zcNDVI with drought indices of supply
+(i.e., precipitation), demand (i.e, ET), and vegetation cover; and iv)
+we will investigate if the observed changes are linked to the TWS and
+SM.
 
 \hypertarget{study-area}{%
 \section{Study area}\label{study-area}}
 
-\begin{figure}[H]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=\textwidth]{../output/figs/map_study_con_landcover.png}
-\caption{ (\textbf{a}) Location of Central Chile and zones north (NCCH), central (CCCH), and south (SCCH) Central Chile. (\textbf{b}) Topography reference map. (\textbf{c}) Land cover classes for 2019. (\textbf{d}) Persistent land cover classess (> 80\%) for 2001-2019.}
+\caption{ (\textbf{a}) Location of Central Chile and zones north (NCCH), central (CCCH), and south (SCCH) Central Chile. (\textbf{b}) Topography reference map. (\textbf{c}) Land cover classes for 2019. (\textbf{d}) Persistent land cover classess (> 80\%) for 2001-2021.}
 \end{figure}
 
 \hypertarget{materials-and-methods}{%
 \section{Materials and Methods}\label{materials-and-methods}}
 
-\hypertarget{satellite-data}{%
-\subsection{Satellite data}\label{satellite-data}}
+\hypertarget{data}{%
+\subsection{Data}\label{data}}
 
-\hypertarget{zcndvi-and-cluster-zones}{%
-\subsection{zcNDVI and cluster zones}\label{zcndvi-and-cluster-zones}}
+\hypertarget{satellite-data}{%
+\subsubsection{Satellite data}\label{satellite-data}}
+
+\hypertarget{in-situ-data}{%
+\subsubsection{in-situ data}\label{in-situ-data}}
+
+\hypertarget{lulc-change-for-2001-2021}{%
+\subsection{LULC change for 2001-2021}\label{lulc-change-for-2001-2021}}
 
 \hypertarget{landcover-change-and-persistence}{%
-\subsection{Landcover change and
+\subsubsection{Landcover change and
 persistence}\label{landcover-change-and-persistence}}
 
-\hypertarget{vegetation-cover}{%
-\subsection{Vegetation Cover}\label{vegetation-cover}}
+\hypertarget{drought-index-for-biomass-productivity-zcndvi}{%
+\subsection{Drought index for biomass productivity
+zcNDVI}\label{drought-index-for-biomass-productivity-zcndvi}}
 
-\hypertarget{evapotranspiration-soil-moisture-and-water-storage}{%
-\subsection{Evapotranspiration, Soil moisture and water
-storage}\label{evapotranspiration-soil-moisture-and-water-storage}}
+\hypertarget{interconnection-of-productivity-with-drought-indices-of-supplydemand-and-vegetation-cover}{%
+\subsection{Interconnection of productivity with drought indices of
+supply/demand and vegetation
+cover}\label{interconnection-of-productivity-with-drought-indices-of-supplydemand-and-vegetation-cover}}
 
-\hypertarget{data-analysis}{%
-\subsection{Data analysis}\label{data-analysis}}
+\hypertarget{totatl-water-storage-and-soil-moisture}{%
+\subsection{Totatl water storage and Soil
+Moisture}\label{totatl-water-storage-and-soil-moisture}}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\hypertarget{zcndvi-and-cluster-zones-1}{%
-\subsection{zcNDVI and cluster zones}\label{zcndvi-and-cluster-zones-1}}
-
-\hypertarget{landcover-change-and-persistent}{%
-\subsection{Landcover Change and
-persistent}\label{landcover-change-and-persistent}}
+\hypertarget{lulc-change-for-2001-2021-1}{%
+\subsection{LULC change for
+2001-2021}\label{lulc-change-for-2001-2021-1}}
 
 \begin{table}[!ht]
 
@@ -288,20 +303,37 @@ persistent}\label{landcover-change-and-persistent}}
 \cmidrule(l{3pt}r{3pt}){2-7}
 zone & Shrubland & Savanna & Grassland & Barren land & Forest & Cropland\\
 \midrule
-norte grande & -2.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c19134a3d.pdf} & 0.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c11281a1c.pdf} & -31.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c76e40d4c.pdf} & 32.8\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396cc832d9.pdf} & NA\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c22c3df0c.pdf} & NA\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c1e23c330.pdf}\\
-norte chico & 79.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c3e39b63c.pdf} & -66.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c3a55945c.pdf} & -100.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c5ea10cfa.pdf} & 104.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c3e253181.pdf} & 0.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c6e3f818e.pdf} & -13.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c381a2e04.pdf}\\
-zona central & 130.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c752a96cf.pdf} & -128.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c400c5e63.pdf} & 89.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c511304bc.pdf} & 23.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c58fe26f6.pdf} & -66.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c16afaacc.pdf} & -24.4\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c66febecf.pdf}\\
-zona sur & -14.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c1ee86964.pdf} & -316.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c457bef18.pdf} & -55.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c688683cf.pdf} & 2.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c7f0e5ef0.pdf} & 412.4\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c4f819a2c.pdf} & 30.8\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c1671afb3.pdf}\\
-zona austral & -44.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c7a04eff2.pdf} & 163.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c292ba1fa.pdf} & 226.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c362a0ad3.pdf} & -80.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c32966b1b.pdf} & -9.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396c211e7d1e.pdf} & -1.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_d396cb504520.pdf}\\
+norte grande & -2.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671073045199.pdf} & 0.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671013721869.pdf} & -31.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671079e41f67.pdf} & 32.8\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671075ebd9d8.pdf} & NA\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_196710524640a1.pdf} & NA\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671012073e8a.pdf}\\
+norte chico & 79.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671061580771.pdf} & -66.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967101832bef9.pdf} & -100.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967105771ba87.pdf} & 104.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671042ea518f.pdf} & 0.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_196710607baab3.pdf} & -13.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967106f91099.pdf}\\
+zona central & 130.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967105c411aeb.pdf} & -128.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967108a6119a.pdf} & 89.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671016b408b2.pdf} & 23.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967103ee6f936.pdf} & -66.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671074c30c6.pdf} & -24.4\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671056667823.pdf}\\
+zona sur & -14.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967106cc832ad.pdf} & -316.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671034e3692f.pdf} & -55.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967104ac90971.pdf} & 2.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967107f7df47e.pdf} & 412.4\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967104e385249.pdf} & 30.8\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671013698bfb.pdf}\\
+zona austral & -44.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_196710491ed82a.pdf} & 163.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_196710190c87cf.pdf} & 226.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967101d6ab929.pdf} & -80.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_19671033cd1ca4.pdf} & -9.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1967101f22c71d.pdf} & -1.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_196710336ead1.pdf}\\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-\hypertarget{spi-aed-and-et}{%
-\subsection{SPI, AED, and ET}\label{spi-aed-and-et}}
+\hypertarget{landcover-change-and-persistence-1}{%
+\subsubsection{Landcover change and
+persistence}\label{landcover-change-and-persistence-1}}
 
-\hypertarget{sm-and-total-storage}{%
-\subsection{SM and Total Storage}\label{sm-and-total-storage}}
+\hypertarget{drought-index-for-biomass-productivity-zcndvi-1}{%
+\subsection{Drought index for biomass productivity
+zcNDVI}\label{drought-index-for-biomass-productivity-zcndvi-1}}
+
+\hypertarget{interconnection-of-productivity-with-drought-indices-of-supplydemand-and-vegetation-cover-1}{%
+\subsection{Interconnection of productivity with drought indices of
+supply/demand and vegetation
+cover}\label{interconnection-of-productivity-with-drought-indices-of-supplydemand-and-vegetation-cover-1}}
+
+\hypertarget{total-water-storage-and-soil-moisture}{%
+\subsection{Total water storage and Soil
+Moisture}\label{total-water-storage-and-soil-moisture}}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{../output/figs/JPL_TELLUS_GRACE-FO_L3_Monthly_Land_WET_SMA_R61v04_macrozonas.png}
+\caption{Total water storage (mm) trend for 2002-2023 in the five macrozones on continental Chile}
+\end{figure}
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
