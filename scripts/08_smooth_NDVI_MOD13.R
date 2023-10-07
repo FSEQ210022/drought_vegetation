@@ -7,9 +7,9 @@ library(rnaturalearth)
 library(stringr)
 library(lubridate)
 
-dir_in <- '/mnt/md0/MODIS/NDVI.MOD13A3.061/'
+dir_in <- '/mnt/md0/raster_procesada/MODIS/NDVI.MOD13A3.061/'
 
-files <- dir_ls(dir_in)
+files <- dir_ls(dir_in,regexp = '2023')
 dates <- as.Date(str_extract(files,'[0-9]{7}'),'%Y%j')
 
 # test with stars
@@ -53,11 +53,11 @@ m <- lapply(files,function(name){
 ndvism <- do.call(st_mosaic,m)
 
 yj <- format(dates,'%Y%j')
-dir_out <- '/mnt/md0/MODIS/NDVI_loess.MOD13A3.061/'
+dir_out <- '/mnt/md0/raster_procesada/MODIS_derived/NDVI_loess.MOD13A3.061/'
 
 new_names <- paste0(dir_out,'chl_',yj,'_1_km_monthly_NDVI_loess.tif')
 
-lapply(1:dim(ndvism)[3],\(i){
+lapply(6:dim(ndvism)[3],\(i){
   write_stars(ndvism[,,,i],dsn = new_names[i],type = 'Int16')
 })
 

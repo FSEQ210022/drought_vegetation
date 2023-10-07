@@ -120,20 +120,26 @@ States},}
   has been affected by persistent water scarcity which is impacting the
   hydrological system and vegetation development. Central Chile it is
   been the focus of research studies due to the diminishing water
-  supply, nevertheless water deficit is expanded beyond. We analyze
-  earth observation data for 2000-2023 to do a comprehensive assessment
-  of water scarcity in Chile. For the analysis, continental Chile was
-  divided into five zones from north to south. We used the time series
-  of MODIS for land cover change (LULC), fraction of vegetation cover
-  (FVC), and to derive the drought index zcNDVI and zcET (standardized
-  anomaly of cumulative NDVI and ET through the growing season); and
-  CHELSA v2.1 dataset to derive the standardized precipitation
-  evapotranspiration index (SPEI). We evaluate the interconnection
-  between the productivity drought index (zcNDVI) and water demand
-  (zcET), supply (SPEIs) and FVC. Finally, we analyzed the temporal
-  correlation of the drought indices with total water storage (TWS) from
-  GRACE (Gravity Recovery and Climate Experiment). Our results showed
-  that \ldots{}
+  supply, nevertheless our results evidence that water deficit is
+  expanded beyond. We analyze earth observation data for 2000-2023 to
+  make a comprehensive assessment of water scarcity in Chile. For the
+  analysis, continental Chile was divided into five zones big north,
+  little north, central, south, and austral zone. We used the time
+  series of MODIS for land cover change (LULC), fraction of vegetation
+  cover (FVC), and to derive the drought index zcNDVI and zcET
+  (standardized anomaly of cumulative NDVI and ET through the growing
+  season); and CHELSA v2.1 dataset to derive the standardized
+  precipitation evapotranspiration index (SPEI). We evaluate the
+  interconnection between the productivity drought index (zcNDVI) and
+  water demand (zcET), supply (SPEIs) and FVC. Finally, we analyzed the
+  temporal correlation of the drought indices with total water storage
+  (TWS) from GRACE (Gravity Recovery and Climate Experiment). Our LULC
+  results showed a increasing trend of 412 \([km^2\cdot yr^{-1}\){]} of
+  forest in the south zone, a decresasing trend of 24
+  \([km^2\cdot yr^{-1}\){]} of cropland in the central zone and an
+  increase of 31 \([km^2\cdot yr^{-1}\){]} in the south zone, and a
+  diminish of 80 \([km^2\cdot yr^{-1}\){]} of barrend land in the
+  austral zone.
   \end{abstract}
     \begin{keyword}
     keyword1 \sep 
@@ -142,29 +148,19 @@ States},}
   
  \end{frontmatter}
 
-\hypertarget{version}{%
-\section{Version}\label{version}}
-
-This Rmd-skeleton uses the mdpi Latex template published 2019/02.
-However, the official template gets more frequently updated than the
-`rticles' package. Therefore, please make sure prior to paper
-submission, that you're using the most recent .cls, .tex and .bst files
-(available \href{http://www.mdpi.com/authors/latex}{here}).
-
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-The sixth assessment report (AR6) from the working group I of the IPCC
-\citep{IPCC2021} indicates that human-induced greenhouse gas emissions
-have increased the frequency and/or intensity of some weather and
-climate extremes and the evidence has been strengthened since AR5
-\citep{IPCC2013}. There is high confidence that the increasing global
-warning can expand the land area affected by increasing drought
-frequency and severity \citep{IPCCCH112021}. Chile has been facing a
-persistent rainfall deficit lasting for more than ten years
-\citep{Garreaud2017} which has impacted the hydrological system
-\citep{Boisier2018}, and consequently the vegetation development
-\citep{Zambrano2020}.
+The sixth assessment report (AR6) of the IPCC \citep{IPCC2021} indicates
+that human-induced greenhouse gas emissions have increased the frequency
+and/or intensity of some weather and climate extremes and the evidence
+has been strengthened since AR5 \citep{IPCC2013}. There is high
+confidence that the increasing global warning can expand the land area
+affected by increasing drought frequency and severity
+\citep{IPCCCH112021}. Chile has been facing a persistent rainfall
+deficit lasting for more than ten years \citep{Garreaud2017} which has
+impacted the hydrological system \citep{Boisier2018}, and consequently
+the vegetation development \citep{Zambrano2020}.
 
 Precipitation is the primary driver of drought that impacts hydrological
 regimes and vegetation productivity. Thus, it is commonly classified as
@@ -184,7 +180,7 @@ But, in 2019-2020, the drought intensity reached an extreme condition at
 North 34°S not seen -at least- for more than 40 years
 \citep{Zambrano2020}, affecting forest, grassland, and croplands areas.
 The prolonged lack of precipitation within Central Chile is producing
-changes in the ecosystem that should study.
+changes in the ecosystem that must be studied.
 
 Satellite remote sensing \citep{West2019, AghaKouchak2015} is the
 primary method to evaluate how meteorological drought impacts vegetation
@@ -207,10 +203,9 @@ end of the season (EOS) in the Sahel, calculate the zCFAPAR.
 Central Chile. Besides, land use land cover (LULC) change can be driven
 by drought \citep{Tran2019, Akinyemi2021}. To analyze those changes,
 multiple time-series LULC products exist as the MCD12Q1
-\citep{Friedl2019} and the ESA CCI-LC \citep{ESA2017}. For Chile, 2014
-was made a high-resolution land cover at 30m of spatial resolution
-\citep{Zhao2016}. The LULC product with the vegetation drought index can
-help evaluate the impact of drought on the ecosystem.
+\citep{Friedl2019} and the ESA CCI-LC \citep{ESA2017}. The LULC product
+with the vegetation drought index can help evaluate the impact of
+drought on the ecosystem.
 
 Vegetation drought indices are commonly used as proxies of productivity
 \citep{Paruelo2016, Schucknecht2017}. The main environmental variables
@@ -315,11 +310,11 @@ Moisture}\label{totatl-water-storage-and-soil-moisture}}
 \cmidrule(l{3pt}r{3pt}){2-7}
 zone & Shrubland & Savanna & Grassland & Barren land & Forest & Cropland\\
 \midrule
-norte grande & -2.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70937146e24b.pdf} & 0.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709384faf70.pdf} & -31.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709373919fc5.pdf} & 32.8\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709321ad9f19.pdf} & NA\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709379ea79bd.pdf} & NA\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d7093c8ff3c5.pdf}\\
-norte chico & 79.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709337b6241e.pdf} & -66.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70937f0ed48a.pdf} & -100.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70934b4bd377.pdf} & 104.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70931e4fd155.pdf} & 0.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70932e8b190a.pdf} & -13.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d7093305c1274.pdf}\\
-zona central & 130.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70932bbec995.pdf} & -128.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d7093598f66c9.pdf} & 89.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709370472832.pdf} & 23.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d7093ba3805d.pdf} & -66.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709341ec566.pdf} & -24.4\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70933b82960c.pdf}\\
-zona sur & -14.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70936a87e29b.pdf} & -316.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70935b745f29.pdf} & -55.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709363a8f17a.pdf} & 2.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70932c57d58c.pdf} & 412.4\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70935fdd829a.pdf} & 30.8\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709328c1f26f.pdf}\\
-zona austral & -44.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709343d0ce35.pdf} & 163.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d7093615c29b7.pdf} & 226.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70933872723d.pdf} & -80.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709369bca642.pdf} & -9.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d709386fdff0.pdf} & -1.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_1d70931a654519.pdf}\\
+big north & -2.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d410cb31f.pdf} & 0.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d4ddd8049.pdf} & -31.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d7c9fbffd.pdf} & 32.8\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d1a8bb73a.pdf} & NA\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d474fdeb5.pdf} & NA\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d269510e4.pdf}\\
+little north & 79.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d5d88be43.pdf} & -66.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d150a4cbe.pdf} & -100.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d404fa544.pdf} & 104.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70dca4c474.pdf} & 0.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d7e3728ac.pdf} & -13.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d4a63e6a4.pdf}\\
+central & 130.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d25a3233e.pdf} & -128.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d57d04753.pdf} & 89.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d42f71f69.pdf} & 23.3\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d1dec138d.pdf} & -66.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d1c2543ab.pdf} & -24.4\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d8528d9c.pdf}\\
+south & -14.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d20c19221.pdf} & -316.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d2c19997d.pdf} & -55.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d3e82c025.pdf} & 2.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d5b7a821e.pdf} & 412.4\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d79c7dc48.pdf} & 30.8\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d41d72265.pdf}\\
+austral & -44.6\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d435b8d.pdf} & 163.9\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d26854a6b.pdf} & 226.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d5a94aab.pdf} & -80.2\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d53a33e6a.pdf} & -9.1\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70d14d93133.pdf} & -1.0\includegraphics[width=0.67in, height=0.17in]{article_files/figure-latex//plot_ee70deb41525.pdf}\\
 \bottomrule
 \end{tabular}}
 \end{table}

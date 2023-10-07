@@ -19,7 +19,6 @@ set_defaults(map_token = "pk.eyJ1IjoiZnJ6YW1icmEiLCJhIjoiY2tqdmw5Z3QxMDZyZjJydG5
 
 #macrozonas
 zones <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg','marcozonas_chile')
-zones$macrozona <- c('little north','big north','austral','central','south')
 
 #centroides de las macrozonas
 zones <- zones |> st_centroid() |> st_coordinates() |> cbind(zones)
@@ -97,7 +96,7 @@ map_globe <- tm_shape(bm_world) +
 map_chl <- tm_shape(bm2) +
   tm_rgb() +
   tm_shape(zones) +
-  tm_borders(lwd=1,col='black',lty='solid',alpha=0.8) +
+  tm_borders(lwd=2,col='black',lty='solid',alpha=0.8) +
   tm_text('macrozona',just='top',xmod=c(-6,-6,3,-5,-5),ymod=c(0,-3.5,0,0,0),size=2) +
   tm_credits('(a)',position = c('left','bottom'),fontface = 'bold',size=1.7)
   
@@ -107,6 +106,7 @@ asp2 <- (xy$xmax - xy$xmin)/(xy$ymax - xy$ymin)
 xy <- st_bbox(chl)
 asp <- (xy$ymax - xy$ymin)/(xy$xmax - xy$xmin)
 
+library(grid)
 #asp <- asp2 <- 0.23
 w <- 0.5
 h <- asp2 * w

@@ -2,14 +2,16 @@
 # by frzambra
 # April 2022
 
-product <- 'NDVI.MOD13Q1.006/'
+product <- 'NDVI.MOD13A3.061/'
 
-dir <- paste0('/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/',product)
+dir <- paste0('/mnt/md0/raster_procesada/MODIS/',product)
 
 library(stars)
 library(terra)
 library(sf)
 library(snow)
+
+source('R/functions/smoothNDVI.R')
 
 pol <- st_read('data/spatial/chile_continental.gpkg')
 pol <- st_transform(pol,32719)

@@ -83,6 +83,17 @@ file.path(dir,datesUpdate,'/') %>% map(function(dir){
   hdf4ToTif(dir,dir.out,crs="EPSG:32719")
 })
 
+#Product MOD13A3
+
+dir <- '/mnt/md0/raster_raw/MODIS/MOD13A3.061/'
+dir.out <- '/mnt/md0/raster_procesada/MODIS/NDVI.MOD13A3.061/'
+dirs <- list.files(dir,full.names=TRUE)
+
+datesUpdate <- dates2Update(dir.out,dirs)
+
+file.path(dir,datesUpdate,'/') %>% map(function(dir){
+  hdf4ToTif(dir,dir.out,crs="EPSG:32719")
+})
 #Product MCD12Q1.061
 
 dir <- '/mnt/raster_raw/MODIS/MCD12Q1.061/'

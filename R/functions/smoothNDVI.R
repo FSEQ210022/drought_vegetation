@@ -21,8 +21,3 @@ smoothNDVI <- function(y,x,n=5){
     y.pred
 }
 
-
- # y <- runif(100)
- # y[sample(1:100,100)] <- NA
- # x <- 1:100
- # smoothNDVI(y,x) |> length()

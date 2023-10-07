@@ -4,8 +4,8 @@
 
 require(purrr)
 
-dir_in <- '/mnt/raster_raw/MODIS/MCD12Q1.061/'
-dir_out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/IGBP.MCD12Q1.006/'
+dir_in <- '/mnt/md0/raster_raw/MODIS/MOD13A3.061/'
+dir_out <- '/mnt/md0/raster_procesada/MODIS/NDVI.MOD13A3.061/'
 
 mosaic_modisFromHDF(dir_in,dir_out,lyr=1)
 

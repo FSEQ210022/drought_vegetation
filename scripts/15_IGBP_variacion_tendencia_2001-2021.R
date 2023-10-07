@@ -23,7 +23,9 @@ classes <- matrix(c(1:17,rep(1,5),rep(2,2),rep(3,2),4,5,6,7,6,8,9,10),ncol=2)
 igbpRecl <- classify(igbp,rcl=classes,include.lowest = TRUE)
 igbpRecl[igbpRecl == 0] <- NA
 
-zones <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') 
+zones <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
+  st_transform(32719)
+zones$macrozona <- c('little north','big north','austral','central','south')
 
 data <- terra::extract(igbpRecl,zones)
 names(data) <- c('zone',2001:2021)
