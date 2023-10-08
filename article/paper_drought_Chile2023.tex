@@ -1,0 +1,509 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  number,
+  preprint,
+  3p]{elsarticle}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\journal{Journal Name}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{elsarticle-num}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Drought assessment of the impact of water supply and demand over land cover in continental Chile for 2000-2023 from ERA5-Land and MODIS datasets},
+  pdfauthor={Francisco Zambrano},
+  pdfkeywords={drought, land cover change, satellite},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\setlength{\parindent}{6pt}
+\begin{document}
+
+\begin{frontmatter}
+\title{Drought assessment of the impact of water supply and demand over
+land cover in continental Chile for 2000-2023 from ERA5-Land and MODIS
+datasets}
+\author[1]{Francisco Zambrano%
+\corref{cor1}%
+\fnref{fn1}}
+ \ead{francisco.zambrano@umayor.cl} 
+
+\affiliation[1]{organization={Universidad Mayor, Hémera Centro de
+Observación de la Tierra, Facultad de Ciencias, Escuela de Ingeniería en
+Medio Ambiente y Sustentabilidad},city={Santiago,
+Chile},postcode={7500994},postcodesep={}}
+
+\cortext[cor1]{Corresponding author}
+\fntext[fn1]{This is the first author footnote.}
+        
+\begin{abstract}
+Human-induced greenhouse gas emissions have increased the frequency
+and/or intensity of weather and climate extremes. Central Chile has been
+affected by a persistent drought which is impacting the hydrological
+system and vegetation development. The region has been the focus of
+research studies due to the diminishing water supply, this persistent
+period of water scarcity has been defined as a ``mega drought''.
+Nevertheless, our results evidence that the water deficit has expanded
+beyond. Our goal is to analyze the impact of drought, measured by
+drought indices of water supply/demand and vegetation status, in the
+LULCC (land use land cover change) over continental Chile. For the
+analysis, continental Chile was divided into five zones according to a
+latitudinal gradient: ``Norte Grande'', ``Norte Chico'', ``Zona
+Central'', ``Zona Sur'', and ``Zona Austral''. We used monthly climatic
+re-analysis variables for precipitation, temperature and soil moisture
+for 1981-2023 from ERA5-Land; and MODIS (Moderate-Resolution Imaging
+Spectroradiometer) product MCD12Q1 for land cover for 2001-2021, and the
+NDVI vegetation index from product MOD13A2 collection 6.1 for 2000-2023,
+both from collection 6.1. We estimated atmospheric evaporative demand
+(AED) by combining the Hargreaves-Samani equation with the ERA5-Land
+temperature. We derived the drought indices SPI (Standardized
+Precipitation Index), SPEI (Standardized Precipitation
+Evapotranspiration Index), EDDI (Evaporative Demand Drought Index), zcSM
+(standardized anomaly of cumulative soil moisture), and the zcNDVI
+(standardized anomaly of cumulative NDVI). These indices were calculated
+for time scales of 1, 3, 6, 12, 24, and 36 months, except for zcNDVI (1,
+3, and 6 months). We analyzed the temporal correlation of SPI, SPEI,
+EDDI, and zcSM with zcNDVI to have insights into the impact of water
+supply and demand on vegetation. Our results showed that LULCC had an
+increasing trend of 412 {[}km2yr−1{]} of forest expansion in the ``Zona
+Sur'', together with a decreasing trend of 24 {[}km2yr−1{]} of cropland
+contraction in the ``Zona Central'' meanwhile the ``Zona Sur'' showed an
+increase of 31 {[}km2yr−1{]}, and a contraction of 80 {[}km2yr−1{]} of
+bare soil in the ``Zona Austral''. The EDDI was the less correlated
+index for the five macro zones and the five types of land cover, showing
+that the temperature in Chile has little impact on vegetation. Higher
+r-squared values, between 0.5 and 0.8, were obtained at ``Norte Chico''
+and ``Zona Central'' for the land cover types of savanna, shrubland,
+grassland, and croplands for the indices SPEI and zcSM at time scales of
+12 and 24 months. The forest type reaches a r-squared of
+\textasciitilde0.5 for zcSM of 12 months. The results indicate that the
+``Norte Chico'' and ``Zona Central'' are the most sensitive regions to
+water supply deficits longer than a year, potentially explained by a low
+capacity of water storage in those zones that should be further
+investigated.
+\end{abstract}
+
+
+
+
+
+\begin{keyword}
+    drought \sep land cover change \sep 
+    satellite
+\end{keyword}
+\end{frontmatter}
+    \ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, boxrule=0pt]}{\end{tcolorbox}}\fi
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+The sixth assessment report (AR6) of the IPCC \citep{IPCC2023} indicates
+that human-induced greenhouse gas emissions have increased the frequency
+and/or intensity of some weather and climate extremes, and the evidence
+has been strengthened since AR5 \citep{IPCC2013}. There is high
+confidence that increasing global warming can expand the land area
+affected by increasing drought frequency and severity
+\citep{IPCCCH112021}. Furthermore, drought increases tree mortality and
+triggers changes in land cover and, consequently, land use, thus
+impacting ecosystems \citep{Crausbay2017}. Nevertheless, there is a lack
+of understanding of how the alteration in water supply and demand is
+affecting land cover transformations.
+
+Precipitation is the primary driver of drought, which impacts soil
+moisture, hydrological regimes, and vegetation productivity. Initially,
+drought was commonly classified as meteorological, hydrological, and
+agricultural \citep{Wilhite1985}. Lately, \citep{Loon2016} and
+\citep{AghaKouchak2021} have given an updated definition of drought for
+the Anthropocene, suggesting that it should be considered the feedback
+of humans' decisions and activities that drives the anthropogenic
+drought. Even though it has been argued that those definitions do not
+fully address the ecological dimensions of drought. \citep{Crausbay2017}
+proposed the ecological drought definition as \emph{``an episodic
+deficit in water availability that drives ecosystems beyond thresholds
+of vulnerability, impacts ecosystem services, and triggers feedback in
+natural and/or human systems''}. Moreover, many ecological studies have
+misinterpreted how to characterize drought, for example, sometimes
+considering ``dry'' conditions as ``drought'' \citep{Slette2019}. On the
+other hand, the AR6 \citep{IPCC2023} states that even if global warming
+is stabilized at 1.5°--2°C, many parts of the world will be impacted by
+more severe agricultural and ecological droughts. Then, there is a
+challenge in conducting drought research, especially its impact on
+ecosystems.
+
+Chile has been facing a persistent rainfall deficit for more than a
+decade \citep{Garreaud2017}, which has impacted the hydrological system
+\citep{Boisier2018} and consequently the vegetation development
+\citep{Zambrano2023}. Current drought conditions have affected crop
+yields in Central Chile. Highlighting the growing seasons 2007-2008 and
+2008-2009 \citep[\citep{Zambrano2018}]{Zambrano2016}, which impacted an
+extensive surface in {[}COMPLETAR{]}. But, in 2019--2020, the drought
+intensity reached an extreme condition in North 34°S not seen for at
+least 40 years \citep{Zambrano2023}, thus affecting forest, grassland,
+and cropland areas. The prolonged lack of precipitation in Central Chile
+is producing changes in ecosystem dynamics that must be studied.
+
+Satellite remote sensing \citep{West2019, AghaKouchak2015} is the
+primary method to evaluate how meteorological drought impacts vegetation
+dynamics. Since the 90's multiple vegetation drought indices have been
+developed, such as (VCI,\citep{Kogan1990}; TCI, \citep{Kogan1995};
+zNDVI, \citep{Peters2002}; VegDri, \citep{Brown2008}) that have allowed
+making spatiotemporal analysis. Although we can derive these indices for
+any time during the year (depending on satellite revisit), they are more
+relevant during the the growing season \citep{Mishra2015}. Although
+modeling phenology is a complex task (e.g, \ldots.), satellites offer
+strategies that help to address these issues
+\citep{Younes2021, Vrieling2018, Cai2017}. Moreover, land cover dynamics
+products such as the MCD12Q2 from the USGS \citep{Friedl2019} provide
+phenology metrics. Rather than estimating these parameters at a given
+point in time, some authors have proposed aggregating these indices
+throughout the season. \citep{Meroni2017} proposes to accumulate the
+fractional active photosynthetic active radiation (FAPAR) between the
+start (SOS), and the end of the season (EOS) thus obtaining zCFAPAR as a
+proxy for biomass productivity. \citep{Zambrano2018} used the same
+approach but with the NDVI (Normalized Difference Vegetation Index),
+deriving the zcNDVI for Central Chile. Besides, land use land cover
+(LULC) change can be driven by drought \citep{Tran2019, Akinyemi2021}.
+To analyze these changes, multiple time-series LULC products exist, such
+as the MCD12Q1 \citep{Friedl2019} and the ESA CCI-LC (ESA 2017). The
+LULC product, together with the vegetation drought index can help
+evaluate the impact of drought on the ecosystem.
+
+Vegetation drought indices are commonly used as proxies of productivity
+\citep{Paruelo2016, Schucknecht2017}. The main environmental variables
+that affect productivity are water supply (i.e., precipitation) and
+demand (i.e., evapotranspiration)\citep{Mishra2015} commonly collected
+from weather stations. In developing countries, such as Chile, gaps in
+historical records are challenging. However, satellite products can be
+used to fill these gaps.
+
+To evaluate drought, the World Meteorological Organization (WMO;
+\citep{WMO2012}) has proposed the Standardized Precipitation Index (SPI;
+\citep{Mckee1993}), a multiscalar drought index that allows to monitor
+precipitation deficit from short- to long-term. For water supply,
+\citep{Zambrano2017} has already correlated i tInfraRed Precipitation
+against weather Station data (CHIRPS; \citep{Funk2015}). On the other
+hand, vegetation biomass productivity also strongly correlates to ET,
+which in turns depends on the atmospheric evaporative demand (AED)
+\citep{FAO66, Pereira2015, Allen2005}. Due to increasing trends in air
+temperatures, AED is increasing, driving a rise in ET
+\citep{IPCCCH112021}. But, it is not always true \citep{Milly2016}. For
+example, regions where AET is highest have the lowest ET.
+
+The MOD16 product \citep{Running2021} provides AET and ET satellite
+estimates and has been used to derive drought indices \citep{Mu2013}.
+Soil moisture (SM) is an Essential Climate Variable (ECV) that modulates
+vegetative growth. The climate change initiative (CCI) from the European
+Space Agency (ESA) delivers the ESA CCI SM product \citep{Dorigo2017}
+(current version 6.1), which has been helpful to monitor drought
+\citep{Zhang2019}. Besides, total water storage can be retrieved by the
+Gravity Recovery and Climate Experiment (GRACE), which allows analyzing
+water availability changes \citep{Ahmed2014, Ma2017}. The balance
+between water demand and supply by remote sensing can be examined
+against vegetation productivity, also derived from remote sensing.
+
+We aim to analyze the impact of drought over different types of land
+cover classes in continental Chile for 2000-2023 by combining
+environmental variables of biomass productivity and water demand/supply
+gathered from earth observation products. The specific objective for the
+study are i) to calculate multi-scalar drought indices for water demand
+and supply for 1981-2023, ii) to analyze the relationship of a proxy o
+biomass (zcNDVI) with drought indices, iii) to evaluate LULC change for
+2001-2021 and its relation with drought indices, and iv) to assess if
+the observed changes in drought indices and land cover are linked to the
+TWS.
+
+\hypertarget{study-area}{%
+\section{Study area}\label{study-area}}
+
+\begin{figure}[ht]
+
+{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{../output/figs/map_study_con_landcover.png}
+
+}
+
+\caption{(a) Chile and the five zones ``norte grande'', ``norte chico'',
+``zona central'', ``zona sur'', and ``zona austral''. (b) Topography
+reference map. (c) Land cover classes for 2021. (d) Persistent land
+cover classes (\textgreater{} 80\%) for 2001-2021.}
+
+\end{figure}
+
+\hypertarget{materials-and-methods}{%
+\section{Materials and Methods}\label{materials-and-methods}}
+
+\hypertarget{data}{%
+\subsection{Data}\label{data}}
+
+\hypertarget{earth-observation-data}{%
+\subsubsection{Earth observation data}\label{earth-observation-data}}
+
+\hypertarget{in-situ-data}{%
+\subsubsection{in-situ data}\label{in-situ-data}}
+
+\hypertarget{drought-indices-for-water-demand-and-supply}{%
+\subsection{Drought indices for water demand and
+supply}\label{drought-indices-for-water-demand-and-supply}}
+
+\hypertarget{analysis-of-a-biomass-proxy-with-drought-indices-of-supply-and-demand}{%
+\subsection{Analysis of a biomass proxy with drought indices of supply
+and
+demand}\label{analysis-of-a-biomass-proxy-with-drought-indices-of-supply-and-demand}}
+
+\hypertarget{lulc-change-for-2001-2021-and-its-relation-with-water-supply-and-demand}{%
+\subsection{LULC change for 2001-2021 and its relation with water supply
+and
+demand}\label{lulc-change-for-2001-2021-and-its-relation-with-water-supply-and-demand}}
+
+!{[}Proportion of land cover class from the persistent land cover for
+2001-2021 (\textgreater80\%) per macrozone.
+
+\begin{figure}
+
+\begin{minipage}[t]{0.47\linewidth}
+
+{\centering 
+
+\raisebox{-\height}{
+
+\includegraphics[width=7cm,height=\textheight]{../output/figs/LC_pers80_per_macrozone.png}
+
+}
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[t]{0.53\linewidth}
+
+{\centering 
+
+\raisebox{-\height}{
+
+\includegraphics[width=8cm,height=\textheight]{../output/figs/table_var_landcover_macro.png}
+
+}
+
+}
+
+\end{minipage}%
+
+\caption{\label{fig-elephants}Proportion of land cover class from the
+persistent land cover for 2001-2021 (\textgreater80\%) per macrozone.
+The table on the left shows the linear change trend next to time-series
+plot of surface, per land cover class (IGBP MCD12Q1.006) for 2001-2021
+through the fives zones on continental Chile. Blue dots on the plots
+indicate the maximum and red dots minimum surface reach.}
+
+\end{figure}
+
+\hypertarget{total-water-storage-and-drought-indices}{%
+\subsection{Total water storage and drought
+indices}\label{total-water-storage-and-drought-indices}}
+
+Terrestrial Water Storage (TWS) is defined as the total amount of water
+stored on land that includes any natural or artificial water bodies,
+such as groundwater, soil moisture, rivers, lakes, snowpack, ice, and
+biomass water \citep{Humphrey2023, Deng2023}. TWS changes evidence the
+effects of multiple water fluxes on the hydrological cycle
+\citep{Deng2023}. These are reflected in the temporal variation of
+observations of the Earth's gravitational field
+\citep{Abolafia2021, Sabzehee2023} and, in recent decades, the twin
+Gravity Recovery and Climate Experiment (GRACE) satellites and their
+Follow-On mission (GRACE-FO) have provided valuable results on globally
+distributed TWS anomalies \citep{Tapley2019, Ferreira2023}. The GRACE
+mission was launched in March 2002 and was operational until October
+2017 \citep{Ramjeawon2022}. Then its GRACE Follow-On successor was
+launched in May 2018 \citep{Landerer2020, Yin2022}. The information
+provided by these satellites is used to construct monthly maps of the
+Earth's average gravity field, providing details of the movement of
+water masses or water mass anomaly estimates relative to the long-term
+average gravity field \citep{Humphrey2023, Wahr2004}.
+
+In this study, RL06.1\_V3 GRACE mascon (mass concentration) monthly
+solutions were used, which are provided by the Jet Propulsion Laboratory
+(JPL-M, https://grace.jpl.nasa.gov). Each GRACE Tellus monthly grid at
+0.5 degrees represents the deviation of surface mass for that month
+relative to a reference time average (2004-2009 baseline), which is
+subtracted from all other monthly grids to provide terrestrial water
+storage anomalies (TWSA) \citep{Ramjeawon2022, Yin2022}. This JPL-M
+version of the data employs a Coastal Resolution Improvement (CRI)
+filter that reduces signal leakage errors across coastlines
+\citep{Wiese2019, Wiese2016}. Although the mascon solutions greatly
+reduced leakage errors, a gain-factor, which is used to enhance the
+spatial resolution, was applied to the dataset as recommended for
+hydrological studies \citep{Ramjeawon2022, Yin2022}. The water
+storage/height anomalies are given in Equivalent Water Height or
+Thickness units (EWH, cm) \citep{Sabzehee2023}, and its temporal
+resolution monthly is from April 2002 to May 2023.
+
+\hypertarget{validation-of-era5-land-variables}{%
+\subsection{Validation of ERA5-Land
+variables}\label{validation-of-era5-land-variables}}
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{biomass-proxy-with-drought-indices-of-supply-and-demand}{%
+\subsection{Biomass proxy with drought indices of supply and
+demand}\label{biomass-proxy-with-drought-indices-of-supply-and-demand}}
+
+\hypertarget{lulc-change-for-2001-2021-and-its-relation-with-water-supply-and-demand-1}{%
+\subsection{LULC change for 2001-2021 and its relation with water supply
+and
+demand}\label{lulc-change-for-2001-2021-and-its-relation-with-water-supply-and-demand-1}}
+
+\hypertarget{total-water-storage-tws-and-drought-indices}{%
+\subsection{Total water storage (TWS) and drought
+indices}\label{total-water-storage-tws-and-drought-indices}}
+
+\hypertarget{validation-of-era5-land-variables-1}{%
+\subsection{Validation of ERA5-Land
+variables}\label{validation-of-era5-land-variables-1}}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+
+\renewcommand\refname{References}
+  \bibliography{references.bib}
+
+
+\end{document}

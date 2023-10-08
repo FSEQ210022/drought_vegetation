@@ -1,0 +1,126 @@
+---
+title: Drought assessment of the impact of water supply and demand over land cover in continental Chile for 2000-2023 from ERA5-Land and MODIS datasets
+#subtitle: A Short Subtitle
+author:
+  - name: Francisco Zambrano
+    email: francisco.zambrano@umayor.cl
+    affiliations: 
+        - id: umayor
+          name: Universidad Mayor
+          department: Hémera Centro de Observación de la Tierra, Facultad de Ciencias, Escuela de Ingeniería en Medio Ambiente y Sustentabilidad
+          #address: Street Address
+          city: Santiago, Chile
+          #state: State
+          postal-code: 7500994
+    attributes:
+        corresponding: true
+    note: This is the first author footnote.
+  # - name: Bob Security
+  #   email: bob@example.com
+  #   affiliations:
+  #       - id: another-u
+  #         name: Another University
+  #         department: Department Name
+  #         address: Street Address
+  #         city: City
+  #         state: State
+  #         postal-code: Postal Code
+  #   note: |
+  #     Another author footnote, this is a very long footnote and it should be a really long footnote. But this footnote is not yet sufficiently long enough to make two lines of footnote text.
+  # - name: Cat Memes
+  #   email: cat@example.com
+  #   affiliations:
+  #       - ref: another-u
+  #   note: Yet another author footnote.
+  # - name: Derek Zoolander
+  #   email: derek@example.com
+  #   affilations:
+  #       - ref: some-tech
+abstract: |
+  Human-induced greenhouse gas emissions have increased the frequency and/or intensity of weather and climate extremes. Central Chile has been affected by a persistent drought which is impacting the hydrological system and vegetation development. The region has been the focus of research studies due to the diminishing water supply, this persistent period of water scarcity has been defined as a “mega drought". Nevertheless, our results evidence that the water deficit has expanded beyond. Our goal is to analyze the impact of drought, measured by drought indices of water supply/demand and vegetation status, in the LULCC (land use land cover change) over continental Chile.  For the analysis, continental Chile was divided into five zones according to a latitudinal gradient: “Norte Grande”,  “Norte Chico”,  “Zona Central”, “Zona Sur”, and “Zona Austral”.  We used monthly climatic re-analysis variables for precipitation, temperature and soil moisture for 1981-2023 from ERA5-Land; and MODIS (Moderate-Resolution Imaging Spectroradiometer) product MCD12Q1 for land cover for 2001-2021, and the NDVI vegetation index from product MOD13A2 collection 6.1 for 2000-2023, both from collection 6.1. We estimated atmospheric evaporative demand (AED) by combining the Hargreaves-Samani equation with the ERA5-Land temperature. We derived the drought indices SPI (Standardized Precipitation Index), SPEI (Standardized Precipitation Evapotranspiration Index), EDDI (Evaporative Demand Drought Index), zcSM (standardized anomaly of cumulative soil moisture), and the zcNDVI (standardized anomaly of cumulative NDVI). These indices were calculated for time scales of 1, 3, 6, 12, 24, and 36 months, except for zcNDVI (1, 3, and 6 months). We analyzed the temporal correlation of SPI, SPEI, EDDI, and zcSM with zcNDVI to have insights into the impact of water supply and demand on vegetation.   Our results showed that LULCC had an increasing trend of 412 [km2yr−1] of forest expansion in the “Zona Sur”, together with a  decreasing trend of 24 [km2yr−1] of cropland contraction in the “Zona Central” meanwhile the “Zona Sur” showed an increase of 31 [km2yr−1], and a contraction of 80 [km2yr−1] of bare soil in the “Zona Austral”. The EDDI was the less correlated index for the five macro zones and the five types of land cover, showing that the temperature in Chile has little impact on vegetation. Higher r-squared values, between 0.5 and 0.8, were obtained at “Norte Chico” and “Zona Central” for the land cover types of savanna, shrubland, grassland, and croplands for the indices SPEI and zcSM at time scales of 12 and 24 months. The forest type reaches a r-squared of ~0.5 for zcSM of 12 months. The results indicate that the “Norte Chico” and “Zona Central” are the most sensitive regions to water supply deficits longer than a year, potentially explained by a low capacity of water storage in those zones that should be further investigated.
+keywords: 
+  - drought
+  - land cover change
+  - satellite
+date: last-modified
+bibliography: references.bib
+format:
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: Journal Name
+      formatting: preprint
+      model: 3p
+      natbiboptions: numbers
+      #cite-style: super
+---
+
+# Introduction
+
+The sixth assessment report (AR6) of the IPCC [@IPCC2023] indicates that human-induced greenhouse gas emissions have increased the frequency and/or intensity of some weather and climate extremes, and the evidence has been strengthened since AR5 [@IPCC2013]. There is high confidence that increasing global warming can expand the land area affected by increasing drought frequency and severity [@IPCCCH112021]. Furthermore, drought increases tree mortality and triggers changes in land cover and, consequently, land use, thus impacting ecosystems [@Crausbay2017]. Nevertheless, there is a lack of understanding of how the alteration in water supply and demand is affecting land cover transformations.
+
+Precipitation is the primary driver of drought, which impacts soil moisture, hydrological regimes, and vegetation productivity. Initially, drought was commonly classified as meteorological, hydrological, and agricultural [@Wilhite1985]. Lately, @Loon2016 and @AghaKouchak2021 have given an updated definition of drought for the Anthropocene, suggesting that it should be considered the feedback of humans' decisions and activities that drives the anthropogenic drought. Even though it has been argued that those definitions do not fully address the ecological dimensions of drought. @Crausbay2017 proposed the ecological drought definition as *"an episodic deficit in water availability that drives ecosystems beyond thresholds of vulnerability, impacts ecosystem services, and triggers feedback in natural and/or human systems"*. Moreover, many ecological studies have misinterpreted how to characterize drought, for example, sometimes considering "dry" conditions as "drought" [@Slette2019]. On the other hand, the AR6 [@IPCC2023] states that even if global warming is stabilized at 1.5°–2°C, many parts of the world will be impacted by more severe agricultural and ecological droughts. Then, there is a challenge in conducting drought research, especially its impact on ecosystems.
+
+Chile has been facing a persistent rainfall deficit for more than a decade [@Garreaud2017], which has impacted the the vegetation development [@Zambrano2023] and hydrological system [@Boisier2018]. Current drought conditions have affected crop yields in Central Chile. Highlighting the growing seasons 2007-2008 and 2008-2009 [@Zambrano2016, @Zambrano2018], which impacted an extensive surface in [COMPLETAR]. But, in 2019–2020, the drought intensity reached an extreme condition in North 34°S not seen for at least 40 years [@Zambrano2023], thus affecting forest, grassland, and cropland areas. The prolonged lack of precipitation in Central Chile is producing changes in ecosystem dynamics that must be studied.
+
+Satellite remote sensing [@West2019; @AghaKouchak2015] is the primary method to evaluate how meteorological drought impacts vegetation dynamics. Since the 90’s multiple vegetation drought indices have been developed, such as (VCI,@Kogan1990; TCI, @Kogan1995; zNDVI, [@Peters2002]; VegDri, [@Brown2008]) that have allowed making spatiotemporal analysis. Although we can derive these indices for any time during the year (depending on satellite revisit), they are more relevant during the the growing season [@Mishra2015]. Although modeling phenology is a complex task (e.g, ….), satellites offer strategies that help to address these issues [@Younes2021; @Vrieling2018; @Cai2017]. Moreover, land cover dynamics products such as the MCD12Q2 from the USGS [@Friedl2019] provide phenology metrics. Rather than estimating these parameters at a given point in time, some authors have proposed aggregating these indices throughout the season. @Meroni2017 proposes to accumulate the fractional active photosynthetic active radiation (FAPAR) between the start (SOS), and the end of the season (EOS) thus obtaining zCFAPAR as a proxy for biomass productivity. @Zambrano2018 used the same approach but with the NDVI (Normalized Difference Vegetation Index), deriving the zcNDVI for Central Chile. Besides, land use land cover (LULC) change can be driven by drought [@Tran2019; @Akinyemi2021]. To analyze these changes, multiple time-series LULC products exist, such as the MCD12Q1 [@Friedl2019] and the ESA CCI-LC (ESA 2017). The LULC product, together with the vegetation drought index can help evaluate the impact of drought on the ecosystem.
+
+Vegetation drought indices are commonly used as proxies of productivity [@Paruelo2016; @Schucknecht2017]. The main environmental variables that affect productivity are water supply (i.e., precipitation) and demand (i.e., evapotranspiration)[@Mishra2015] commonly collected from weather stations. In developing countries, such as Chile, gaps in historical records are challenging. However,  satellite products can be used to fill these gaps. 
+
+To evaluate drought, the World Meteorological Organization (WMO; @WMO2012) has proposed the Standardized Precipitation Index (SPI; @Mckee1993), a multiscalar drought index that allows to monitor precipitation deficit from short- to long-term. For water supply, @Zambrano2017 has already correlated i tInfraRed Precipitation against weather  Station data (CHIRPS; @Funk2015). On the other hand, vegetation biomass productivity also strongly correlates to ET, which in turns depends on the atmospheric evaporative demand (AED) [@FAO66; @Pereira2015; @Allen2005]. Due to increasing trends in air temperatures, AED is increasing, driving a rise in ET [@IPCCCH112021]. But, it is not always true [@Milly2016]. For example, regions where AET is highest have the lowest ET. 
+
+The MOD16 product [@Running2021] provides AET and ET satellite estimates and has been used to derive drought indices [@Mu2013]. Soil moisture (SM) is an Essential Climate Variable (ECV) that modulates vegetative growth. The climate change initiative (CCI) from the European Space Agency (ESA) delivers the ESA CCI SM product [@Dorigo2017] (current version 6.1), which has been helpful to monitor drought [@Zhang2019]. Besides, total water storage can be retrieved by the Gravity Recovery and Climate Experiment (GRACE), which allows analyzing water availability changes [@Ahmed2014; @Ma2017]. The balance between water demand and supply by remote sensing can be examined against vegetation productivity, also derived from remote sensing.
+
+We aim to analyze the impact of drought over different types of land cover classes in continental Chile for 2000-2023 by combining environmental variables of biomass productivity and water demand/supply gathered from earth observation products. The specific objective for the study are i) to calculate multi-scalar drought indices for water demand and supply for 1981-2023, ii) to analyze the relationship of a proxy o biomass (zcNDVI) with drought indices, iii) to evaluate LULC change for 2001-2021 and its relation with drought indices,  and  iv) to assess if the observed changes in drought indices and land cover are linked to the TWS.
+
+# Study area
+
+![(a) Chile and the five zones "norte grande", "norte chico",  "zona central", "zona sur", and "zona austral". (b) Topography reference map. (c) Land cover classes for 2021. (d) Persistent land cover classes (> 80%) for 2001-2021.](../output/figs/map_study_con_landcover.png){#fig1_study_area width=80% fig-pos='ht'}
+
+# Materials and Methods
+
+##	Data
+
+###	Earth observation data
+
+###	in-situ data
+
+##	Drought indices for water demand and supply
+
+##	Analysis of a biomass proxy with drought indices of supply and demand
+
+##	LULC change for 2001-2021 and its relation with water supply and demand 
+
+![Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone.
+
+::: {#fig-elephants layout-ncol=2 fig.pos='!ht'}
+![](../output/figs/LC_pers80_per_macrozone.png){width="7cm"}
+
+![](../output/figs/table_var_landcover_macro.png){width="8cm"}
+
+Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone. The table on the left shows the linear change trend next to time-series plot of surface, per land cover class (IGBP MCD12Q1.006) for 2001-2021 through the fives zones on continental Chile. Blue dots on the plots indicate the maximum and red dots minimum surface reach.
+:::
+
+##	Total water storage and drought indices
+
+Terrestrial Water Storage (TWS) is defined as the total amount of water stored on land that includes any natural or artificial water bodies, such as groundwater, soil moisture, rivers, lakes, snowpack, ice, and biomass water [@Humphrey2023; @Deng2023]. TWS changes evidence the effects of multiple water  fluxes on the hydrological cycle [@Deng2023]. These are reflected in the temporal variation of observations of the Earth's gravitational field [@Abolafia2021; @Sabzehee2023] and, in recent decades, the twin Gravity Recovery and Climate Experiment (GRACE) satellites and their Follow-On mission (GRACE-FO) have provided valuable results on globally distributed TWS anomalies [@Tapley2019;  @Ferreira2023]. The GRACE mission was launched in March 2002 and was operational until October 2017 [@Ramjeawon2022]. Then its GRACE Follow-On successor was launched in May 2018 [@Landerer2020; @Yin2022]. The information provided by these satellites is used to construct monthly maps of the Earth's average gravity field, providing details of the movement of water masses or water mass anomaly estimates relative to the long-term average gravity field [@Humphrey2023; @Wahr2004].
+
+In this study, RL06.1_V3 GRACE mascon (mass concentration) monthly solutions were used, which are provided by the Jet Propulsion Laboratory (JPL-M, https://grace.jpl.nasa.gov). Each GRACE Tellus monthly grid at 0.5 degrees represents the deviation of surface mass for that month relative to a reference time average (2004-2009 baseline), which is subtracted from all other monthly grids to provide terrestrial water storage anomalies (TWSA) [@Ramjeawon2022; @Yin2022]. This JPL-M version of the data employs a Coastal Resolution Improvement (CRI) filter that reduces signal leakage errors across coastlines [@Wiese2019; @Wiese2016]. Although the mascon solutions greatly reduced leakage errors, a gain-factor, which is used to enhance the spatial resolution, was applied to the dataset as recommended for hydrological studies [@Ramjeawon2022; @Yin2022]. The water storage/height anomalies are given in Equivalent Water Height or Thickness units (EWH, cm) [@Sabzehee2023], and its temporal resolution monthly is from April 2002 to May 2023.
+
+## Validation of ERA5-Land variables
+
+#	Results
+
+##	Biomass proxy with drought indices of supply and demand
+
+##	LULC change for 2001-2021 and its relation with water supply and demand
+
+##	Total water storage (TWS) and drought indices
+
+## Validation of ERA5-Land variables
+
+#	Discussion
+
+# Conclusion
+
+# References {-}
