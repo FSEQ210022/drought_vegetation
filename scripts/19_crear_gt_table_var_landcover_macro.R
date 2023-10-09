@@ -45,7 +45,7 @@ dataLCV_trend  |>
 
 #con gt
 
-dataLCV_ts |> 
+data_gt <- dataLCV_ts |> 
   ungroup() |> 
   mutate(zone = fct_recode(zone,'norte grande' = 'big north' , 'norte chico' = 'little north','zona central' = 'central', 'zona sur' = 'south' ,'zona austral' = 'austral')) |> 
   dplyr::group_by(zone,LC_type)  |> 
@@ -53,7 +53,19 @@ dataLCV_ts |>
   dplyr::summarize(lc_data = list(prop), .groups = "drop") |> 
   pivot_wider(names_from = LC_type, values_from = lc_data) |> 
   full_join(dataLCV_trend,by = 'zone') |> 
-  select(1,12,6,13,7,10,4,9,3,8,2,11,5) |> 
+  select(1,12,6,13,7,10,4,9,3,8,2,11,5) 
+
+data_gt$Savanna.x[1] <- NA
+data_gt$Savanna.y[1] <- NA
+data_gt$Forest.x[2] <- NA
+data_gt$Forest.y[2] <- NA
+data_gt$Cropland.x[c(2,5)] <- NA
+data_gt$Cropland.y[c(2,5)] <- NA
+data_gt$Shrubland.x[5] <- NA
+data_gt$Shrubland.y[5] <- NA
+
+
+data_gt |> 
   gt() |> 
   fmt_number(decimals = 1) |> 
   sub_missing(
