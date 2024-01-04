@@ -51,6 +51,7 @@ format:
       name: Journal Name
       formatting: preprint
       model: 3p
+      cite-style: number
       natbiboptions: numbers
     include-in-header: 
       text: '\usepackage{lineno}\linenumbers'
@@ -69,7 +70,7 @@ For the spatiotemporal assessment of drought impact (i.e., by water supply and d
 
 To evaluate meteorological drought (i.e., water supply), the World Meteorological Organization (WMO; @WMO2012) recommends the Standardized Precipitation Index (SPI; @Mckee1993), a multiscalar drought index that allows to monitor precipitation deficits from short- to long-term. Following the same approach, @Vicente-Serrano2010 incorporates into the SPI the effect of temperature through the use of potential evapotranspiration, thus proposing the SPEI (Standardized Precipitation Evapotranspiration Index). Similarly, to evaluate solely the evaporative demand driven by temperature, @Hobbins2016 and @McEvoy2016 came up with the Evaporative Demand Drought Index (EDDI). For vegetation, in a similar manner as the SPI, SPEI and EDDI;  @Zambrano2018 proposed the zcNDVI, a standardized anomaly of the cumulative Normalized Difference Vegetation Index (NDVI), which could be acumulated over the growing season or any period (e.g., months), resulting in a multiscalar drought index. For soil moisture, several drought indices exist, such as the Soil Moisture Deficit Index (SDMI) a normalized index [@Narasimhan2005] and the Soil Moisture Agricultural Drought Index (SMADI) [@Souza2021] which is a normalized index using vegetation, land surface temperature, and a vegetation condition index (VCI, [@Kogan1995]). From TWS, we can estimate the standardized terrestrial water storage index (STI) [@Cui2021], a standardized anomaly that follows the methodology of the SPI, SPEI, EDDI, and zcNDVI. Thereby, we have drought indices for water supply, demand, and storage, which can help to make a comprehensive assessment of drought.  
 
-In this research, we aim to analyze the impact of drought on different types of land cover classes in continental Chile by combining environmental variables such as biomass productivity, and water demand and supply gathered from earth observation products. The specific objectives of the study are: i) to calculate multi-scalar drought indices for water demand and supply for 1981–2023; ii) to evaluate LULC change for 2001–2021 and its relation to drought indices; iii) to analyze the relationship of a proxy of biomass (zcNDVI) with drought indices; and iv) to assess if the observed changes in the drought indices are linked to the TWS.
+In this research, we aim to analyze the impact of drought on different types of land cover classes in continental Chile by combining environmental variables such as biomass productivity, and water demand and supply gathered from earth observation products. The specific objectives of the study are: i) to calculate multi-scalar drought indices for water demand and supply for 1981–2023; ii) to evaluate LULC change for 2001–2021 and its relation to drought indices; iii) to analyze the relationship of a proxy of biomass (zcNDVI) with drought indices; and iv) to assess if the observed changes in the drought indices are linked to TWS.
 
 # Study area
 
@@ -81,6 +82,10 @@ In this research, we aim to analyze the impact of drought on different types of 
 
 ###	Earth observation data
 
+For water supply and demand variabes, we used ERA5-Land [@Munoz2019], a reanalys dataset wich provides the evolution of land variables since 1950. It has a spatial resolution of 0.1°, hourly frequency and global coverage. We selected the variables for total precipitation, 2 meters temperature, and volumetric soil water layers between 0 and 100cm of depth (layer 1 to layer 3).
+
+To derive a proxy of vegetation productivity, we used the product MOD13A3 collection 6.1 from MODIS [@Didan2015]. It provides vegetation indices (NDVI and EVI) at 1km of spatial resolution and monthly frequency.
+
 ###	in-situ data
 
 ##	Drought indices for water demand and supply
@@ -91,7 +96,7 @@ In this research, we aim to analyze the impact of drought on different types of 
 
 ![Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone.
 
-::: {#fig-elephants layout-ncol=2 fig.pos='!ht'}
+::: {#fig-elephants layout-ncol=1 fig.pos='!ht'}
 ![](../output/figs/LC_pers80_per_macrozone.png){width="7cm"}
 
 ![](../output/figs/table_var_landcover_macro.png){width="8cm"}

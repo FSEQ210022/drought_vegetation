@@ -57,7 +57,7 @@ dir_out <- '/mnt/md0/raster_procesada/MODIS_derived/NDVI_loess.MOD13A3.061/'
 
 new_names <- paste0(dir_out,'chl_',yj,'_1_km_monthly_NDVI_loess.tif')
 
-lapply(6:dim(ndvism)[3],\(i){
+lapply(7:dim(ndvism)[3],\(i){
   write_stars(ndvism[,,,i],dsn = new_names[i],type = 'Int16')
 })
 

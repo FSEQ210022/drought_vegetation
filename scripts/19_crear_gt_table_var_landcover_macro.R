@@ -3,9 +3,9 @@ library(gtExtras)
 library(tidyverse)
 library(kableExtra)
 
-dataLCV_ts <- readRDS('data/processed_data/timeseries_landcover_zone_LCclass_2001-2021.rds')  
-dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2021.rds') |> 
-  mutate(zone = fct_recode(zone,'norte grande' = 'big north' , 'norte chico' = 'little north','zona central' = 'central', 'zona sur' = 'south' ,'zona austral' = 'austral'))
+dataLCV_ts <- readRDS('data/processed_data/timeseries_landcover_zone_LCclass_2001-2022.rds')  
+dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2022.rds') |> 
+  mutate(zone = fct_recode(zone,'norte grande' = 'big north' , 'norte chico' = 'little north','centro' = 'central', 'sur' = 'south' ,'austral' = 'austral'))
 
 dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Cropland') %>% 
   map(function(class){
@@ -21,6 +21,10 @@ dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Crop
     map(a,\(x) ifelse(is.na(x),0,x))
   })
 
+
+dataLCV_trend |> 
+  pivot_longer(-zone,names_to = 'cropland_class') |> 
+  write_rds('data/processed_data/trend_landcover_change_classXzone_2001_2021.rds')
 
 dataLCV_trend  |> 
   kbl(booktabs = TRUE,digits = 1,align ='r','latex',position='!ht',
@@ -47,23 +51,22 @@ dataLCV_trend  |>
 
 data_gt <- dataLCV_ts |> 
   ungroup() |> 
-  mutate(zone = fct_recode(zone,'norte grande' = 'big north' , 'norte chico' = 'little north','zona central' = 'central', 'zona sur' = 'south' ,'zona austral' = 'austral')) |> 
+  mutate(zone = fct_relevel(zone,c('norte grande','norte chico','centro', 'sur','austral'))) |> 
   dplyr::group_by(zone,LC_type)  |> 
   # must end up with list of data for each row in the input dataframe
   dplyr::summarize(lc_data = list(prop), .groups = "drop") |> 
   pivot_wider(names_from = LC_type, values_from = lc_data) |> 
   full_join(dataLCV_trend,by = 'zone') |> 
-  select(1,12,6,13,7,10,4,9,3,8,2,11,5) 
+  select(zone,Forest.x,Forest.y,Cropland.x,Cropland.y,Grassland.x,Grassland.y,Savanna.x,Savanna.y,Shrubland.x,Shrubland.y,`Barren land.x`,`Barren land.y`) 
 
 data_gt$Savanna.x[1] <- NA
 data_gt$Savanna.y[1] <- NA
-data_gt$Forest.x[2] <- NA
-data_gt$Forest.y[2] <- NA
-data_gt$Cropland.x[c(2,5)] <- NA
-data_gt$Cropland.y[c(2,5)] <- NA
+data_gt$Forest.x[c(1,2)] <- NA
+data_gt$Forest.y[c(1,2)] <- NA
+data_gt$Cropland.x[c(1,2,5)] <- NA
+data_gt$Cropland.y[c(1,2,5)] <- NA
 data_gt$Shrubland.x[5] <- NA
 data_gt$Shrubland.y[5] <- NA
-
 
 data_gt |> 
   gt() |> 

@@ -25,10 +25,10 @@ igbpRecl[igbpRecl == 0] <- NA
 
 zones <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
   st_transform(32719)
-zones$macrozona <- c('little north','big north','austral','central','south')
+zones$macrozona <- c('norte grande','norte chico','austral','centro','sur')
 
 data <- terra::extract(igbpRecl,zones)
-names(data) <- c('zone',2001:2021)
+names(data) <- c('zone',2001:2022)
 
 library(dplyr)
 library(tidyr)
@@ -53,7 +53,7 @@ data2 |>
   left_join(dataSum,by='zone') |>  
   mutate(prop = n/ntot,sup_km2=n*0.2146587) -> data3
 
-saveRDS(data3,'data/processed_data/timeseries_landcover_zone_LCclass_2001-2021.rds')  
+saveRDS(data3,'data/processed_data/timeseries_landcover_zone_LCclass_2001-2022.rds')  
 
 #plot
 data3  |>  
@@ -66,7 +66,7 @@ data3  |>
   labs(y=expression(paste('Surface [',km^2,']'))) +
   # scale_y_continuous(labels = scales::percent_format(accuracy = .1),
   #                    expand = c(0,0)) +
-  facet_grid(LC_type~zone,scales ='free') +
+  facet_wrap(LC_type~zone,scales ='free_y') +
   theme_bw() +
   theme(axis.title.x = element_blank())
 
@@ -79,4 +79,4 @@ data3 |>
   nest_by(zone,LC_type) |>  
   summarize(trend  = as.numeric(tidy(lm(sup_km2~year,data))[2,2])) |> 
   pivot_wider(names_from = 'LC_type',values_from=3) |> 
-  saveRDS('data/processed_data/trends_landcover_2001-2021.rds')  
+  saveRDS('data/processed_data/trends_landcover_2001-2022.rds')  

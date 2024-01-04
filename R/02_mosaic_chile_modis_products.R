@@ -96,8 +96,8 @@ file.path(dir,datesUpdate,'/') %>% map(function(dir){
 })
 #Product MCD12Q1.061
 
-dir <- '/mnt/raster_raw/MODIS/MCD12Q1.061/'
-dir.out <- '/mnt/HDD4TB_2/data/rasters/Procesados/MODIS/IGBP.MCD12Q1.061/'
+dir <- '/mnt/md0/raster_raw/MODIS/MCD12Q1.061/'
+dir.out <- '/mnt/md0/raster_procesada/MODIS/IGBP.MCD12Q1.061/'
 dirs <- list.files(dir,full.names=TRUE)
 
 dirs %>% map(function(dir){
