@@ -142,7 +142,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Assessment of drought impact over land cover in continental Chile by the analysis of water supply and demand from the ERA5-Land and MODIS},
+  pdftitle={Assessment of drought impact over land cover in continental Chile by the analysis of water supply and demand from ERA5-Land and MODIS},
   pdfauthor={Francisco Zambrano},
   pdfkeywords={drought, land cover change, satellite},
   colorlinks=true,
@@ -157,7 +157,7 @@
 
 \begin{frontmatter}
 \title{Assessment of drought impact over land cover in continental Chile
-by the analysis of water supply and demand from the ERA5-Land and MODIS}
+by the analysis of water supply and demand from ERA5-Land and MODIS}
 \author[1]{Francisco Zambrano%
 \corref{cor1}%
 \fnref{fn1}}
@@ -227,7 +227,11 @@ investigated.
     satellite
 \end{keyword}
 \end{frontmatter}
+<<<<<<< HEAD
     \ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, frame hidden, borderline west={3pt}{0pt}{shadecolor}, interior hidden, boxrule=0pt, breakable, enhanced]}{\end{tcolorbox}}\fi
+=======
+    \ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, frame hidden, enhanced, interior hidden, sharp corners, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+>>>>>>> ae063b2 (guardar cambios previos)
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -353,9 +357,9 @@ indices are linked to TWS.
 \hypertarget{study-area}{%
 \section{Study area}\label{study-area}}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{../output/figs/map_study_con_landcover.png}
+{\centering \includegraphics{../output/figs/map_study_con_landcover.png}
 
 }
 
@@ -404,9 +408,9 @@ demand}\label{analysis-of-a-biomass-proxy-with-drought-indices-of-supply-and-dem
 and
 demand}\label{lulc-change-for-2001-2021-and-its-relation-with-water-supply-and-demand}}
 
-!{[}Proportion of land cover class from the persistent land cover for
-2001-2021 (\textgreater80\%) per macrozone.
+\begin{figure}[!ht]
 
+<<<<<<< HEAD
 \begin{figure}
 
 \begin{minipage}[t]{\linewidth}
@@ -443,8 +447,21 @@ The table on the left shows the linear change trend next to time-series
 plot of surface, per land cover class (IGBP MCD12Q1.006) for 2001-2021
 through the fives zones on continental Chile. Blue dots on the plots
 indicate the maximum and red dots minimum surface reach.}
+=======
+{\centering \includegraphics{../output/figs/LC_pers80_per_macrozone.png}
+
+}
+
+\caption{Proportion of land cover class from the persistent land cover
+for 2001-2021 (\textgreater80\%) per macrozone}
+>>>>>>> ae063b2 (guardar cambios previos)
 
 \end{figure}
+
+\begin{table}[!ht]
+\caption{Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface}
+\includegraphics[]{../output/figs/table_var_landcover_macro.png}
+\end{table}
 
 \hypertarget{total-water-storage-and-drought-indices}{%
 \subsection{Total water storage and drought
@@ -478,7 +495,7 @@ subtracted from all other monthly grids to provide terrestrial water
 storage anomalies (TWSA) \citep{Ramjeawon2022, Yin2022}. This JPL-M
 version of the data employs a Coastal Resolution Improvement (CRI)
 filter that reduces signal leakage errors across coastlines
-\citep{Wiese2019, Wiese2016}. Although the mascon solutions greatly
+\citep{NASA2019, Wiese2016}. Although the mascon solutions greatly
 reduced leakage errors, a gain factor, which is used to enhance the
 spatial resolution, was applied to the dataset as recommended for
 hydrological studies \citep{Ramjeawon2022, Yin2022}. The water storage

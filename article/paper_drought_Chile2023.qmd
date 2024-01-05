@@ -1,5 +1,5 @@
 ---
-title: Assessment of drought impact over land cover in continental Chile by the analysis of water supply and demand from the ERA5-Land and MODIS
+title: Assessment of drought impact over land cover in continental Chile by the analysis of water supply and demand from ERA5-Land and MODIS
 #subtitle: A Short Subtitle
 author:
   - name: Francisco Zambrano
@@ -74,7 +74,7 @@ In this research, we aim to analyze the impact of drought on different types of 
 
 # Study area
 
-![(a) Chile and the five zones "norte grande", "norte chico",  "zona central", "zona sur", and "zona austral". (b) Topography reference map. (c) Land cover classes for 2021. (d) Persistent land cover classes (> 80%) for 2001-2021.](../output/figs/map_study_con_landcover.png){#fig1_study_area width=80% fig-pos='ht'}
+![(a) Chile and the five zones "norte grande", "norte chico",  "zona central", "zona sur", and "zona austral". (b) Topography reference map. (c) Land cover classes for 2021. (d) Persistent land cover classes (> 80%) for 2001-2021.](../output/figs/map_study_con_landcover.png){fig-pos='!ht'}
 
 # Materials and Methods
 
@@ -104,11 +104,16 @@ To derive a proxy of vegetation productivity, we used the product MOD13A3 collec
 Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone. The table on the left shows the linear change trend next to time-series plot of surface, per land cover class (IGBP MCD12Q1.006) for 2001-2021 through the fives zones on continental Chile. Blue dots on the plots indicate the maximum and red dots minimum surface reach.
 :::
 
+\begin{table}[!ht]
+\caption{Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface}
+\includegraphics[]{../output/figs/table_var_landcover_macro.png}
+\end{table}
+
 ##	Total water storage and drought indices
 
 Terrestrial Water Storage (TWS) is defined as the total amount of water stored on land that includes any natural or artificial water bodies, such as groundwater, soil moisture, rivers, lakes, snowpack, ice, and biomass water [@Humphrey2023; @Deng2023]. TWS changes evidence the effects of multiple water fluxes on the hydrological cycle [@Deng2023]. These are reflected in the temporal variation of observations of the Earth's gravitational field [@Abolafia2021; @Sabzehee2023] and, in recent decades, the twin Gravity Recovery and Climate Experiment (GRACE) satellites and their Follow-On mission (GRACE-FO) have provided valuable results on globally distributed TWS anomalies [@Tapley2019; @Ferreira2023]. The GRACE mission was launched in March 2002 and was operational until October 2017 [@Ramjeawon2022]. Then its GRACE Follow-On successor was launched in May 2018 [@Landerer2020; @Yin2022]. The information provided by these satellites is used to construct monthly maps of the Earth's average gravity field, providing details of the movement of water masses or water mass anomaly estimates relative to the long-term average gravity field [@Humphrey2023; @Wahr2004].
 
-In this study, RL06.1_V3 GRACE mascon (mass concentration) monthly solutions were used, which are provided by the Jet Propulsion Laboratory (JPL-M, https://grace.jpl.nasa.gov). Each GRACE Tellus monthly grid at 0.5 degrees represents the deviation of surface mass for that month relative to a reference time average (2004-2009 baseline), which is subtracted from all other monthly grids to provide terrestrial water storage anomalies (TWSA) [@Ramjeawon2022; @Yin2022]. This JPL-M version of the data employs a Coastal Resolution Improvement (CRI) filter that reduces signal leakage errors across coastlines [@Wiese2019; @Wiese2016]. Although the mascon solutions greatly reduced leakage errors, a gain factor, which is used to enhance the spatial resolution, was applied to the dataset as recommended for hydrological studies [@Ramjeawon2022; @Yin2022]. The water storage and height anomalies are given in Equivalent Water Height or Thickness units (EWH, cm) [@Sabzehee2023], and their temporal resolution monthly is from April 2002 to May 2023.
+In this study, RL06.1_V3 GRACE mascon (mass concentration) monthly solutions were used, which are provided by the Jet Propulsion Laboratory (JPL-M, https://grace.jpl.nasa.gov). Each GRACE Tellus monthly grid at 0.5 degrees represents the deviation of surface mass for that month relative to a reference time average (2004-2009 baseline), which is subtracted from all other monthly grids to provide terrestrial water storage anomalies (TWSA) [@Ramjeawon2022; @Yin2022]. This JPL-M version of the data employs a Coastal Resolution Improvement (CRI) filter that reduces signal leakage errors across coastlines [@NASA2019; @Wiese2016]. Although the mascon solutions greatly reduced leakage errors, a gain factor, which is used to enhance the spatial resolution, was applied to the dataset as recommended for hydrological studies [@Ramjeawon2022; @Yin2022]. The water storage and height anomalies are given in Equivalent Water Height or Thickness units (EWH, cm) [@Sabzehee2023], and their temporal resolution monthly is from April 2002 to May 2023.
 
 ## Validation of ERA5-Land variables
 

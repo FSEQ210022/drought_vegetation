@@ -1233,6 +1233,7 @@ Issue: 1090},
 	pages = {126871},
 }
 
+<<<<<<< HEAD
 @misc{Didan2015,
   doi = {10.5067/MODIS/MOD13A3.006},
   url = {https://lpdaac.usgs.gov/products/mod13a3v006/},
@@ -1252,3 +1253,48 @@ Issue: 1090},
   note = {Accessed on 09-Dec-2023}
   
 }
+=======
+@article{Wiese2016,
+	title = {Quantifying and reducing leakage errors in the {JPL} {RL05M} {GRACE} mascon solution},
+	volume = {52},
+	issn = {0043-1397, 1944-7973},
+	url = {https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2016WR019344},
+	doi = {10.1002/2016WR019344},
+	abstract = {Abstract
+            
+              Recent advances in processing data from the Gravity Recovery and Climate Experiment (GRACE) have led to a new generation of gravity solutions constrained within a Bayesian framework to remove correlated errors rather than relying on empirical filters. The JPL RL05M mascon solution is one such solution, solving for mass variations using spherical cap mass concentration elements (mascons), while relying on external information provided by near‐global geophysical models to constrain the solution. This new gravity solution is fundamentally different than the traditional spherical harmonic gravity solution, and as such, requires different care when postprocessing. Here we discuss two classes of postprocessing considerations for the JPL RL05M GRACE mascon solution: (1) reducing leakage errors across land/ocean boundaries, and (2) scaling the solutions to account for leakage errors introduced through parameterizing the gravity solution in terms of mascons. A Coastline Resolution Improvement (CRI) filter is developed to reduce leakage errors across coastlines. Synthetic simulations reveal a reduction in leakage errors of ∼50\%, such that residual leakage errors are ∼1 cm equivalent water height (EWH) averaged globally. A set of gain factors is derived to reduce leakage errors for continental hydrology applications. The combined effect of the CRI filter coupled with application of the gain factors, is shown to reduce leakage errors when determining the mass balance of large ({\textgreater}160,000 km
+              2
+              ) hydrological basins from 11\% to 30\% (0.6–1.5 mm EWH) averaged globally, with local improvements up to 38\%–81\% (9–19 mm EWH).
+            
+          , 
+            Key Points:
+            
+              
+                
+                  A Coastline Resolution Improvement filter is derived to reduce leakage errors across land/ocean boundaries
+                
+                
+                  A global set of gain factors is derived to reduce leakage errors for continental hydrology applications
+                
+                
+                  Leakage error reductions are greatest (up to 1–2 cm equivalent water height) for small river basins},
+	language = {en},
+	number = {9},
+	urldate = {2023-10-09},
+	journal = {Water Resources Research},
+	author = {Wiese, David N. and Landerer, Felix W. and Watkins, Michael M.},
+	month = sep,
+	year = {2016},
+	pages = {7490--7502},
+}
+
+@misc{NASA2019,
+	title = {{JPL} {GRACE} {Mascon} {Ocean}, {Ice}, and {Hydrology} {Equivalent} {Water} {Height} {Release} 06 {Coastal} {Resolution} {Improvement} ({CRI}) {Filtered} {Version} 1.0},
+	url = {https://podaac.jpl.nasa.gov/dataset/TELLUS_GRACE_MASCON_CRI_GRID_RL06_V1},
+	doi = {10.5067/TEMSC-3MJC6},
+	urldate = {2023-10-09},
+	publisher = {NASA Physical Oceanography Distributed Active Archive Center},
+	author = {{NASA Jet Propulsion Laboratory (JPL) Tellus}},
+	year = {2018},
+}
+>>>>>>> ae063b2 (guardar cambios previos)
