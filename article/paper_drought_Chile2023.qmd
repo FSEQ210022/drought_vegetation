@@ -70,7 +70,7 @@ For the spatiotemporal assessment of drought impact (i.e., by water supply and d
 
 To evaluate meteorological drought (i.e., water supply), the World Meteorological Organization (WMO; @WMO2012) recommends the Standardized Precipitation Index (SPI; @Mckee1993), a multiscalar drought index that allows to monitor precipitation deficits from short- to long-term. Following the same approach, @Vicente-Serrano2010 incorporates into the SPI the effect of temperature through the use of potential evapotranspiration, thus proposing the SPEI (Standardized Precipitation Evapotranspiration Index). Similarly, to evaluate solely the evaporative demand driven by temperature, @Hobbins2016 and @McEvoy2016 came up with the Evaporative Demand Drought Index (EDDI). For vegetation, in a similar manner as the SPI, SPEI and EDDI;  @Zambrano2018 proposed the zcNDVI, a standardized anomaly of the cumulative Normalized Difference Vegetation Index (NDVI), which could be acumulated over the growing season or any period (e.g., months), resulting in a multiscalar drought index. For soil moisture, several drought indices exist, such as the Soil Moisture Deficit Index (SDMI) a normalized index [@Narasimhan2005] and the Soil Moisture Agricultural Drought Index (SMADI) [@Souza2021] which is a normalized index using vegetation, land surface temperature, and a vegetation condition index (VCI, [@Kogan1995]). From TWS, we can estimate the standardized terrestrial water storage index (STI) [@Cui2021], a standardized anomaly that follows the methodology of the SPI, SPEI, EDDI, and zcNDVI. Thereby, we have drought indices for water supply, demand, and storage, which can help to make a comprehensive assessment of drought.  
 
-In this research, we aim to analyze the impact of drought on different types of land cover classes in continental Chile by combining environmental variables such as biomass productivity, and water demand and supply gathered from earth observation products. The specific objectives of the study are: i) to calculate multi-scalar drought indices for water demand and supply for 1981–2023; ii) to evaluate LULC change for 2001–2021 and its relation to drought indices; iii) to analyze the relationship of a proxy of biomass (zcNDVI) with drought indices; and iv) to assess if the observed changes in the drought indices are linked to TWS.
+In this research, we aim to analyze the impact of drought on different types of land cover classes in continental Chile by combining environmental variables such as biomass productivity, and water demand and supply gathered from earth observation products. The specific objectives of the study are: i) to analize the trend on multi-scalar drought indices for water demand/supply, soil moisture and vegetation productivity for 1981–2023/2001-2023; ii) to evaluate LULC change for 2001–2021 and its relation to drought indices; iii) to analyze the relationship of a proxy of biomass (zcNDVI) with drought indices; and iv) to assess if the observed changes in the drought indices are linked to TWS.
 
 # Study area
 
@@ -88,21 +88,24 @@ To derive a proxy of vegetation productivity, we used the product MOD13A3 collec
 
 ###	in-situ data
 
-##	Drought indices for water demand and supply
+## Drought indices
+
+## 
+
+
+##	Drought indices for water demand/supply, soil moisture and vegetation productivity
 
 ##	Analysis of a biomass proxy with drought indices of supply and demand
 
 ##	LULC change for 2001-2021 and its relation with water supply and demand 
 
-![Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone.
-
-::: {#fig-elephants layout-ncol=1 fig.pos='!ht'}
-![](../output/figs/LC_pers80_per_macrozone.png){width="7cm"}
-
-![](../output/figs/table_var_landcover_macro.png){width="8cm"}
-
-Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone. The table on the left shows the linear change trend next to time-series plot of surface, per land cover class (IGBP MCD12Q1.006) for 2001-2021 through the fives zones on continental Chile. Blue dots on the plots indicate the maximum and red dots minimum surface reach.
-:::
+```{r LCprop}
+#| echo: false
+#| fig-pos: "!ht"
+#| fig-cap: "Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone"
+#| out-width: "\\textwidth"
+knitr::include_graphics("../output/figs/LC_pers80_per_macrozone.png")
+```
 
 \begin{table}[!ht]
 \caption{Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface}
@@ -119,9 +122,55 @@ In this study, RL06.1_V3 GRACE mascon (mass concentration) monthly solutions wer
 
 #	Results
 
-##	Drought indices for water demand and supply
+##	Trend of drought indices for water demand/supply, soil moisture, and vegetation productivity
 
-##	Biomass proxy with drought indices of supply and demand
+Regarding vegetation productivity, there is a negative trend on zcNDVI in the central part of the country ("norte chico" and "zona central") (@fig-zcNDVI_var). Indicating either a reduction of vegetation surface, biomass, or status. It reached its lowest values during the year 2020, mostly on the "zona central." There are other negative trends in small areas in "norte grande" and "zona asutral."
+
+```{r fig-zcNDVI_var}
+#| echo: false
+#| fig-pos: "!ht"
+#| fig-cap: "(a) Map of the linear trend of the index zcNDVI-6 for 2001–2023. Greener colors indicate a positive trend and an increase in vegetation development; reder colors correspond to a negative trend and a decrease in vegetation development. (b) Temporal variation of zcNDVI-6 aggregated at macrozone level within continental Chile. Each horizontal panel corresponds to a macrozone from 'norte grande' to 'zona austral'."
+#| out-width: "\\textwidth"
+knitr::include_graphics("../output/figs/temporal_variation_zcNDVI6_macrozonas.png")
+```
+
+Analyzing the water supply in the macrozones "norte chico," "central," and "sur," the SPI shows a decreasing trend that increases at longer time scales due to the prolonged reduction in precipitation. It reaches a trend of -0.056 (z-score) per decade (@fig-trendSPI) for time scales of 36 months. In the case of water demand, we analyze the EDDI. It shows a positive trend, caused by an increase in AED. The trend on EDDI reaches a maximum of 0.053 per decade in the macrozones "norte grande" and "norte chico" (@fig-trendEDDI). The behavior is similar to SPI, having close trends with opposite signs. Nevertheless, the spatial patterns are different. The maximum trend for SPI-36 is in "norte chico" and "zona central." For EDDI-36, the maximum trend is from "northe grande" to "zona central."
+
+```{r fig-trendSPI}
+#| echo: false
+#| fig-pos: "!ht"
+#| fig-cap: "Linear trend of the SPI at time scales of 1, 3, 6, 12, 24, and 36 months for 1981-2023"
+#| out-width: "\\textwidth"
+
+knitr::include_graphics("../output/figs/trend_raster_SPI_1981-2023.png")
+```
+
+```{r fig-trendEDDI}
+#| echo: false
+#| fig-pos: "!ht"
+#| out-width: "\\textwidth"
+#| fig-cap: "Linear trend of the EDDI at time scales of 1, 3, 6, 12, 24, and 36 months for 1981-2023"
+knitr::include_graphics("../output/figs/trend_raster_EDDI_1981-2023.png")
+```
+
+The correlation between zcNDVI-6 and drought indices shows that time scales higher than six months are predominant over continental Chile in explaining vegetation variability (@fig-corTimeScale). Pearson correlations between 0.6 and 0.9 are concentrated in the "norte chico" and "zona central" for SPI and SPEI. Soil moisture reached a correlation of 0.6–0.9 that extended north and south with respect to SPI.
+
+```{r fig-corTimeScale}
+#| echo: false
+#| fig-pos: "!ht"
+#| out-width: "\\textwidth"
+#| fig-cap: "Time scales per drought index that reach the maximum coefficient of determination"
+knitr::include_graphics("../output/figs/mapa_cor_selec_indices_zcNDVI6.png")
+```
+
+
+```{r fig-corPerson}
+#| echo: false
+#| fig-pos: "!ht"
+#| out-width: "\\textwidth"
+#| fig-cap: "Pearson correlation value for the time scales and drought index that reach the maximum coefficient of determination"
+knitr::include_graphics("../output/figs/mapa_cor_r_indices_zcNDVI6.png")
+```
 
 ##	LULC change for 2001-2021 and its relation with water supply and demand
 
