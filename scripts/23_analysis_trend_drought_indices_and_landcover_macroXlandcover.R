@@ -12,6 +12,11 @@ data_ana <- data_trend_di |>
   full_join(data_trend_lc) |> 
   drop_na()
 
+data_ana |>
+  mutate(across(3:31,\(x) {
+    ifelse(x<0,0,1)
+    })) -> ou
+  
 #análisis de cluster
 library(dbscan)
 library(NbClust)
@@ -113,17 +118,22 @@ plot(pca$rotation[,'PC3'])
 set.seed(1234)
 
 data_model <- data_ana[,c(1:6,9:12,15:18,21:24,29,31)]
-df_split <- initial_split(data_model)
+data_model <- data_model |> 
+  #select(-starts_with('EDDI')) |> 
+  mutate(landcover = cut(landcover,quantile(landcover)),
+         clase = factor(clase),
+         macro = factor(macro))
+
+df_split <- initial_split(data_model,prop =.9)
 df_train <- training(df_split)
 df_test <- testing(df_split)
 
-df_recipe <- recipe(landcover~., data = data_model) |> 
-  step_normalize(all_numeric())
+df_recipe <- recipe(landcover~., data = data_model) 
 
 #building model
 tree <- decision_tree() %>%
   set_engine("rpart") %>%
-  set_mode("regression")
+  set_mode("classification")
 
 #workflow
 tree_wf <- workflow() %>%
@@ -137,3 +147,27 @@ tree_fit <- tree_wf %>%
 library(rpart)
 library(rpart.plot)
 rpart.plot(tree_fit$fit)
+
+tree_wf |> 
+  predict(df_test)
+
+
+#random forest
+
+rf_spec <- rand_forest(trees = 1000, mode = "classification") |> 
+  set_args(importance = 'impurity')
+rf_wflow <- workflow(landcover ~ ., rf_spec)
+rf_fit <- fit(rf_wflow, df_train)
+
+# augment(rf_fit, new_data = df_train) %>%
+#   conf_mat(truth = landcover, estimate = .pred_class)
+# 
+# augment(rf_fit, new_data = df_train) %>%
+#   conf_mat(truth = landcover, estimate = .pred_class) %>%
+#   autoplot(type = "heatmap")
+
+library(vip)
+rf_fit |> 
+  extract_fit_parsnip() |> 
+  vip(geom = "point",num_features = 20) + 
+  labs(title = "Random forest variable importance") 
