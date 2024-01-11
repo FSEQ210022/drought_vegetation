@@ -74,6 +74,8 @@ In this research, we present the dataset DDS4Chl, which provides climate variabl
 
 # Study area
 
+Continetal Chile has a diverse climate condition from north to south and east to west, which determines its great ecosystem diversity [@Aceituno2021]. The Andes Mountains are a main factor in longitudinal variation [@Garreaud2009]. Acoording to the v2 of the Koppen-Geiger realease by @Beck2023 and the landcover types from the IGBP [@Friedl2019]. In the "Norte Grande" and "Norte Chico" predominate an arid desert climate with hot (Bwh) and cold (Bwk) temperatures. At south of "Norte Chico" the climate change to a arid steppe with cold temperatures (Bsk). Mainly the land is barrend and with a minor surface of vegetation types of Shrubland (X% ) and Grassland.   
+
 ![(a) Chile and the five zones "norte grande", "norte chico",  "zona central", "zona sur", and "zona austral". (b) Topography reference map. (c) Land cover classes for 2021. (d) Persistent land cover classes (> 80%) for 2001-2021.](../output/figs/map_study_con_landcover.png){fig-pos='!ht'}
 
 # Materials and Methods
