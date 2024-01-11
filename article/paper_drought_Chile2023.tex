@@ -227,7 +227,7 @@ investigated.
     satellite
 \end{keyword}
 \end{frontmatter}
-    \ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced, boxrule=0pt, interior hidden, breakable]}{\end{tcolorbox}}\fi
+    \ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, interior hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, sharp corners]}{\end{tcolorbox}}\fi
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -324,7 +324,7 @@ Precipitation Evapotranspiration Index). Similarly, to evaluate solely
 the evaporative demand driven by temperature, \citep{Hobbins2016} and
 \citep{McEvoy2016} came up with the Evaporative Demand Drought Index
 (EDDI). For vegetation, in a similar manner as the SPI, SPEI and EDDI;
-~\citep{Zambrano2018} proposed the zcNDVI, a standardized anomaly of the
+\citep{Zambrano2018} proposed the zcNDVI, a standardized anomaly of the
 cumulative Normalized Difference Vegetation Index (NDVI), which could be
 acumulated over the growing season or any period (e.g., months),
 resulting in a multiscalar drought index. For soil moisture, several
@@ -339,15 +339,18 @@ the SPI, SPEI, EDDI, and zcNDVI. Thereby, we have drought indices for
 water supply, demand, and storage, which can help to make a
 comprehensive assessment of drought.
 
-In this research, we aim to analyze the impact of drought on different
-types of land cover classes in continental Chile by combining
-environmental variables such as biomass productivity, and water demand
-and supply gathered from earth observation products. The specific
-objectives of the study are: i) to analize the trend on multi-scalar
-drought indices for water demand/supply, soil moisture and vegetation
-productivity for 1981--2023/2001-2023; ii) to evaluate LULC change for
-2001--2021 and its relation to drought indices; iii) to analyze the
-relationship of a proxy of biomass (zcNDVI) with drought indices; and
+In this research, we present the dataset DDS4Chl, which provides climate
+variables and drought indices of water demand and~ supply and vegetation
+productivity for continental Chile since 1981 at a monthly frequency.
+Those were gathered from the earth observation products ERA5-Land and
+MODIS. Then, we used DDS4Chl to analyze the impact of drought on
+different types of land cover classes in continental Chile. The specific
+objectives of the study are: i) to analyze the trend on multi-scalar
+drought indices for water demand and supply, soil moisture, and
+vegetation productivity for 1981--2023/2001--2023; ii) to evaluate LULC
+change for 2001--2021 and its relation to drought indices; iii) to
+analyze the relationship of a proxy of vegetation productivity (zcNDVI)
+with drought indices of water demand and supply and soil moisture; and
 iv) to assess if the observed changes in the drought indices are linked
 to TWS.
 
@@ -391,16 +394,10 @@ monthly frequency.
 \hypertarget{in-situ-data}{%
 \subsubsection{in-situ data}\label{in-situ-data}}
 
-\hypertarget{drought-indices}{%
-\subsection{Drought indices}\label{drought-indices}}
-
-\hypertarget{section}{%
-\subsection{}\label{section}}
-
-\hypertarget{drought-indices-for-water-demandsupply-soil-moisture-and-vegetation-productivity}{%
-\subsection{Drought indices for water demand/supply, soil moisture and
-vegetation
-productivity}\label{drought-indices-for-water-demandsupply-soil-moisture-and-vegetation-productivity}}
+\hypertarget{drought-indices-for-water-demand-and-supply-soil-moisture-and-vegetation-productivity}{%
+\subsection{Drought indices for water demand and supply, soil moisture
+and vegetation
+productivity}\label{drought-indices-for-water-demand-and-supply-soil-moisture-and-vegetation-productivity}}
 
 \hypertarget{analysis-of-a-biomass-proxy-with-drought-indices-of-supply-and-demand}{%
 \subsection{Analysis of a biomass proxy with drought indices of supply

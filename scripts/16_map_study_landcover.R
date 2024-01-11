@@ -93,13 +93,40 @@ map_globe <- tm_shape(bm_world) +
   tm_text('admin',size=.4,xmod = -.5,col='black') +
   tm_layout(frame = TRUE,bg.color = "white")
 
+# Mapa Chile con Koppen-Geiger 1991-2020
+
+kp_chile <- rast('data/processed_data/spatial/koppen_geiger_1991_2020.tif')
+rgb <- coltab(kp_chile)[[1]][2:31,]
+paleta_kg <- readr::read_csv2('data/processed_data/legend_koppen-geiger.csv')
+labs <- substr(paleta_kg$type,1,3)
+names(labs) <- 1:30
+colores <- rgb(rgb[,2],rgb[,3],rgb[,4],rgb[,5],maxColor = 255)
+names(colores) <- 1:30
+
+kp_chile <- raster::raster(kp_chile)
+vals <- values(kp_chile)
+vals[vals %in% c(6,26,10,30,27,18)] <- NA
+values(kp_chile) <- vals
+
+zones$macrozona <- c('Norte Chico','Norte Grande',
+                     'Austral','Centro','Sur')
+  
 map_chl <- tm_shape(bm2) +
   tm_rgb() +
+  tm_shape(kp_chile) +
+  tm_raster(palette = colores,
+            style = 'cat',
+            labels = labs,
+            title = 'Climate (1990-2020)') +
   tm_shape(zones) +
   tm_borders(lwd=2,col='black',lty='solid',alpha=0.8) +
-  tm_text('macrozona',just='top',xmod=c(-6,-6,3,-5,-5),ymod=c(0,-3.5,0,0,0),size=2) +
-  tm_credits('(a)',position = c('left','bottom'),fontface = 'bold',size=1.7)
-  
+  tm_text('macrozona',just='top',xmod=c(-5,-5,3,-3,-3),ymod=c(0,-1.5,3,0,0),size=1) +
+  tm_credits('(a)',position = c('left','bottom'),fontface = 'bold',size=1.7) +
+  tm_layout(legend.outside = FALSE,
+            legend.text.size = 0.7)
+
+tmap_save(map_chl,'output/figs/mapa_koppen_geiger.png')
+
 xy <- st_bbox(world)
 asp2 <- (xy$xmax - xy$xmin)/(xy$ymax - xy$ymin)
 
