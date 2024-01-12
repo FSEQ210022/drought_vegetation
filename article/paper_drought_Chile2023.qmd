@@ -44,6 +44,7 @@ keywords:
   - satellite
 date: last-modified
 bibliography: references.bib
+keep-tex: false
 format:
   elsevier-pdf:
     keep-tex: true
@@ -70,13 +71,19 @@ For the spatiotemporal assessment of drought impact (i.e., by water supply and d
 
 To evaluate meteorological drought (i.e., water supply), the World Meteorological Organization (WMO; @WMO2012) recommends the Standardized Precipitation Index (SPI; @Mckee1993), a multiscalar drought index that allows to monitor precipitation deficits from short- to long-term. Following the same approach, @Vicente-Serrano2010 incorporates into the SPI the effect of temperature through the use of potential evapotranspiration, thus proposing the SPEI (Standardized Precipitation Evapotranspiration Index). Similarly, to evaluate solely the evaporative demand driven by temperature, @Hobbins2016 and @McEvoy2016 came up with the Evaporative Demand Drought Index (EDDI). For vegetation, in a similar manner as the SPI, SPEI and EDDI; @Zambrano2018 proposed the zcNDVI, a standardized anomaly of the cumulative Normalized Difference Vegetation Index (NDVI), which could be acumulated over the growing season or any period (e.g., months), resulting in a multiscalar drought index. For soil moisture, several drought indices exist, such as the Soil Moisture Deficit Index (SDMI) a normalized index [@Narasimhan2005] and the Soil Moisture Agricultural Drought Index (SMADI) [@Souza2021] which is a normalized index using vegetation, land surface temperature, and a vegetation condition index (VCI, [@Kogan1995]). From TWS, we can estimate the standardized terrestrial water storage index (STI) [@Cui2021], a standardized anomaly that follows the methodology of the SPI, SPEI, EDDI, and zcNDVI. Thereby, we have drought indices for water supply, demand, and storage, which can help to make a comprehensive assessment of drought.
 
-In this research, we present the dataset DDS4Chl, which provides climate variables and drought indices of water demand and  supply and vegetation productivity for continental Chile since 1981 at a monthly frequency. Those were gathered from the earth observation products ERA5-Land and MODIS. Then, we used DDS4Chl to analyze the impact of drought on different types of land cover classes in continental Chile. The specific objectives of the study are: i) to analyze the trend on multi-scalar drought indices for water demand and supply, soil moisture, and vegetation productivity for 1981–2023/2001–2023; ii) to evaluate LULC change for 2001–2021 and its relation to drought indices; iii) to analyze the relationship of a proxy of vegetation productivity (zcNDVI) with drought indices of water demand and supply and soil moisture; and iv) to assess if the observed changes in the drought indices are linked to TWS.
+In this research, we present the raster dataset DDS4Chl, which provides climate variables and drought indices of water demand and supply and vegetation productivity for continental Chile since 1981 at a monthly frequency. Those were gathered from the earth observation products ERA5-Land and MODIS. Then, we used DDS4Chl to analyze the impact of drought on different types of land cover classes in continental Chile. The specific objectives of the study are: i) to analyze the trend on multi-scalar drought indices for water demand and supply, soil moisture, and vegetation productivity for 1981–2023/2001–2023; ii) to evaluate LULC change for 2001–2021 and its relation to drought indices; iii) to analyze the relationship of a proxy of vegetation productivity (zcNDVI) with drought indices of water demand and supply and soil moisture; and iv) to assess if the observed changes in the drought indices are linked to TWS.
 
 # Study area
 
-Continetal Chile has a diverse climate condition from north to south and east to west, which determines its great ecosystem diversity [@Aceituno2021]. The Andes Mountains are a main factor in longitudinal variation [@Garreaud2009]. Acoording to the v2 of the Koppen-Geiger realease by @Beck2023 and the landcover types from the IGBP [@Friedl2019]. In the "Norte Grande" and "Norte Chico" predominate an arid desert climate with hot (Bwh) and cold (Bwk) temperatures. At south of "Norte Chico" the climate change to a arid steppe with cold temperatures (Bsk). Mainly the land is barrend and with a minor surface of vegetation types of Shrubland (X% ) and Grassland.   
+Continetal Chile has a diverse climate condition from north to south and east to west [@Aceituno2021] (@fig-studyArea), which determines its great ecosystem diversity (@fig-LCprop). The Andes Mountains are a main factor in latitudinal variation [@Garreaud2009]. To describe the climate and ecosystem of Chile, we use the Koppen-Geiger release by @Beck2023 and the landcover type persistance of 80% of times for 2001–2022, from the IGBP classification scheme [@Friedl2019]. "Norte Grande" and "Norte Chico" predominate in an arid desert climate with hot (Bwh) and cold (Bwk) temperatures. At the south of "Norte Chico," the climate changes to an arid steppe with cold temperatures (Bsk). Mainly, the land is barren, with a minor surface of vegetation types such as shrubland and grassland. In the zones "Centro" and the north half of "Sur," the main climate is Mediterranean, with warmer to hot summers (Csa and Csb). In "Centro," there is a major proportion (~50%) of chilean matorral (shrubland and savanna), followed by grassland (~16%), forest (8%), and croplands (5%). The south part of "Centro" and the north part of "Austral" are dominated by an Oceanic climate (Cfb). Those zones are high in forest and grassland. The southern part of the country has a tundra climate, and in Patagonia, it is a cold semi-arid area with an extended surface of grassland.
 
-![(a) Chile and the five zones "norte grande", "norte chico",  "zona central", "zona sur", and "zona austral". (b) Topography reference map. (c) Land cover classes for 2021. (d) Persistent land cover classes (> 80%) for 2001-2021.](../output/figs/map_study_con_landcover.png){fig-pos='!ht'}
+```{r fig-studyArea}
+#| echo: false
+#| fig-pos: "!ht"
+#| fig-cap: '(a) Chile with the Koppen-Geiger climate classes and the five macrozones "Norte Grande", "Norte Chico",  "Centro", "Sur", and "Austral". (b) Topography reference map. (c) Land cover classes for 2022. (d) Persistent land cover classes (> 80%) for 2001-2022'
+#| out-width: "\\textwidth"
+knitr::include_graphics("../output/figs/map_study_con_landcover.png")
+```
 
 # Materials and Methods
 
@@ -84,19 +91,19 @@ Continetal Chile has a diverse climate condition from north to south and east to
 
 ###	Earth observation data
 
-For water supply and demand variabes, we used ERA5-Land [@Munoz2019], a reanalys dataset wich provides the evolution of land variables since 1950. It has a spatial resolution of 0.1°, hourly frequency and global coverage. We selected the variables for total precipitation, 2 meters temperature, and volumetric soil water layers between 0 and 100cm of depth (layer 1 to layer 3).
+For water supply and demand variabes, we used ERA5-Land [@MunozSabater2021], a reanalys dataset wich provides the evolution of land variables since 1950. It has a spatial resolution of 0.1°, hourly frequency and global coverage. We selected the variables for total precipitation, 2 meters temperature, and volumetric soil water layers between 0 and 100cm of depth (layer 1 to layer 3).
 
 To derive a proxy of vegetation productivity, we used the product MOD13A3 collection 6.1 from MODIS [@Didan2015]. It provides vegetation indices (NDVI and EVI) at 1km of spatial resolution and monthly frequency.
 
 ###	in-situ data
 
-##	Drought indices for water demand and supply, soil moisture and vegetation productivity
+## Trend of drought indices for water demand/supply, soil moisture, and vegetation productivity
 
-##	Analysis of a biomass proxy with drought indices of supply and demand
+##	Impact fof water supply and demand, and soil moisture in vegetation productivity within landcover types
 
-##	LULC change for 2001-2021 and its relation with water supply and demand 
+##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture
 
-```{r LCprop}
+```{r fig-LCprop}
 #| echo: false
 #| fig-pos: "!ht"
 #| fig-cap: "Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone"
@@ -104,10 +111,7 @@ To derive a proxy of vegetation productivity, we used the product MOD13A3 collec
 knitr::include_graphics("../output/figs/LC_pers80_per_macrozone.png")
 ```
 
-\begin{table}[!ht]
-\caption{Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface}
-\includegraphics[]{../output/figs/table_var_landcover_macro.png}
-\end{table}
+
 
 ##	Total water storage and drought indices
 
@@ -152,6 +156,10 @@ knitr::include_graphics("../output/figs/trend_raster_EDDI_1981-2023.png")
 
 The correlation between zcNDVI-6 and drought indices shows that time scales higher than six months are predominant over continental Chile in explaining vegetation variability (@fig-corTimeScale). Pearson correlations between 0.6 and 0.9 are concentrated in the "norte chico" and "zona central" for SPI and SPEI. Soil moisture reached a correlation of 0.6–0.9 that extended north and south with respect to SPI.
 
+
+
+##	Impact for water supply and demand, and soil moisture in vegetation productivity
+
 ```{r fig-corTimeScale}
 #| echo: false
 #| fig-pos: "!ht"
@@ -169,7 +177,20 @@ knitr::include_graphics("../output/figs/mapa_cor_selec_indices_zcNDVI6.png")
 knitr::include_graphics("../output/figs/mapa_cor_r_indices_zcNDVI6.png")
 ```
 
-##	LULC change for 2001-2021 and its relation with water supply and demand
+
+##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture
+
+\begin{table}[!ht]
+\label{tab-landcoverTrend}
+\caption{Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface}
+\includegraphics[]{../output/figs/table_var_landcover_macro.png}
+\end{table}
+
+\begin{table}[!ht]
+\label{tab-corLandcover}
+\caption{}
+\includegraphics[]{../output/figs/tabla_r_cor_macro_indice.png}
+\end{table}
 
 ##	Total water storage (TWS) and drought indices
 

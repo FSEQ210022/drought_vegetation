@@ -107,8 +107,13 @@ data_r_4gt <- data_r |>
   pivot_wider(names_from=c(clase, name), values_from=value) |> 
   rename_with(\(x) str_c(x,'_r'),-zone)
 
-tabla_gt <- cbind(data_ind_4gt,data_r_4gt |>  mutate(zone = fct_relevel(zone, "norte grande", "norte chico",
-                                                                  'zona central','zona sur')) |> arrange(zone)) |> 
+tabla_gt <- cbind(data_ind_4gt,data_r_4gt |>  
+                    mutate(zone = fct_relevel(zone, 
+                                              "norte grande", 
+                                              "norte chico",
+                                              'zona central',
+                                              'zona sur')) |> 
+                    arrange(zone)) |> 
   select(-zone) |> 
   rename(zone = macro)
 

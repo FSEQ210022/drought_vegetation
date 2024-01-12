@@ -34,8 +34,8 @@ igbp80 <- mask(igbp80,chl)
 #igbp80[igbp80 == 10] <- NA
 
 #landcover año 2021
-igbp2021 <- rast(paste0(dir,'IGBP_2021_reclassified.tif'))
-igbp2021 <- mask(igbp2021,chl)
+igbp2022 <- rast(paste0(dir,'IGBP_2022_reclassified.tif'))
+igbp2022 <- mask(igbp2022,chl)
 
 paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv')
 colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
@@ -46,7 +46,7 @@ m2 <- tm_shape(bm) +
   tm_credits('(c)',position = c('left','bottom'),fontface = 'bold') +
   # tm_shape(divisiones) + 
   # tm_lines(lwd=1,col='black',lty='solid',alpha=.6)+
-  tm_shape(igbp2021) +
+  tm_shape(igbp2022) +
   tm_raster(style = 'cat',
             palette = colors,title = 'Landcover classes',
             labels = paleta$Name) +
@@ -120,12 +120,13 @@ map_chl <- tm_shape(bm2) +
             title = 'Climate (1990-2020)') +
   tm_shape(zones) +
   tm_borders(lwd=2,col='black',lty='solid',alpha=0.8) +
-  tm_text('macrozona',just='top',xmod=c(-5,-5,3,-3,-3),ymod=c(0,-1.5,3,0,0),size=1) +
+  tm_text('macrozona',just='top',xmod=c(5,-7,3,-4,-4),ymod=c(0,-3.5,1,0,0),size=1.5) +
   tm_credits('(a)',position = c('left','bottom'),fontface = 'bold',size=1.7) +
   tm_layout(legend.outside = FALSE,
-            legend.text.size = 0.7)
+            legend.text.size = 1.2,
+            legend.position = c(0.1,0.7))
 
-tmap_save(map_chl,'output/figs/mapa_koppen_geiger.png')
+#tmap_save(map_chl,'output/figs/mapa_koppen_geiger.png')
 
 xy <- st_bbox(world)
 asp2 <- (xy$xmax - xy$xmin)/(xy$ymax - xy$ymin)
@@ -139,6 +140,6 @@ w <- 0.5
 h <- asp2 * w
 vp <- viewport(x=.53, y=1.43, width = w, height=h, just=c("right", "top"))
 
-tmap_save(map_chl,filename="output/figs/map_study_area_temp.png",
+tmap_save(map_chl,filename="output/figs/map_study_area_koppen-geiger.png",
           dpi=300, insets_tm=map_globe, insets_vp=vp,scale =1,
           height=asp*91, width=125, units="mm",bg="transparent")

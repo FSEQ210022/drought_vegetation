@@ -6,7 +6,8 @@ library(rnaturalearth)
 library(fs)
 
 chl_b <- ne_countries(country='chile',scale = 'medium',returnclass = 'sf')
-macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') 
+macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
+  mutate(macrozona = c('Norte Chico','Norte Grande','Austral','Centro','Sur'))
 
 ## Time series of zcNDVI for macrozones
 dir <- '/mnt/md0/raster_procesada/MODIS_derived/zcNDVI/zcNDVI-6'
@@ -19,7 +20,8 @@ df_zcndvi |>
   pivot_longer(-macrozona) |> 
   mutate(dates = str_extract(name,'[0-9]{4}-[0-9]{2}-[0-9]{2}'),
          dates = ymd(dates),
-         macrozona = fct(macrozona,c('norte grande','norte chico','zona central','zona sur','zona austral'))) |> 
+         macrozona =str_to_title(macrozona),
+         macrozona = fct(macrozona,c('Norte Grande','Norte Chico','Centro','Sur','Austral'))) |> 
   select(-name) |> 
   drop_na() |> 
   ggplot(aes(dates,value)) +
@@ -37,33 +39,46 @@ df_zcndvi |>
 
 ggsave('output/figs/temporal_variation_zcNDVI6_macrozonas.png',scale = 1.5,bg = 'white',width=6,height=3)
 
-trend_spi <- rast('/mnt/md0/raster_procesada/analysis/trends/trend_SPI_1981-2023.tif')
+#Mapa de tendencia Mann-Kendall
+library(fs)
+dir <- '/mnt/md0/raster_procesada/analysis/trends/'
+files <- dir_ls(dir,regexp = 'mann.*SPI.*tif$')
+scales <- str_extract(basename(files),'-.*\\.') |> str_remove('-') |> str_remove('\\.')
 
-macro_ras <- rasterize(macro,trend_spi,field = 'macrozona') 
+trend_spi <- rast(files)
+trend_spi <- app(trend_spi,\(x){
+  i <- seq(1,12,2)
+  x[i]*x[i+1]
+})
 
-data_trend_spi_macro <- zonal(trend_spi,macro_ras,'mean',na.rm=TRUE) |> as_tibble()
+ind_ord <- scales |> as.numeric() |> order()
+trend_spi <- subset(trend_spi,ind_ord)
+names(trend_spi) <- paste('SPI',scales,sep ='-')
 
-data_trend_spi_macro |> 
-  pivot_longer(-macrozona) |> 
-  mutate(value = value*10) |> 
-  arrange(value)
-
-#names(trend_spei) <- paste0('SPEI-',c(1,3,6,12,24,36))
-#writeRaster(trend_spei,'/mnt/md0/raster_procesada/analysis/trends/trend_SPEI_1981-2023_2.tif',overwrite = TRUE)
-names(trend_spi) <- paste0('SPI-',c(1,3,6,12,24,36))
 map_spi <- tm_shape(trend_spi*10) + 
   tm_raster(palette = '-inferno',midpoint = 0,title = 'Trend SPI \n (per decade)',style = 'kmeans') +
   tm_shape(macro) + 
   tm_borders(col='white') +
   tm_shape(chl_b) + 
   tm_borders(col = 'black') +
-  tm_facets() +
+  tm_facets(nrow=1) +
   tm_layout(panel.labels = paste0('SPI-',c(1,3,6,12,24,36)))
 tmap_save(map_spi,'output/figs/trend_raster_SPI_1981-2023.png',asp=.2)
 
-trend_spei <- rast('/mnt/md0/raster_procesada/analysis/trends/trend_SPEI_1981-2023.tif')
-#names(trend_spei) <- paste0('SPEI-',c(1,3,6,12,24,36))
-#writeRaster(trend_spei,'/mnt/md0/raster_procesada/analysis/trends/trend_SPEI_1981-2023_2.tif',overwrite = TRUE)
+## SPEI
+
+files <- dir_ls(dir,regexp = 'mann.*SPEI.*tif$')
+scales <- str_extract(basename(files),'-.*\\.') |> str_remove('-') |> str_remove('\\.')
+
+trend_spei <- rast(files)
+trend_spei <- app(trend_spei,\(x){
+  i <- seq(1,12,2)
+  x[i]*x[i+1]
+})
+
+ind_ord <- scales |> as.numeric() |> order()
+trend_spei <- subset(trend_spei,ind_ord)
+names(trend_spei) <- paste('SPEI',scales,sep ='-')
 
 map_spei <- tm_shape(trend_spei*10) + 
   tm_raster(palette = '-inferno',midpoint = 0,title = 'Trend SPEI \n (per decade)',style = 'kmeans') +
@@ -71,29 +86,49 @@ map_spei <- tm_shape(trend_spei*10) +
   tm_borders(col='white') +
   tm_shape(chl_b) + 
   tm_borders(col = 'black') +
-  tm_facets() +
+  tm_facets(nrow = 1) +
   tm_layout(panel.labels = paste0('SPEI-',c(1,3,6,12,24,36)))
 tmap_save(map_spei,'output/figs/trend_raster_SPEI_1981-2023.png',asp=.2)
 
-trend_EDDI <- rast('/mnt/md0/raster_procesada/analysis/trends/trend_EDDI_1981-2023.tif')
-# names(trend_EDDI) <- paste0('zcNDVI-',c(1,3,6,12,24,36))
-# writeRaster(trend_EDDI,'/mnt/md0/raster_procesada/analysis/trends/trend_EDDI_1981-2023_2.tif',overwrite = TRUE)
+## EDDI
+files <- dir_ls(dir,regexp = 'mann.*EDDI.*tif$')
+scales <- str_extract(basename(files),'-.*\\.') |> str_remove('-') |> str_remove('\\.')
 
-map_EDDI <- tm_shape(trend_EDDI*10) + 
+trend_eddi <- rast(files)
+trend_eddi <- app(trend_eddi,\(x){
+  i <- seq(1,12,2)
+  x[i]*x[i+1]
+})
+
+ind_ord <- scales |> as.numeric() |> order()
+trend_eddi <- subset(trend_eddi,ind_ord)
+names(trend_eddi) <- paste('EDDI',scales,sep ='-')
+
+map_EDDI <- tm_shape(trend_eddi*10) + 
   tm_raster(palette = 'inferno',midpoint = 0,title = 'Trend EDDI \n (per decade)',style = 'kmeans') +
   tm_shape(macro) + 
   tm_borders(col='white') +
   tm_shape(chl_b) + 
   tm_borders(col = 'black') +
-  tm_facets() +
+  tm_facets(nrow = 1) +
   tm_layout(panel.labels = paste0('EDDI-',c(1,3,6,12,24,36)))
 tmap_save(map_EDDI,'output/figs/trend_raster_EDDI_1981-2023.png',asp=.2)
 
-trend_zcSM <- rast('/mnt/md0/raster_procesada/analysis/trends/trend_zcSM_1981-2023.tif')
-# names(trend_zcSM) <- paste0('zcNDVI-',c(1,3,6,12,24,36))
-# writeRaster(trend_zcSM,'/mnt/md0/raster_procesada/analysis/trends/trend_zcSM_1981-2023_2.tif',overwrite = TRUE)
+## zcSM
+files <- dir_ls(dir,regexp = 'mann.*zcSM.*tif$')
+scales <- str_extract(basename(files),'-.*\\.') |> str_remove('-') |> str_remove('\\.')
 
-map_zcSM <- tm_shape(trend_zcSM*10) + 
+trend_zcsm <- rast(files)
+trend_zcsm <- app(trend_zcsm,\(x){
+  i <- seq(1,12,2)
+  x[i]*x[i+1]
+})
+
+ind_ord <- scales |> as.numeric() |> order()
+trend_zcsm <- subset(trend_zcsm,ind_ord)
+names(trend_zcsm) <- paste('zcSM',scales,sep ='-')
+
+map_zcSM <- tm_shape(trend_zcsm*10) + 
   tm_raster(palette = '-inferno',midpoint = 0,title = 'Trend zcSM \n (per decade)') +
   tm_shape(macro) + 
   tm_borders(col='white') +
@@ -103,21 +138,28 @@ map_zcSM <- tm_shape(trend_zcSM*10) +
   tm_layout(panel.labels = paste0('zcSM-',c(1,3,6,12,24,36)))
 tmap_save(map_zcSM,'output/figs/trend_raster_zcSM_1981-2023.png',asp=.2)
 
-trend_zcNDVI <- rast('/mnt/md0/raster_procesada/analysis/trends/trend_zcNDVI_2001-2023.tif') 
-ext <- ext(c(-75.6950024449548, -66.9939929163733, -55.6620008267854, -17.5609987459685)) 
-ext <- project(ext,from="EPSG:4326",to="EPSG:32719")
-trend_zcNDVI <- crop(trend_zcNDVI,ext)
+## zcNDVI
+files <- dir_ls(dir,regexp = 'mann.*zcNDVI.*tif$')
+scales <- str_extract(basename(files),'-.*\\.') |> str_remove('-') |> str_remove('\\.')
 
-# names(trend_zcSM) <- paste0('zcNDVI-',c(1,3,6,12,24,36))
-# writeRaster(trend_zcSM,'/mnt/md0/raster_procesada/analysis/trends/trend_zcSM_1981-2023_2.tif',overwrite = TRUE)
+trend_zcndvi <- rast(files)
+trend_zcndvi <- app(trend_zcndvi,\(x){
+  i <- seq(1,2,2)
+  x[i]*x[i+1]
+})
 
-map_zcNDVI <- tm_shape(trend_zcNDVI[[3]]) + 
+ind_ord <- scales |> as.numeric() |> order()
+trend_zcndvi <- subset(trend_zcndvi,ind_ord)
+names(trend_zcndvi) <- paste('zcNDVI',scales,sep ='-')
+trend_zcndvi <- mask(trend_zcndvi,st_transform(macro,crs(trend_zcndvi)))
+trend_zcndvi <- trim(trend_zcndvi) 
+map_zcNDVI <- tm_shape(trend_zcndvi) + 
   tm_raster(palette = 'RdYlGn',midpoint = 0,title = 'Trend zcNDVI \n (per year)',style = 'kmeans') +
   tm_shape(macro) + 
   tm_borders(col='white') +
   tm_shape(chl_b) + 
   tm_borders(col='black') +
-  #tm_facets() +
+  tm_facets(nrow = 1) +
   tm_layout(panel.labels = paste0('zcNDVI-',6),legend.outside = TRUE)
 tmap_save(map_zcNDVI,'output/figs/trend_raster_zcNDVI6_2001-2023.png')
 
