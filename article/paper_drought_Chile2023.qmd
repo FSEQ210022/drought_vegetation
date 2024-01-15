@@ -1,5 +1,5 @@
 ---
-title: Assessment of drought impact over land cover in continental Chile by the analysis of water supply and demand from ERA5-Land and MODIS
+title: Drought indices of water demand and supply, soil moisture, vegetation, and its impact on LULCC in continental Chile
 #subtitle: A Short Subtitle
 author:
   - name: Francisco Zambrano
@@ -45,18 +45,22 @@ keywords:
 date: last-modified
 bibliography: references.bib
 keep-tex: false
+include-before-body:
+  - text: |
+      \captionsetup{justification=raggedright,singlelinecheck=false}
 format:
   elsevier-pdf:
     keep-tex: true
     journal:
       name: Journal Name
       formatting: preprint
+      layout: onecolumn
       model: 3p
       cite-style: number
       natbiboptions: numbers
     include-in-header: 
-      text: '\usepackage{lineno}\linenumbers'
-      #cite-style: super
+      text: '\usepackage{lineno}\linenumbers
+             \usepackage{multirow}'
 ---
 
 # Introduction
@@ -75,7 +79,7 @@ In this research, we present the raster dataset DDS4Chl, which provides climate 
 
 # Study area
 
-Continetal Chile has a diverse climate condition from north to south and east to west [@Aceituno2021] (@fig-studyArea), which determines its great ecosystem diversity (@fig-LCprop). The Andes Mountains are a main factor in latitudinal variation [@Garreaud2009]. To describe the climate and ecosystem of Chile, we use the Koppen-Geiger release by @Beck2023 and the landcover type persistance of 80% of times for 2001–2022, from the IGBP classification scheme [@Friedl2019]. "Norte Grande" and "Norte Chico" predominate in an arid desert climate with hot (Bwh) and cold (Bwk) temperatures. At the south of "Norte Chico," the climate changes to an arid steppe with cold temperatures (Bsk). Mainly, the land is barren, with a minor surface of vegetation types such as shrubland and grassland. In the zones "Centro" and the north half of "Sur," the main climate is Mediterranean, with warmer to hot summers (Csa and Csb). In "Centro," there is a major proportion (~50%) of chilean matorral (shrubland and savanna), followed by grassland (~16%), forest (8%), and croplands (5%). The south part of "Centro" and the north part of "Austral" are dominated by an Oceanic climate (Cfb). Those zones are high in forest and grassland. The southern part of the country has a tundra climate, and in Patagonia, it is a cold semi-arid area with an extended surface of grassland.
+Continetal Chile has a diverse climate condition from north to south and east to west [@Aceituno2021] (@fig-studyArea), which determines its great ecosystem diversity (@fig-LCprop). The Andes Mountains are a main factor in latitudinal variation [@Garreaud2009]. To describe the climate and ecosystem of Chile, we use the Koppen-Geiger release by @Beck2023 and the landcover type persistance of 80% of times for 2001–2022, from the IGBP classification scheme [@Friedl2019] (see @sec-methods_lulc). "Norte Grande" and "Norte Chico" predominate in an arid desert climate with hot (Bwh) and cold (Bwk) temperatures. At the south of "Norte Chico," the climate changes to an arid steppe with cold temperatures (Bsk). Mainly, the land is barren, with a minor surface of vegetation types such as shrubland and grassland. In the zones "Centro" and the north half of "Sur," the main climate is Mediterranean, with warmer to hot summers (Csa and Csb). In "Centro," there is a major proportion (~50%) of chilean matorral (shrubland and savanna), followed by grassland (~16%), forest (8%), and croplands (5%). The south part of "Centro" and the north part of "Austral" are dominated by an Oceanic climate (Cfb). Those zones are high in forest and grassland. The southern part of the country has a tundra climate, and in Patagonia, it is a cold semi-arid area with an extended surface of grassland.
 
 ```{r fig-studyArea}
 #| echo: false
@@ -91,33 +95,100 @@ knitr::include_graphics("../output/figs/map_study_con_landcover.png")
 
 ###	Earth observation data
 
-For water supply and demand variabes, we used ERA5-Land [@MunozSabater2021], a reanalys dataset wich provides the evolution of land variables since 1950. It has a spatial resolution of 0.1°, hourly frequency and global coverage. We selected the variables for total precipitation, 2 meters temperature, and volumetric soil water layers between 0 and 100cm of depth (layer 1 to layer 3).
+For water supply and demand variabes, we used ERA5-Land [@MunozSabater2021], a reanalys dataset wich provides the evolution of land variables since 1950. It has a spatial resolution of 0.1°, hourly frequency and global coverage. We selected the variables for total precipitation, 2 meters temperature maximum and minimum, and volumetric soil water layers between 0 and 100cm of depth (layer 1 to layer 3).
 
 To derive a proxy of vegetation productivity, we used the product MOD13A3 collection 6.1 from MODIS [@Didan2015]. It provides vegetation indices (NDVI and EVI) at 1km of spatial resolution and monthly frequency.
 
+```{=latex}
+\begin{table}[!ht]
+\caption{Description of the earth observation data used }
+\label{tab-desEOD}
+\small
+\centering
+\begin{tabular}{p{0.13\textwidth}cp{0.3\textwidth}p{0.095\textwidth}ccc}
+\hline
+\multirow{1}{*}{\centering Product} & Sub-product & Variable & Spatial Resolution  & Period & Units & Short Name \\ 
+\hline
+\multirow{4}{*}{ERA5-Land} & ~ & Precipitation & \multirow{4}{*}{~0.1°} & \multirow{4}{*}{1981-2023} & mm & P \\ 
+         &  & Maximum temperature & ~ & & $°C$ & $T_{max}$ \\ 
+         &  & Minimum temperature & ~ & & $°C$ & $T_{min}$ \\ 
+         &  & Volumetric Soil Water Content at 1m & ~ & & $m3/m3$ & SM \\ 
+ERA5-Land* & & Atmospheric Evaporative Demand & 0.1° & 1981-2023 & mm & AED \\
+        \multirow{2}{*}{MODIS} & MOD13A3.061 & Normalized Difference Vegetation Index & \multirow{2}{*}{~1 km} & 2000-2023 & ~ & NDVI \\ 
+         & MCD12Q1.061 & Landcover IGBP scheme & & 2001-2022 & ~ & Landcover \\ 
+\hline
+\end{tabular}
+{\raggedright *Derived from ERA5-Land with Eq. \ref{eq-AED}. \par}
+\end{table}
+```
+
 ###	in-situ data
 
-## Trend of drought indices for water demand/supply, soil moisture, and vegetation productivity
+## Software and packages used
 
-##	Impact fof water supply and demand, and soil moisture in vegetation productivity within landcover types
+For the downloading, processing, and analysis of the spatio-temporal data, we used the open source software for statistical computing and graphics, `R` [@R2023]. For downloading ERA5-Land, we used the `{ecmwfr}` package [@Hufkens2019]. For processing raster data, we used `{terra}` [@Hijmans2023] and `{stars}` [@Pebesma2023]. For managing vectorial data, we used `{sf}` [@Pebesma2018]. For the calculation of AED, we used `{SPEI}` [@Bergueria2023].
 
-##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture
+## Drought Indices
+
+We derived the drought indices of water supply and demand, soil moisture from the ERA5-Land dataset, and vegetation from the MODIS product, all at monthly frequency.
+
+For the indices EDDI and SPEI that use water demand, first we have to calculate the AED. For this, we used the method of Hargreaves [@Hargreaves1994]:
+
+$$AED = 0.0023\cdot Ra\cdot (T+17.8)\cdot (T_{max}-T_{min})^{0.5}$$ {#eq-AED}
+
+where $Ra$ $(MJ\,m^2\, day^{-1})$ is extraterrestrial radiation;  $T$, $T_{max}$, and $T_{min}$ are mean, maximum, and minimum temperature $(°C)$. We calculate the centroid coordinates per pixel and use the latitude to estimate $Ra$.
+
+To evaluate water demand, we chose the $EDDI$ [@Hobbins2016; @McEvoy2016] index, which uses the $AED$. For supply, we used the index recommended by the World Meteorological Organization (WMO) for monitoring drought, the SPI [@Mckee1993]. We calculated the SPEI, which used a balance between $P$ and $AED$, in this case, an auxiliary variable $D = P-AED$ is used. In this study, we propose the $zcSM$ (standardized anomaly of acumulated soil moisture at 1 m), which uses SM. Finally, for the proxy of productivity, $zcNDVI$, we used the NDVI. Before using the NDVI, it was smoothed following the procedure described in @Zambrano2018 and @Zambrano2016.
+
+All the indices are multi-scalar and were calculated for time scales of 1, 3, 6, 12, 24, and 36 months, except for zcNDVI, which was calculated for 6 months. The goal is to be able to evaluate short- and long-term droughts in water demand and supply and soil moisture. This is particularly important for central Chile because it has suffered from a prolonged decrease in precipitation for more than 12 years [@Garreaud2020;@Boisier2018;@Garreaud2017].
+
+To calculate the drought indices, first we must calculate the accumulation of the variable. In this case, for generalization purposes, we will use $V$, referring to $P$, $AED$, $D$, $NDVI$, and $SM$ (Table \ref{tab-desEOD}). We cumulated each $V$ over the time series of $n$ values, and for the time scales $s$:
+
+$$A_{si} = \sum_{i=n-s-i+2}^{n-i+1} V_i\,\, \forall\, i\geq n-s+1  $$ {#eq-sumvar}
+
+It corresponds to a moving window (convolution) that sums the variable for $s$ starting for the last month $n$ until the month, which could sum for $s$ months (n-s+1). Once the variable is cumulated over time for the scale $s$, we used a nonparametric approach following @Hobbins2016 to derive the drought indices. Thus, the empirically derived probabilities are obtained through an inverse normal approximation [@Abramowitz1968]. Then, we used the empirical Tukey plotting position [@Wilks2011] over $A_i$ to derive the $P(A_i)$ probabilities across a period of interest:
+
+$$P(A_i) = \frac{i-0.33}{n+0.33'}$$ {#eq-probPai}
+
+The drought indices $SPI$, $SPEI$, $EDDI$, $zcSM$, and $zcNDVI$ are obtained following the inverse normal approximation:
+
+$$DI(A_i) = W - \frac{C_0+C_1\cdot W + c_2 \cdot W^2}{1+d_1\cdot W +d_2\cdot W^2 +d_3\cdot W^3}$$ {#eq-DI}
+
+$DI$ is referring to the drought index calculated for the variable $V$. The values for the constats are: $C_0 = 2.515517$, $C_1 = 0.802853$, $C_2 = 0.010328$, $d_1 = 1.432788$, $d_2 = 0.189269$, and $d3 = 0.001308$. For $P(A) \leq 0.5$, W=$\sqrt{-2\cdot ln(P(A_i))}$ , and for $P(A_i) > 0.5$, replace $P(A_i)$ with $1-P(A_i)$ and reverse the sign of $DI(A_i)$.
+
+## Trend of drought indices for water demand and supply, soil moisture, and vegetation productivity
+
+To estimate if there are significant positive or negative trends for the drought indices, we used the non-parametric test of Mann-Kendall [@Kendall1975]. To determine the magnitude of the trend, we used Sen's slope [@Sen1968]. One of the advantages of applying this methodology is that the Sen's slope is not affected by outliers as regular regression does. We applied both to the five indices at the six time scales from 1981 to 2023 and indices SPI, EDDI, SPEI, and zcSM, and from 2000 to 2023 in the case of zcNDVI. 
+
+@Vicente-Serrano2021 made a global analysis of the drought's severity trend using SPI, SPEI, and the Standardized Evapotranspiration Deficit Index (SEDI; @Vicente-Serrano2018) to evaluate AED. They indicate that the increase in hydrological drought has been due to anthropogenic effects rather than climate change. This is because the global increase in AED does not explain the change in the spatial pattern of hydrological drought. Also, they state that _"the increase in hydrological droughts has been primarily observed in regions with high water demand and land cover change"_. We will contrast this hypothesis with what is occurring in Chile. To achieve this, we will use the landcover class type that remain more than 80% of types for 2001-2022, and use this as a mask, where there are low changes, to evaluate the trend on zcNDVI.
+
+##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture {#sec-methods_lulc}
 
 ```{r fig-LCprop}
 #| echo: false
 #| fig-pos: "!ht"
-#| fig-cap: "Proportion of land cover class from the persistent land cover for 2001-2021 (>80%) per macrozone"
+#| fig-cap: "Proportion of land cover class from the persistent land cover for 2001-2022 (>80%) per macrozone"
 #| out-width: "\\textwidth"
 knitr::include_graphics("../output/figs/LC_pers80_per_macrozone.png")
 ```
 
+To analyze the LULCC, we use the IGBP scheme from the MCD12Q1 collection 6.1 from MODIS. This product has a yearly frequency from 2011 to 2022. The IGBP defines 17 classes; from these, we regrouped into ten macroclasses for forest, schrublands, savannas, grasslands, wetlands, croplands, urban, snow and ice, barren, and water bodies. Then, we calculated the surface ocuppied per landcover class into each macrozone ("Norte Grande" to "Austral") per year. To determine the trend of change we used the Sen' slope [@Sen1968] over the surface per year. 
 
+We calculated a raster mask considering the classes that remains more than 80% of years (2001-2022), which allow us to identify the areas with no landcover change for the macroclasses. @fig-LCprop shows the summary of proportion of surface per landcover class and macrozone, derived from the mask over continental Chile. 
 
-##	Total water storage and drought indices
+We will explore if the trend in landcover classess is associated to trend of the drought indices. For this we will use the regularizations techniques of Lasso [@Tibshirani2010] and Ridge regressión [@Hoerl1970]. Also, we will test random forest for this purpose [@Ho1995].
 
-Terrestrial Water Storage (TWS) is defined as the total amount of water stored on land that includes any natural or artificial water bodies, such as groundwater, soil moisture, rivers, lakes, snowpack, ice, and biomass water [@Humphrey2023; @Deng2023]. TWS changes evidence the effects of multiple water fluxes on the hydrological cycle [@Deng2023]. These are reflected in the temporal variation of observations of the Earth's gravitational field [@Abolafia2021; @Sabzehee2023] and, in recent decades, the twin Gravity Recovery and Climate Experiment (GRACE) satellites and their Follow-On mission (GRACE-FO) have provided valuable results on globally distributed TWS anomalies [@Tapley2019; @Ferreira2023]. The GRACE mission was launched in March 2002 and was operational until October 2017 [@Ramjeawon2022]. Then its GRACE Follow-On successor was launched in May 2018 [@Landerer2020; @Yin2022]. The information provided by these satellites is used to construct monthly maps of the Earth's average gravity field, providing details of the movement of water masses or water mass anomaly estimates relative to the long-term average gravity field [@Humphrey2023; @Wahr2004].
+##	Impact for water supply and demand, and soil moisture in vegetation productivity within landcover types
 
-In this study, RL06.1_V3 GRACE mascon (mass concentration) monthly solutions were used, which are provided by the Jet Propulsion Laboratory (JPL-M, https://grace.jpl.nasa.gov). Each GRACE Tellus monthly grid at 0.5 degrees represents the deviation of surface mass for that month relative to a reference time average (2004-2009 baseline), which is subtracted from all other monthly grids to provide terrestrial water storage anomalies (TWSA) [@Ramjeawon2022; @Yin2022]. This JPL-M version of the data employs a Coastal Resolution Improvement (CRI) filter that reduces signal leakage errors across coastlines [@NASA2019; @Wiese2016]. Although the mascon solutions greatly reduced leakage errors, a gain factor, which is used to enhance the spatial resolution, was applied to the dataset as recommended for hydrological studies [@Ramjeawon2022; @Yin2022]. The water storage and height anomalies are given in Equivalent Water Height or Thickness units (EWH, cm) [@Sabzehee2023], and their temporal resolution monthly is from April 2002 to May 2023.
+The aim of this section is to analyze the drought indices of water demand and supply and soil moisture against vegetation to address: i) if short- or long-term time scales are most important in impacting vegetation through Chile; and ii) the strength of the correlation for the variable and the time scale. Then, we will summarize for each landcover class and macrozone. Thus, we will be able to advance in understanding how climate is affecting vegetation, considering the impact on the five macroclasses: forest, cropland, grassland, savanna, and shrubland.
+
+To assess how water demand and supply and soil moisture are related to vegetation productivity (zcNDVI), we analyze the linear correlation between the indices SPI, SPEI, EDDI, and zcSM for 1, 3, 6, 12, 24, and 36-month time scales against zcNDVI. We followed a similar approach to that used by @Meroni2016 when using the SPI for meteorological drought against the cumulative FAPAR (Fraction of Absorbed Photosynthetically Active Radiation) as a proxy for vegetation productivity. We made a pixel-to-pixel linear correlation analysis per index. First, we calculate the Pearson coefficient of correlation for the six time scales and let the time scale that reaches the maximum correlation be significant (p < 0.05). Then, we extracted the Pearson correlation value corresponding to the time scales that reached the maximum value. Thus, we derived two raster maps per index, the first with the time scales and the second with the correlation value.
+
+<!-- ##	Total water storage and drought indices -->
+
+<!-- Terrestrial Water Storage (TWS) is defined as the total amount of water stored on land that includes any natural or artificial water bodies, such as groundwater, soil moisture, rivers, lakes, snowpack, ice, and biomass water [@Humphrey2023; @Deng2023]. TWS changes evidence the effects of multiple water fluxes on the hydrological cycle [@Deng2023]. These are reflected in the temporal variation of observations of the Earth's gravitational field [@Abolafia2021; @Sabzehee2023] and, in recent decades, the twin Gravity Recovery and Climate Experiment (GRACE) satellites and their Follow-On mission (GRACE-FO) have provided valuable results on globally distributed TWS anomalies [@Tapley2019; @Ferreira2023]. The GRACE mission was launched in March 2002 and was operational until October 2017 [@Ramjeawon2022]. Then its GRACE Follow-On successor was launched in May 2018 [@Landerer2020; @Yin2022]. The information provided by these satellites is used to construct monthly maps of the Earth's average gravity field, providing details of the movement of water masses or water mass anomaly estimates relative to the long-term average gravity field [@Humphrey2023; @Wahr2004]. -->
+
+<!-- In this study, RL06.1_V3 GRACE mascon (mass concentration) monthly solutions were used, which are provided by the Jet Propulsion Laboratory (JPL-M, https://grace.jpl.nasa.gov). Each GRACE Tellus monthly grid at 0.5 degrees represents the deviation of surface mass for that month relative to a reference time average (2004-2009 baseline), which is subtracted from all other monthly grids to provide terrestrial water storage anomalies (TWSA) [@Ramjeawon2022; @Yin2022]. This JPL-M version of the data employs a Coastal Resolution Improvement (CRI) filter that reduces signal leakage errors across coastlines [@NASA2019; @Wiese2016]. Although the mascon solutions greatly reduced leakage errors, a gain factor, which is used to enhance the spatial resolution, was applied to the dataset as recommended for hydrological studies [@Ramjeawon2022; @Yin2022]. The water storage and height anomalies are given in Equivalent Water Height or Thickness units (EWH, cm) [@Sabzehee2023], and their temporal resolution monthly is from April 2002 to May 2023. -->
 
 ## Validation of ERA5-Land variables
 

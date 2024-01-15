@@ -1,5 +1,5 @@
 ---
-title: "DDS4Chl: A dataset of drought indices of water demand and supply and its impact on vegetation for continental Chile"
+title: "Assessment of drought in continental Chile for 1981–2023 by climate variables of water supply and demand, soil moisture, and vegetation"
 format:
   ieee-pdf:
     keep-tex: false  
@@ -33,7 +33,7 @@ note: "Template created June 23, 2023; revised `r format(Sys.Date(),format='%B %
 #keywords: [IEEE, IEEEtran, journal, Quarto, Pandoc, template]
 #funding: 
 funding: 
-  statement: "The research was funded by the National Research and Development Agency of Chile (ANID) and the projects FSEQ210022 and 11190360."
+  statement: "The research was funded by the National Research and Development Agency of Chile (ANID) and the projects FSEQ210022, Fondecyt de Iniciacipon 11190360 and Fondecyt de Postdoctorado 3230678"
 pageheader:
   left: IGARSS, January 2024
   right: 'D. Folio:  A Sample Article Using quarto-ieee'
@@ -43,10 +43,10 @@ date: 2024-01-05
 
 # **Abstract** {-}
 
-A persistent drought is impacting Chile. It affects the hydrological system and vegetation development. Research studies have focused on the central part of the country. This is due to a persistent period of water scarcity. This scarcity has been found to be a megadrought. This megadrought was defined by the Standardized Precipitation Index (SPI) of twelve months in December. The SPI only considers precipitation as a drought indicator. It does not account for atmospheric evaporative demand (AED), soil moisture, or their combined vegetation productivity. We present a developing database (DDS4Chl) of drought indices for continental Chile since 1981. The indices measure water demand, supply and its impact on vegetation. We derived the SPI for water demand. We also derived the Evaporative Demand Drought Index (EDDI) for water supply. The Standardized Precipitation Evapotranspiration Index (SPEI) shows the combined effect of AED and precipitation. We estimate the standardized anomaly of cumulative soil moisture at one meter (zcSM) and the standardized anomaly of cumulative NDVI (zcNDVI) to show the impact of water demand and supply. Finally, we present the historical linear trend of the drought indices in continental Chile. Also we calculated the temporal correlation between the indices of water supply, water demand, and soil moisture with the zcNDVI (proxy of vegetation productivity). The dought index for soil moisture (zcSM) derived from ERA5-Land showed to be the best predictor of vegetation productivity around continental Chile.
+A persistent drought is impacting Chile. It affects the hydrological system and vegetation development. Research studies have focused on the central part of the country. This is due to a persistent period of water scarcity. This scarcity has been found to be a megadrought. This megadrought was defined by the Standardized Precipitation Index (SPI) of twelve months in December. The SPI only considers precipitation as a drought indicator. It does not account for atmospheric evaporative demand (AED), soil moisture, or their combined vegetation productivity. We present a developing database (DDS4Chl) of drought indices for continental Chile since 1981. The indices measure water demand, supply and its impact on vegetation. We derived the SPI for water demand. We also derived the Evaporative Demand Drought Index (EDDI) for water supply. The Standardized Precipitation Evapotranspiration Index (SPEI) shows the combined effect of AED and precipitation. We estimate the standardized anomaly of cumulative soil moisture at one meter (zcSM) and the standardized anomaly of cumulative NDVI (zcNDVI) to show the impact of water demand and supply. We present the historical linear trend of the drought indices in continental Chile. Also we calculated the temporal correlation between the indices of water supply and demand, and soil moisture with the zcNDVI (proxy of vegetation productivity). The dought index for soil moisture acummulated at 12 months (zcSM-12) showed to be the best predictor of vegetation productivity around continental Chile.
 <br>
 
-**Index Terms—** drought, Chile, water supply, water demand
+**Index Terms—** drought, Chile, water supply, water demand, soil moisture
 
 # **Introduction**
 
@@ -56,26 +56,37 @@ Chile has been facing a persistent rainfall deficit for more than a decade [@Gar
 
 To evaluate meteorological drought (i.e., water supply), the World Meteorological Organization (WMO; @WMO2012;@Hayes2011) recommends the Standardized Precipitation Index (SPI; @McKee1993), a multiscalar drought index that allows to monitor precipitation deficits from short- to long-term. Following the same approach, @Vicente-Serrano2010 incorporates into the SPI the effect of temperature through the use of potential evapotranspiration, thus proposing the SPEI (Standardized Precipitation Evapotranspiration Index). Similarly, to evaluate solely the evaporative demand driven by temperature, @Hobbins2016 and @McEvoy2016 came up with the Evaporative Demand Drought Index (EDDI). To assess the impact of water supply and demand on vegetation, Zambrano (2018) proposed the zcNDVI. This is a standardized anomaly of the cumulative Normalized Difference Vegetation Index (NDVI). It's similar to the SPI, SPEI, and EDDI. The zcNDVI could be accumulated over the growing season or any period (e.g., months). It results in a multiscalar drought index. Several drought indices exist for soil moisture. These include the Soil Moisture Deficit Index (SDMI), a normalized index [@Narasimhan2005], and the Soil Moisture Agricultural Drought Index (SMADI) [@Souza2021]. SMADI is a normalized index that uses vegetation, land surface temperature, and a vegetation condition index (VCI, [@Kogan1995]).
 
+We evaluated the trend of the drought indices SPI, SPEI, EDDI, and zcSM; and their relation to vegetation productivity. Our goal is to assess the impact on vegetation of the climate variables of water demand and supply and soil moisture.
+
+```{r fig-studyArea}
+#| fig-pos: "!ht"
+#| fig-env: "figure*"
+#| fig-cap: '(a) Chile with the Koppen-Geiger climate classes and the five macrozones "Norte Grande", "Norte Chico",  "Centro", "Sur", and "Austral". (b) Topography reference map. (c) Land cover classes for 2022. (d) Persistent land cover classes (> 80%) for 2001-2022'
+#| out-width: "\\textwidth"
+
+knitr::include_graphics("../output/figs/map_study_con_landcover.png")
+```
 
 # **Methods**
 
 ## Study area
 
-Continental Chile has at least seven major climatic types. They range from low desert in the north to alpine tundra and glaciers in the east and southeast. The south has an Oceanic climate and central Chile has a Mediterranean climate [@kottek2006]. For the analysis, continental Chile was also divided into five zones according to a latitudinal gradient: "Norte Grande", "Norte Chico",  "Zona Central", "Zona Sur", and "Zona Austral". (@fig-studyArea)
+Continental Chile has at least seven major climatic types. They range from low desert in the north to alpine tundra and glaciers in the east and southeast. The south has an Oceanic climate and central Chile has a Mediterranean climate [@Beck2023]. For the analysis, continental Chile was also divided into five zones according to a latitudinal gradient: "Norte Grande", "Norte Chico",  "Zona Central", "Zona Sur", and "Zona Asutral". (@fig-studyArea)
 
-```{r fig-studyArea}
+
+```{r fig-zcNDVI_var, out.extra='style="float:right; padding:10px"'}
 #| fig-pos: "!ht"
-#| fig-cap: "(a) Chile and the five zones 'norte grande', 'norte chico',  'zona central', 'zona sur', and 'zona austral'. (b) Topography reference map. (c) Land cover classes for 2021. (d) Persistent land cover classes (> 80%) for 2001-2021"
+#| fig-env: "figure*"
+#| fig-cap: "(a) Map of the linear trend of the index zcNDVI-6 for 2001–2023. Greener colors indicate a positive trend and an increase in vegetation development; reder colors correspond to a negative trend and a decrease in vegetation development. (b) Temporal variation of zcNDVI-6 aggregated at macrozone level within continental Chile. Each horizontal panel corresponds to a macrozone from 'Norte Grande' to 'Zona Asutral'."
 #| out-width: "\\textwidth"
-
-knitr::include_graphics("../output/figs/map_study_con_landcover.png")
+knitr::include_graphics("../output/figs/temporal_variation_zcNDVI6_macrozonas.png")
 ```
 
 ##	Data
 
 ###	Earth observation data
 
-For water supply and demand variabes, we used ERA5-Land [@Munoz2019], a reanalys dataset wich provides the evolution of land variables since 1950. It has a spatial resolution of 0.1°, hourly frequency and global coverage. We selected the variables for total precipitation, 2 meters temperature, and volumetric soil water layers between 0 and 100cm of depth (layer 1 to layer 3).
+For water supply and demand variabes, we used ERA5-Land [@MunozSabater2021], a reanalys dataset wich provides the evolution of land variables since 1950. It has a spatial resolution of 0.1°, hourly frequency and global coverage. We selected the variables for total precipitation, 2 meters temperature, and volumetric soil water layers between 0 and 100cm of depth (layer 1 to layer 3).
 
 To derive a proxy of vegetation productivity, we used the product MOD13A3 collection 6.1 from MODIS [@Didan2015]. It provides vegetation indices (NDVI and EVI) at 1km of spatial resolution and monthly frequency.
 
@@ -89,16 +100,10 @@ For all the pixels, we apply the following procedure: i) First, we calculated th
 
 # **Results**
 
-Regarding vegetation productivity, there is a negative trend on zcNDVI in the central part of the country ("norte chico" and "zona central") (@fig-zcNDVI_var). Indicating either a reduction of vegetation surface, biomass, or status. It reached its lowest values during the year 2020, mostly on the "zona central." There are other negative trends in small areas in "norte grande" and "zona asutral."
+Regarding vegetation productivity, there is a negative trend on zcNDVI in the central part of the country ("Norte Chico" and "Zona Central") (@fig-zcNDVI_var). Indicating either a reduction of vegetation surface, biomass, or status. It reached its lowest values during the year 2020, mostly on the "Zona Central." There are other negative trends in small areas in "Norte Grande" and "zona asutral."
 
-```{r fig-zcNDVI_var, out.extra='style="float:right; padding:10px"'}
-#| fig-pos: "!ht"
-#| fig-cap: "(a) Map of the linear trend of the index zcNDVI-6 for 2001–2023. Greener colors indicate a positive trend and an increase in vegetation development; reder colors correspond to a negative trend and a decrease in vegetation development. (b) Temporal variation of zcNDVI-6 aggregated at macrozone level within continental Chile. Each horizontal panel corresponds to a macrozone from 'norte grande' to 'zona austral'."
-#| out-width: "\\textwidth"
-knitr::include_graphics("../output/figs/temporal_variation_zcNDVI6_macrozonas.png")
-```
 
-Analyzing the water supply in the macrozones "norte chico," "central," and "sur," the SPI shows a decreasing trend that increases at longer time scales due to the prolonged reduction in precipitation. It reaches a trend of -0.056 (z-score) per decade (@fig-trendSPI) for time scales of 36 months. In the case of water demand, we analyze the EDDI. It shows a positive trend, caused by an increase in AED. The trend on EDDI reaches a maximum of 0.053 per decade in the macrozones "norte grande" and "norte chico" (@fig-trendEDDI). The behavior is similar to SPI, having close trends with opposite signs. Nevertheless, the spatial patterns are different. The maximum trend for SPI-36 is in "norte chico" and "zona central." For EDDI-36, the maximum trend is from "northe grande" to "zona central."
+Analyzing the water supply in the macrozones "Norte Chico," "central," and "sur," the SPI shows a decreasing trend that increases at longer time scales due to the prolonged reduction in precipitation. It reaches a trend of -0.056 (z-score) per decade (@fig-trendSPI) for time scales of 36 months. In the case of water demand, we analyze the EDDI. It shows a positive trend, caused by an increase in AED. The trend on EDDI reaches a maximum of 0.053 per decade in the macrozones "Norte Grande" and "Norte Chico" (@fig-trendEDDI). The behavior is similar to SPI, having close trends with opposite signs. Nevertheless, the spatial patterns are different. The maximum trend for SPI-36 is in "Norte Chico" and "Zona Central." For EDDI-36, the maximum trend is from "northe grande" to "Zona Central."
 
 ```{r fig-trendSPI}
 #| fig-pos: "!ht"
@@ -115,7 +120,7 @@ knitr::include_graphics("../output/figs/trend_raster_SPI_1981-2023.png")
 knitr::include_graphics("../output/figs/trend_raster_EDDI_1981-2023.png")
 ```
 
-The correlation between zcNDVI-6 and drought indices shows that time scales higher than six months are predominant over continental Chile in explaining vegetation variability (@fig-corTimeScale). Pearson correlations between 0.6 and 0.9 are concentrated in the "norte chico" and "zona central" for SPI and SPEI. Soil moisture reached a correlation of 0.6–0.9 that extended north and south with respect to SPI.
+The correlation between zcNDVI-6 and drought indices shows that time scales higher than six months are predominant over continental Chile in explaining vegetation variability (@fig-corTimeScale). Pearson correlations between 0.6 and 0.9 are concentrated in the "Norte Chico" and "Zona Central" for SPI and SPEI. Soil moisture reached a correlation of 0.6–0.9 that extended north and south with respect to SPI (@fig-corPerson).
 
 ```{r fig-corTimeScale}
 #| fig-pos: "!ht"
@@ -135,6 +140,6 @@ knitr::include_graphics("../output/figs/mapa_cor_r_indices_zcNDVI6.png")
 
 # **Conlusion**
 
-The vegetation productivity shows a high negative trend in the "norte chico" and "zona central" of continental Chile. This trend is in the primary case related to long-term precipitation decreases, which in the secondary case could be explained by the increase in AED. The dought index for soil moisture (zcSM) derived from ERA5-Land showed to be the best predictor of vegetation productivity around continental Chile.
+The vegetation productivity shows a high negative trend in the "Norte Chico" and "Zona Central" of continental Chile. This trend is in the primary case related to long-term precipitation decreases, which in the secondary case could be explained by the increase in AED. The dought index for soil moisture (zcSM) derived from ERA5-Land showed to be the best predictor of vegetation productivity around continental Chile.
 
 # **References**

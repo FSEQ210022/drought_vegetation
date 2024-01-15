@@ -24,8 +24,8 @@ igbpRecl <- classify(igbp,rcl=classes,include.lowest = TRUE)
 igbpRecl[igbpRecl == 0] <- NA
 
 zones <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
-  st_transform(32719)
-zones$macrozona <- c('norte grande','norte chico','austral','centro','sur')
+  st_transform(32719) |> 
+  mutate(macrozona = c('Norte Chico','Norte Grande','Austral','Centro','Sur'))
 
 data <- terra::extract(igbpRecl,zones)
 names(data) <- c('zone',2001:2022)
@@ -70,13 +70,13 @@ data3  |>
   theme_bw() +
   theme(axis.title.x = element_blank())
 
-#linear trend
-library(tidy)
-library(broom)
+#linear trend Mann-Kendall
+source('R/trend_func.R')
 
 data3 |> 
   ungroup() |>  
-  nest_by(zone,LC_type) |>  
-  summarize(trend  = as.numeric(tidy(lm(sup_km2~year,data))[2,2])) |> 
+  group_by(zone,LC_type) |>  
+  #summarize(trend  = as.numeric(tidy(lm(sup_km2~year,data))[2,2])) |> 
+  summarize(trend = trend_func(sup_km2,start = c(2001,1),end =c(2022,1),frecuency=1)[2]) |> 
   pivot_wider(names_from = 'LC_type',values_from=3) |> 
   saveRDS('data/processed_data/trends_landcover_2001-2022.rds')  

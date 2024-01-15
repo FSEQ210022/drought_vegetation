@@ -19,7 +19,8 @@ names(t) <- pal$Name
 lc <- rast('/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/IGBP80_reclassified.tif') |> 
   project('EPSG:4326')
 
-macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg')
+macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
+  dplyr::mutate(macrozona = c('Norte Chico','Norte Grande','Austral','Centro','Sur'))
 
 LC_data <- terra::extract(lc,macro)
 
@@ -32,8 +33,8 @@ attr(colors,'names') <- paleta$Name
 LC_data |> 
   mutate(LC_type = factor(lyr.1,levels=paleta$class,labels=paleta$Name),
          zone = factor(ID,levels=1:5,labels=macro$macrozona),
-         zone = fct_relevel(zone, "norte grande", "norte chico",
-                                           'zona central','zona sur')
+         zone = fct_relevel(zone, "Norte Grande", "Norte Chico",
+                            'Centro','Sur','Austral')
          ) |> 
   select(LC_type,zone) |> 
   na.omit() |>  
@@ -59,7 +60,7 @@ summ_data2 |>
   theme_bw() +
   #coord_flip() +
   theme(
-    plot.margin = margin(5, 0, 45, 0, "pt"),
+    plot.margin = margin(3, 3, 3, 3, "pt"),
     legend.position = 'bottom',
     #axis.text = element_blank(),
     #axis.text.x = element_text(vjust=10),
@@ -67,6 +68,7 @@ summ_data2 |>
     #panel.grid = element_blank(),
     #panel.grid.minor = element_blank(),
     #plot.margin = unit(rep(-1,4), "cm")      # Adjust the margin to make in sort labels are not truncated!
-  ) -> plotZone
-ggsave('output/figs/LC_pers80_per_macrozone.png',width=15,height = 10,scale=.5)  
+  ) + 
+  guides(fill = guide_legend(nrow = 1)) -> plotZone
+ggsave('output/figs/LC_pers80_per_macrozone.png',width=7,height = 4,scale=1.5)  
 

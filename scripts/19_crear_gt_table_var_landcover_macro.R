@@ -4,8 +4,7 @@ library(tidyverse)
 library(kableExtra)
 
 dataLCV_ts <- readRDS('data/processed_data/timeseries_landcover_zone_LCclass_2001-2022.rds')  
-dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2022.rds') |> 
-  mutate(zone = fct_recode(zone,'norte grande' = 'big north' , 'norte chico' = 'little north','centro' = 'central', 'sur' = 'south' ,'austral' = 'austral'))
+dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2022.rds') 
 
 dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Cropland') %>% 
   map(function(class){
@@ -24,7 +23,7 @@ dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Crop
 
 dataLCV_trend |> 
   pivot_longer(-zone,names_to = 'cropland_class') |> 
-  write_rds('data/processed_data/trend_landcover_change_classXzone_2001_2021.rds')
+  write_rds('data/processed_data/trend_landcover_change_classXzone_2001_2022.rds')
 
 dataLCV_trend  |> 
   kbl(booktabs = TRUE,digits = 1,align ='r','latex',position='!ht',
@@ -51,7 +50,7 @@ dataLCV_trend  |>
 
 data_gt <- dataLCV_ts |> 
   ungroup() |> 
-  mutate(zone = fct_relevel(zone,c('norte grande','norte chico','centro', 'sur','austral'))) |> 
+  #mutate(zone = fct_relevel(zone,c('norte grande','norte chico','centro', 'sur','austral'))) |> 
   dplyr::group_by(zone,LC_type)  |> 
   # must end up with list of data for each row in the input dataframe
   dplyr::summarize(lc_data = list(prop), .groups = "drop") |> 
@@ -65,8 +64,8 @@ data_gt$Forest.x[c(1,2)] <- NA
 data_gt$Forest.y[c(1,2)] <- NA
 data_gt$Cropland.x[c(1,2,5)] <- NA
 data_gt$Cropland.y[c(1,2,5)] <- NA
-data_gt$Shrubland.x[5] <- NA
-data_gt$Shrubland.y[5] <- NA
+data_gt$Shrubland.x[4] <- NA
+data_gt$Shrubland.y[4] <- NA
 
 data_gt |> 
   gt() |> 

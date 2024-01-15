@@ -12,7 +12,16 @@ macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |>
 ## Time series of zcNDVI for macrozones
 dir <- '/mnt/md0/raster_procesada/MODIS_derived/zcNDVI/zcNDVI-6'
 
+#persistencia de landcover
+lc_pers <- rast('/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/IGBP80_reclassified.tif') 
+#nieve permanente
+lc_pers[lc_pers == 8] <- NA
+
+#aplicar mascara de landcover permanenete menos nieve permanenete  
 zcndvi <- rast(dir_ls(dir,regexp = 'tif$'))
+lc_pers <- resample(lc_pers,zcndvi,method = 'near')
+zcndvi <- mask(zcndvi,lc_pers)
+
 macro_mask <- rasterize(st_transform(macro,32719),zcndvi[[1]],field ='macrozona')
 
 df_zcndvi <- zonal(zcndvi,macro_mask,fun = 'mean',na.rm = TRUE)
@@ -153,15 +162,21 @@ trend_zcndvi <- subset(trend_zcndvi,ind_ord)
 names(trend_zcndvi) <- paste('zcNDVI',scales,sep ='-')
 trend_zcndvi <- mask(trend_zcndvi,st_transform(macro,crs(trend_zcndvi)))
 trend_zcndvi <- trim(trend_zcndvi) 
+
+#aplicar mascara de landcover persistente
+lc_pers <- crop(lc_pers,trend_zcndvi)
+trend_zcndvi <- mask(trend_zcndvi,lc_pers)
+
 map_zcNDVI <- tm_shape(trend_zcndvi) + 
-  tm_raster(palette = 'RdYlGn',midpoint = 0,title = 'Trend zcNDVI \n (per year)',style = 'kmeans') +
+  tm_raster(palette = 'RdYlGn',midpoint = 0,title = 'Trend zcNDVI \n (per year)',style = 'kmeans',colorNA = 'grey',textNA = 'Type Change' ) +
   tm_shape(macro) + 
-  tm_borders(col='white') +
+  tm_borders(col='black') +
   tm_shape(chl_b) + 
   tm_borders(col='black') +
-  tm_facets(nrow = 1) +
-  tm_layout(panel.labels = paste0('zcNDVI-',6),legend.outside = TRUE)
-tmap_save(map_zcNDVI,'output/figs/trend_raster_zcNDVI6_2001-2023.png')
+  #tm_facets(nrow = 1) +
+  tm_layout(legend.outside = TRUE,
+            legend.text.size = .5)
+tmap_save(map_zcNDVI,'output/figs/trend_raster_zcNDVI6_2001-2023.png',scale=1)
 
 
 mapa1 <- tmap_arrange(map_zcNDVI,map_spi,widths = c(.2,.8))

@@ -1,6 +1,6 @@
-trend_func <- function(x,start = c(1981,1),end = c(2023,11)){
+trend_func <- function(x,start = c(1981,1),end = c(2023,11),frecuency =12){
   x <- as.numeric(x)
-  t <- ts(x,start=start,end = end,frequency = 12)
+  t <- ts(x,start=start,end = end,frequency = frecuency)
   
   if (!all(is.na(t))){
     t <- imputeTS::na_mean(t)

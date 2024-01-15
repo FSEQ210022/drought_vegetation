@@ -40,7 +40,7 @@ updt_modis <- function(type,product,dir_out){
       tryCatch(
       httr::GET(url = paste0(URL,dir,'/',name),
           config = httr::config(connecttimeout = 120),
-          authenticate("frzambra@gmail.com","29H1kc12"),
+          authenticate("frzambra@gmail.com","Traplozx398#"),
           write_disk(paste0(dir_out,product,'/',dir,'/',name),
                      overwrite=TRUE),
           progress()),
