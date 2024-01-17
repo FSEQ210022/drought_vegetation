@@ -82,7 +82,7 @@ In this research, we present the raster dataset DDS4Chl, which provides climate 
 
 # Study area
 
-Continetal Chile has a diverse climate condition from north to south and east to west [@Aceituno2021] (@fig-studyArea), which determines its great ecosystem diversity (@fig-LCprop). The Andes Mountains are a main factor in latitudinal variation [@Garreaud2009]. To describe the climate and ecosystem of Chile, we use the Koppen-Geiger release by @Beck2023 and the landcover type persistance of 80% of times for 2001–2022, from the IGBP classification scheme [@Friedl2019] (see @sec-methods_lulc). "Norte Grande" and "Norte Chico" predominate in an arid desert climate with hot (Bwh) and cold (Bwk) temperatures. At the south of "Norte Chico," the climate changes to an arid steppe with cold temperatures (Bsk). Mainly, the land is barren, with a minor surface of vegetation types such as shrubland and grassland. In the zones "Centro" and the north half of "Sur," the main climate is Mediterranean, with warmer to hot summers (Csa and Csb). In "Centro," there is a major proportion (~50%) of chilean matorral (shrubland and savanna), followed by grassland (~16%), forest (8%), and croplands (5%). The south part of "Centro" and the north part of "Austral" are dominated by an Oceanic climate (Cfb). Those zones are high in forest and grassland. The southern part of the country has a tundra climate, and in Patagonia, it is a cold semi-arid area with an extended surface of grassland.
+Continetal Chile has a diverse climate condition from north to south and east to west [@Aceituno2021] (@fig-studyArea), which determines its great ecosystem diversity (@fig-LCprop). The Andes Mountains are a main factor in latitudinal variation [@Garreaud2009]. To describe the climate and ecosystem of Chile, we use the Koppen-Geiger release by @Beck2023 and the landcover type persistance of 80% of times for 2001–2022, from the IGBP classification scheme [@Friedl2019] (see @sec-methods_lulc). "Norte Grande" and "Norte Chico" predominate in an arid desert climate with hot (Bwh) and cold (Bwk) temperatures. At the south of "Norte Chico," the climate changes to an arid steppe with cold temperatures (Bsk). Mainly, the land is barren, with a minor surface of vegetation types such as shrubland and grassland. In the zones "Centro" and the north half of "Sur," the main climate is Mediterranean, with warmer to hot summers (Csa and Csb). In "Centro," there is a major proportion (~50%) of chilean matorral (shrubland and savanna.[@Fuentes2020]), followed by grassland (~16%), forest (8%), and croplands (5%). The south part of "Centro" and the north part of "Austral" are dominated by an Oceanic climate (Cfb). Those zones are high in forest and grassland. The southern part of the country has a tundra climate, and in Patagonia, it is a cold semi-arid area with an extended surface of grassland.
 
 ```{r fig-studyArea}
 #| echo: false
@@ -140,7 +140,7 @@ For the indices EDDI and SPEI that use water demand, first we have to calculate 
 
 $$AED = 0.0023\cdot Ra\cdot (T+17.8)\cdot (T_{max}-T_{min})^{0.5}$$ {#eq-AED}
 
-where $Ra$ $(MJ\,m^2\, day^{-1})$ is extraterrestrial radiation;  $T$, $T_{max}$, and $T_{min}$ are mean, maximum, and minimum temperature $(°C)$. We calculate the centroid coordinates per pixel and use the latitude to estimate $Ra$.
+where $Ra$ $(MJ\,m^2\, day^{-1})$ is extraterrestrial radiation; $T$, $T_{max}$, and $T_{min}$ are mean, maximum, and minimum temperature $(°C)$. We calculate the centroid coordinates per pixel and use the latitude to estimate $Ra$.
 
 To evaluate water demand, we chose the $EDDI$ [@Hobbins2016; @McEvoy2016] index, which uses the $AED$. For supply, we used the index recommended by the World Meteorological Organization (WMO) for monitoring drought, the SPI [@Mckee1993]. We calculated the SPEI, which used a balance between $P$ and $AED$, in this case, an auxiliary variable $D = P-AED$ is used. In this study, we used the $SSI$ (standardized soil moisture index at 1 m) [@Hao2013;@AghaKouchak2014], which uses SM. Finally, for the proxy of productivity, $zcNDVI$, we used the NDVI. Before using the NDVI, it was smoothed following the procedure described in @Zambrano2018 and @Zambrano2016.
 
@@ -160,12 +160,6 @@ $$DI(A_i) = W - \frac{C_0+C_1\cdot W + c_2 \cdot W^2}{1+d_1\cdot W +d_2\cdot W^2
 
 $DI$ is referring to the drought index calculated for the variable $V$. The values for the constats are: $C_0 = 2.515517$, $C_1 = 0.802853$, $C_2 = 0.010328$, $d_1 = 1.432788$, $d_2 = 0.189269$, and $d3 = 0.001308$. For $P(A) \leq 0.5$, W=$\sqrt{-2\cdot ln(P(A_i))}$ , and for $P(A_i) > 0.5$, replace $P(A_i)$ with $1-P(A_i)$ and reverse the sign of $DI(A_i)$.
 
-## Trend of drought indices for water demand and supply, soil moisture, and vegetation productivity
-
-To estimate if there are significant positive or negative trends for the drought indices, we used the non-parametric test of Mann-Kendall [@Kendall1975]. To determine the magnitude of the trend, we used Sen's slope [@Sen1968]. One of the advantages of applying this methodology is that the Sen's slope is not affected by outliers as regular regression does. We applied both to the five indices at the six time scales from 1981 to 2023 and indices SPI, EDDI, SPEI, and SSI, and from 2000 to 2023 in the case of zcNDVI. 
-
-@Vicente-Serrano2021 made a global analysis of the drought's severity trend using SPI, SPEI, and the Standardized Evapotranspiration Deficit Index (SEDI; @Vicente-Serrano2018) to evaluate AED. They indicate that the increase in hydrological drought has been due to anthropogenic effects rather than climate change. This is because the global increase in AED does not explain the change in the spatial pattern of hydrological drought. Also, they state that _"the increase in hydrological droughts has been primarily observed in regions with high water demand and land cover change"_. We will contrast this hypothesis with what is occurring in Chile. To achieve this, we will use the landcover class type that remain more than 80% of types for 2001-2022, and use this as a mask, where there are low changes, to evaluate the trend on zcNDVI.
-
 ##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture {#sec-methods_lulc}
 
 ```{r fig-LCprop}
@@ -176,11 +170,21 @@ To estimate if there are significant positive or negative trends for the drought
 knitr::include_graphics("../output/figs/LC_pers80_per_macrozone.png")
 ```
 
-To analyze the LULCC, we use the IGBP scheme from the MCD12Q1 collection 6.1 from MODIS. This product has a yearly frequency from 2011 to 2022. The IGBP defines 17 classes; from these, we regrouped into ten macroclasses for forest, schrublands, savannas, grasslands, wetlands, croplands, urban, snow and ice, barren, and water bodies. Then, we calculated the surface ocuppied per landcover class into each macrozone ("Norte Grande" to "Austral") per year. To determine the trend of change we used the Sen' slope [@Sen1968] over the surface per year. 
+To analyze the LULCC, we use the IGBP scheme from the MCD12Q1 collection 6.1 from MODIS. This product has a yearly frequency from 2001 to 2022. The IGBP defines 17 classes; from these, we regrouped into ten macroclasses for forest, schrublands, savannas, grasslands, wetlands, croplands, urban, snow and ice, barren, and water bodies. To validate the IGBP MODIS, we compare the macroclasses with the ones of a more detailed landcover map made by @Zhao2016 for Chile for the years 2013–2014 (LCChile). The later has a spatial resolution of 30 m and three levels of defined classes; from those, we used level 1, which fits with the macroclasses derived from the IGBP MODIS. We chose the years 2013 and 2014 from MODIS IGBP because the LCChile was made with data acquired in 2013 and 2014. We resampled LCChile to the spatial resolution of the IGBP MODIS using the nearest neighbor method. Then, we took a random sample of 1000 points within continental Chile and extracted the classes that fell within each point for LCCHILE, IGP2013, and IGBP2014. Finally, we applied a confusion matrix and estimated the accuracy and F1 score as metrics of performance. 
 
-We calculated a raster mask considering the classes that remains more than 80% of years (2001-2022), which allow us to identify the areas with no landcover change for the macroclasses. @fig-LCprop shows the summary of proportion of surface per landcover class and macrozone, derived from the mask over continental Chile. 
+Later, with the goal of analyzing vegetation areas less affected by landcover change, we calculated a raster mask for IGBP MODIS considering the classes that remain for more than 80% of the years (2001–2022), which allows us to identify the areas with no landcover change for the macroclasses. @fig-LCprop shows the summary of the proportion of surface per landcover class and macrozone, derived from the mask over continental Chile. 
+
+Further, we calculated the surface occupied per landcover class into the five macrozones ("Norte Grande" to "Austral") per year. After that, we calculated the trend's change in surface; we used the Sen' slope [@Sen1968] based on Mann-Kendall [@Kendall1975]. This way, we obtain a matrix of trends of 5 x 5 (macrozones x landcover).
 
 We will explore if the trend in landcover classess is associated to trend of the drought indices. For this we will use the regularizations techniques of Lasso [@Tibshirani2010] and Ridge regressión [@Hoerl1970]. Also, we will test random forest for this purpose [@Ho1995].
+
+## Trend of drought indices for water demand and supply, soil moisture, and vegetation productivity
+
+To estimate if there are significant positive or negative trends for the drought indices, we used the non-parametric test of Mann-Kendall [@Kendall1975]. To determine the magnitude of the trend, we used Sen's slope [@Sen1968]. One of the advantages of applying this methodology is that the Sen's slope is not affected by outliers as regular regression does. We applied both to the six time scales from 1981 to 2023 (monthly frequency) and the indices SPI, EDDI, SPEI, and SSI. In the case of zcNDVI (six months) was for 2000 to 2023. Thus, we have 31 trends. Also, we extracted the trend aggregated by macrozone and landcover class, obtaining a table of 31x5x5 (drought indices trends x macrozone x landcover class). We will use this data in @sec-methods_lulc to analyze if there is a strong relationship between the trends of drought indices and land cover surface within continental Chile.
+
+For zcNDVI, we want to remove the effect of the Andes's mountain and mask out trends that were at an elevation above 1500m because there is scarce vegetation.
+
+@Vicente-Serrano2021 made a global analysis of the drought's severity trend using SPI, SPEI, and the Standardized Evapotranspiration Deficit Index (SEDI; @Vicente-Serrano2018) to evaluate AED. They indicate that the increase in hydrological drought has been due to anthropogenic effects rather than climate change. This is because the global increase in AED did not explain the change in the spatial pattern of the hydrological drought. Also, they state that _"the increase in hydrological droughts has been primarily observed in regions with high water demand and land cover change"_. We will contrast this hypothesis with what is occurring in Chile. To achieve this, we will use the landcover class type that remains more than 80% of types for 2001–2022 to evaluate the trend on zcNDVI and use this as a mask where there are low changes.
 
 ##	Impact for water supply and demand, and soil moisture in vegetation productivity within landcover types
 
@@ -198,9 +202,31 @@ To assess how water demand and supply and soil moisture are related to vegetatio
 
 #	Results
 
-##	Trend of drought indices for water demand/supply, soil moisture, and vegetation productivity
 
-Regarding vegetation productivity, there is a negative trend on zcNDVI in the central part of the country ("norte chico" and "zona central") (@fig-zcNDVI_var). Indicating either a reduction of vegetation surface, biomass, or status. It reached its lowest values during the year 2020, mostly on the "zona central." There are other negative trends in small areas in "norte grande" and "zona asutral."
+##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture
+
+The validation of IGBP2013, and IGBP2014 with LCChile reached an a ccuracy of xx11, xx2 and a F1 score of yy1,yy2 respectively (see SS1). (PONER ESTO EN LA METODOLOGIA)
+
+@fig-zcNDVI_var and \ref{tab-landcoverTrend} show that the macrozones with major LULCC were "Sur" and "Centro" with % and % of surface evidenced change, respectively. The "Norte Chico" shows an increase in barrend land of 111 $km^2 year^{-1}$ and a reduction in the class savanna -70 $km^2 year^{-1}$. In the "Centro" and "Sur" there are changes in the chilean matorral, with an important reduction in savanna (-136 to -318 $km^2 yr^{-1}$), and an increase in shrubland and grassland. Showing a change for more dense vegetation types. It appears to be a change from the surface occupied by cropland from the "Centro" to the "Sur." Also, there is a high increase in forest (397 $Km^2 yr^{-1}$) in the "Sur," replacing the savanna lost.
+
+
+
+\begin{table}[!ht]
+\label{tab-landcoverTrend}
+\caption{The value of Sen's slope trend next to the time-series plot of surface per landcover class (IGBP MCD12Q1.016) for 2001–2022 through Central Chile. Values of zero indicate that there was not a significant trend. Red dots on the plots indicate the maximum and minimum values of surface.}
+\includegraphics[]{../output/figs/table_var_landcover_macro.png}
+\end{table}
+
+\begin{table}[!ht]
+\label{tab-corLandcover}
+\caption{}
+\includegraphics[]{../output/figs/tabla_r_cor_macro_indice.png}
+\end{table}
+
+##	Trend of drought indices for water demand and supply, soil moisture, and vegetation productivity
+
+Regarding vegetation productivity aggregated through the macrozones, there is a negative trend in four macrozones; only "Norte Grande" shows a positive trend of 0.07 per decade (z-score). zcNDVI reached a trend of -0.07 per decade in the "Centro" and "Norte Chico," followed by "Sur" with -0.05 and "Austral" with -0.03 (@fig-zcNDVI_var). This could be associated either with a reduction in vegetation surface, a decrease in biomass, or browning [@Miranda2023]. It reached its lowest values since the year 2019, reaching an extreme condition in early 2020 and 2022 in the "Centro." If we observe the spatial variation in @fig-zcNDVI_var a, despite the fact that "Norte Grande" has a positive trend, it can be noticed that the south part has a cluster with a negative trend. The negative trend is most noticeable in "Norte Chico" and the northern part of "Centro," but from there to the south, there is an extensive surface of change in landcover class where the trend was not calculated.
+
 
 ```{r fig-zcNDVI_var}
 #| echo: false
@@ -261,19 +287,6 @@ knitr::include_graphics("../output/figs/mapa_cor_r_indices_zcNDVI6.png")
 ```
 
 
-##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture
-
-\begin{table}[!ht]
-\label{tab-landcoverTrend}
-\caption{Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface}
-\includegraphics[]{../output/figs/table_var_landcover_macro.png}
-\end{table}
-
-\begin{table}[!ht]
-\label{tab-corLandcover}
-\caption{}
-\includegraphics[]{../output/figs/tabla_r_cor_macro_indice.png}
-\end{table}
 
 ##	Total water storage (TWS) and drought indices
 
