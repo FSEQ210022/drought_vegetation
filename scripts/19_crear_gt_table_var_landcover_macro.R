@@ -25,26 +25,26 @@ dataLCV_trend |>
   pivot_longer(-zone,names_to = 'cropland_class') |> 
   write_rds('data/processed_data/trend_landcover_change_classXzone_2001_2022.rds')
 
-dataLCV_trend  |> 
-  kbl(booktabs = TRUE,digits = 1,align ='r','latex',position='!ht',
-      caption='Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface.') %>%
-  kable_styling(latex_options="scale_down") %>% 
-  kable_paper(full_width = FALSE) %>%
-  column_spec(2, image = spec_plot(dataSpark[[1]],same_lim = FALSE)
-  ) %>%
-  column_spec(3, image = spec_plot(dataSpark[[2]],same_lim = FALSE)
-  ) %>%
-  column_spec(4, image = spec_plot(dataSpark[[3]],same_lim = FALSE)
-  ) %>%
-  column_spec(5, image = spec_plot(dataSpark[[4]],same_lim = FALSE)
-  ) %>%
-  column_spec(6, image = spec_plot(dataSpark[[5]],same_lim = FALSE)
-  ) %>%
-  column_spec(7, image = spec_plot(dataSpark[[6]],same_lim = FALSE)
-  ) %>% 
-  add_header_above(c(" ",'Trend of change [$km^2 year^{-1}$]' = 6),escape =FALSE) |> 
-  save_kable(file = "table_2.png",
-             zoom = 1.5)
+# dataLCV_trend  |> 
+#   kbl(booktabs = TRUE,digits = 1,align ='r','latex',position='!ht',
+#       caption='Value of linear change trend next to time-series plot of surface, per landcover class (IGBP MCD12Q1.006) for 2001-2019 through Central Chile. Red dots on the plots indicate the maximum and minimum surface.') %>%
+#   kable_styling(latex_options="scale_down") %>% 
+#   kable_paper(full_width = FALSE) %>%
+#   column_spec(2, image = spec_plot(dataSpark[[1]],same_lim = FALSE)
+#   ) %>%
+#   column_spec(3, image = spec_plot(dataSpark[[2]],same_lim = FALSE)
+#   ) %>%
+#   column_spec(4, image = spec_plot(dataSpark[[3]],same_lim = FALSE)
+#   ) %>%
+#   column_spec(5, image = spec_plot(dataSpark[[4]],same_lim = FALSE)
+#   ) %>%
+#   column_spec(6, image = spec_plot(dataSpark[[5]],same_lim = FALSE)
+#   ) %>%
+#   column_spec(7, image = spec_plot(dataSpark[[6]],same_lim = FALSE)
+#   ) %>% 
+#   add_header_above(c(" ",'Trend of change [$km^2 year^{-1}$]' = 6),escape =FALSE) |> 
+#   save_kable(file = "table_2.png",
+#              zoom = 1.5)
 
 #con gt
 
@@ -62,12 +62,13 @@ data_gt$Savanna.x[1] <- NA
 data_gt$Savanna.y[1] <- NA
 data_gt$Forest.x[c(1,2)] <- NA
 data_gt$Forest.y[c(1,2)] <- NA
-data_gt$Cropland.x[c(1,2,5)] <- NA
-data_gt$Cropland.y[c(1,2,5)] <- NA
+data_gt$Cropland.x[c(1,5)] <- NA
+data_gt$Cropland.y[c(1,5)] <- NA
 data_gt$Shrubland.x[4] <- NA
 data_gt$Shrubland.y[4] <- NA
 
 data_gt |> 
+  rename(macrozone = zone) |> 
   gt() |> 
   fmt_number(decimals = 1) |> 
   sub_missing(

@@ -11,14 +11,15 @@ macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |>
 
 ## Time series of zcNDVI for macrozones
 dir <- '/mnt/md0/raster_procesada/MODIS_derived/zcNDVI/zcNDVI-6'
+zcndvi <- rast(dir_ls(dir,regexp = 'tif$'))
 
 #persistencia de landcover
 lc_pers <- rast('/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/IGBP80_reclassified.tif') 
-#nieve permanente
-lc_pers[lc_pers == 8] <- NA
+#eliminar los que no corresponde a los 5 principales landcover
+lc_pers[lc_pers %in% c(5,7:10)] <- NA
+lc_pers <- resample(lc_pers,zcndvi)
 
-#aplicar mascara de landcover permanenete menos nieve permanenete  
-zcndvi <- rast(dir_ls(dir,regexp = 'tif$'))
+#aplicar mascara de landcover permanenete 
 lc_pers <- resample(lc_pers,zcndvi,method = 'near')
 zcndvi <- mask(zcndvi,lc_pers)
 
@@ -46,7 +47,7 @@ df_zcndvi |>
   theme_minimal() +
   theme(axis.title.x = element_blank())
 
-ggsave('output/figs/temporal_variation_zcNDVI6_macrozonas.png',scale = 1.5,bg = 'white',width=6,height=3)
+ggsave('output/figs/temporal_variation_zcNDVI6_macrozonas.png',scale = 2,bg = 'white',width=6,height=3)
 
 #Mapa de tendencia Mann-Kendall
 library(fs)
@@ -148,6 +149,7 @@ map_zcSM <- tm_shape(trend_zcsm*10) +
 tmap_save(map_zcSM,'output/figs/trend_raster_zcSM_1981-2023.png',asp=.2)
 
 ## zcNDVI
+dir <- '/mnt/md0/raster_procesada/analysis/trends/'
 files <- dir_ls(dir,regexp = 'mann.*zcNDVI.*tif$')
 scales <- str_extract(basename(files),'-.*\\.') |> str_remove('-') |> str_remove('\\.')
 
@@ -165,10 +167,11 @@ trend_zcndvi <- trim(trend_zcndvi)
 
 #aplicar mascara de landcover persistente
 lc_pers <- crop(lc_pers,trend_zcndvi)
+lc_pers <- resample(lc_pers,trend_zcndvi,method = 'near')
 trend_zcndvi <- mask(trend_zcndvi,lc_pers)
 
-map_zcNDVI <- tm_shape(trend_zcndvi) + 
-  tm_raster(palette = 'RdYlGn',midpoint = 0,title = 'Trend zcNDVI \n (per year)',style = 'kmeans',colorNA = 'grey',textNA = 'Type Change' ) +
+map_zcNDVI <- tm_shape(trend_zcndvi*10) + 
+  tm_raster(palette = 'RdYlGn',midpoint = 0,title = 'Trend zcNDVI \n (per decade)',style = 'kmeans',colorNA = 'grey',textNA = 'No vegetation/change' ) +
   tm_shape(macro) + 
   tm_borders(col='black') +
   tm_shape(chl_b) + 

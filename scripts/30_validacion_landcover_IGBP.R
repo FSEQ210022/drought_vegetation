@@ -30,6 +30,7 @@ f <- function(x){
 }
 
 data <- df |> 
+  filter(IGBP2013 != 5 & IGBP2014 != 5) |> 
   mutate(LC_CHILE_2 = substr(LC_CHILE,1,2)) |> 
   rowwise(LC_CHILE_2) |> 
   mutate(LC_CHILE_2 = f(LC_CHILE_2) |> as.numeric()) |> 
@@ -40,10 +41,13 @@ data <- df |>
   mutate(across(everything(),\(x) fct(sort(as.character(x)))))
 
 library(yardstick)
-
 conf_mat(data,LC_CHILE_2,IGBP2014)  
 accuracy(data,LC_CHILE_2,IGBP2014)  
 f_meas(data,LC_CHILE_2,IGBP2014)  
+
+accuracy(data,LC_CHILE_2,IGBP2013)  
+f_meas(data,LC_CHILE_2,IGBP2013)  
+
 
 roc_auc(data,truth = LC_CHILE_2,IGBP2013)  
 

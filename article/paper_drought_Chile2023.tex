@@ -230,7 +230,7 @@ investigated.
 \end{frontmatter}
     \captionsetup{justification=raggedright,singlelinecheck=false}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, sharp corners, interior hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, frame hidden, breakable, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -376,7 +376,7 @@ with a minor surface of vegetation types such as shrubland and
 grassland. In the zones ``Centro'' and the north half of ``Sur,'' the
 main climate is Mediterranean, with warmer to hot summers (Csa and Csb).
 In ``Centro,'' there is a major proportion (\textasciitilde50\%) of
-chilean matorral (shrubland and savanna.\citep{Fuentes2020}), followed
+chilean matorral (shrubland and savanna, \citep{Fuentes2021}), followed
 by grassland (\textasciitilde16\%), forest (8\%), and croplands (5\%).
 The south part of ``Centro'' and the north part of ``Austral'' are
 dominated by an Oceanic climate (Cfb). Those zones are high in forest
@@ -564,7 +564,10 @@ resolution of the IGBP MODIS using the nearest neighbor method. Then, we
 took a random sample of 1000 points within continental Chile and
 extracted the classes that fell within each point for LCCHILE, IGP2013,
 and IGBP2014. Finally, we applied a confusion matrix and estimated the
-accuracy and F1 score as metrics of performance.
+accuracy and F1 score as metrics of performance. The validation of
+IGBP2013 and IGBP2014 with LCChile reached similar metrics of
+performance, having an accuracy of 0.82 and a F1 score of 0.66 (see
+SS1).
 
 Later, with the goal of analyzing vegetation areas less affected by
 landcover change, we calculated a raster mask for IGBP MODIS considering
@@ -667,16 +670,17 @@ and demand, and soil
 moisture}\label{lulc-change-for-2001-2022-and-its-relation-with-water-supply-and-demand-and-soil-moisture}}
 
 Figure~\ref{fig-zcNDVI_var} and \ref{tab-landcoverTrend} show that the
-macrozones with major LULCC were ``Sur'' and ``Centro'' with \% and \%
-of surface evidenced change, respectively. The ``Norte Chico'' shows an
-increase in barrend land of 111 \(km^2 year^{-1}\) and a reduction in
-the class savanna -70 \(km^2 year^{-1}\). In the ``Centro'' and ``Sur''
-there are changes in the chilean matorral, with an important reduction
-in savanna (-136 to -318 \(km^2 yr^{-1}\)), and an increase in shrubland
-and grassland. Showing a change for more dense vegetation types. It
-appears to be a change from the surface occupied by cropland from the
-``Centro'' to the ``Sur.'' Also, there is a high increase in forest (397
-\(Km^2 yr^{-1}\)) in the ``Sur,'' replacing the savanna lost.
+macrozones with major LULCC for 2001-2022 were ``Centro'', ``Sur'', and
+``Austral'' with 36\%, 31\%, and 34\%, respectively. The ``Norte Chico''
+shows an increase in barrend land of 111 \(km^2 year^{-1}\) and a
+reduction in the class savanna -70 \(km^2 year^{-1}\). In the ``Centro''
+and ``Sur'' there are changes in the chilean matorral, with an important
+reduction in savanna (-136 to -318 \(km^2 yr^{-1}\)), and an increase in
+shrubland and grassland. Showing a change for more dense vegetation
+types. It appears to be a change from the surface occupied by cropland
+from the ``Centro'' to the ``Sur.'' Also, there is a high increase in
+forest (397 \(Km^2 yr^{-1}\)) in the ``Sur,'' replacing the savanna
+lost.
 
 \begin{table}[!ht]
 \label{tab-landcoverTrend}
@@ -684,46 +688,43 @@ appears to be a change from the surface occupied by cropland from the
 \includegraphics[]{../output/figs/table_var_landcover_macro.png}
 \end{table}
 
-\begin{table}[!ht]
-\label{tab-corLandcover}
-\caption{}
-\includegraphics[]{../output/figs/tabla_r_cor_macro_indice.png}
-\end{table}
-
 \hypertarget{trend-of-drought-indices-for-water-demand-and-supply-soil-moisture-and-vegetation-productivity-1}{%
 \subsection{Trend of drought indices for water demand and supply, soil
 moisture, and vegetation
 productivity}\label{trend-of-drought-indices-for-water-demand-and-supply-soil-moisture-and-vegetation-productivity-1}}
 
-Regarding vegetation productivity aggregated through the macrozones,
-there is a negative trend in four macrozones; only ``Norte Grande''
-shows a positive trend of 0.07 per decade (z-score). zcNDVI reached a
-trend of -0.07 per decade in the ``Centro'' and ``Norte Chico,''
-followed by ``Sur'' with -0.05 and ``Austral'' with -0.03
-(Figure~\ref{fig-zcNDVI_var}). This could be associated either with a
-reduction in vegetation surface, a decrease in biomass, or browning
-\citep{Miranda2023}. It reached its lowest values since the year 2019,
-reaching an extreme condition in early 2020 and 2022 in the ``Centro.''
-If we observe the spatial variation in Figure~\ref{fig-zcNDVI_var} a,
-despite the fact that ``Norte Grande'' has a positive trend, it can be
-noticed that the south part has a cluster with a negative trend. The
-negative trend is most noticeable in ``Norte Chico'' and the northern
-part of ``Centro,'' but from there to the south, there is an extensive
-surface of change in landcover class where the trend was not calculated.
+Regarding vegetation productivity aggregated through the macrozones in
+the five landcover macroclasses. In ``Norte Grande'' there is a increase
+trend of 0.02 (z-index) per decade, related with types of grassland and
+shrubland. There is a negative trend in ``Norte Chico'' with -0.04 and
+``Centro'' with -0.02 per decade. In the ``Norte Chico,'' savanna
+(-0.05) has the lowest trend, and the rest of the types are around
+-0.04. In ``Centro,'' shrubland reaches -0.06, followed by grassland
+with -0.05, and croplands and savanna have \textasciitilde-0.01 per
+decade. This could be associated either with a reduction in vegetation
+surface, a decrease in biomass, or browning \citep{Miranda2023}.
+Vegetation reached its lowest values since the year 2019, reaching an
+extreme condition in early 2020 and 2022 in the ``Centro'' (Mega
+Drought). The ``Sur'' and ``Austral'' show a positive trend of around
+0.016 per decade (Figure~\ref{fig-zcNDVI_var}). The area most affected
+by a negative trend in vegetation seems to be associated with the
+Chilean matorral \citep{Fuentes2021}, despite the croplands being as
+severely impacted by drought as native vegetation does in ``Norte
+Chico.''.
 
 \begin{figure}[!ht]
 
-{\centering \includegraphics{../output/figs/temporal_variation_zcNDVI6_macrozonas.png}
+{\centering \includegraphics{../output/figs/temporal_variation_zcNDVI6_macrozonas_con_mapa.png}
 
 }
 
 \caption{\label{fig-zcNDVI_var}(a) Map of the linear trend of the index
-zcNDVI-6 for 2001--2023. Greener colors indicate a positive trend and an
-increase in vegetation development; reder colors correspond to a
-negative trend and a decrease in vegetation development. (b) Temporal
-variation of zcNDVI-6 aggregated at macrozone level within continental
-Chile. Each horizontal panel corresponds to a macrozone from `norte
-grande' to `zona austral'.}
+zcNDVI-6 for 2001--2023. Greener colors indicate a positive trend; reder
+colors correspond to a negative trend and a decrease in vegetation
+productivity. Grey colors indicate either no vegetation or a change in
+landcover type for 2001--2022. (b) Temporal variation of zcNDVI-6
+aggregated at macrozone level within continental Chile. Each horizontal
+panel corresponds to a macrozone from `Norte Grande' to `Austral'.}
 
 \end{figure}
 
@@ -831,6 +832,12 @@ SPI.
 vegetation
 productivity}\label{impact-for-water-supply-and-demand-and-soil-moisture-in-vegetation-productivity}}
 
+\begin{table}[!ht]
+\label{tab-corLandcover}
+\caption{}
+\includegraphics[]{../output/figs/tabla_r_cor_macro_indice.png}
+\end{table}
+
 \begin{figure}[!ht]
 
 {\centering \includegraphics{../output/figs/mapa_cor_selec_indices_zcNDVI6.png}
@@ -853,10 +860,6 @@ scales and drought index that reach the maximum coefficient of
 determination}
 
 \end{figure}
-
-\hypertarget{total-water-storage-tws-and-drought-indices}{%
-\subsection{Total water storage (TWS) and drought
-indices}\label{total-water-storage-tws-and-drought-indices}}
 
 \hypertarget{validation-of-era5-land-variables-1}{%
 \subsection{Validation of ERA5-Land

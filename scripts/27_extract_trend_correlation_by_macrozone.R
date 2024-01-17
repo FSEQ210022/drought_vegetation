@@ -6,12 +6,12 @@ library(geodata)
 
 ## Extraer tabla de correlaciones para macrozonas
 
-elev <- geodata::elevation_30s('chile',path = tempdir()) |> 
-  project('EPSG:32719')
-
 dir <- '/mnt/md0/raster_procesada/analysis/correlations'
 files <- dir_ls(dir,regexp = 'tif$')
 
+#mascara para elevaciones mayores a 1500m
+elev <- geodata::elevation_30s('chile',path = tempdir()) |> 
+  project('EPSG:32719')
 elev2 <- resample(elev,rast(files[1]))
 mask <- elev2
 mask[mask<1500] <- 1
