@@ -1,0 +1,309 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{IPCC2023}
+K.~Calvin, D.~Dasgupta, G.~Krinner, A.~Mukherji, P.~W. Thorne, C.~Trisos, J.~Romero, P.~Aldunce, K.~Barrett, G.~Blanco, W.~W. Cheung, S.~Connors, F.~Denton, A.~Diongue-Niang, D.~Dodman, M.~Garschagen, O.~Geden, B.~Hayward, C.~Jones, F.~Jotzo, T.~Krug, R.~Lasco, Y.-Y. Lee, V.~Masson-Delmotte, M.~Meinshausen, K.~Mintenbeck, A.~Mokssit, F.~E. Otto, M.~Pathak, A.~Pirani, E.~Poloczanska, H.-O. Pörtner, A.~Revi, D.~C. Roberts, J.~Roy, A.~C. Ruane, J.~Skea, P.~R. Shukla, R.~Slade, A.~Slangen, Y.~Sokona, A.~A. Sörensson, M.~Tignor, D.~Van~Vuuren, Y.-M. Wei, H.~Winkler, P.~Zhai, Z.~Zommers, J.-C. Hourcade, F.~X. Johnson, S.~Pachauri, N.~P. Simpson, C.~Singh, A.~Thomas, E.~Totin, P.~Arias, M.~Bustamante, I.~Elgizouli, G.~Flato, M.~Howden, C.~Méndez-Vallejo, J.~J. Pereira, R.~Pichs-Madruga, S.~K. Rose, Y.~Saheb, R.~Sánchez~Rodríguez, D.~Ürge Vorsatz, C.~Xiao, N.~Yassaa, A.~Alegría, K.~Armour, B.~Bednar-Friedl, K.~Blok, G.~Cissé, F.~Dentener, S.~Eriksen, E.~Fischer, G.~Garner, C.~Guivarch, M.~Haasnoot, G.~Hansen, M.~Hauser, E.~Hawkins, T.~Hermans, R.~Kopp, N.~Leprince-Ringuet, J.~Lewis, D.~Ley, C.~Ludden, L.~Niamir, Z.~Nicholls, S.~Some, S.~Szopa, B.~Trewin, K.-I. Van Der~Wijst, G.~Winter, M.~Witting, A.~Birt, M.~Ha, J.~Romero, J.~Kim, E.~F. Haites, Y.~Jung, R.~Stavins, A.~Birt, M.~Ha, D.~J.~A. Orendain, L.~Ignon, S.~Park, Y.~Park, A.~Reisinger, D.~Cammaramo, A.~Fischlin, J.~S. Fuglestvedt, G.~Hansen, C.~Ludden, V.~Masson-Delmotte, J.~R. Matthews, K.~Mintenbeck, A.~Pirani, E.~Poloczanska, N.~Leprince-Ringuet, C.~Péan, \href{https://www.ipcc.ch/report/ar6/syr/}{{IPCC}, 2023: {Climate} {Change} 2023: {Synthesis} {Report}. {Contribution} of {Working} {Groups} {I}, {II} and {III} to the {Sixth} {Assessment} {Report} of the {Intergovernmental} {Panel} on {Climate} {Change} [{Core} {Writing} {Team}, {H}. {Lee} and {J}. {Romero} (eds.)]. {IPCC}, {Geneva}, {Switzerland}.}, Tech. rep., Intergovernmental Panel on Climate Change (IPCC) (Jul. 2023).
+\newline\urlprefix\url{https://www.ipcc.ch/report/ar6/syr/}
+
+\bibitem{IPCC2013}
+{IPCC}, \href{www.climatechange2013.org}{Climate {Change} 2013: {The} {Physical} {Science} {Basis}. {Contribution} of {Working} {Group} {I} to the {Fifth} {Assessment} {Report} of the {Intergovernmental} {Panel} on {Climate} {Change}}, Cambridge University Press, Cambridge, UK; New York, USA, 2013.
+\newblock \href {https://doi.org/10.1017/CBO9781107415324} {\path{doi:10.1017/CBO9781107415324}}.
+\newline\urlprefix\url{www.climatechange2013.org}
+
+\bibitem{IPCCCH112021}
+X.~a. A. M. a. B. W. a. D. C. a. L. A. a. G. S. a. I. I. a. K. J. a. L. S. a. O. F. a. P. I. a. S. M. a. V.-S. S. a. W. M. a. Z. . M.-D. B. a. V. a.~O. Seneviratne, S {and}~Zhang, Weather and {Climate} {Extreme} {Events} in a {Changing} {Climate}, Cambridge University Press. In Press., 2021, publication Title: Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change.
+
+\bibitem{Crausbay2017}
+S.~D. Crausbay, A.~R. Ramirez, S.~L. Carter, M.~S. Cross, K.~R. Hall, D.~J. Bathke, J.~L. Betancourt, S.~Colt, A.~E. Cravens, M.~S. Dalton, J.~B. Dunham, L.~E. Hay, M.~J. Hayes, J.~McEvoy, C.~A. McNutt, M.~A. Moritz, K.~H. Nislow, N.~Raheem, T.~Sanford, \href{https://journals.ametsoc.org/view/journals/bams/98/12/bams-d-16-0292.1.xml}{Defining {Ecological} {Drought} for the {Twenty}-{First} {Century}}, Bulletin of the American Meteorological Society 98~(12) (2017) 2543--2550, publisher: American Meteorological Society.
+\newblock \href {https://doi.org/10.1175/BAMS-D-16-0292.1} {\path{doi:10.1175/BAMS-D-16-0292.1}}.
+\newline\urlprefix\url{https://journals.ametsoc.org/view/journals/bams/98/12/bams-d-16-0292.1.xml}
+
+\bibitem{Luo2017}
+L.~Luo, D.~Apps, S.~Arcand, H.~Xu, M.~Pan, M.~Hoerling, \href{https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2016GL072027}{Contribution of temperature and precipitation anomalies to the {California} drought during 2012–2015}, Geophysical Research Letters 44~(7) (2017) 3184--3192.
+\newblock \href {https://doi.org/10.1002/2016GL072027} {\path{doi:10.1002/2016GL072027}}.
+\newline\urlprefix\url{https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2016GL072027}
+
+\bibitem{Wilhite1985}
+D.~A. Wilhite, M.~H. Glantz, \href{http://dx.doi.org/10.1080/02508068508686328}{Understanding: {The} drought phenomenon: {The} role of definitions}, Water International 10~(3) (1985) 111--120.
+\newblock \href {https://doi.org/10.1080/02508068508686328} {\path{doi:10.1080/02508068508686328}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1080/02508068508686328}
+
+\bibitem{Loon2016}
+A.~F. Van~Loon, T.~Gleeson, J.~Clark, A.~I. Van~Dijk, K.~Stahl, J.~Hannaford, G.~Di~Baldassarre, A.~J. Teuling, L.~M. Tallaksen, R.~Uijlenhoet, D.~M. Hannah, J.~Sheffield, M.~Svoboda, B.~Verbeiren, T.~Wagener, S.~Rangecroft, N.~Wanders, H.~A. Van~Lanen, Drought in the {Anthropocene}, Nature Geoscience 9~(2) (2016) 89--91.
+\newblock \href {https://doi.org/10.1038/ngeo2646} {\path{doi:10.1038/ngeo2646}}.
+
+\bibitem{AghaKouchak2021}
+A.~AghaKouchak, A.~Mirchi, K.~Madani, G.~Di~Baldassarre, A.~Nazemi, A.~Alborzi, H.~Anjileli, M.~Azarderakhsh, F.~Chiang, E.~Hassanzadeh, L.~S. Huning, I.~Mallakpour, A.~Martinez, O.~Mazdiyasni, H.~Moftakhari, H.~Norouzi, M.~Sadegh, D.~Sadeqi, A.~F. Van~Loon, N.~Wanders, \href{https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2019RG000683}{Anthropogenic {Drought}: {Definition}, {Challenges}, and {Opportunities}}, Reviews of Geophysics 59~(2) (2021) e2019RG000683.
+\newblock \href {https://doi.org/10.1029/2019RG000683} {\path{doi:10.1029/2019RG000683}}.
+\newline\urlprefix\url{https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2019RG000683}
+
+\bibitem{Slette2019}
+I.~J. Slette, A.~K. Post, M.~Awad, T.~Even, A.~Punzalan, S.~Williams, M.~D. Smith, A.~K. Knapp, \href{https://onlinelibrary.wiley.com/doi/10.1111/gcb.14747}{How ecologists define drought, and why we should do better}, Global Change Biology 25~(10) (2019) 3193--3200.
+\newblock \href {https://doi.org/10.1111/gcb.14747} {\path{doi:10.1111/gcb.14747}}.
+\newline\urlprefix\url{https://onlinelibrary.wiley.com/doi/10.1111/gcb.14747}
+
+\bibitem{Garreaud2017}
+R.~Garreaud, C.~Alvarez-Garreton, J.~Barichivich, J.~P. Boisier, D.~Christie, M.~Galleguillos, C.~LeQuesne, J.~McPhee, M.~Zambrano-Bigiarini, \href{http://www.hydrol-earth-syst-sci-discuss.net/hess-2017-191/}{The 2010-2015 mega drought in {Central} {Chile}: {Impacts} on regional hydroclimate and vegetation}, Hydrology and Earth System Sciences Discussions 2017 (2017) 1--37.
+\newblock \href {https://doi.org/10.5194/hess-2017-191} {\path{doi:10.5194/hess-2017-191}}.
+\newline\urlprefix\url{http://www.hydrol-earth-syst-sci-discuss.net/hess-2017-191/}
+
+\bibitem{Zambrano2023}
+F.~Zambrano, Four decades of satellite data for agricultural drought monitoring throughout the growing season in {Central} {Chile}, in: R.~M. Vijay P. Singh Deepak~Jhajharia, R.~Kumar (Eds.), Integrated {Drought} {Management}, {Two} {Volume} {Set}, CRC Press, 2023, p.~28.
+
+\bibitem{Boisier2018}
+J.~P. Boisier, C.~Alvarez-Garreton, R.~R. Cordero, A.~Damiani, L.~Gallardo, R.~D. Garreaud, F.~Lambert, C.~Ramallo, M.~Rojas, R.~Rondanelli, \href{https://www.elementascience.org/article/10.1525/elementa.328/}{Anthropogenic drying in central-southern {Chile} evidenced by long-term observations and climate model simulations}, Elementa 6~(1) (2018) 74.
+\newblock \href {https://doi.org/10.1525/elementa.328} {\path{doi:10.1525/elementa.328}}.
+\newline\urlprefix\url{https://www.elementascience.org/article/10.1525/elementa.328/}
+
+\bibitem{Zambrano2016}
+F.~Zambrano, M.~Lillo-Saavedra, K.~Verbist, O.~Lagos, \href{http://www.mdpi.com/2072-4292/8/6/530}{Sixteen years of agricultural drought assessment of the biobío region in chile using a 250 m resolution vegetation condition index ({VCI})}, Remote Sensing 8~(6) (2016) 1--20, publisher: Multidisciplinary Digital Publishing Institute.
+\newblock \href {https://doi.org/10.3390/rs8060530} {\path{doi:10.3390/rs8060530}}.
+\newline\urlprefix\url{http://www.mdpi.com/2072-4292/8/6/530}
+
+\bibitem{Zambrano2018}
+F.~Zambrano, A.~Vrieling, A.~Nelson, M.~Meroni, T.~Tadesse, \href{https://www.sciencedirect.com/science/article/pii/S0034425718304541}{Prediction of drought-induced reduction of agricultural productivity in {Chile} from {MODIS}, rainfall estimates, and climate oscillation indices}, Remote Sensing of Environment 219 (2018) 15--30, publisher: Elsevier.
+\newblock \href {https://doi.org/10.1016/j.rse.2018.10.006} {\path{doi:10.1016/j.rse.2018.10.006}}.
+\newline\urlprefix\url{https://www.sciencedirect.com/science/article/pii/S0034425718304541}
+
+\bibitem{Miranda2020}
+A.~Miranda, A.~Lara, A.~Altamirano, C.~Di~Bella, M.~E. González, J.~Julio~Camarero, \href{https://linkinghub.elsevier.com/retrieve/pii/S1470160X20303381}{Forest browning trends in response to drought in a highly threatened mediterranean landscape of {South} {America}}, Ecological Indicators 115 (2020) 106401.
+\newblock \href {https://doi.org/10.1016/j.ecolind.2020.106401} {\path{doi:10.1016/j.ecolind.2020.106401}}.
+\newline\urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S1470160X20303381}
+
+\bibitem{Venegas2018}
+A.~Venegas-González, F.~R. Juñent, A.~G. Gutiérrez, M.~T. Filho, \href{https://linkinghub.elsevier.com/retrieve/pii/S0378112717313993}{Recent radial growth decline in response to increased drought conditions in the northernmost {Nothofagus} populations from {South} {America}}, Forest Ecology and Management 409 (2018) 94--104.
+\newblock \href {https://doi.org/10.1016/j.foreco.2017.11.006} {\path{doi:10.1016/j.foreco.2017.11.006}}.
+\newline\urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S0378112717313993}
+
+\bibitem{UrrutiaJalabert2018}
+R.~Urrutia‐Jalabert, M.~E. González, �.~González‐Reyes, A.~Lara, R.~Garreaud, \href{https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecs2.2171}{Climate variability and forest fires in central and south‐central {Chile}}, Ecosphere 9~(4) (2018) e02171.
+\newblock \href {https://doi.org/10.1002/ecs2.2171} {\path{doi:10.1002/ecs2.2171}}.
+\newline\urlprefix\url{https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecs2.2171}
+
+\bibitem{Fuentes2021}
+I.~Fuentes, R.~Fuster, D.~Avilés, W.~Vervoort, \href{https://www.tandfonline.com/doi/full/10.1080/02626667.2021.1903475}{Water scarcity in central {Chile}: the effect of climate and land cover changes on hydrologic resources}, Hydrological Sciences Journal 66~(6) (2021) 1028--1044.
+\newblock \href {https://doi.org/10.1080/02626667.2021.1903475} {\path{doi:10.1080/02626667.2021.1903475}}.
+\newline\urlprefix\url{https://www.tandfonline.com/doi/full/10.1080/02626667.2021.1903475}
+
+\bibitem{AlvarezGarreton2021}
+C.~Alvarez-Garreton, J.~P. Boisier, R.~Garreaud, J.~Seibert, M.~Vis, \href{https://hess.copernicus.org/articles/25/429/2021/}{Progressive water deficits during multiyear droughts in basins with long hydrological memory in {Chile}}, Hydrology and Earth System Sciences 25~(1) (2021) 429--446.
+\newblock \href {https://doi.org/10.5194/hess-25-429-2021} {\path{doi:10.5194/hess-25-429-2021}}.
+\newline\urlprefix\url{https://hess.copernicus.org/articles/25/429/2021/}
+
+\bibitem{Fernandez2023}
+F.~J. Fernández, F.~Vásquez-Lavín, R.~D. Ponce, R.~Garreaud, F.~Hernández, O.~Link, F.~Zambrano, M.~Hanemann, \href{https://linkinghub.elsevier.com/retrieve/pii/S0301479723015141}{The economics impacts of long-run droughts: {Challenges}, gaps, and way forward}, Journal of Environmental Management 344 (2023) 118726.
+\newblock \href {https://doi.org/10.1016/j.jenvman.2023.118726} {\path{doi:10.1016/j.jenvman.2023.118726}}.
+\newline\urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S0301479723015141}
+
+\bibitem{MunozSabater2021}
+J.~Muñoz-Sabater, E.~Dutra, A.~Agustí-Panareda, C.~Albergel, G.~Arduini, G.~Balsamo, S.~Boussetta, M.~Choulga, S.~Harrigan, H.~Hersbach, B.~Martens, D.~G. Miralles, M.~Piles, N.~J. Rodríguez-Fernández, E.~Zsoter, C.~Buontempo, J.-N. Thépaut, \href{https://essd.copernicus.org/articles/13/4349/2021/}{{ERA5}-{Land}: a state-of-the-art global reanalysis dataset for land applications}, Earth System Science Data 13~(9) (2021) 4349--4383.
+\newblock \href {https://doi.org/10.5194/essd-13-4349-2021} {\path{doi:10.5194/essd-13-4349-2021}}.
+\newline\urlprefix\url{https://essd.copernicus.org/articles/13/4349/2021/}
+
+\bibitem{Nouri2023}
+M.~Nouri, \href{https://link.springer.com/10.1007/s11269-023-03555-4}{Drought {Assessment} {Using} {Gridded} {Data} {Sources} in {Data}-{Poor} {Areas} with {Different} {Aridity} {Conditions}}, Water Resources Management 37~(11) (2023) 4327--4343.
+\newblock \href {https://doi.org/10.1007/s11269-023-03555-4} {\path{doi:10.1007/s11269-023-03555-4}}.
+\newline\urlprefix\url{https://link.springer.com/10.1007/s11269-023-03555-4}
+
+\bibitem{Wang2023}
+M.~Wang, L.~Menzel, S.~Jiang, L.~Ren, C.-Y. Xu, H.~Cui, \href{https://linkinghub.elsevier.com/retrieve/pii/S0048969723054402}{Evaluation of flash drought under the impact of heat wave events in southwestern {Germany}}, Science of The Total Environment 904 (2023) 166815.
+\newblock \href {https://doi.org/10.1016/j.scitotenv.2023.166815} {\path{doi:10.1016/j.scitotenv.2023.166815}}.
+\newline\urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S0048969723054402}
+
+\bibitem{West2019}
+H.~West, N.~Quinn, M.~Horswell, Remote sensing for drought monitoring {\textbackslash}\& impact assessment: {Progress}, past challenges and future opportunities, Remote Sensing of Environment 232, publisher: Elsevier Inc. (Oct. 2019).
+\newblock \href {https://doi.org/10.1016/j.rse.2019.111291} {\path{doi:10.1016/j.rse.2019.111291}}.
+
+\bibitem{AghaKouchak2015}
+A.~AghaKouchak, A.~Farahmand, F.~S. Melton, J.~Teixeira, M.~C. Anderson, B.~D. Wardlow, C.~R. Hain, \href{http://dx.doi.org/10.1002/2014RG000456.}{Remote sensing of drought: {Progress}, challenges and opportunities}, Reviews of Geophysics 53~(2) (2015) 452--480.
+\newblock \href {https://doi.org/10.1002/2014RG000456} {\path{doi:10.1002/2014RG000456}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1002/2014RG000456.}
+
+\bibitem{Paruelo2016}
+J.~M. Paruelo, M.~Texeira, L.~Staiano, M.~Mastrángelo, L.~Amdan, F.~Gallego, \href{https://www.sciencedirect.com/science/article/pii/S1470160X16303843}{An integrative index of {Ecosystem} {Services} provision based on remotely sensed data}, Ecological Indicators 71 (2016) 145--154, publisher: Elsevier.
+\newblock \href {https://doi.org/10.1016/J.ECOLIND.2016.06.054} {\path{doi:10.1016/J.ECOLIND.2016.06.054}}.
+\newline\urlprefix\url{https://www.sciencedirect.com/science/article/pii/S1470160X16303843}
+
+\bibitem{Schucknecht2017}
+A.~Schucknecht, M.~Meroni, F.~Kayitakire, A.~Boureima, A.~Schucknecht, M.~Meroni, F.~Kayitakire, A.~Boureima, \href{http://www.mdpi.com/2072-4292/9/5/463}{Phenology-{Based} {Biomass} {Estimation} to {Support} {Rangeland} {Management} in {Semi}-{Arid} {Environments}}, Remote Sensing 9~(5) (2017) 463, publisher: Multidisciplinary Digital Publishing Institute.
+\newblock \href {https://doi.org/10.3390/rs9050463} {\path{doi:10.3390/rs9050463}}.
+\newline\urlprefix\url{http://www.mdpi.com/2072-4292/9/5/463}
+
+\bibitem{Tran2019}
+H.~T. Tran, J.~B. Campbell, R.~H. Wynne, Y.~Shao, S.~V. Phan, \href{https://www.mdpi.com/2072-4292/11/3/333/htm}{Drought and {Human} {Impacts} on {Land} {Use} and {Land} {Cover} {Change} in a {Vietnamese} {Coastal} {Area}}, Remote Sensing 2019, Vol. 11, Page 333 11~(3) (2019) 333, publisher: Multidisciplinary Digital Publishing Institute.
+\newblock \href {https://doi.org/10.3390/RS11030333} {\path{doi:10.3390/RS11030333}}.
+\newline\urlprefix\url{https://www.mdpi.com/2072-4292/11/3/333/htm}
+
+\bibitem{Akinyemi2021}
+F.~O. Akinyemi, \href{https://www.mdpi.com/2072-4292/13/5/836/htm}{Vegetation {Trends}, {Drought} {Severity} and {Land} {Use}-{Land} {Cover} {Change} during the {Growing} {Season} in {Semi}-{Arid} {Contexts}}, Remote Sensing 2021, Vol. 13, Page 836 13~(5) (2021) 836, publisher: Multidisciplinary Digital Publishing Institute.
+\newblock \href {https://doi.org/10.3390/RS13050836} {\path{doi:10.3390/RS13050836}}.
+\newline\urlprefix\url{https://www.mdpi.com/2072-4292/13/5/836/htm}
+
+\bibitem{Grekousis2015}
+G.~Grekousis, G.~Mountrakis, M.~Kavouras, \href{https://www.tandfonline.com/doi/full/10.1080/01431161.2015.1093195}{An overview of 21 global and 43 regional land-cover mapping products}, International Journal of Remote Sensing 36~(21) (2015) 5309--5335.
+\newblock \href {https://doi.org/10.1080/01431161.2015.1093195} {\path{doi:10.1080/01431161.2015.1093195}}.
+\newline\urlprefix\url{https://www.tandfonline.com/doi/full/10.1080/01431161.2015.1093195}
+
+\bibitem{Friedl2019}
+M.~Friedl, D.~Sulla-Menashe, {MCD12Q1} {MODIS}/{Terra}+{Aqua} {Land} {Cover} {Type} {Yearly} {L3} {Global} 500m {SIN} {Grid} {V006} [{Data} set]. {NASA} {EOSDIS} {Land} {Processes} {DAAC} (2019).
+\newblock \href {https://doi.org/10.5067/MODIS/MCD12Q1.006} {\path{doi:10.5067/MODIS/MCD12Q1.006}}.
+
+\bibitem{Ahmed2014}
+M.~Ahmed, M.~Sultan, J.~Wahr, E.~Yan, The use of {GRACE} data to monitor natural and anthropogenic induced variations in water availability across {Africa}, Earth-Science Reviews 136 (2014) 289--300, publisher: Elsevier.
+\newblock \href {https://doi.org/10.1016/J.EARSCIREV.2014.05.009} {\path{doi:10.1016/J.EARSCIREV.2014.05.009}}.
+
+\bibitem{Ma2017}
+S.~Ma, Q.~Wu, J.~Wang, S.~Zhang, \href{https://www.mdpi.com/2072-4292/9/11/1124/htm}{Temporal {Evolution} of {Regional} {Drought} {Detected} from {GRACE} {TWSA} and {CCI} {SM} in {Yunnan} {Province}, {China}}, Remote Sensing 2017, Vol. 9, Page 1124 9~(11) (2017) 1124, publisher: Multidisciplinary Digital Publishing Institute.
+\newblock \href {https://doi.org/10.3390/RS9111124} {\path{doi:10.3390/RS9111124}}.
+\newline\urlprefix\url{https://www.mdpi.com/2072-4292/9/11/1124/htm}
+
+\bibitem{WMO2012}
+{WMO}, M.~Svoboda, M.~Hayes, D.~A. Wood, \href{http://library.wmo.int/opac/index.php?lvl=notice_display&id=13682}{Standardized {Precipitation} {Index} {User} {Guide}}, WMO, Geneva, 2012, series Title: WMO Publication Title: WMO-No. 1090 © Issue: 1090.
+\newline\urlprefix\url{http://library.wmo.int/opac/index.php?lvl=notice_display&id=13682}
+
+\bibitem{Mckee1993}
+T.~B. Mckee, N.~J. Doesken, J.~Kleist, The relationship of drought frequency and duration to time scales. {In}: {Proceedings} of the {Ninth} {Conference} on {Applied} {Climatology}., American Metereological Society~(Boston) (1993) 179--184.
+
+\bibitem{Vicente-Serrano2010}
+S.~M. Vicente-Serrano, S.~Beguería, J.~I. López-Moreno, \href{http://dx.doi.org/10.1175/2009JCLI2909.1}{A multiscalar drought index sensitive to global warming: {The} standardized precipitation evapotranspiration index}, Journal of Climate 23~(7) (2010) 1696--1718.
+\newblock \href {https://doi.org/10.1175/2009JCLI2909.1} {\path{doi:10.1175/2009JCLI2909.1}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1175/2009JCLI2909.1}
+
+\bibitem{Hobbins2016}
+M.~T. Hobbins, A.~Wood, D.~J. McEvoy, J.~L. Huntington, C.~Morton, M.~Anderson, C.~Hain, \href{http://journals.ametsoc.org/doi/10.1175/JHM-D-15-0121.1}{The {Evaporative} {Demand} {Drought} {Index}. {Part} {I}: {Linking} {Drought} {Evolution} to {Variations} in {Evaporative} {Demand}}, Journal of Hydrometeorology 17~(6) (2016) 1745--1761.
+\newblock \href {https://doi.org/10.1175/JHM-D-15-0121.1} {\path{doi:10.1175/JHM-D-15-0121.1}}.
+\newline\urlprefix\url{http://journals.ametsoc.org/doi/10.1175/JHM-D-15-0121.1}
+
+\bibitem{McEvoy2016}
+D.~J. McEvoy, J.~L. Huntington, M.~T. Hobbins, A.~Wood, C.~Morton, M.~Anderson, C.~Hain, \href{http://journals.ametsoc.org/doi/10.1175/JHM-D-15-0122.1}{The {Evaporative} {Demand} {Drought} {Index}. {Part} {II}: {CONUS}-{Wide} {Assessment} against {Common} {Drought} {Indicators}}, Journal of Hydrometeorology 17~(6) (2016) 1763--1779.
+\newblock \href {https://doi.org/10.1175/JHM-D-15-0122.1} {\path{doi:10.1175/JHM-D-15-0122.1}}.
+\newline\urlprefix\url{http://journals.ametsoc.org/doi/10.1175/JHM-D-15-0122.1}
+
+\bibitem{Narasimhan2005}
+B.~Narasimhan, R.~Srinivasan, \href{https://linkinghub.elsevier.com/retrieve/pii/S0168192305001565}{Development and evaluation of {Soil} {Moisture} {Deficit} {Index} ({SMDI}) and {Evapotranspiration} {Deficit} {Index} ({ETDI}) for agricultural drought monitoring}, Agricultural and Forest Meteorology 133~(1-4) (2005) 69--88.
+\newblock \href {https://doi.org/10.1016/j.agrformet.2005.07.012} {\path{doi:10.1016/j.agrformet.2005.07.012}}.
+\newline\urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S0168192305001565}
+
+\bibitem{Souza2021}
+A.~G. S.~S. Souza, A.~Ribeiro~Neto, L.~L.~D. Souza, \href{https://linkinghub.elsevier.com/retrieve/pii/S0034425720304971}{Soil moisture-based index for agricultural drought assessment: {SMADI} application in {Pernambuco} {State}-{Brazil}}, Remote Sensing of Environment 252 (2021) 112124.
+\newblock \href {https://doi.org/10.1016/j.rse.2020.112124} {\path{doi:10.1016/j.rse.2020.112124}}.
+\newline\urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S0034425720304971}
+
+\bibitem{Kogan1995}
+F.~N. Kogan, Application of vegetation index and brightness temperature for drought detection, Advances in Space Research 15~(11) (1995) 91--100.
+\newblock \href {https://doi.org/10.1016/0273-1177(95)00079-T} {\path{doi:10.1016/0273-1177(95)00079-T}}.
+
+\bibitem{Cui2021}
+A.~Cui, J.~Li, Q.~Zhou, R.~Zhu, H.~Liu, G.~Wu, Q.~Li, \href{https://linkinghub.elsevier.com/retrieve/pii/S0022169421009215}{Use of a multiscalar {GRACE}-based standardized terrestrial water storage index for assessing global hydrological droughts}, Journal of Hydrology 603 (2021) 126871.
+\newblock \href {https://doi.org/10.1016/j.jhydrol.2021.126871} {\path{doi:10.1016/j.jhydrol.2021.126871}}.
+\newline\urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S0022169421009215}
+
+\bibitem{Aceituno2021}
+P.~Aceituno, J.~P. Boisier, R.~Garreaud, R.~Rondanelli, J.~A. Rutllant, \href{http://link.springer.com/10.1007/978-3-030-56901-3_2}{Climate and {Weather} in {Chile}}, in: B.~Fernández, J.~Gironás (Eds.), Water {Resources} of {Chile}, Vol.~8, Springer International Publishing, Cham, 2021, pp. 7--29.
+\newline\urlprefix\url{http://link.springer.com/10.1007/978-3-030-56901-3_2}
+
+\bibitem{Garreaud2009}
+R.~D. Garreaud, \href{https://adgeo.copernicus.org/articles/22/3/2009/}{The {Andes} climate and weather}, Advances in Geosciences 22 (2009) 3--11.
+\newblock \href {https://doi.org/10.5194/adgeo-22-3-2009} {\path{doi:10.5194/adgeo-22-3-2009}}.
+\newline\urlprefix\url{https://adgeo.copernicus.org/articles/22/3/2009/}
+
+\bibitem{Beck2023}
+H.~E. Beck, T.~R. McVicar, N.~Vergopolan, A.~Berg, N.~J. Lutsko, A.~Dufour, Z.~Zeng, X.~Jiang, A.~I. J.~M. van Dijk, D.~G. Miralles, \href{http://dx.doi.org/10.1038/s41597-023-02549-6}{High-resolution (1 km) {Köppen}-{Geiger} maps for 1901–2099 based on constrained {CMIP6} projections}, Scientific Data 10~(1) (Oct. 2023).
+\newblock \href {https://doi.org/10.1038/s41597-023-02549-6} {\path{doi:10.1038/s41597-023-02549-6}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1038/s41597-023-02549-6}
+
+\bibitem{R2023}
+{R Core Team}, \href{https://www.R-project.org/}{R: {A} {Language} and {Environment} for {Statistical} {Computing}}, R Foundation for Statistical Computing, Vienna, Austria, 2023.
+\newline\urlprefix\url{https://www.R-project.org/}
+
+\bibitem{Hufkens2019}
+K.~Hufkens, R.~Stauffer, E.~Campitelli, \href{https://bluegreen-labs.github.io/ecmwfr/}{The ecwmfr package: an interface to {ECMWF} {API} endpoints} (2019).
+\newline\urlprefix\url{https://bluegreen-labs.github.io/ecmwfr/}
+
+\bibitem{Hijmans2023}
+R.~J. Hijmans, \href{https://CRAN.R-project.org/package=terra}{terra: {Spatial} {Data} {Analysis}}, 2023.
+\newline\urlprefix\url{https://CRAN.R-project.org/package=terra}
+
+\bibitem{Pebesma2023}
+E.~Pebesma, R.~Bivand, \href{https://r-spatial.org/book/}{Spatial {Data} {Science}: {With} applications in {R}}, Chapman and Hall/CRC, London, 2023.
+\newline\urlprefix\url{https://r-spatial.org/book/}
+
+\bibitem{Pebesma2018}
+E.~Pebesma, \href{https://doi.org/10.32614/RJ-2018-009}{Simple {Features} for {R}: {Standardized} {Support} for {Spatial} {Vector} {Data}}, The R Journal 10~(1) (2018) 439--446.
+\newblock \href {https://doi.org/10.32614/RJ-2018-009} {\path{doi:10.32614/RJ-2018-009}}.
+\newline\urlprefix\url{https://doi.org/10.32614/RJ-2018-009}
+
+\bibitem{Bergueria2023}
+S.~Beguería, S.~M. Vicente-Serrano, \href{https://CRAN.R-project.org/package=SPEI}{{SPEI}: {Calculation} of the {Standardized} {Precipitation}-{Evapotranspiration} {Index}}, 2023.
+\newline\urlprefix\url{https://CRAN.R-project.org/package=SPEI}
+
+\bibitem{Didan2015}
+K.~Didan, {MOD13Q1} {MODIS}/{Terra} {Vegetation} {Indices} 16-{Day} {L3} {Global} 250m {SIN} {Grid} {V006}, Tech. rep., NASA EOSDIS Land Processes DAAC (2015).
+\newblock \href {https://doi.org/http://dx.doi.org/10.5067/MODIS/MOD13Q1.006} {\path{doi:http://dx.doi.org/10.5067/MODIS/MOD13Q1.006}}.
+
+\bibitem{Hargreaves1994}
+G.~H. Hargreaves, \href{https://ascelibrary.org/doi/10.1061/%28ASCE%290733-9437%281994%29120%3A6%281132%29}{Defining and {Using} {Reference} {Evapotranspiration}}, Journal of Irrigation and Drainage Engineering 120~(6) (1994) 1132--1139.
+\newblock \href {https://doi.org/10.1061/(ASCE)0733-9437(1994)120:6(1132)} {\path{doi:10.1061/(ASCE)0733-9437(1994)120:6(1132)}}.
+\newline\urlprefix\url{https://ascelibrary.org/doi/10.1061/%28ASCE%290733-9437%281994%29120%3A6%281132%29}
+
+\bibitem{Hao2013}
+Z.~Hao, A.~AghaKouchak, \href{https://linkinghub.elsevier.com/retrieve/pii/S0309170813000493}{Multivariate {Standardized} {Drought} {Index}: {A} parametric multi-index model}, Advances in Water Resources 57 (2013) 12--18.
+\newblock \href {https://doi.org/10.1016/j.advwatres.2013.03.009} {\path{doi:10.1016/j.advwatres.2013.03.009}}.
+\newline\urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S0309170813000493}
+
+\bibitem{AghaKouchak2014}
+A.~AghaKouchak, \href{https://hess.copernicus.org/articles/18/2485/2014/}{A baseline probabilistic drought forecasting framework using standardized soil moisture index: application to the 2012 {United} {States} drought}, Hydrology and Earth System Sciences 18~(7) (2014) 2485--2492.
+\newblock \href {https://doi.org/10.5194/hess-18-2485-2014} {\path{doi:10.5194/hess-18-2485-2014}}.
+\newline\urlprefix\url{https://hess.copernicus.org/articles/18/2485/2014/}
+
+\bibitem{Garreaud2020}
+R.~D. Garreaud, J.~P. Boisier, R.~Rondanelli, A.~Montecinos, H.~H. Sepúlveda, D.~Veloso‐Aguila, \href{https://rmets.onlinelibrary.wiley.com/doi/10.1002/joc.6219}{The {Central} {Chile} {Mega} {Drought} (2010–2018): {A} climate dynamics perspective}, International Journal of Climatology 40~(1) (2020) 421--439.
+\newblock \href {https://doi.org/10.1002/joc.6219} {\path{doi:10.1002/joc.6219}}.
+\newline\urlprefix\url{https://rmets.onlinelibrary.wiley.com/doi/10.1002/joc.6219}
+
+\bibitem{Abramowitz1968}
+M.~Abramowitz, I.~A. Stegun, Handbook of mathematical functions with formulas, graphs, and mathematical tables, Vol.~55, US Government printing office, 1968.
+
+\bibitem{Wilks2011}
+D.~S. Wilks, Empirical distributions and exploratory data analysis, Statistical Methods in the Atmospheric Sciences 100 (2011).
+
+\bibitem{Kendall1975}
+M.~Kendall, Rank correlation methods (4th ed, 2d impression). Griffin, 1975.
+
+\bibitem{Sen1968}
+P.~K. Sen, \href{http://www.tandfonline.com/doi/abs/10.1080/01621459.1968.10480934}{Estimates of the {Regression} {Coefficient} {Based} on {Kendall}'s {Tau}}, Journal of the American Statistical Association 63~(324) (1968) 1379--1389.
+\newblock \href {https://doi.org/10.1080/01621459.1968.10480934} {\path{doi:10.1080/01621459.1968.10480934}}.
+\newline\urlprefix\url{http://www.tandfonline.com/doi/abs/10.1080/01621459.1968.10480934}
+
+\bibitem{Vicente-Serrano2021}
+S.~M. Vicente-Serrano, D.~Peña-Angulo, S.~Beguería, F.~Domínguez-Castro, M.~Tomás-Burguera, I.~Noguera, L.~Gimeno-Sotelo, A.~El~Kenawy, \href{https://royalsocietypublishing.org/doi/10.1098/rsta.2021.0285}{Global drought trends and future projections}, Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences 380~(2238) (2022) 20210285.
+\newblock \href {https://doi.org/10.1098/rsta.2021.0285} {\path{doi:10.1098/rsta.2021.0285}}.
+\newline\urlprefix\url{https://royalsocietypublishing.org/doi/10.1098/rsta.2021.0285}
+
+\bibitem{Vicente-Serrano2018}
+S.~M. Vicente-Serrano, D.~G. Miralles, F.~Domínguez-Castro, C.~Azorin-Molina, A.~El~Kenawy, T.~R. McVicar, M.~Tomás-Burguera, S.~Beguería, M.~Maneta, M.~Peña-Gallardo, \href{https://journals.ametsoc.org/doi/10.1175/JCLI-D-17-0775.1}{Global {Assessment} of the {Standardized} {Evapotranspiration} {Deficit} {Index} ({SEDI}) for {Drought} {Analysis} and {Monitoring}}, Journal of Climate 31~(14) (2018) 5371--5393.
+\newblock \href {https://doi.org/10.1175/JCLI-D-17-0775.1} {\path{doi:10.1175/JCLI-D-17-0775.1}}.
+\newline\urlprefix\url{https://journals.ametsoc.org/doi/10.1175/JCLI-D-17-0775.1}
+
+\bibitem{Tibshirani2010}
+R.~Tibshirani, J.~Bien, J.~Friedman, T.~Hastie, N.~Simon, J.~Taylor, R.~J. Tibshirani, \href{http://arxiv.org/abs/1011.2234}{Strong rules for discarding predictors in lasso-type problems} (Nov. 2010).
+\newline\urlprefix\url{http://arxiv.org/abs/1011.2234}
+
+\bibitem{Hoerl1970}
+A.~E. Hoerl, R.~W. Kennard, \href{http://www.tandfonline.com/doi/abs/10.1080/00401706.1970.10488634}{Ridge {Regression}: {Biased} {Estimation} for {Nonorthogonal} {Problems}}, Technometrics 12~(1) (1970) 55--67.
+\newblock \href {https://doi.org/10.1080/00401706.1970.10488634} {\path{doi:10.1080/00401706.1970.10488634}}.
+\newline\urlprefix\url{http://www.tandfonline.com/doi/abs/10.1080/00401706.1970.10488634}
+
+\bibitem{Ho1995}
+T.~K. Ho, Random decision forests, in: Proceedings of 3rd international conference on document analysis and recognition, Vol.~1, IEEE, 1995, pp. 278--282.
+
+\bibitem{Meroni2016}
+M.~Meroni, F.~Rembold, D.~Fasbender, A.~Vrieling, \href{https://www.tandfonline.com/doi/full/10.1080/2150704X.2016.1264020}{Evaluation of the {Standardized} {Precipitation} {Index} as an early predictor of seasonal vegetation production anomalies in the {Sahel}}, Remote Sensing Letters 8~(4) (2017) 301--310.
+\newblock \href {https://doi.org/10.1080/2150704X.2016.1264020} {\path{doi:10.1080/2150704X.2016.1264020}}.
+\newline\urlprefix\url{https://www.tandfonline.com/doi/full/10.1080/2150704X.2016.1264020}
+
+\end{thebibliography}
