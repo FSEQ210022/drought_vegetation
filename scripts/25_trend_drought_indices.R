@@ -50,6 +50,11 @@ df_zcndvi |>
 ggsave('output/figs/temporal_variation_zcNDVI6_macrozonas.png',scale = 2,bg = 'white',width=6,height=3)
 
 #Mapa de tendencia Mann-Kendall
+
+#breaks para escalas
+
+breaks <- seq(-0.06,.06,length.out = 6)
+
 library(fs)
 dir <- '/mnt/md0/raster_procesada/analysis/trends/'
 files <- dir_ls(dir,regexp = 'mann.*SPI.*tif$')
@@ -63,16 +68,27 @@ trend_spi <- app(trend_spi,\(x){
 
 ind_ord <- scales |> as.numeric() |> order()
 trend_spi <- subset(trend_spi,ind_ord)
-names(trend_spi) <- paste('SPI',scales,sep ='-')
+names(trend_spi) <- paste('SPI',scales[ind_ord],sep ='-')
+
+df_spi <- terra::extract(trend_spi,macro,fun = mean, na.rm = TRUE) |> 
+  mutate(macro = macro$macrozona) |> 
+  select(-ID) |> 
+  pivot_longer(-macro) |> 
+  mutate(scale = str_remove(name,'SPI-') |> as.numeric())
 
 map_spi <- tm_shape(trend_spi*10) + 
-  tm_raster(palette = '-inferno',midpoint = 0,title = 'Trend SPI \n (per decade)',style = 'kmeans') +
+  tm_raster(palette = 'inferno',
+            midpoint = 0,
+            title = 'Trend SPI \n (per decade)',
+            style = 'cont',
+            breaks = breaks) +
   tm_shape(macro) + 
   tm_borders(col='white') +
   tm_shape(chl_b) + 
   tm_borders(col = 'black') +
   tm_facets(nrow=1) +
-  tm_layout(panel.labels = paste0('SPI-',c(1,3,6,12,24,36)))
+  tm_layout(panel.labels = paste0('SPI-',c(1,3,6,12,24,36)),
+            panel.label.bg.color = 'white')
 tmap_save(map_spi,'output/figs/trend_raster_SPI_1981-2023.png',asp=.2)
 
 ## SPEI
@@ -88,16 +104,27 @@ trend_spei <- app(trend_spei,\(x){
 
 ind_ord <- scales |> as.numeric() |> order()
 trend_spei <- subset(trend_spei,ind_ord)
-names(trend_spei) <- paste('SPEI',scales,sep ='-')
+names(trend_spei) <- paste('SPEI',scales[ind_ord],sep ='-')
+
+df_spei <- terra::extract(trend_spei,macro,fun = mean, na.rm = TRUE) |> 
+  mutate(macro = macro$macrozona) |> 
+  select(-ID) |> 
+  pivot_longer(-macro) |> 
+  mutate(scale = str_remove(name,'SPEI-') |> as.numeric())
 
 map_spei <- tm_shape(trend_spei*10) + 
-  tm_raster(palette = '-inferno',midpoint = 0,title = 'Trend SPEI \n (per decade)',style = 'kmeans') +
+  tm_raster(palette = 'inferno',
+            midpoint = 0,
+            title = 'Trend SPEI \n (per decade)',
+            style = 'cont',
+            breaks = breaks) +
   tm_shape(macro) + 
   tm_borders(col='white') +
   tm_shape(chl_b) + 
   tm_borders(col = 'black') +
   tm_facets(nrow = 1) +
-  tm_layout(panel.labels = paste0('SPEI-',c(1,3,6,12,24,36)))
+  tm_layout(panel.labels = paste0('SPEI-',c(1,3,6,12,24,36)),
+            panel.label.bg.color = 'white')
 tmap_save(map_spei,'output/figs/trend_raster_SPEI_1981-2023.png',asp=.2)
 
 ## EDDI
@@ -112,16 +139,27 @@ trend_eddi <- app(trend_eddi,\(x){
 
 ind_ord <- scales |> as.numeric() |> order()
 trend_eddi <- subset(trend_eddi,ind_ord)
-names(trend_eddi) <- paste('EDDI',scales,sep ='-')
+names(trend_eddi) <- paste('EDDI',scales[ind_ord],sep ='-')
+
+df_eddi <- terra::extract(trend_eddi,macro,fun = mean, na.rm = TRUE) |> 
+  mutate(macro = macro$macrozona) |> 
+  select(-ID) |> 
+  pivot_longer(-macro) |> 
+  mutate(scale = str_remove(name,'EDDI-') |> as.numeric())
 
 map_EDDI <- tm_shape(trend_eddi*10) + 
-  tm_raster(palette = 'inferno',midpoint = 0,title = 'Trend EDDI \n (per decade)',style = 'kmeans') +
+  tm_raster(palette = '-inferno',
+            midpoint = 0,
+            title = 'Trend EDDI \n (per decade)',
+            style = 'cont',
+            breaks = breaks) +
   tm_shape(macro) + 
   tm_borders(col='white') +
   tm_shape(chl_b) + 
   tm_borders(col = 'black') +
   tm_facets(nrow = 1) +
-  tm_layout(panel.labels = paste0('EDDI-',c(1,3,6,12,24,36)))
+  tm_layout(panel.labels = paste0('EDDI-',c(1,3,6,12,24,36)),
+            panel.label.bg.color = 'white')
 tmap_save(map_EDDI,'output/figs/trend_raster_EDDI_1981-2023.png',asp=.2)
 
 ## zcSM
@@ -136,16 +174,27 @@ trend_zcsm <- app(trend_zcsm,\(x){
 
 ind_ord <- scales |> as.numeric() |> order()
 trend_zcsm <- subset(trend_zcsm,ind_ord)
-names(trend_zcsm) <- paste('zcSM',scales,sep ='-')
+names(trend_zcsm) <- paste('zcSM',scales[ind_ord],sep ='-')
+
+df_zcsm <- terra::extract(trend_zcsm,macro,fun = mean, na.rm = TRUE) |> 
+  mutate(macro = macro$macrozona) |> 
+  select(-ID) |> 
+  pivot_longer(-macro) |> 
+  mutate(scale = str_remove(name,'zcSM-') |> as.numeric())
 
 map_zcSM <- tm_shape(trend_zcsm*10) + 
-  tm_raster(palette = '-inferno',midpoint = 0,title = 'Trend zcSM \n (per decade)') +
+  tm_raster(palette = 'inferno',
+            midpoint = 0,
+            title = 'Trend SSI \n (per decade)',
+            style = 'cont',
+            breaks = breaks) +
   tm_shape(macro) + 
   tm_borders(col='white') +
   tm_shape(chl_b) + 
   tm_borders(col = 'black') +
   tm_facets() +
-  tm_layout(panel.labels = paste0('zcSM-',c(1,3,6,12,24,36)))
+  tm_layout(panel.labels = paste0('SSI-',c(1,3,6,12,24,36)),
+            panel.label.bg.color = 'white')
 tmap_save(map_zcSM,'output/figs/trend_raster_zcSM_1981-2023.png',asp=.2)
 
 ## zcNDVI
@@ -184,3 +233,14 @@ tmap_save(map_zcNDVI,'output/figs/trend_raster_zcNDVI6_2001-2023.png',scale=1)
 
 mapa1 <- tmap_arrange(map_zcNDVI,map_spi,widths = c(.2,.8))
 tmap_save(mapa1,'output/figs/trend_raster_zcNDVI6_SPIs.png',asp=.3)
+
+## Visualización trend por macrozona
+## 
+data_df <- bind_rows(df_spi,df_spei,df_eddi,df_zcsm)
+
+data_df |> 
+  mutate(index =str_remove(name,'-.*')) |> 
+  ggplot(aes(scale,value,color=index)) +
+  geom_line() +
+  geom_point() +
+  facet_grid(.~macro,scale = 'free')
