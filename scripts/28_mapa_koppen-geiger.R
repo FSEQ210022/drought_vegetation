@@ -31,5 +31,5 @@ tm_shape(kp_chile) +
   tm_raster(palette = colores,
             style = 'cat',
             labels = labs,
-            title = 'Climate (1990-2020)') +
+            title = 'Climate (1991-2020)') +
   tm_layout(legend.outside = TRUE)
