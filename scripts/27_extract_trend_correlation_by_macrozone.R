@@ -65,24 +65,47 @@ mask <- resample(mask,trends)
 trends <- mask(trends,mask)
 
 df_scales_1 <- terra::extract(trends[[7:24]],macro,fun =\(x){
-  table(x) |> sort(decreasing = TRUE) -> x
-  as.numeric(names(x[1]))
+  mean(x,na.rm =TRUE)
+  #table(x) |> sort(decreasing = TRUE) -> x
+  #as.numeric(names(x[1]))
 })
 
 df_scales_2 <- terra::extract(trends[[1:6]],macro,fun =\(x){
-  table(x) |> sort() -> x
-  as.numeric(names(x[1]))
+  mean(x,na.rm = TRUE)
+  # table(x) |> sort() -> x
+  # as.numeric(names(x[1]))
 })
 
 #zcNDVI
 trends <- rast(names(files)[19])
 trends <- trends[[2]]
 names(trends) <- 'zcNDVI-6'
+
+#mascara para elevaciones mayores a 1500m
+elev <- geodata::elevation_30s('chile',path = tempdir()) |> 
+  project('EPSG:32719')
+elev2 <- resample(elev,trends)
+mask <- elev2
+mask[mask<1500] <- 1
+mask[mask>=1500] <- NA
+mask <- crop(mask, ext(trends))
+
 trends <- resample(trends,mask)
+mask <- resample(mask,trends)
+trends <- mask(trends,mask)
+
 macro <- st_transform(macro,32719)
+
+lc_pers <- rast('/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/IGBP80_reclassified.tif') 
+#nieve permanente
+lc_pers[lc_pers %in% c(5,7:10)] <- NA
+lc_pers <- resample(lc_pers,trends)
+trends <- mask(trends,lc_pers)
+
 df_scales_3 <- terra::extract(trends,macro,fun =\(x){
-  table(x) |> sort(decreasing = TRUE) -> x
-  as.numeric(names(x[1]))
+  mean(x,na.rm = TRUE)
+  # table(x) |> sort(decreasing = TRUE) -> x
+  # as.numeric(names(x[1]))
 })
 
 df_scales <- bind_cols(st_drop_geometry(macro),df_scales_1,df_scales_2,df_scales_3)

@@ -11,20 +11,11 @@ files <- dir_ls(dir,regexp = 'mann_kendall.*zcNDVI-6.*tif$')
 trends <- rast(files)[[2]]
 names(trends) <- 'zcNDVI-6'
 
-#mascara para elevaciones mayores a 1500m
-elev <- geodata::elevation_30s('chile',path = tempdir()) |> 
-  project('EPSG:32719')
-elev2 <- resample(elev,trends)
-mask <- elev2
-mask[mask<1500] <- 1
-mask[mask>=1500] <- NA
+
 
 macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
   mutate(macrozona = c('Norte Chico','Norte Grande','Austral','Centro','Sur')) |> 
   st_transform(32719)
-
-trends <- resample(trends,mask)
-trends <- mask(trends,mask)
 
 # ahora por tipo de landcover
 
