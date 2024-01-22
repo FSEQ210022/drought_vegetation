@@ -364,15 +364,13 @@ knitr::include_graphics("../output/figs/mapa_cor_r_indices_zcNDVI6.png")
 
 #	Discussion
 
-## Ecological and agricultural drought 
-
 ## Drought trend, LULCC, and climate conditions
 
 1.-  Respecto a lo que indica @Vicente-Serrano2018, de que el aumento en la tendencia en severidad de la sequía (hidrológica) tiene que ver más con un aumento de la demanda de agua (ej, LULCC, amazonas) que a una tendencia en las condiciones climáticas (SPI-12). ¿Qué pasa en Chile?
 
 ## land cover types most impacted by drought throughout Chile
 
-2.- Sobre los tipos de land cover más afectados por los indicadores de sequía. Asociación con el matorral chileno [@Fuentes2021]. Diferencia entre el Norte Chico, Centro y lo que pasa hacía el sur.
+2.- Sobre los tipos de land cover más afectados por los indicadores de sequía. Asociación con el matorral chileno [@Fuentes2021]. Diferencia entre el Norte Chico, Centro y lo que pasa hacía el sur (@Miranda2023)
 
 ## Drought indices of water demand and supply, soil moisture to predict changes in vegetation productivity
 
