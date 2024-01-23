@@ -17,13 +17,10 @@ pal <- read.csv('data/processed_data/paleta_colores_landcover.csv')
 t <- pal$class
 names(t) <- pal$Name
 
-lc <- rast('/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/IGBP80_reclassified.tif')
-
 dir <- '/mnt/md0/raster_procesada/analysis/correlations/meses/'
 files <- dir_ls(dir,regexp = '.*EDDI.*tif$')
 
-cors <- rast(files)
-cors <- resample(cors,lc)
+
 
 macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
   st_transform(32719)

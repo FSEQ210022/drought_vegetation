@@ -145,13 +145,26 @@ ERA5L* & & Atmospheric Evaporative Demand & 0.1° & 1981-2023 & mm & AED \\
 \end{table}
 ```
 
-###	in-situ data
+###	Weather stations
 
-POR COMPLETAR
+We validated the ERA5L variables for monthly mean temperature, total precipitation, and volumetric soil water content. For temperature and precipitation, we used the weather network from the Ministry of Agriculture of Chile (www.agromet.com). We used 266 stations located throughout Chile. For soil moisture, we select a soil network for water content and temperature, localized in the Aconcagua's river basin ("Norte Chico"). This network corresponds to 53 sensors of the type Temperature Moisture Sensor (TMS) [@Wild2019].
 
 ### Validation of ERA5L variables
 
-POR COMPLETAR
+To account for the performance of the ERA5L climatic variables regarding the values measured by the weather stations. We selected the following metrics:
+
+$$MAE = \frac{1}{n}\sum |{E-S}|$$
+$$Bias = \frac{\sum E}{\sum S}$$
+$$ubRMSE =\sqrt{\frac{\sum{ \left[ (E_i-\overline{E})-(S_i-\overline{S}) \right ] ^2}}{n}}$$ 
+
+$$CC = \frac{\sum (S_i-\bar{S})(E_i-\bar{E})}{\sqrt{(Si-\bar{S})^2(E_i-\bar{E})^2}}$$
+
+$MAE$: mean absolute error
+$bias$: bias
+$ubRMSE$: unbiassed root mean squared error
+$CC$: coefficient of correlation
+$S$: value of the variable measure by the weather station
+$E$: value of the variable measure by ERA5L
 
 ## Drought Indices
 
@@ -242,6 +255,8 @@ To assess how water demand and supply and soil moisture are related to vegetatio
 ## Data
 
 ### Validation of ERA5L variables
+
+The average metrics of performance of ERA5L over the 266 weather stations were in the case of temperature: $ubRMSE=1.06\,°C$, $MAE=1.131\,°C$, and $CC=0.963$. For precipitation, $MAE=28.1\,mm$, $Bias=1.93$, and $CC=0.845$.
 
 ##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture
 

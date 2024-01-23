@@ -15,6 +15,7 @@ data_ana <- data_trend_di |>
 
 data_model <- data_ana[,c(1:6,9:12,15:18,21:24,29,31)]
 data_model <- data_model |> 
+  filter(macro %in% c('Norte Chico','Centro')) |> 
   #select(-starts_with('EDDI')) |> 
   mutate(
     #landcover = cut(landcover,5),

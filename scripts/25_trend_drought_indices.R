@@ -239,8 +239,19 @@ tmap_save(mapa1,'output/figs/trend_raster_zcNDVI6_SPIs.png',asp=.3)
 data_df <- bind_rows(df_spi,df_spei,df_eddi,df_zcsm)
 
 data_df |> 
-  mutate(index =str_remove(name,'-.*')) |> 
-  ggplot(aes(scale,value,color=index)) +
+  mutate(index =str_remove(name,'-.*'),
+         macro = fct_relevel(macro,'Norte Grande','Norte Chico','Centro','Sur','Austral'),
+         index = case_when(index == 'zcSM' ~ 'SSI',
+                         .default = index)) |> 
+  ggplot(aes(scale,value*10,color=index)) +
   geom_line() +
   geom_point() +
-  facet_grid(.~macro,scale = 'free')
+  scale_colour_viridis_d(name = 'Drought index') +
+  scale_y_continuous(breaks= seq(-0.05,0.05,length.out=9)) +
+  scale_x_continuous(breaks = c(1,3,6,12,24,36)) +
+  facet_grid(.~macro,scale = 'free') +
+  labs(y = 'Trend per decade',x= 'Time scales') +
+  theme_bw() +
+  theme(strip.background = element_rect(fill = 'white'),
+        legend.position = 'bottom')
+ggsave('output/figs/trend_macrozone_drought_indices.png',width =10,height=3)

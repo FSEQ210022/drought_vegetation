@@ -41,6 +41,28 @@ LC_data |>
   group_by(zone,LC_type)|> 
   summarize(ntot = n()) -> summ_data2
 
+#tabla con superficie
+#
+summ_data2 |> 
+  mutate(surface = 21.19*ntot*0.01) |> 
+  select(-ntot) |> 
+  mutate(surface = case_when(surface <=20~NA,
+                           .default = surface)) |> 
+  pivot_wider(names_from = LC_type,values_from=surface) |> 
+  rename(macrozone = zone) |> 
+  ungroup() |> 
+   select(1,7:6,4:2,5) |> 
+  gt() |> 
+  fmt_number(decimals = 0) |> 
+  sub_missing(
+    columns = everything(),
+    missing_text = ""
+  ) |> 
+  tab_header(
+    title = md("Surface  [km<sup>2]"),
+  ) |> 
+  gt::gtsave('output/figs/table_surface_landcover_macrozone.png')
+
 summ_data2 |> 
   group_by(zone) |>  
   summarize(totZone = sum(ntot)) |>  
