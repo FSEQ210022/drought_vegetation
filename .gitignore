@@ -41,3 +41,4 @@ vignettes/*.pdf
 #otras carpetas
 article/article_files
 tmap_style_previews
+data/processed_data/data_sm_2022_garces.rds
