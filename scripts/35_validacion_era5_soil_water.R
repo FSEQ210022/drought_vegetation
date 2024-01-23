@@ -4,12 +4,12 @@ library(sf)
 library(agvAPI)
 library(fs)
 
-data_sm_tb <- read_rds('data/processed/data_sm_2022.rds') |> 
+data_sm_tb <- read_rds('data/processed_data/data_sm_2022_garces.rds') |> 
   #filter(depth == 30) |> 
   mutate(datetime =ymd_hm(datetime)) |> 
-  group_by(day = floor_date(datetime,'1 day'),serial) |> 
-  summarize(SM = mean(SM,na.rm = TRUE)) |> 
-  mutate(day = as.character(ymd(day)))
+  group_by(date = floor_date(datetime,'1 day'),serial) |> 
+  summarize(SM_g = mean(SM,na.rm = TRUE)) |> 
+  mutate(date = as.character(ymd(date)))
 
 dir_era_sm <- '/mnt/md0/raster_procesada/ERA5-Land_tiff/clima/volumetric_soil_water/daily'
 
@@ -32,53 +32,44 @@ dates <- seq(ymd("20220101"),ymd("20221231"),by='1 day')
 data_sm <- cbind(st_drop_geometry(est_garces_sf[,'serial']),data_sm)
 #names(data_sm)[3:367] <- as.character(dates)
 
-rmse <- function(x,y) {
-  sqrt(mean((x-y)^2))
-  }
-
-data_sm |> 
+data_unida_sm <- data_sm |> 
   select(-ID) |> 
-  pivot_longer(-serial,names_to = 'day') |> 
-  right_join(data_sm_tb) |> 
-  mutate(SM = SM/100,date = ymd(day)) |> 
-  ggplot() +
-  geom_point(aes(date,SM),colour='blue') + 
-  geom_line(aes(date,SM),colour='blue') + 
-  geom_point(aes(date,value),colour='red') + 
-  geom_line(aes(date,value),colour='red')  +
-  facet_wrap(serial~.)
-
-data_sm |> 
-  select(-ID) |> 
-  pivot_longer(-serial,names_to = 'day') |> 
-  right_join(data_sm_tb) |> 
-  mutate(SM = SM/100,date = ymd(day)) |> 
+  pivot_longer(-serial,names_to = 'date',values_to = 'SM_era5') |> 
+  left_join(data_sm_tb) |> 
+  mutate(SM_g = SM_g/100,date = ymd(date)) 
+  
+library(yardstick)
+metrics_sm <- data_unida_sm |> 
+  mutate(num_mes = month(date)) |> 
+  filter(num_mes %in% c(4:10)) |> 
   group_by(serial) |> 
-  summarize(r = cor(value,SM),
-            rmse = rmse(value,SM)) |>
-  ggplot(aes(serial,rmse)) + 
-  geom_col()
+  summarize(CC = cor(SM_era5,SM_g),
+            rmse = rmse_vec(SM_era5,SM_g),
+            mae =mae_vec(SM_era5,SM_g),
+            bias = sum(SM_era5)/sum(SM_g)) 
 
-  ggplot(aes(value,SM)) + 
-  geom_point() +
-  facet_wrap(serial~.) + 
-  theme_bw()
+metrics_sm |> 
+  pivot_longer(-serial) |> 
+  ggplot(aes(name,value)) + 
+  geom_jitter(alpha=.7) +
+  geom_violin(fill=NA,color = 'darkblue') +
+  geom_boxplot(fill = NA,col = 'darkgreen') +
+  facet_wrap(name~.,scale = 'free') + 
+  theme_bw() +
+  theme(strip.background = element_rect(fill = 'white'),
+        axis.title.x = element_blank())  
+ggsave('output/figs/metrics_validation_sm_era.png',scale=1.5)
 
-  ##borrar
-  ##
+metrics_sm |> 
+  summarize(across(2:5,\(x) mean(x)))
   
-  load('~/Descargas/Aconcagua_TOMST_TempAire.RData')
-  temps_acon |> 
-    filter(sensor_name == 'TMS_TMSmoisture') |> 
-    select(1:7) |> 
-    group_by(Sitio,Profundidad) |> 
-    summarize(across(everything(),\(x) unique(x))) |> 
-    write_rds('data/processed_data/metadata_tomsT4.rds')
-  
-  temps_acon |> 
-    filter(sensor_name == 'TMS_TMSmoisture') |> 
-    select(Sitio,Profundidad,Fecha2,value) |> 
-    group_by(Sitio,Fecha2) |> 
-    summarize(value = mean(value)) |> 
-    write_rds('data/processed_data/datos_tomsT4_raw_promedio_x_sitio.rds')
-  
+library(tmap)
+library(rnaturalearth)
+chl <- ne_countries(country = 'chile',scale = 'small',returnclass = 'sf')
+
+macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg')
+mapa_est <- tm_shape(macro) +
+  tm_borders() +
+  tm_shape(est_garces_sf) +
+  tm_dots() 
+tmap_save(mapa_est,'output/figs/mapa_estaciones_humedad.png')

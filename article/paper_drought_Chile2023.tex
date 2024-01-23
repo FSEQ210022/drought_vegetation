@@ -229,7 +229,7 @@ those zones that should be further investigated.
 \end{frontmatter}
     \captionsetup{justification=raggedright,singlelinecheck=false}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, enhanced, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, sharp corners, interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable, enhanced]}{\end{tcolorbox}}\fi
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -455,16 +455,38 @@ ERA5L* & & Atmospheric Evaporative Demand & 0.1° & 1981-2023 & mm & AED \\
 {\raggedright *Derived from ERA5L with Eq. \ref{eq-AED}. \par}
 \end{table}
 
-\hypertarget{in-situ-data}{%
-\subsubsection{in-situ data}\label{in-situ-data}}
+\hypertarget{weather-stations}{%
+\subsubsection{Weather stations}\label{weather-stations}}
 
-POR COMPLETAR
+We compared the ERA5L variables for monthly mean temperature, total
+precipitation, and volumetric soil water content against values
+retrieved by weather stations. For temperature and precipitation, we
+used the weather network from the Ministry of Agriculture of Chile
+(www.agromet.com) between 2015 and 2023. We used 277 stations located
+throughout Chile. For soil moisture, we select a private soil network
+that is owned by the agricultural enterprise Garces Fruit, which has 99
+stations in Central Chile, located in cherry fruit crops. We used daily
+data for the year 2022 and the months outside the growing season, May to
+September, to avoid the effect of irrigation on soil moisture, which is
+hardly captured by ERA5L.
 
 \hypertarget{validation-of-era5l-variables}{%
 \subsubsection{Validation of ERA5L
 variables}\label{validation-of-era5l-variables}}
 
-POR COMPLETAR
+To account for the performance of the ERA5L climatic variables regarding
+the values measured by the weather stations. We selected the following
+metrics:
+
+\[MAE = \frac{1}{n}\sum |{E-S}|\] \[Bias = \frac{\sum E}{\sum S}\]
+\[ubRMSE =\sqrt{\frac{\sum{ \left[ (E_i-\overline{E})-(S_i-\overline{S}) \right ] ^2}}{n}}\]
+
+\[CC = \frac{\sum (S_i-\bar{S})(E_i-\bar{E})}{\sqrt{(Si-\bar{S})^2(E_i-\bar{E})^2}}\]
+
+\(MAE\): mean absolute error \(bias\): bias \(ubRMSE\): unbiassed root
+mean squared error \(CC\): coefficient of correlation \(S\): value of
+the variable measure by the weather station \(E\): value of the variable
+measure by ERA5L
 
 \hypertarget{drought-indices}{%
 \subsection{Drought Indices}\label{drought-indices}}
@@ -721,6 +743,19 @@ with the time scales and the second with the correlation value.
 \hypertarget{validation-of-era5l-variables-1}{%
 \subsubsection{Validation of ERA5L
 variables}\label{validation-of-era5l-variables-1}}
+
+The average metrics of performance of ERA5L over the 266 weather
+stations were in the case of monthly temperature: \(ubRMSE=1.06\,°C\),
+\(MAE=1.131\,°C\), and \(CC=0.963\), showing a good agreement, low
+error, and low overestimation. For cumulative monthly precipitation,
+\(MAE=28.1\,mm\), \(bias=1.93\), and \(CC=0.845\), showing a high
+correlation and a 93\% bias and being overestimated by ERA5L. In the
+case of the 97 soil moisture stations, we averaged for the three depths
+(30, 60, and 90m) and then compared it with volumetric water content at
+1m derived from ERA5L. For this case, we made a daily comparison, having
+a \(CC=0.71\), \(RMSE=0.174\,m^3m^{-3}\), \(MAE=0.167\,m^3m^{-3}\), and
+\(bias=1.74\). The ERA5 soil moisture overestimate is 74\%, but it has a
+kind of good correlation.
 
 \hypertarget{lulc-change-for-2001-2022-and-its-relation-with-water-supply-and-demand-and-soil-moisture}{%
 \subsection{LULC change for 2001-2022 and its relation with water supply

@@ -147,7 +147,7 @@ ERA5L* & & Atmospheric Evaporative Demand & 0.1° & 1981-2023 & mm & AED \\
 
 ###	Weather stations
 
-We validated the ERA5L variables for monthly mean temperature, total precipitation, and volumetric soil water content. For temperature and precipitation, we used the weather network from the Ministry of Agriculture of Chile (www.agromet.com). We used 266 stations located throughout Chile. For soil moisture, we select a soil network for water content and temperature, localized in the Aconcagua's river basin ("Norte Chico"). This network corresponds to 53 sensors of the type Temperature Moisture Sensor (TMS) [@Wild2019].
+We compared the ERA5L variables for monthly mean temperature, total precipitation, and volumetric soil water content against values retrieved by weather stations. For temperature and precipitation, we used the weather network from the Ministry of Agriculture of Chile (www.agromet.com) between 2015 and 2023. We used 277 stations located throughout Chile. For soil moisture, we select a private soil network that is owned by the agricultural enterprise Garces Fruit, which has 99 stations in Central Chile, located in cherry fruit crops. We used daily data for the year 2022 and the months outside the growing season, May to September, to avoid the effect of irrigation on soil moisture, which is hardly captured by ERA5L.
 
 ### Validation of ERA5L variables
 
@@ -256,7 +256,7 @@ To assess how water demand and supply and soil moisture are related to vegetatio
 
 ### Validation of ERA5L variables
 
-The average metrics of performance of ERA5L over the 266 weather stations were in the case of temperature: $ubRMSE=1.06\,°C$, $MAE=1.131\,°C$, and $CC=0.963$. For precipitation, $MAE=28.1\,mm$, $Bias=1.93$, and $CC=0.845$.
+The average metrics of performance of ERA5L over the 266 weather stations were in the case of monthly temperature: $ubRMSE=1.06\,°C$, $MAE=1.131\,°C$, and $CC=0.963$, showing a good agreement, low error, and low overestimation. For cumulative monthly precipitation, $MAE=28.1\,mm$, $bias=1.93$, and $CC=0.845$, showing a high correlation and a 93% bias and being overestimated by ERA5L. In the case of the 97 soil moisture stations, we averaged for the three depths (30, 60, and 90m) and then compared it with volumetric water content at 1m derived from ERA5L. For this case, we made a daily comparison, having a $CC=0.71$, $RMSE=0.174\,m^3m^{-3}$, $MAE=0.167\,m^3m^{-3}$, and $bias=1.74$. The ERA5 soil moisture overestimate is 74%, but it has a kind of good correlation.
 
 ##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture
 
