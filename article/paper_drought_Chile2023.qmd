@@ -56,7 +56,7 @@ format:
       formatting: preprint
       layout: onecolumn
       model: 3p
-      cite-style: authoryear
+      cite-style: number
       natbiboptions: numbers
     include-in-header: 
       text: \usepackage{lineno}\linenumbers
@@ -93,7 +93,7 @@ For the spatiotemporal assessment of drought impact (i.e., by water supply and d
 
 To evaluate meteorological drought (i.e., water supply), the World Meteorological Organization (WMO; @WMO2012) recommends the Standardized Precipitation Index (SPI; @Mckee1993), a multiscalar drought index that allows to monitor precipitation deficits from short- to long-term. Following the same approach, @Vicente-Serrano2010 incorporates into the SPI the effect of temperature through the use of potential evapotranspiration, thus proposing the SPEI (Standardized Precipitation Evapotranspiration Index). Similarly, to evaluate solely the evaporative demand driven by temperature, @Hobbins2016 and @McEvoy2016 came up with the Evaporative Demand Drought Index (EDDI). For vegetation, in a similar manner as the SPI, SPEI and EDDI; @Zambrano2018 proposed the zcNDVI, a standardized anomaly of the cumulative Normalized Difference Vegetation Index (NDVI), which could be acumulated over the growing season or any period (e.g., months), resulting in a multiscalar drought index. For soil moisture, several drought indices exist, such as the Soil Moisture Deficit Index (SDMI) a normalized index [@Narasimhan2005] and the Soil Moisture Agricultural Drought Index (SMADI) [@Souza2021] which is a normalized index using vegetation, land surface temperature, and a vegetation condition index (VCI, [@Kogan1995]). From TWS, we can estimate the standardized terrestrial water storage index (STI) [@Cui2021], a standardized anomaly that follows the methodology of the SPI, SPEI, EDDI, and zcNDVI. Thereby, we have drought indices for water supply, demand, and storage, which can help to make a comprehensive assessment of drought.
 
-In this research, we aim to analyze the impact of drought on different types of ecosystems (land cover classes) in continental Chile. Our specific goals are: i) to analyze the trend on multi-scalar drought indices for water demand and supply, soil moisture, and vegetation productivity for 1981–2023/2001–2023; ii) to assess the LULC change for 2001–2021 and how it relates to drought indices; iii) to evaluate the relationship between zcNDVI, a measure of vegetation productivity, and drought indices for water demand and supply and soil moisture; and iv) to assess if the observed changes in the drought indices are linked to TWS.
+In this research, we aim to analyze the impact of drought on different types of ecosystems (land cover classes) in continental Chile. Our specific goals are: i) to analyze the trend on multi-scalar drought indices for water demand and supply, soil moisture, and vegetation productivity for 1981–2023/2001–2023; ii) to assess the LULC change for 2001–2022 and how it relates to drought indices; iii) to evaluate the relationship between zcNDVI, a measure of vegetation productivity, and drought indices for water demand and supply and soil moisture; and iv) to assess if the observed changes in the drought indices are linked to TWS.
 
 # Study area
 
@@ -202,7 +202,7 @@ $DI$ is referring to the drought index calculated for the variable $V$. The valu
 
 ##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture {#sec-methods_lulc}
 
-### land cover macroclasess and validation 
+### Land cover macroclasess and validation 
 
 To analyze the LULCC, we use the IGBP scheme from the MCD12Q1 collection 6.1 from MODIS. This product has a yearly frequency from 2001 to 2022. The IGBP defines 17 classes; from these, we regrouped into ten macroclasses, as follows: classes 1-4 to forest, 5-7 to schrublands, 8-9 to savannas, 10 as grasslands, 11 as wetlands, 12 and 14 to croplands, 13 as urban, 15 as snow and ice, 16 as barren, and 17 to water bodies. Thus, we have a land cover raster time-series with the ten classes for 2001 and 2023. 
 
@@ -218,13 +218,13 @@ $$Accuracy = \frac{TP+TN}{TP+TN+FP+FN}=\frac{correct\,\, classifications}{all\,\
 $$F1=\frac{2\cdot TP}{2\cdot TP + FP +FN}$$
 where $TP$ and $FN$ refer to true positive and false negative, correctly classified classes; $TN$ and $FP$ to true negative and false positive, wrongly classified classes.
 
-### land cover persistence mask 2001-2022
+### Land cover persistence mask 2001-2022
 
 The time series of NDVI is affected by climatic conditions, vegetation development, seasonality, and changes in vegetation type. In this study, we want to analyze the variation in vegetation productivity in different land cover types and how it is affected by water demand, water supply, and soil moisture. In order to avoid changes due to a change in the land cover type, that will wrongly impact NDVI. We will develop a persistence mask for land cover for 2001–2023. Thereby, we reduce an important source of variation on a regional scale. 
 
 Thus, we calculated a raster mask for IGBP MODIS considering the macroclasses that remain without change for more than 80% of the years (2001–2022) per pixel, which allows us to identify the areas with no land cover change for the macroclasses. 
 
-### land cover trend and drought indices
+### Land cover trend and drought indices
 
 We calculated the surface occupied per land cover class into the five macrozones ("Norte Grande" to "Austral") per year for 2001–2023. After that, we calculated the trend's change in surface; we used the Sen' slope [@Sen1968] based on Mann-Kendall [@Kendall1975]. This way, we obtain a matrix of trends of 5 x 5 (macrozones x land cover). The aim is to later explore if the trend in land cover classes is associated with a trend in the drought indices. For this, we will use the techniques of regresion and regularization of Lasso [@Tibshirani2010] and Ridge [@Hoerl1970]. Also, we will test random forests for this purpose [@Ho1995]. We will choose the trend of land cover surface per macroclass and macrozone as the response variable and the trend of the drought indices (SPI, SPEI, EDDI, and SSI for time scales 1, 3, 6, 12, 24, and 36 months) as the predictor variables. With this analysis, we expect to gather insights regarding whether there is a pattern of climatic influence along Chile or if what is happening in Central Chile has to do with more localized climatic conditions.
 
@@ -260,12 +260,12 @@ The average metrics of performance of ERA5L over the 266 weather stations were i
 
 ##	LULC change for 2001-2022 and its relation with water supply and demand, and soil moisture
 
-### land cover macroclasess and validation 
+### Land cover macroclasess and validation 
 
 For vegetation, we obtained and use hereafter five macroclasses of land cover from IGBP MODIS: forest, shrubland, savanna, grassland, and croplands. @fig-studyArea c shows the spatial distribution of the macroclasses through Chile for the year 2022. The validation of IGBP2013 and IGBP2014 with LCChile reached near the same metrics of performance, having an accuracy of ~0.82 and a F1 score of ~0.66 (see SS1). 
 
 
-### land cover persistence mask 2001-2022
+### Land cover persistence mask 2001-2022 {#sec-persistence_mask}
 
 @fig-studyArea d, shows the macroclasses of land cover persistance (80%) during 2021-2022, respectively. Within continental Chile, forest is the vegetation type with highest surface with 135,00 $km^2$, followed by grassland (73,176 $km^2$), savanna (54,410 $km^2$), shrubland (24,959 $km^2$), and cropland (3,100 $km^2$) (\ref{tab-land coverSurf}).  The macrozones with major LULCC for 2001-2022 were "Centro", "Sur", and "Austral" with 36%, 31%, and 34%, respectively (@fig-studyArea and Table \ref{tab-land coverTrend}); of its surface that changes the type of land cover. @fig-LCprop shows the summary of the proportion of surface per land cover class and macrozone, derived from the persistance mask over continental Chile.
 
@@ -287,7 +287,7 @@ knitr::include_graphics("../output/figs/LC_pers80_per_macrozone.png")
 ```
 
 
-### land cover trend and drought indices
+### Land cover trend and drought indices
 
 \begin{table}[!ht]
 \caption{The value of Sen's slope trend next to the time-series plot of surface per land cover class (IGBP MCD12Q1.016) for 2001–2022 through Central Chile. Values of zero indicate that there was not a significant trend. Red dots on the plots indicate the maximum and minimum values of surface.}
@@ -310,7 +310,7 @@ Further, we want to address whether the trend in land cover change for 2001–20
 knitr::include_graphics("../output/figs/temporal_variation_zcNDVI6_macrozonas_con_mapa.png")
 ```
 
-Regarding vegetation productivity aggregated through the macrozones in the five land cover macroclasses, in "Norte Grande," there is an increase trend of 0.02 (z-index) per decade, related to types of grassland and shrubland. There is a negative trend in "Norte Chico" with -0.04 and "Centro" with -0.02 per decade. In the "Norte Chico," savanna (-0.05) has the lowest trend, and the rest of the types are around -0.04. In "Centro," shrubland reaches -0.06, grassland -0.05, and croplands and savanna -0.01 per decade. This could be associated either with a reduction in vegetation surface, a decrease in biomass, or browning [@Miranda2023]. Vegetation reached its lowest values since the year 2019, reaching an extreme condition in early 2020 and 2022 in the "Norte Chico" and Centro" (Mega Drought). The "Sur" and "Austral" show a positive trend of around 0.016 per decade (@fig-zcNDVI_var). Despite the croplands suffering from drought just as badly as the native vegetation in "Norte Chico," the Chilean matorral appears to be the region most affected by a negative trend in vegetation [@Fuentes2021].
+Regarding vegetation productivity aggregated through the macrozones in the five land cover macroclasses, in "Norte Grande," there is an increase trend of 0.02 (z-index) per decade, related to types of grassland and shrubland. There is a negative trend in "Norte Chico" with -0.04 and "Centro" with -0.02 per decade. In the "Norte Chico," savanna (-0.05) has the lowest trend, and the rest of the types are around -0.04. In "Centro," shrubland reaches -0.06, grassland -0.05, and croplands and savanna -0.01 per decade. This could be associated either with a reduction in vegetation surface, a decrease in biomass, or browning [@Miranda2023]. Vegetation reached its lowest values since the year 2019, reaching an extreme condition in early 2020 and 2022 in the "Norte Chico" and Centro" (Mega Drought). The "Sur" and "Austral" show a positive trend of around 0.016 per decade (@fig-zcNDVI_var). Despite the croplands suffering from drought just as badly as the native vegetation in "Norte Chico," the Chilean matorral [@Fuentes2021] appears to be the region most affected by a negative trend in vegetation productivity.
 
 ```{r fig-trendDIMacro}
 #| echo: false
@@ -379,13 +379,29 @@ knitr::include_graphics("../output/figs/mapa_cor_r_indices_zcNDVI6.png")
 
 #	Discussion
 
-## Drought trend, LULCC, and climate conditions
+## Drought trend and attribution to LULCC 
 
-1.-  Respecto a lo que indica @Vicente-Serrano2018, de que el aumento en la tendencia en severidad de la sequía (hidrológica) tiene que ver más con un aumento de la demanda de agua (ej, LULCC, amazonas) que a una tendencia en las condiciones climáticas (SPI-12). ¿Qué pasa en Chile?
+@Vicente-Serrano2021, in a study at the global scale of drought trends, indicates that there have not been significant trends in meteorological drought since 1950. Also, state that the increase in hidrological trend in some parts of the globe (northeast Brazil and the Mediterranean region) is related to changes in land cover and specifically to the rapidly increasing irrigated area, which consequently increases water extraction. @Kogan2020 analyzed the agricultural drought impact globally and in the main grain producer countries, finding that _"since 1980, the Earth warming has not changed the drought area or intensity"_. In our study, we considered the variation in vegetation productivity in Chile for areas without changes in land cover macroclasses (see @sec-persistence_mask), to avoid misleading conclusions that could be related to the increase in water demand due to LULCC. Our results show a contrasting perspective. There has been a significant trend in the decline of vegetation productivity (zcNDVI) since 2000 for "Norte Chico" and "Centro," which has been extreme between 2020 and 2022, seemsly due to an intense hydrological drought due to the persistance of the Mega Drought [@Garreaud2017]. Despite we used the persistance mask for vegetations's trend analysis, the cropland, which is the most water-demand type, showed a decrease trend in "Norte Chico" and "Centro." Also, there was an increase in barren land for both types. These changes are associated with a decrease in water demand from vegetation. On the other hand, for "Norte Chico" and "Centro," our results show a decrease in trends of water supply (SPI and SSI), which are higher at larger time scales and consequently impact the hydrological system. We claim that what occurred in central Chile defies findings made at the global level [@Vicente-Serrano2021;@Kogan2020], demonstrating that a constant decrease in water supply rather than an increase in water demand (i.e., irrigated crops) is the main cause of the hydrological drought. Finally, central Chile has shown a diminishment in vegetation productivity for all macroclasses, mainly attributed to variation in water supply, i.e., precipitation, which could be strengthened by an increase in water demand by, for example, irrigated crops.
 
-## land cover types most impacted by drought throughout Chile
+
+1.-  Respecto a lo que indica @Vicente-Serrano2022, de que el aumento en la tendencia en severidad de la sequía (hidrológica) tiene que ver más con un aumento de la demanda de agua (ej, LULCC, amazonas) que a una tendencia en las condiciones climáticas (SPI-12). ¿Qué pasa en Chile?
+
+@Chen2022: Assessing the impact of drought-land cover change on global vegetation greenness and productivity
+
+@Kogan2020: muestra que la sequía no se ha intensificado ni expandido a nivel global, por 38 años.
+
+## Land cover types and their impact by drought
+
+Extreme drought conditions are an important driver of tree mortality, as shown by @Senf2020 in Europe. However, we found that forest is the type of landcover macroclass less affected by variation in drought indices, being the most resistant landcover class to drought. Supporting this is @Fathi-Taperasht2022, who asserts that Indian forests are the most drought-resistant and recover rapidly. Similarly, the work of @Wu2024 who analyzed vegetation loss and recovery in response to meteorological drought in the humid subtropical Pearl River basin in China, indicates that forests showed higher drought resistance. @Xiao2023 using Vegetation Optical Depth (VOD), kNDVI, and EVI, evaluates ecosystem resistance, showing that, compared to croplands, ecosystems with a higher proportion of forests are more resilient to severe droughts. They attribute the difference to a deeper rooting depth of trees, a higher water storage capacity, and different water use strategies between them [@Xiao2023].
+
 
 2.- Sobre los tipos de land cover más afectados por los indicadores de sequía. Asociación con el matorral chileno [@Fuentes2021]. Diferencia entre el Norte Chico, Centro y lo que pasa hacía el sur (@Miranda2023)
+
+@Fathi-Taperasht2022: muestra que bosques son más resilentes a la sequía en India.
+
+@Wu2024: evalua la perdida de vegetación en diferentes tipos de uso de suelo. Muestra que bosques son más resilentes y cultivos y pastizales, los menos.
+
+@Jiang2020: impacto de la sequía en landcover en China.
 
 ## Drought indices of water demand and supply, soil moisture to predict changes in vegetation productivity
 

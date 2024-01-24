@@ -4,7 +4,7 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  authoryear,
+  number,
   preprint,
   3p,
   onecolumn]{elsarticle}
@@ -138,7 +138,7 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
-\bibliographystyle{elsarticle-harv}
+\bibliographystyle{elsarticle-num}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
@@ -229,7 +229,7 @@ those zones that should be further investigated.
 \end{frontmatter}
     \captionsetup{justification=raggedright,singlelinecheck=false}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, boxrule=0pt, interior hidden, enhanced, frame hidden, borderline west={3pt}{0pt}{shadecolor}, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners, breakable]}{\end{tcolorbox}}\fi
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -250,12 +250,12 @@ The primary cause of drought is precipitation, and temperature makes it
 worse \citep{Luo2017}. Drought impacts soil moisture, hydrological
 regimes, and vegetation productivity. Initially, drought was commonly
 classified as meteorological, hydrological, and agricultural
-\citep{Wilhite1985}. Lately, \citet{Loon2016} and
-\citet{AghaKouchak2021} have given an updated definition of drought for
+\citep{Wilhite1985}. Lately, \citep{Loon2016} and
+\citep{AghaKouchak2021} have given an updated definition of drought for
 the Anthropocene, suggesting that it should be considered the feedback
 of humans' decisions and activities that drives the anthropogenic
 drought. Even though it has been argued that those definitions do not
-fully address the ecological dimensions of drought, \citet{Crausbay2017}
+fully address the ecological dimensions of drought, \citep{Crausbay2017}
 proposed the ecological drought definition as ``an episodic deficit in
 water availability that drives ecosystems beyond thresholds of
 vulnerability, impacts ecosystem services, and triggers feedback in
@@ -316,17 +316,17 @@ TWS can be assessed with regard to the changes in water supply and
 demand to gain insight into the impact on water storage.
 
 To evaluate meteorological drought (i.e., water supply), the World
-Meteorological Organization (WMO; \citet{WMO2012}) recommends the
-Standardized Precipitation Index (SPI; \citet{Mckee1993}), a multiscalar
+Meteorological Organization (WMO; \citep{WMO2012}) recommends the
+Standardized Precipitation Index (SPI; \citep{Mckee1993}), a multiscalar
 drought index that allows to monitor precipitation deficits from short-
-to long-term. Following the same approach, \citet{Vicente-Serrano2010}
+to long-term. Following the same approach, \citep{Vicente-Serrano2010}
 incorporates into the SPI the effect of temperature through the use of
 potential evapotranspiration, thus proposing the SPEI (Standardized
 Precipitation Evapotranspiration Index). Similarly, to evaluate solely
-the evaporative demand driven by temperature, \citet{Hobbins2016} and
-\citet{McEvoy2016} came up with the Evaporative Demand Drought Index
+the evaporative demand driven by temperature, \citep{Hobbins2016} and
+\citep{McEvoy2016} came up with the Evaporative Demand Drought Index
 (EDDI). For vegetation, in a similar manner as the SPI, SPEI and EDDI;
-\citet{Zambrano2018} proposed the zcNDVI, a standardized anomaly of the
+\citep{Zambrano2018} proposed the zcNDVI, a standardized anomaly of the
 cumulative Normalized Difference Vegetation Index (NDVI), which could be
 acumulated over the growing season or any period (e.g., months),
 resulting in a multiscalar drought index. For soil moisture, several
@@ -346,7 +346,7 @@ types of ecosystems (land cover classes) in continental Chile. Our
 specific goals are: i) to analyze the trend on multi-scalar drought
 indices for water demand and supply, soil moisture, and vegetation
 productivity for 1981--2023/2001--2023; ii) to assess the LULC change
-for 2001--2021 and how it relates to drought indices; iii) to evaluate
+for 2001--2022 and how it relates to drought indices; iii) to evaluate
 the relationship between zcNDVI, a measure of vegetation productivity,
 and drought indices for water demand and supply and soil moisture; and
 iv) to assess if the observed changes in the drought indices are linked
@@ -360,7 +360,7 @@ east to west \citep{Aceituno2021} (Figure~\ref{fig-studyArea}), which
 determines its great ecosystem diversity (Figure~\ref{fig-LCprop}). The
 Andes Mountains are a main factor in latitudinal variation
 \citep{Garreaud2009}. To describe the climate and ecosystem of Chile, we
-use the Koppen-Geiger release by \citet{Beck2023} and the land cover
+use the Koppen-Geiger release by \citep{Beck2023} and the land cover
 type persistance of 80\% of times for 2001--2022, from the IGBP
 classification scheme \citep{Friedl2019} (see
 Section~\ref{sec-methods_lulc}). ``Norte Grande'' and ``Norte Chico''
@@ -530,7 +530,7 @@ we used the \(SSI\) (standardized soil moisture index at 1 m)
 Finally, for the proxy of productivity, \(zcNDVI\), we used the NDVI.
 Before using the NDVI, it was smoothed using a locally-weighted
 polynomial regression, following the procedure described in
-\citet{Zambrano2018} and \citet{Zambrano2016}.
+\citep{Zambrano2018} and \citep{Zambrano2016}.
 
 All the indices are multi-scalar and were calculated for time scales of
 1, 3, 6, 12, 24, and 36 months, except for zcNDVI, which was calculated
@@ -552,7 +552,7 @@ It corresponds to a moving window (convolution) that sums the variable
 for \(s\) starting for the last month \(n\) until the month, which could
 sum for \(s\) months (n-s+1). Once the variable is cumulated over time
 for the scale \(s\), we used a nonparametric approach following
-\citet{Hobbins2016} to derive the drought indices. Thus, the empirically
+\citep{Hobbins2016} to derive the drought indices. Thus, the empirically
 derived probabilities are obtained through an inverse normal
 approximation \citep{Abramowitz1968}. Then, we used the empirical Tukey
 plotting position \citep{Wilks2011} over \(A_i\) to derive the
@@ -577,7 +577,7 @@ W=\(\sqrt{-2\cdot ln(P(A_i))}\) , and for \(P(A_i) > 0.5\), replace
 and demand, and soil moisture}\label{sec-methods_lulc}}
 
 \hypertarget{land-cover-macroclasess-and-validation}{%
-\subsubsection{land cover macroclasess and
+\subsubsection{Land cover macroclasess and
 validation}\label{land-cover-macroclasess-and-validation}}
 
 To analyze the LULCC, we use the IGBP scheme from the MCD12Q1 collection
@@ -590,7 +590,7 @@ Thus, we have a land cover raster time-series with the ten classes for
 2001 and 2023.
 
 To validate the land cover obtained, we compare the macroclasses with
-the ones of a more detailed land cover map made by \citet{Zhao2016} for
+the ones of a more detailed land cover map made by \citep{Zhao2016} for
 Chile with samples acquired in the years 2013--2014 (LCChile). The later
 has a spatial resolution of 30 m and three levels of defined classes;
 from those, we used level 1, which fits with the macroclasses land
@@ -623,7 +623,7 @@ refer to true positive and false negative, correctly classified classes;
 classified classes.
 
 \hypertarget{land-cover-persistence-mask-2001-2022}{%
-\subsubsection{land cover persistence mask
+\subsubsection{Land cover persistence mask
 2001-2022}\label{land-cover-persistence-mask-2001-2022}}
 
 The time series of NDVI is affected by climatic conditions, vegetation
@@ -641,7 +641,7 @@ macroclasses that remain without change for more than 80\% of the years
 land cover change for the macroclasses.
 
 \hypertarget{land-cover-trend-and-drought-indices}{%
-\subsubsection{land cover trend and drought
+\subsubsection{Land cover trend and drought
 indices}\label{land-cover-trend-and-drought-indices}}
 
 We calculated the surface occupied per land cover class into the five
@@ -691,9 +691,9 @@ surface within continental Chile.
 \subsubsection{Trend in vegetation productivity without land cover
 change}\label{trend-in-vegetation-productivity-without-land-cover-change}}
 
-\citet{Vicente-Serrano2021} made a global analysis of the drought's
+\citep{Vicente-Serrano2021} made a global analysis of the drought's
 severity trend using SPI, SPEI, and the Standardized Evapotranspiration
-Deficit Index (SEDI; \citet{Vicente-Serrano2018}) to evaluate AED. They
+Deficit Index (SEDI; \citep{Vicente-Serrano2018}) to evaluate AED. They
 indicate that the increase in hydrological drought has been due to
 anthropogenic effects rather than climate change. This is because the
 global increase in AED did not explain the change in the spatial pattern
@@ -723,7 +723,7 @@ To assess how water demand and supply and soil moisture are related to
 vegetation productivity (zcNDVI), we analyze the linear correlation
 between the indices SPI, SPEI, EDDI, and SSI for 1, 3, 6, 12, 24, and
 36-month time scales against zcNDVI. We followed a similar approach to
-that used by \citet{Meroni2016} when using the SPI for meteorological
+that used by \citep{Meroni2016} when using the SPI for meteorological
 drought against the cumulative FAPAR (Fraction of Absorbed
 Photosynthetically Active Radiation) as a proxy for vegetation
 productivity. We made a pixel-to-pixel linear correlation analysis per
@@ -763,7 +763,7 @@ and demand, and soil
 moisture}\label{lulc-change-for-2001-2022-and-its-relation-with-water-supply-and-demand-and-soil-moisture}}
 
 \hypertarget{land-cover-macroclasess-and-validation-1}{%
-\subsubsection{land cover macroclasess and
+\subsubsection{Land cover macroclasess and
 validation}\label{land-cover-macroclasess-and-validation-1}}
 
 For vegetation, we obtained and use hereafter five macroclasses of land
@@ -774,9 +774,9 @@ IGBP2013 and IGBP2014 with LCChile reached near the same metrics of
 performance, having an accuracy of \textasciitilde0.82 and a F1 score of
 \textasciitilde0.66 (see SS1).
 
-\hypertarget{land-cover-persistence-mask-2001-2022-1}{%
-\subsubsection{land cover persistence mask
-2001-2022}\label{land-cover-persistence-mask-2001-2022-1}}
+\hypertarget{sec-persistence_mask}{%
+\subsubsection{Land cover persistence mask
+2001-2022}\label{sec-persistence_mask}}
 
 Figure~\ref{fig-studyArea} d, shows the macroclasses of land cover
 persistance (80\%) during 2021-2022, respectively. Within continental
@@ -809,7 +809,7 @@ persistent land cover for 2001-2022 (\textgreater80\%) per macrozone}
 \end{figure}
 
 \hypertarget{land-cover-trend-and-drought-indices-1}{%
-\subsubsection{land cover trend and drought
+\subsubsection{Land cover trend and drought
 indices}\label{land-cover-trend-and-drought-indices-1}}
 
 \begin{table}[!ht]
@@ -879,8 +879,8 @@ the ``Norte Chico'' and Centro'' (Mega Drought). The ``Sur'' and
 ``Austral'' show a positive trend of around 0.016 per decade
 (Figure~\ref{fig-zcNDVI_var}). Despite the croplands suffering from
 drought just as badly as the native vegetation in ``Norte Chico,'' the
-Chilean matorral appears to be the region most affected by a negative
-trend in vegetation \citep{Fuentes2021}.
+Chilean matorral \citep{Fuentes2021} appears to be the region most
+affected by a negative trend in vegetation productivity.
 
 \begin{figure}[!ht]
 
@@ -1044,24 +1044,91 @@ determination}
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-\hypertarget{drought-trend-lulcc-and-climate-conditions}{%
-\subsection{Drought trend, LULCC, and climate
-conditions}\label{drought-trend-lulcc-and-climate-conditions}}
+\hypertarget{drought-trend-and-attribution-to-lulcc}{%
+\subsection{Drought trend and attribution to
+LULCC}\label{drought-trend-and-attribution-to-lulcc}}
 
-1.- Respecto a lo que indica \citet{Vicente-Serrano2018}, de que el
+\citep{Vicente-Serrano2021}, in a study at the global scale of drought
+trends, indicates that there have not been significant trends in
+meteorological drought since 1950. Also, state that the increase in
+hidrological trend in some parts of the globe (northeast Brazil and the
+Mediterranean region) is related to changes in land cover and
+specifically to the rapidly increasing irrigated area, which
+consequently increases water extraction. \citep{Kogan2020} analyzed the
+agricultural drought impact globally and in the main grain producer
+countries, finding that \emph{``since 1980, the Earth warming has not
+changed the drought area or intensity''}. In our study, we considered
+the variation in vegetation productivity in Chile for areas without
+changes in land cover macroclasses (see
+Section~\ref{sec-persistence_mask}), to avoid misleading conclusions
+that could be related to the increase in water demand due to LULCC. Our
+results show a contrasting perspective. There has been a significant
+trend in the decline of vegetation productivity (zcNDVI) since 2000 for
+``Norte Chico'' and ``Centro,'' which has been extreme between 2020 and
+2022, seemsly due to an intense hydrological drought due to the
+persistance of the Mega Drought \citep{Garreaud2017}. Despite we used
+the persistance mask for vegetations's trend analysis, the cropland,
+which is the most water-demand type, showed a decrease trend in ``Norte
+Chico'' and ``Centro.'' Also, there was an increase in barren land for
+both types. These changes are associated with a decrease in water demand
+from vegetation. On the other hand, for ``Norte Chico'' and ``Centro,''
+our results show a decrease in trends of water supply (SPI and SSI),
+which are higher at larger time scales and consequently impact the
+hydrological system. We claim that what occurred in central Chile defies
+findings made at the global level
+\citep{Vicente-Serrano2021, Kogan2020}, demonstrating that a constant
+decrease in water supply rather than an increase in water demand (i.e.,
+irrigated crops) is the main cause of the hydrological drought. Finally,
+central Chile has shown a diminishment in vegetation productivity for
+all macroclasses, mainly attributed to variation in water supply, i.e.,
+precipitation, which could be strengthened by an increase in water
+demand by, for example, irrigated crops.
+
+1.- Respecto a lo que indica \citep{Vicente-Serrano2022}, de que el
 aumento en la tendencia en severidad de la sequía (hidrológica) tiene
 que ver más con un aumento de la demanda de agua (ej, LULCC, amazonas)
 que a una tendencia en las condiciones climáticas (SPI-12). ¿Qué pasa en
 Chile?
 
-\hypertarget{land-cover-types-most-impacted-by-drought-throughout-chile}{%
-\subsection{land cover types most impacted by drought throughout
-Chile}\label{land-cover-types-most-impacted-by-drought-throughout-chile}}
+\citep{Chen2022}: Assessing the impact of drought-land cover change on
+global vegetation greenness and productivity
+
+\citep{Kogan2020}: muestra que la sequía no se ha intensificado ni
+expandido a nivel global, por 38 años.
+
+\hypertarget{land-cover-types-and-their-impact-by-drought}{%
+\subsection{Land cover types and their impact by
+drought}\label{land-cover-types-and-their-impact-by-drought}}
+
+Extreme drought conditions are an important driver of tree mortality, as
+shown by \citep{Senf2020} in Europe. However, we found that forest is
+the type of landcover macroclass less affected by variation in drought
+indices, being the most resistant landcover class to drought. Supporting
+this is \citep{Fathi-Taperasht2022}, who asserts that Indian forests are
+the most drought-resistant and recover rapidly. Similarly, the work of
+\citep{Wu2024} who analyzed vegetation loss and recovery in response to
+meteorological drought in the humid subtropical Pearl River basin in
+China, indicates that forests showed higher drought resistance.
+\citep{Xiao2023} using Vegetation Optical Depth (VOD), kNDVI, and EVI,
+evaluates ecosystem resistance, showing that, compared to croplands,
+ecosystems with a higher proportion of forests are more resilient to
+severe droughts. They attribute the difference to a deeper rooting depth
+of trees, a higher water storage capacity, and different water use
+strategies between them \citep{Xiao2023}.
 
 2.- Sobre los tipos de land cover más afectados por los indicadores de
 sequía. Asociación con el matorral chileno \citep{Fuentes2021}.
 Diferencia entre el Norte Chico, Centro y lo que pasa hacía el sur
-(\citet{Miranda2023})
+(\citep{Miranda2023})
+
+\citep{Fathi-Taperasht2022}: muestra que bosques son más resilentes a la
+sequía en India.
+
+\citep{Wu2024}: evalua la perdida de vegetación en diferentes tipos de
+uso de suelo. Muestra que bosques son más resilentes y cultivos y
+pastizales, los menos.
+
+\citep{Jiang2020}: impacto de la sequía en landcover en China.
 
 \hypertarget{drought-indices-of-water-demand-and-supply-soil-moisture-to-predict-changes-in-vegetation-productivity}{%
 \subsection{Drought indices of water demand and supply, soil moisture to
