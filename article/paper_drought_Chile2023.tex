@@ -229,7 +229,7 @@ those zones that should be further investigated.
 \end{frontmatter}
     \captionsetup{justification=raggedright,singlelinecheck=false}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, breakable, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, breakable, sharp corners, borderline west={3pt}{0pt}{shadecolor}, enhanced, frame hidden, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -1143,18 +1143,16 @@ Lauraceae family) inhabiting sclerophyllous forests in Chile, concluded
 that the overall development of the trees had decelerated, potentially
 indicating alterations in the inherent dynamics of their respective
 forests. They attributed it to the cumulative effects of the
-unprecedented drought (i.e., hydrological drought). Nonetheless, the
-trees within sclerophyllous forests are highly heterogeneous, and the
-species analyzed by \citep{Venegas2022} are not the predominant ones.
-Because of this, when we used MOD13A3 with a 1km spatial resolution to
-measure vegetation condition, it took the average condition of 1 square
-kilometer. Thus, we attribute that forest to being the most resistant to
-drought, due to the fact that most of the species comprising it are
-highly resilient to water scarcity. Then, for a study of the dynamics of
-forest to drought, e.g., sclerophyllous forest, on a local scale using
-remote sensing, we should use operational products at higher spatial
-resolutions as provided by the missions Landsat or Sentinel that could
-capture the heterogenity of the forest type.
+unprecedented drought (i.e., hydrological drought). Thus, we attribute
+that forest to being the most resistant to drought, due to the fact that
+most of the species comprising it are highly resilient to water
+scarcity. compared to the other landcover classes. Also, when we used
+MOD13A3 with a 1km spatial resolution to measure vegetation condition,
+it took the average condition of 1 square kilometer. Then, to study how
+a type of forest (sclerophyllous forest) changes in response to drought
+on a local level using remote sensing, we should use operational
+products with higher spatial resolutions, such as those from Landsat or
+Sentinel, which can show how different the forests are.
 
 \hypertarget{soil-moisture-vegetation-productivity-and-agricultural-drought.}{%
 \subsection{Soil moisture, vegetation productivity, and agricultural
@@ -1166,10 +1164,10 @@ water storage in the root zone. Thus, soil moisture plays a key role in
 land carbon uptake and, consequently, in the production of biomass
 \citep{Humphrey2021}. Moreover, \citep{Zhang2022} indicates there is a
 bidirectional causality between soil moisture and vegetation
-productivity. For this, lastly, are some studies that have redefined
-agricultural drought as soil moisture drought from the hydrological
-perspective \citep{Loon2016, Samaniego2018}. Even though soil moisture
-is the external factor most determinant of vegetation biomass, there are
+productivity. For this, lastly, some studies have redefined agricultural
+drought as soil moisture drought from the hydrological perspective
+\citep{Loon2016, Samaniego2018}. Even though soil moisture is the
+external factor most determinant of vegetation biomass, there are
 multiple internal factors, such as species, physiological
 characteristics, and plant hydraulics, that would affect vegetation
 productivity. Because of that, we believe that agricultural drought,
@@ -1179,8 +1177,13 @@ most proper term, as originally defined by \citep{Wilhite1985}.
 Our results showed that the drought index derived from soil moisture
 (SSI) was the most effective in explaining vegetation productivity
 within landcover macroclasses. However, there is strong spatial
-variability throughout Chile, mainly attributable to the climate
-heterogeneity.
+variability throughout Chile and between classes, mainly attributable to
+climate heterogeneity, hydrological status, or vegetation resistance to
+water scarcity. The semi-arid ``Norte Chico'' and the Mediterranean
+``Centro'' were where SSI had the best performance. Medium-term deficits
+of 12 months are more relevant in the response of vegetation, which
+decreases to the south, and in the case of croplands, they seem to react
+in a shorter time, with six months (SSI-6) in ``Centro.''
 
 \citep{Chatterjee2022}
 
