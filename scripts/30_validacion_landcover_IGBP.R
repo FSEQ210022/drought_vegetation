@@ -1,16 +1,16 @@
 library(terra)
 library(fs)
 library(rnaturalearth)
-
+library(sf)
 
 dir <- '/mnt/md0/raster_procesada/Landcover'
 dir2 <- '/mnt/md0/raster_procesada/MODIS/IGBP.MCD12Q1.061'
-lc_chile <- rast(dir_ls(dir))
+lc_chile <- rast(dir_ls(dir,recurse = TRUE,type = 'file',regexp = 'tif$'))
 
 lc_modis <- rast(dir_ls(dir2,regexp = '2013|2014'))
 lc_modis <- crop(lc_modis,ext(lc_chile))
 
-lc_chile <- resample(lc_chile,lc_modis,method = 'near')
+lc_chile <- resample(lc_chile,lc_modis,method = 'mode')
 
 classes <- matrix(c(1:17,rep(2,5),rep(4,2),rep(4,2),3,5,1,8,1,10,9,6),ncol=2)
 
@@ -28,6 +28,8 @@ names(df) <- c('ID','IGBP2013','IGBP2014','LC_CHILE')
 f <- function(x){
   if(substr(x,2,2) == '0') substr(x,1,2) else substr(x,1,1)
 }
+
+library(tidyverse)
 
 data <- df |> 
   filter(IGBP2013 != 5 & IGBP2014 != 5) |> 
