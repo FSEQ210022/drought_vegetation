@@ -263,7 +263,7 @@ forecasting model for land cover classes in Chile.
 \end{frontmatter}
     \captionsetup{justification=raggedright,singlelinecheck=false}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, breakable, boxrule=0pt, frame hidden, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, frame hidden, boxrule=0pt, breakable, interior hidden, sharp corners, enhanced]}{\end{tcolorbox}}\fi
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -454,44 +454,32 @@ land cover classes for 2022. (d) Persistent land cover classes
 \hypertarget{materials-and-methods}{%
 \section{Materials and Methods}\label{materials-and-methods}}
 
-\hypertarget{software-and-packages-used}{%
-\subsection{Software and packages
-used}\label{software-and-packages-used}}
-
-For the downloading, processing, and analysis of the spatio-temporal
-data, we used the open source software for statistical computing and
-graphics, \texttt{R} \citep{R2023}. For downloading ERA5L, we used the
-\texttt{\{ecmwfr\}} package \citep{Hufkens2019}. For processing raster
-data, we used \texttt{\{terra\}} \citep{Hijmans2023} and
-\texttt{\{stars\}} \citep{Pebesma2023}. For managing vectorial data, we
-used \texttt{\{sf\}} \citep{Pebesma2018}. For the calculation of AED, we
-used \texttt{\{SPEI\}} \citep{Bergueria2023}. For mapping, we use
-\{tmap\} \citep{Tennekes2018}. For data analysis, the suite
-\{tidyverse\} \citep{Wickham2019} was used.
-
 \hypertarget{data}{%
 \subsection{Data}\label{data}}
 
-\hypertarget{earth-observation-data}{%
-\subsubsection{Earth observation data}\label{earth-observation-data}}
+\hypertarget{gridded-meteorological-and-vegetation-data}{%
+\subsubsection{Gridded meteorological and vegetation
+data}\label{gridded-meteorological-and-vegetation-data}}
 
-For water supply and demand variables, we used ERA5L
-\citep{MunozSabater2021}, a reanalys dataset that provides the evolution
-of land variables since 1950. It has a spatial resolution of 0.1°,
-hourly frequency, and global coverage. We selected the variables for
-total precipitation, 2 meter temperature maximum and minimum, and
-volumetric soil water layers between 0 and 100cm of depth (layer 1 to
-layer 3). The data was downloaded using the Copernicus Climate Data
-Store (CDS) Application Program Interface (API) implemented in
-\texttt{\{ecmfwr\}} \citep{Hufkens2019}.
-
-To derive a proxy for vegetation productivity, we used the product
-MOD13A3 collection 6.1 from MODIS \citep{Didan2015}. It provides
+To analyze the LULCC, we use the IGBP scheme from the MCD12Q1 collection
+6.1 from MODIS. This product has a yearly frequency from 2001 to 2022.
+The IGBP defines 17 classes; from these, we regrouped into ten
+macroclasses, as follows: classes 1-4 to forest, 5-7 to shrublands, 8-9
+to savannas, 10 as grasslands, 11 as wetlands, 12 and 14 to croplands,
+13 as urban, 15 as snow and ice, 16 as barren, and 17 to water bodies.
+Thus, we have a land cover raster time series with the ten classes for
+2001 and 2023. Prior to using this class, we compared it with the types
+of land cover made by \citet{Zhao2016}, which is a more detailed land
+cover map of Chile with a 30 m spatial resolution for 2012--2013. It
+reached a global accuracy of \textasciitilde0.82. The procedure of
+validation is demonstrated in Section S1 of the supplementary
+material.To derive a proxy for vegetation productivity, we used the
+MOD13A3 collection 6.1 product from MODIS \citep{Didan2015}. It provides
 vegetation indices (NDVI and EVI) at 1km of spatial resolution and
-monthly frequency. The MOD13A3.061 and MCD12Q1.061 were retrieved from
-the online Data Pool, courtesy of the NASA EOSDIS Land Processes
-Distributed Active Archive Center (LP DAAC), USGS Earth Resources
-Observation and Science (EROS) Center, Sioux Falls, South Dakota,
+monthly frequency. The MOD13A3 and MCD12Q1 were retrieved from the
+online Data Pool, courtesy of the NASA EOSDIS Land Processes Distributed
+Active Archive Center (LP DAAC), USGS Earth Resources Observation and
+Science (EROS) Center, Sioux Falls, South Dakota,
 https://lpdaa.usgs.gov/tools/data-pool/.
 
 \begin{table}[!ht]
@@ -515,50 +503,61 @@ ERA5L* & & Atmospheric Evaporative Demand & 0.1° & 1981-2023 & mm & AED \\
 {\raggedright *Derived from ERA5L with Eq. \ref{eq-AED}. \par}
 \end{table}
 
-\hypertarget{weather-stations}{%
-\subsubsection{Weather stations}\label{weather-stations}}
+For soil moisture, water supply, and water demand variables, we used
+ERA5L \citep{MunozSabater2021}, a reanalysis dataset that provides the
+evolution of the meteorological and soil moisture variables since 1950.
+It has a spatial resolution of 0.1° (9 km), hourly frequency, and global
+coverage. We selected the variables for total precipitation, maximum and
+minimum temperature at 2 meters, and volumetric soil water layers
+between 0 and 100cm of depth (layer 1 to layer 3).
 
-We compared the ERA5L variables for monthly mean temperature, total
-precipitation, and volumetric soil water content against values
-retrieved by weather stations. For temperature and precipitation, we
-used the weather network from the Ministry of Agriculture of Chile
-(www.agromet.com) between 2015 and 2023. We used 277 stations located
-throughout Chile. For soil moisture, we select a private soil network
-that is owned by the agricultural enterprise Garces Fruit, which has 99
-stations in Central Chile, located in cherry fruit crops. The sensors
-are installed at 30, 60, and 90m and are the model Teros 12 from
-MeterGroup. To avoid the effect of irrigation on soil moisture, which
-ERA5L hardly captures, we used daily data for the year 2022 and the
-months outside the growing season, May to September.
+\hypertarget{land-cover-change-and-trend}{%
+\subsection{Land cover change and
+trend}\label{land-cover-change-and-trend}}
 
-\hypertarget{validation-of-era5l-variables}{%
-\subsubsection{Validation of ERA5L
-variables}\label{validation-of-era5l-variables}}
+To analyze the LULCC, we use the IGBP scheme from the MCD12Q1 collection
+6.1 from MODIS. \citet{Zambrano2018} and \citet{Fuentes2021} have
+previously used this product for studies of drought and land cover. The
+MCD12Q1 has a yearly frequency from 2001 to 2022. The IGBP defines 17
+classes; from these, we regrouped into ten macroclasses, as follows:
+classes 1-4 to forest, 5-7 to shrublands, 8-9 to savannas, 10 as
+grasslands, 11 as wetlands, 12 and 14 to croplands, 13 as urban, 15 as
+snow and ice, 16 as barren, and 17 to water bodies. Thus, we have a land
+cover raster time series with the ten macroclasses for 2001 and 2023. We
+validate the land cover macroclasses regarding a highly detailed (30 m
+of spatial resolution) land cover map made for Chile by \citet{Zhao2016}
+for 2013-2014. Our results showed a global accuracy of
+\textasciitilde0.82 and a F1 score of \textasciitilde0.66. Section S2 in
+the Supplementary Material shows the procedure for validation.
 
-To account for the performance of the ERA5L climatic variables regarding
-the values measured by the weather stations. We selected the following
-metrics:
+Climate, vegetation development, seasonality, and changes in vegetation
+type all have an impact on the time series of NDVI. In this study, we
+want to examine the variation in vegetation productivity across various
+land cover types and how water demand, water supply, and soil moisture
+affect it. In order to avoid changes due to a change in the land cover
+type that will wrongly impact NDVI, we developed a persistence mask for
+land cover for 2001--2022. Thereby, we reduce an important source of
+variation on a regional scale. Therefore, we generated a raster mask for
+IGBP MODIS per pixel using macroclasses that remained unchanged for at
+least 80\% of the years (2001--2022). This enabled us to identify
+regions where the land cover macroclasses are persistent. We calculated
+the surface occupied per land cover class into the five macrozones
+(``Norte Grande'' to ``Austral'') per year for 2001--2023. After that,
+we calculated the trend's change in surface per type. We used the Sen'
+slope \citep{Sen1968} based on Mann-Kendall \citep{Kendall1975}.
 
-\[MAE = \frac{1}{n}\sum |{E-S}|\] \[Bias = \frac{\sum E}{\sum S}\]
-\[ubRMSE =\sqrt{\frac{\sum{ \left[ (E_i-\overline{E})-(S_i-\overline{S}) \right ] ^2}}{n}}\]
-
-\[CC = \frac{\sum (S_i-\bar{S})(E_i-\bar{E})}{\sqrt{(Si-\bar{S})^2(E_i-\bar{E})^2}}\]
-
-\(MAE\): mean absolute error \(bias\): bias \(ubRMSE\): unbiassed root
-mean squared error \(CC\): coefficient of correlation \(S\): value of
-the variable measure by the weather station \(E\): value of the variable
-measure by ERA5L
-
-\hypertarget{drought-indices}{%
-\subsection{Drought Indices}\label{drought-indices}}
+\hypertarget{trend-of-drought-and-land-cover-change}{%
+\subsection{Trend of drought and land cover
+change}\label{trend-of-drought-and-land-cover-change}}
 
 \hypertarget{atmospheric-evaporative-demand-aed}{%
 \subsubsection{Atmospheric Evaporative Demand
 (AED)}\label{atmospheric-evaporative-demand-aed}}
 
-For the indices EDDI and SPEI that use water demand, first we have to
-calculate the AED. For this, we used the method of Hargreaves
-\citep{Hargreaves1994, Hargreaves1985}:
+In order to compute the drought indices that uses water demand, it is
+necessary to first calculate the AED. To do this, we employed the
+Hargreaves technique \citep{Hargreaves1994, Hargreaves1985}, by applying
+the following equation:
 
 \begin{equation}\protect\hypertarget{eq-AED}{}{AED = 0.0023\cdot Ra\cdot (T+17.8)\cdot (T_{max}-T_{min})^{0.5}}\label{eq-AED}\end{equation}
 
@@ -569,55 +568,78 @@ and use the latitude to estimate \(Ra\).
 
 We chose the method of Hargreaves to estimate AED because of its
 simplicity, which only requires temperatures and extrarrestrial
-radiation. Also, it has been recommended over other methods when the use
-of several climatic variables is limited \citep{Vicente-Serrano2014}.
+radiation. Also, it has been recommended over other methods (e.g.,
+Penman-Monteith) when the access to climatic variables is limited
+\citep{Vicente-Serrano2014}.
 
 \hypertarget{non-parametric-calculation-of-drought-indices}{%
 \subsubsection{Non-parametric calculation of drought
 indices}\label{non-parametric-calculation-of-drought-indices}}
 
-We derived the drought indices of water supply and demand, soil moisture
-from the ERA5L dataset, and vegetation from the MODIS product, all at
-monthly frequency.
+To derive the drought indices of water supply and demand, soil moisture,
+and vegetation we used the ERA5L dataset and the MODIS product, with a
+monthly frequency for 1981-2023 and 2000-2023, respectively.
 
-To evaluate water demand, we chose the \(EDDI\)
-\citep{Hobbins2016, McEvoy2016} index, which uses the \(AED\). We used
-the SPI \citep{Mckee1993}, a drought monitoring index that the World
-Meteorological Organization (WMO) recommends. We calculated the SPEI,
-which used a balance between \(P\) and \(AED\), in this case, an
-auxiliary variable \(D = P-AED\) is used. In this study, we used the
-\(SSI\) (standardized soil moisture index at 1 m)
-\citep{Hao2013, AghaKouchak2014}, which uses soil moisture at 1m depth.
-Finally, for the proxy of productivity, \(zcNDVI\), we used the NDVI.
-Before using the NDVI, it was smoothed using a locally weighted
-polynomial regression, following the procedure described in
-\citet{Zambrano2018} and \citet{Zambrano2016}.
+The dought indices correspond to a historical anomaly with regard to a
+variable (e.g., meteorological, vegetation, or soil moisture). To
+account for the anomaly, the common practice is to derive it following a
+statistical parametric methodology in which it is assumed that the
+statistical distribution of the data is known (\citet{Heim2002}). A
+wrong decision is usually the highest source of uncertainty
+(\citet{Laimighofer2022}). In the case of Chile, due to its high degree
+of climatic variability, it is complex to choose a proper distribution
+without previous research. Here, we follow a non-parametric methodology
+for the calculation of the drought indices, in a similar manner as the
+framework proposed by \citet{Farahmand2015};
+\citet{Hobbins2016};\citet{McEvoy2016}.
 
-All the indices are multi-scalar and were calculated for time scales of
-1, 3, 6, 12, 24, and 36 months, except for zcNDVI, which was calculated
-for 6 months. The goal is to be able to evaluate short- and long-term
-droughts in water demand and supply and soil moisture. This is
-particularly important for central Chile because it has suffered from a
-prolonged decrease in precipitation for more than 12 years
-\citep{Garreaud2020, Boisier2018, Garreaud2017}.
+For the purpose of monitoring water supply drought, we used the
+well-known Standardized Precipitation Index (SPI), which the World
+Meteorological Organization (WMO) recommended. The SPI solely relies on
+precipitation data. Also, it has been used worldwide for the study of
+drought, including in Chile (\citet{Garreaud2017};
+\citet{Zambrano2017}). The primary cause of drought is precipitation
+anomalies, and temperature usually makes it worse (Luo et al.~2017).
+Nowadays, there is an increase in attention toward using water demand
+separately to monitor droughts. (\citet{Vicente-Serrano2020};
+\citet{Noguera2022}). Thus, to evaluate water demand, we chose the
+Evaporative Demand Drought Index (EDDI), developed by Hobbins et
+al.~(016) and McEvoy et al.~(2016), which is based on the AED. EDDI is
+currently used for monitoring drought in the United States
+(https://psl.noaa.gov/eddi/). In our case, we used only temperature for
+AED, a difference from the original formulation of EDDI, which also
+considered wind besides temperature. To consider the combined effect of
+water supply and demand, we selected the SPEI, which corresponds to a
+balance between precipitation and AED. \citet{Vicente-Serrano2010}
+proposed the SPEI, and it has improved the SPI by incorporating
+temperature for drought monitoring. For SPEI, an auxiliary variable D =
+P-AED is calculated. Soil moisture is the main driver of vegetation
+productivity, particularly in semi-arid regions (\citet{Li2022}). Hence,
+for soil water drought, we used the SSI (Standardized Soil Moisture
+Index) (Hao and AghaKouchak 2013; A. AghaKouchak 2014) which is a
+multi-scale index similar to SPI, SPEI, and EDDI. In our case, for the
+SSI, we used the average soil moisture from ERA5L at 1m depth. Finally,
+for the proxy of productivity, we used the zcNDVI proposed by Zambrano
+et al.~(2018) which will be derived from the NDVI retrieved from
+MOD13A1.
 
-To calculate the drought indices, first we must calculate the
-accumulation of the variable. In this case, for generalization purposes,
-we will use \(V\), referring to \(P\), \(AED\), \(D\), \(NDVI\), and
-\(SM\) (Table \ref{tab-desEOD}). We cumulated each \(V\) over the time
-series of \(n\) values, and for the time scales \(s\):
+To derive the drought indices, first we must calculate the sum of the
+variables with regard to the time scale (s). In this case, for
+generalization purposes, we will use \(V\), referring to variables
+\(P\), \(AED\), \(D\), \(NDVI\), and \(SM\) (\#ref\{tab-desEOD\}). We
+cumulated each \(V\) over the time series of \(n\) values (months), and
+for the time scales \(s\):
 
 \begin{equation}\protect\hypertarget{eq-sumvar}{}{A_{si} = \sum_{i=n-s-i+2}^{n-i+1} V_i\,\, \forall\, i\geq n-s+1  }\label{eq-sumvar}\end{equation}
 
-It corresponds to a moving window (convolution) that sums the variable
-for \(s\) starting for the last month \(n\) until the month, which could
-sum for \(s\) months (n-s+1). Once the variable is cumulated over time
-for the scale \(s\), we used a nonparametric approach following
-\citet{Hobbins2016} to derive the drought indices. Thus, the empirically
-derived probabilities are obtained through an inverse normal
+The \(A_{si}\) corresponds to a moving window (convolution) that sums
+the variable for time scales \(s\) from the last month, month by month,
+until the first month in which it could sum for \(s\) months. Once the
+variable is cumulated over time for the scale \(s\). Thus, the
+empirically derived probabilities are obtained through an inverse normal
 approximation \citep{Abramowitz1968}. Then, we used the empirical Tukey
 plotting position \citep{Wilks2011} over \(A_i\) to derive the
-\(P(A_i)\) probabilities across a period of interest:
+\(P(a_i)\) probabilities across a period of interest:
 
 \begin{equation}\protect\hypertarget{eq-probPai}{}{P(A_i) = \frac{i-0.33}{n+0.33'}}\label{eq-probPai}\end{equation}
 
@@ -633,228 +655,95 @@ are obtained following the inverse normal approximation:
 W=\(\sqrt{-2\cdot ln(P(A_i))}\) , and for \(P(A_i) > 0.5\), replace
 \(P(A_i)\) with \(1-P(A_i)\) and reverse the sign of \(DI(A_i)\).
 
-\hypertarget{sec-methods_lulc}{%
-\subsection{LULC change for 2001-2022 and its relation with water supply
-and demand, and soil moisture}\label{sec-methods_lulc}}
+The drought indices were calculated for time scales of 1, 3, 6, 12, 24,
+and 36 months at a monthly frequency for 1981--2023 in order to be used
+for short- to long-term evaluation of drought. In the case of the proxy
+of vegetation productivity (zcNDVI) it was calculated for a time scale
+of six months at monthly frequency for 2000--2023. For zcNDVI, we test
+time scales of 1, 3, 6, and 12 months; we choose to use six months
+because that shows a more robust representation of vegetation
+productivity due to the seasonality of vegetation in Chile.
 
-\hypertarget{land-cover-macroclasess-and-validation}{%
-\subsubsection{Land cover macroclasess and
-validation}\label{land-cover-macroclasess-and-validation}}
-
-To analyze the LULCC, we use the IGBP scheme from the MCD12Q1 collection
-6.1 from MODIS. This product has a yearly frequency from 2001 to 2022.
-The IGBP defines 17 classes; from these, we regrouped into ten
-macroclasses, as follows: classes 1-4 to forest, 5-7 to schrublands, 8-9
-to savannas, 10 as grasslands, 11 as wetlands, 12 and 14 to croplands,
-13 as urban, 15 as snow and ice, 16 as barren, and 17 to water bodies.
-Thus, we have a land cover raster time series with the ten classes for
-2001 and 2023.
-
-To validate the land cover obtained, we compare the macroclasses with
-the ones of a more detailed land cover map made by \citet{Zhao2016} for
-Chile with samples acquired in the years 2013--2014 (LCChile). The later
-has a spatial resolution of 30 m and three levels of defined classes;
-from those, we used level 1, which fits with the macroclasses land
-cover. We chose the years 2013 (IGBP2013) and 2014 (IGBP2014) from land
-cover macrolcasses to validate with LCChile.
-
-We follow the next procedure:
-
-\begin{enumerate}
-\def\labelenumi{\roman{enumi})}
-\tightlist
-\item
-  resampled LCChile to the spatial resolution (500m) of the land cover
-  macroclasses using the nearest neighbor method,
-\item
-  took a random sample of 1000 points within continental Chile and
-  extracted the classes that fell within each point for LCChile,
-  IGBP2013, and IGBP2014; we considered the point extracted from LCChile
-  as the truth and the values from the other two years as predictions.
-\item
-  calculate a confusion matrix with the classes extracted from the 1000
-  points for LCChile, IGBP2013, and IGBP2014. Calculate the performance
-  metrics of accuracy and F1.
-\end{enumerate}
-
-\[Accuracy = \frac{TP+TN}{TP+TN+FP+FN}=\frac{correct\,\, classifications}{all\,\, classifications}\]
-\[F1=\frac{2\cdot TP}{2\cdot TP + FP +FN}\] where \(TP\) and \(FN\)
-refer to true positive and false negative, correctly classified classes;
-\(TN\) and \(FP\) to true negative and false positive, wrongly
-classified classes.
-
-\hypertarget{land-cover-persistence-mask-2001-2022}{%
-\subsubsection{Land cover persistence mask
-2001-2022}\label{land-cover-persistence-mask-2001-2022}}
-
-Climate, vegetation development, seasonality, and changes in vegetation
-type all have an impact on the time series of NDVI. In this study, we
-want to examine the variation in vegetation productivity across various
-land cover types and how water demand, water supply, and soil moisture
-affect it. In order to avoid changes due to a change in the land cover
-type that will wrongly impact NDVI, we will develop a persistence mask
-for land cover for 2001--2023. Thereby, we reduce an important source of
-variation on a regional scale.
-
-Therefore, we generated a raster mask for IGBP MODIS per pixel using
-macroclasses that remain constant for at least 80\% of the years
-(2001--2022). This enables us to identify regions where the land cover
-of the macroclasses has remained constant.
-
-\hypertarget{land-cover-trend-and-drought-indices}{%
-\subsubsection{Land cover trend and drought
-indices}\label{land-cover-trend-and-drought-indices}}
-
-We calculated the surface occupied per land cover class into the five
-macrozones (``Norte Grande'' to ``Austral'') per year for 2001--2023.
-After that, we calculated the trend's change in surface; we used the
-Sen' slope \citep{Sen1968} based on Mann-Kendall \citep{Kendall1975}.
-This way, we obtain a matrix of trends of 5 x 5 (macrozones x land
-cover). The aim is to later explore if the trend in land cover classes
-is associated with a trend in the drought indices. For this, we will use
-the techniques of regresion and regularization of Lasso
-\citep{Tibshirani2010} and Ridge \citep{Hoerl1970}. Also, we will test
-random forests for this purpose \citep{Ho1995}. We will choose the trend
-of land cover surface per macroclass and macrozone as the response
-variable and the trend of the drought indices (SPI, SPEI, EDDI, and SSI
-for time scales 1, 3, 6, 12, 24, and 36 months) as the predictor
-variables. With this analysis, we expect to gather insights regarding
-whether there is a pattern of climatic influence along Chile or if what
-is happening in Central Chile has to do with more localized climatic
-conditions.
-
-\hypertarget{trend-of-drought-indices-for-water-demand-and-supply-soil-moisture-and-vegetation-productivity}{%
-\subsection{Trend of drought indices for water demand and supply, soil
-moisture, and vegetation
-productivity}\label{trend-of-drought-indices-for-water-demand-and-supply-soil-moisture-and-vegetation-productivity}}
-
-\hypertarget{mann-kendall-and-sens-slope}{%
-\subsubsection{Mann-Kendall and Sen's
-slope}\label{mann-kendall-and-sens-slope}}
+\hypertarget{trend-of-drought-indices}{%
+\subsubsection{Trend of drought
+indices}\label{trend-of-drought-indices}}
 
 To estimate if there are significant positive or negative trends for the
 drought indices, we used the non-parametric test of Mann-Kendall
 \citep{Kendall1975}. To determine the magnitude of the trend, we used
 Sen's slope \citep{Sen1968}. Some of the advantages of applying this
 methodology are that the Sen's slope is not affected by outliers as
-regular regression does, and it is a non-paramteric method that is not
-affected by the distribution of the data. We applied both to the six
-time scales from 1981 to 2023 (monthly frequency) and the indices SPI,
-EDDI, SPEI, and SSI. In the case of zcNDVI (six months) was for 2000 to
-2023. Thus, we have 31 trends. Also, we extracted the trend aggregated
-by macrozone and land cover class, obtaining a table of 31x5x5 (drought
-indices trends x macrozone x land cover class). We will use this data in
-Section~\ref{sec-methods_lulc} to analyze if there is a strong
-relationship between the trends of drought indices and land cover
-surface within continental Chile.
+regular regression does, and it is a non-parametric method that is not
+influenced by the distribution of the data. We applied Mann-Kendall to
+see if the trend was significant and Sen's slope to estimate the
+magnitude of the trend. We did this to the six time scales from 1981 to
+2023 (monthly frequency) and the indices SPI, EDDI, SPEI, and SSI. Thus,
+we have trends per index and time scale (24 in total). Then, we
+extracted the trend aggregated by macrozone and per land cover persitent
+macroclasses.
 
-\hypertarget{trend-in-vegetation-productivity-without-land-cover-change}{%
-\subsubsection{Trend in vegetation productivity without land cover
-change}\label{trend-in-vegetation-productivity-without-land-cover-change}}
+\hypertarget{drought-impacts-on-vegetation-productivity-within-land-cover}{%
+\subsection{Drought impacts on vegetation productivity within land
+cover}\label{drought-impacts-on-vegetation-productivity-within-land-cover}}
 
-\citet{Vicente-Serrano2021} made a global analysis of the drought's
-severity trend using SPI, SPEI, and the Standardized Evapotranspiration
-Deficit Index (SEDI; \citet{Vicente-Serrano2018}) to evaluate AED. They
-indicate that the increase in hydrological drought has been due to
-anthropogenic effects rather than climate change. This is because the
-global increase in AED did not explain the change in the spatial pattern
-of the hydrological drought. Also, they state that \emph{``the increase
-in hydrological droughts has been primarily observed in regions with
-high water demand and land cover change''}. We will contrast this
-hypothesis with what is occurring in Chile. To achieve this, we will use
-the land cover class type that remains more than 80\% of types for
-2001--2022 to evaluate the trend on zcNDVI and use this as a mask where
-there are low changes.
+We analyzed the trend of vegetation productivity over the unchanged land
+cover macroclasses. This way, we tried to reduce the noise in the
+vegetation due to a change in land cover from year to year. To achieve
+this, we will use the persistent mask of land cover macroclasses, which
+are the types that remain more than 80\% of the time for 2001--2022. We
+used this to evaluate the trend in zcNDVI per land cover class and
+macrozone.
 
-\hypertarget{impact-for-water-supply-and-demand-and-soil-moisture-in-vegetation-productivity-within-land-cover-types}{%
-\subsection{Impact for water supply and demand, and soil moisture in
-vegetation productivity within land cover
-types}\label{impact-for-water-supply-and-demand-and-soil-moisture-in-vegetation-productivity-within-land-cover-types}}
+We examine the drought indices of water demand, water supply, soil
+moisture, and their connection with vegetation productivity to
+investigate two main questions: i) whether short-term or long-term time
+scales have a greater impact on vegetation across Chile and its specific
+regions; and ii) the spatial variation in the strength of the
+correlation between the variables and time scales.~ Then, we will
+summarize for each land cover class and macrozone. Thus, we will be able
+to advance in understanding how climate is affecting vegetation,
+considering the impact on the five macroclasses of vegetation: forest,
+cropland, grassland, savanna, and shrubland.
 
-We analyze the drought indices of water demand and supply and soil
-moisture against vegetation to address: i) if short- or long-term time
-scales are most important in impacting vegetation through Chile; and ii)
-the strength of the correlation for the variable and the time scale.
-Then, we will summarize for each land cover class and macrozone. Thus,
-we will be able to advance in understanding how climate is affecting
-vegetation, considering the impact on the five macroclasses of
-vegetation: forest, cropland, grassland, savanna, and shrubland.
-
-An analysis is conducted on the linear correlation between the indices
+We conducted an analysis on the linear correlation between the indices
 SPI, SPEI, EDDI, and SSI over time periods of 1, 3, 6, 12, 24, and 36
 months, and zcNDVI. The objective is to determine the impact of soil
-moisture and water demand and supply on vegetation productivity. We
-implemented a methodology similar to that of \citet{Meroni2016} when
-comparing the SPI for meteorological drought to the cumulative FAPAR
-(Fraction of Absorbed Photosynthetically Active Radiation), which served
-as an indicator for vegetation productivity. A pixel-to-pixel linear
-correlation analysis was performed for each index. To begin, the Pearson
-coefficient of correlation is computed for each of the six time scales.
-A significant time scale is identified as the one that attains the
-highest correlation (p \textless{} 0.05). Subsequently, the Pearson
-correlation coefficient corresponding to the time scales at which the
-value peaked was extracted. As a result, for each index, we generated
-two raster maps: one containing the time scales and the other the
-correlation value.
+moisture and water demand and supply on vegetation productivity. We used
+a method similar to that used by \citet{Meroni2017} which compared the
+SPI with the cumulative FAPAR (Fraction of Absorbed Photosynthetically
+Active Radiation). A pixel-to-pixel linear correlation analysis was
+performed for each index within the persistent mask of land cover
+macroclasses. To begin, the Pearson coefficient of correlation is
+computed for each of the six time scales. A significant time scale is
+identified as the one that attains the highest correlation (p
+\textless{} 0.05). Subsequently, the Pearson correlation coefficient
+corresponding to the time scales at which the value peaked was
+extracted. As a result, for each index, we generated two raster maps: 1)
+containing the raster with values of the time scales that reached the
+maximum correlation, and 2) having the value of the correlation
+obtained.
+
+\hypertarget{software-and-packages-used}{%
+\subsection{Software and packages
+used}\label{software-and-packages-used}}
+
+For the downloading, processing, and analysis of the spatio-temporal
+data, we used the open source software for statistical computing and
+graphics, \texttt{R} \citep{R2023}. For downloading ERA5L, we used the
+\texttt{\{ecmwfr\}} package \citep{Hufkens2019}. For processing raster
+data, we used \texttt{\{terra\}} \citep{Hijmans2023} and
+\texttt{\{stars\}} \citep{Pebesma2023}. For managing vectorial data, we
+used \texttt{\{sf\}} \citep{Pebesma2018}. For the calculation of AED, we
+used \texttt{\{SPEI\}} \citep{Bergueria2023}. For mapping, we use
+\{tmap\} \citep{Tennekes2018}. For data analysis, the suite
+\{tidyverse\} \citep{Wickham2019} was used.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\hypertarget{data-1}{%
-\subsection{Data}\label{data-1}}
-
-\hypertarget{validation-of-era5l-variables-1}{%
-\subsubsection{Validation of ERA5L
-variables}\label{validation-of-era5l-variables-1}}
-
-The average metrics of performance of ERA5L over the 266 weather
-stations were in the case of monthly temperature: \(ubRMSE=1.06\,°C\),
-\(MAE=1.131\,°C\), and \(CC=0.963\), showing a good agreement, low
-error, and low overestimation. For cumulative monthly precipitation,
-\(MAE=28.1\,mm\), \(bias=1.93\), and \(CC=0.845\), showing a high
-correlation and a 93\% bias and being overestimated by ERA5L. In the
-case of the 97 soil moisture stations, we averaged for the three depths
-(30, 60, and 90m) and then compared it with volumetric water content at
-1m derived from ERA5L. For this case, we made a daily comparison, having
-a \(CC=0.71\), \(RMSE=0.174\,m^3m^{-3}\), \(MAE=0.167\,m^3m^{-3}\), and
-\(bias=1.74\). The ERA5 soil moisture overestimate is 74\%, but it has a
-kind of good correlation. For more detailed information, consult the
-supplementary material (SSX).
-
-\hypertarget{lulc-change-for-2001-2022-and-its-relation-with-water-supply-and-demand-and-soil-moisture}{%
-\subsection{LULC change for 2001-2022 and its relation with water supply
-and demand, and soil
-moisture}\label{lulc-change-for-2001-2022-and-its-relation-with-water-supply-and-demand-and-soil-moisture}}
-
-\hypertarget{land-cover-macroclasess-and-validation-1}{%
-\subsubsection{Land cover macroclasess and
-validation}\label{land-cover-macroclasess-and-validation-1}}
-
-For vegetation, we obtained and use hereafter five macroclasses of land
-cover from IGBP MODIS: forest, shrubland, savanna, grassland, and
-croplands. Figure~\ref{fig-studyArea} c shows the spatial distribution
-of the macroclasses through Chile for the year 2022. The validation of
-IGBP2013 and IGBP2014 with LCChile reached near the same metrics of
-performance, having an accuracy of \textasciitilde0.82 and a F1 score of
-\textasciitilde0.66 (see SS1).
-
-\hypertarget{sec-persistence_mask}{%
-\subsubsection{Land cover persistence mask
-2001-2022}\label{sec-persistence_mask}}
-
-Figure~\ref{fig-studyArea} d, shows the macroclasses of land cover
-persistance (80\%) during 2021-2022, respectively
-(\ref{tab-landcoverSurf}). Within continental Chile, forest is the
-vegetation type with the highest surface area at 135,00 \(km^2\),
-followed by grassland (73,176 \(km^2\)), savanna (54,410 \(km^2\)),
-shrubland (24,959 \(km^2\)), and cropland (3,100 \(km^2\)) (Table
-\ref{tab-landcoverSurf}). The macrozones with major LULCC for 2001--2022
-were ``Centro,'' ``Sur,'' and ``Austral'' with 36\%, 31\%, and 34\%,
-respectively (Figure~\ref{fig-studyArea} and Table
-\ref{tab-landcoverTrend}); of its surface that changes the type of land
-cover. Figure~\ref{fig-LCprop} shows the summary of the proportion of
-surface per land cover class and macrozone, derived from the persistance
-mask over continental Chile.
+\hypertarget{land-cover-change-and-trend-1}{%
+\section{Land cover change and
+trend}\label{land-cover-change-and-trend-1}}
 
 \begin{table}[!ht]
 \caption{Surface of the land cover class that persist during 2001-2022}
@@ -873,9 +762,23 @@ persistent land cover for 2001-2022 (\textgreater80\%) per macrozone}
 
 \end{figure}
 
-\hypertarget{land-cover-trend-and-drought-indices-1}{%
-\subsubsection{Land cover trend and drought
-indices}\label{land-cover-trend-and-drought-indices-1}}
+For vegetation, we obtained and use hereafter five macroclasses of land
+cover from IGBP MODIS: forest, shrubland, savanna, grassland, and
+croplands. Figure~\ref{fig-studyArea}c shows the spatial distribution of
+the macroclasses through Chile for the year 2022.
+Figure~\ref{fig-studyArea}d shows the macroclasses of land cover
+persistance (80\%) during 2021--2022, respectively
+(\#ref\{tab-landcoverSurf\}). Within continental Chile, barren land is
+the land cover class with the highest surface area (277,870 km2). The
+largest type of vegetation, with 137,085 km2, is forest. Grassland
+(74,247 km2), savanna (55,206 km2), shrubland (25,341 km2), and cropland
+(3,146 km2) are the other types (Table 2). The macrozones with major
+changes for 2001--2022 were ``Centro,'' ``Sur,'' and ``Austral,'' with
+36\%, 31\%, and 34\% of their surface changing the type of land cover,
+respectively (Figure~\ref{fig-studyArea} and
+\#ref\{tab-landcoverTrend\}). Figure~\ref{fig-LCprop} shows the summary
+of the proportion of surface per land cover class and macrozone, derived
+from the persistance mask over continental Chile.
 
 \begin{table}[!ht]
 \caption{The value of Sen's slope trend next to the time-series plot of surface per land cover class (IGBP MCD12Q1.016) for 2001–2022 through Central Chile. Values of zero indicate that there was not a significant trend. Red dots on the plots indicate the maximum and minimum values of surface.}
@@ -883,80 +786,35 @@ indices}\label{land-cover-trend-and-drought-indices-1}}
 \includegraphics[]{../output/figs/table_var_landcover_macro.png}
 \end{table}
 
-The ``Norte Chico'' shows an increase in barrend land of 111
-\(km^2 year^{-1}\) and a reduction in the class savanna of 70
-\(km^2 year^{-1}\). In the ``Centro'' and ``Sur,'' there are changes in
-the Chilean matorral, with an important reduction in savanna (136 to 318
-\(km^2 yr^{-1}\)), and an increase in shrubland and grassland. Showing a
-change for more dense vegetation types. It appears to be a shift in the
-area of cropland from the ``Centro'' to the ``Sur.'' Also, there is a
-high increase in forest (397 \(km^2 yr^{-1}\)) in the ``Sur,'' replacing
-the savanna lost.
+The ``Norte Chico'' shows an increase in barren land of 111
+\(km^2 yr^{-1}\) and a reduction in the class savanna of 70
+\(km^2 yr^{-1}\). In the ``Centro'' and ``Sur,'' there are changes with
+an important reduction in savanna (136 to 318 \(km^2 yr^{-1}\) ), and an
+increase in shrubland and grassland. Showing a change for more dense
+vegetation types. It appears to be a shift in the area cultivated
+(croplands) from the ``Centro'' to the ``Sur.'' Also, there is a high
+increase in forest (397 \(km^2 yr^{-1}\) ) in the ``Sur,'' replacing the
+savanna lost (\#ref\{tab-landcoverTrend\}).
 
-Further, we want to address whether the trend in land cover change for
-2001--2023 is associated with trends in drought indices of water demand
-and supply and/or soil moisture for macrozone and land cover
-macroclasses. From the three methods tested, Ridge, Lasso, and Random
-Forest, neither gives significant results regarding whether the trend in
-a drought index for any time scale explains the trend in land cover
-change. Nevertheless, in ``Norte Chico'' and ``Centro,'' there is a
-decrease in croplands and savanna and an increase in barren land, which
-is associated with the variation in drought indices. Mainly for a
-decrease in water supply (SPI and SSI) and an increase in water demand
-(EDDI). However, due to the high variability from north to south in
-Chile, the climatic conditions (arid, semi-arid, and humid), and the
-land cover type, we believe that only in those zones could the LULCC be
-driven to some degree by drought.
+\hypertarget{trend-on-drought-and-its-relation-to-land-cover-change}{%
+\subsection{Trend on drought and its relation to land cover
+change}\label{trend-on-drought-and-its-relation-to-land-cover-change}}
 
-\hypertarget{trend-of-drought-indices-for-water-demand-and-supply-soil-moisture-and-vegetation-productivity-1}{%
-\subsection{Trend of drought indices for water demand and supply, soil
-moisture, and vegetation
-productivity}\label{trend-of-drought-indices-for-water-demand-and-supply-soil-moisture-and-vegetation-productivity-1}}
+\hypertarget{trend-of-drought-indices-1}{%
+\subsubsection{Trend of drought
+indices}\label{trend-of-drought-indices-1}}
 
-\begin{figure}[!ht]
-
-{\centering \includegraphics{../output/figs/temporal_variation_zcNDVI6_macrozonas_con_mapa.png}
-
-}
-
-\caption{\label{fig-zcNDVI_var}(a) Map of the linear trend of the index
-zcNDVI-6 for 2001--2023. Greener colors indicate a positive trend; reder
-colors correspond to a negative trend and a decrease in vegetation
-productivity. Grey colors indicate either no vegetation or a change in
-land cover type for 2001--2022. (b) Temporal variation of zcNDVI-6
-aggregated at macrozone level within continental Chile. Each horizontal
-panel corresponds to a macrozone from `Norte Grande' to `Austral'.}
-
-\end{figure}
-
-In ``Norte Grande,'' vegetation productivity, as per the z-index,
-exhibits a yearly increase of 0.02 in the five land cover macroclasses,
-with respect to grassland and shrubland categories. There is a negative
-trend in ``Norte Chico'' with -0.04 and ``Centro'' with -0.02 per
-decade. In the ``Norte Chico,'' savanna (-0.05) has the lowest trend,
-and the rest of the types are around -0.04. In ``Centro,'' shrubland
-reaches -0.06, grassland -0.05, and croplands and savanna -0.01 per
-decade. This could be associated either with a reduction in vegetation
-surface, a decrease in biomass, or browning \citep{Miranda2023}.
-Vegetation reached its lowest values since the year 2019, reaching an
-extreme condition in early 2020 and 2022 in the ``Norte Chico'' and
-Centro'' (Mega Drought). The ``Sur'' and ``Austral'' show a positive
-trend of around 0.016 per decade (Figure~\ref{fig-zcNDVI_var}). Despite
-the croplands suffering from drought just as badly as the native
-vegetation in ``Norte Chico,'' the Chilean matorral \citep{Fuentes2021}
-appears to be the region most affected by a negative trend in vegetation
-productivity.
-
-\begin{figure}[!ht]
-
-{\centering \includegraphics{../output/figs/trend_macrozone_drought_indices.png}
-
-}
-
-\caption{\label{fig-trendDIMacro}Trend per decade for the drought
-indices SPI, EDDI, SPEI, and SSI aggregated by macrozone.}
-
-\end{figure}
+Figure~\ref{fig-trendDI} shows the spatial variation of the trend for
+the drought indices from short- to long-term scales. SPI and SPEI have a
+decreasing trend from ``Norte Chico'' to ``Sur.'' However, there is an
+increasing trend in ``Austral.'' The degree of the trend is stronger at
+higher time scales. The SSI indicates that in ``Norte Grande,'' there
+are surfaces that have increased in the soutwest part and in the
+northeast have decreased, and is shown for all time scales. Similar to
+SPI and SPEI, SSI decreases at higher time scales. EDDI showed a
+positive trend for the whole of continental Chile, with a higher trend
+toward the north and a descending gradient toward the south. The degree
+of trend increases at higher time scales.
 
 \blandscape
 
@@ -1032,54 +890,110 @@ time scales of 1, 3, 6, 12, 24, and 36 months for 1981-2023}
 
 \elandscape
 
-\begin{table}[!ht]
-\caption{Summarry per land cover macroclass and macrozone regarding the correlation between zcNDVI with the drought indices EDDI, SPI, SPEI, and SSI for time scales of 1, 3, 6, 12, 24, and 36. The numbers in each cell indicate the time scale that reached the maximum correlation for the land cover and macrozone, and the color indicates the strength of the r-squared obtained with the index and the time scale.}
-\label{tab-corlandcover}
-\includegraphics[]{../output/figs/tabla_r_cor_macro_indice.png}
-\end{table}
+\begin{figure}[!ht]
 
-Analyzing the water supply, the macrozones that have the lowest trend
-are ``Norte Chico'' and ``Centro,'' where the SPI, SPEI, and SSI show
-that it decreases at longer time scales due to the prolonged reduction
-in precipitation. At 36 months, it reaches trends between -0.03 and
--0.04 (z-score) per decade for SPI, SPEI, and SSI
-(Figure~\ref{fig-trendDI}). For ``Sur,'' the behavior is similar,
-decreasing at longer scales and having between -0.016 and -0.025 per
-decade for SPI, SPEI, and SSI. On the other hand, all macrozones show an
-increase in the trend in all the drought indices, with ``Norte Grande''
-having the highest at 36 months (0.042 per decade). Because of this, the
-SPEI (which uses AED) reached its lowest value in ``Norte Grande,'' with
--0.03 at 36 months. Despite the other macrozones, ``Austral'' showed an
-increase in all indices, being the highest for EDDI at 36 months (0.025)
-and the lowest for SSI, which shows only a minor increase in the trend
-(Figure~\ref{fig-trendDI} and Figure~\ref{fig-trendDIMacro}).
+{\centering \includegraphics{../output/figs/trend_macrozone_drought_indices.png}
 
-\hypertarget{impact-for-water-supply-and-demand-and-soil-moisture-in-vegetation-productivity}{%
-\subsection{Impact for water supply and demand, and soil moisture in
-vegetation
-productivity}\label{impact-for-water-supply-and-demand-and-soil-moisture-in-vegetation-productivity}}
+}
 
-According to what is shown in Figure~\ref{fig-corTimeScale},
-Figure~\ref{fig-corPerson}, and Table \ref{tab-corlandcover}, forest
-seems to be the most resistant type to drought. Showing that only
-``Centro'' is slightly (rsq = 0.25) impacted by a 12-month soil moisture
-deficit (SSI-12). In the ``Norte Chico'' and to a lesser extent in the
-``Norte Grande,'' it is evident that a SSI-12 with a rsq = 0.45 and a
-decrease in water supply (SPI-36 and SPEI-24 with rsq = 0.28 and 0.34,
-respectively) have an impact on grasslands. However, this type was
-unaffected by soil moisture, water supply, or demand in macrozones
-further south. The types that show to be most affected by variation in
-climate conditions are shrublands, savannas, and croplands. For savannas
-in ``Norte Chico,'' the SSI-12 and SPI-24 reached an rsq of 0.74 and
-0.58, respectively. This value decreases to the south, but the SSI-12 is
-still the variable explaining more of the variation in vegetation
-productivity (rsq = 0.45 in ``Centro'' and 0.2 in ``Sur''). In the case
-of croplands, the SPEI-12, SPI-36, and SSI-12 explain between 45\% and
-66\% of ``Norte Chico.'' The type of land most impacted by climatic
-variation was shrubland, where soil moisture explained 59\% and
-precipitation, 37\%, in ``Norte Chico'' and ``Centro,'' with SSI-12
-being the most relevant variable, then SPI-36 in ``Norte Chico'' and
-SPI-24 in ``Sur.''
+\caption{\label{fig-trendDIMacro}Trend per decade for the drought
+indices SPI, EDDI, SPEI, and SSI aggregated by macrozone.}
+
+\end{figure}
+
+In Figure~\ref{fig-trendDIMacro}, the averaged aggregation per
+macrozone, drought index, and time scale are shown. The macrozones that
+have the lowest trend are ``Norte Chico'' and ``Centro,'' where the SPI,
+SPEI, and SSI show that it decreases at longer time scales. Potentially
+explained due to the prolonged reduction in precipitation that has
+affected the hydrological system in Chile. At 36 months, it reaches
+trends between -0.03 and -0.04 (z-score) per decade for SPI, SPEI, and
+SSI. For ``Sur,'' the behavior is similar, decreasing at longer scales
+and having between -0.016 and -0.025 per decade for SPI, SPEI, and SSI.
+``Norte Grande'' has the highest trend at 36 months for EDDI (0.042 per
+decade), and ``Centro'' has the lowest for SPI and SPEI. In ``Norte
+Grande'' and ``Norte Chico,'' which are in a semi-arid climate, it is
+evident that the EDDI has an effect on the difference between the SPI
+and SPEI index, which is not seen in the other macrozones. Contrary to
+the other macrozones, ``Austral'' showed an increase in all indices,
+being the highest for EDDI at 36 months (0.025) and the lowest for SSI,
+which shows only a minor increase in the trend.
+
+\hypertarget{relationship-between-drought-indices-and-land-cover-change}{%
+\subsubsection{Relationship between drought indices and land cover
+change}\label{relationship-between-drought-indices-and-land-cover-change}}
+
+We look at the relationship between drought index and land cover change
+in Figure 5 by comparing the trends in land cover change (in terms of
+the total surface area per land cover type and macrozone) and drought
+indexes. Figure 5 shows that the negative trends in cropland (-0.029)
+and savanna (-0.026) in ``Norte Chico'' are the highest and are
+associated with an increase trend in EDDI and a decreasing trend in SPI,
+SPEI, and SSI. On the contrary, the shrubland in ``Centro'' has an
+increase (0.04) linked to a decrease in SPI, SPEI, and SSI and to an
+increase in EDDI. In ``Austral,'' the positive trend in shrubland fits
+with the positive trend in all the drought indices. The rest of the land
+cover types in the macrozones show weak associations with water supply,
+water demand, or soil moisture drought indices.
+
+\begin{figure}[!ht]
+
+{\centering \includegraphics{../output/figs/points_landcover_drought_indices_trend_and_time_scale.png}
+
+}
+
+\caption{Relationship between the trend in land cover change and the
+trend in drought indices for the five macrozones. Vertical panels
+correspond to 1, 3, 6, 12, 24, and 36 months of the time scale by
+drought index. Horizontal panels show each drought index}
+
+\end{figure}
+
+\hypertarget{drought-impacts-on-vegetation-productivity-within-land-cover-1}{%
+\subsection{Drought impacts on vegetation productivity within land
+cover}\label{drought-impacts-on-vegetation-productivity-within-land-cover-1}}
+
+\hypertarget{vegetation-productivity}{%
+\subsubsection{Vegetation productivity}\label{vegetation-productivity}}
+
+\begin{figure}[!ht]
+
+{\centering \includegraphics{../output/figs/temporal_variation_zcNDVI6_macrozonas_con_mapa.png}
+
+}
+
+\caption{\label{fig-zcNDVI_var}(a) Map of the linear trend of the index
+zcNDVI-6 for 2001--2023. Greener colors indicate a positive trend; reder
+colors correspond to a negative trend and a decrease in vegetation
+productivity. Grey colors indicate either no vegetation or a change in
+land cover type for 2001--2022. (b) Temporal variation of zcNDVI-6
+aggregated at macrozone level within continental Chile. Each horizontal
+panel corresponds to a macrozone from `Norte Grande' to `Austral'.}
+
+\end{figure}
+
+In Figure~\ref{fig-zcNDVI_var} it is showed the spatial map of trends in
+zcNDVI ({[}fig-zcNDVI\_var{]}a) and the temporal variation of zcNDVI
+within the aggregated macrozones ({[}fig-zcNDVI\_var{]}b). In ``Norte
+Grande,'' vegetation productivity, as per the z-index, exhibits a yearly
+increase of 0.02 with respect to grassland and shrubland categories.
+There is a negative trend in ``Norte Chico'' with -0.04 and ``Centro''
+with -0.02 per decade. In the ``Norte Chico,'' savanna (-0.05) has the
+lowest trend, and the rest of the types are around -0.04. In ``Centro,''
+shrubland reaches -0.06, grassland -0.05, and croplands and savanna
+-0.01 per decade. This could be associated either with a reduction in
+vegetation surface, a decrease in biomass, or browning
+\citep{Miranda2023}. Vegetation reached its lowest values since the year
+2019, with an extreme condition in early 2020 and 2022 in the ``Norte
+Chico'' and ``Centro''. The ``Sur'' and ``Austral'' show a positive
+trend of around 0.016 per decade (Figure~\ref{fig-zcNDVI_var}). Despite
+the croplands suffering from drought just as badly as the native
+vegetation in ``Norte Chico,'' the savanna and shurbland appears to be
+the region most affected by a negative trend in vegetation productivity.
+
+\hypertarget{correlation-between-vegetation-productivity-and-drought-indices}{%
+\subsubsection{Correlation between vegetation productivity and drought
+indices}\label{correlation-between-vegetation-productivity-and-drought-indices}}
 
 \begin{figure}[!ht]
 
@@ -1104,15 +1018,62 @@ determination}
 
 \end{figure}
 
+Figure~\ref{fig-corTimeScale} is a map that shows the highest
+coefficient of determination (r-squared, or rsq) found in the regression
+analysis between different drought indicators and plant productivity
+over time. The spatial variation of time scales reached per index is
+mostly for time scales above 12 months. In the case of SSI, the
+predominant scales are 6 and 12 months. For all indices, to the north,
+the time scales are higher and diminish toward the south until the south
+part of ``Austral'' increases. In Figure~\ref{fig-corPerson}, the map of
+Pearson correlation values is shown. The EDDI reached correlations above
+0.5 between ``Norte Chico'' and ``Sur.'' The correlation changes from
+negative to positive toward the Andes Mountains and to the sea, just as
+in the northern part of ``Austral.'' The SPI and SPEI have similar
+results, with the higher values in ``Norte Chico'' and ``Centro'' being
+higher than 0.6. Following a similar spatial pattern as EDDI. The SSI
+showed to be the index that has a major spatial extension with a higher
+correlation. It has a similar correlation to SPI and SPEI for ``Norte
+Chico'' and ``Sur,''~ but has improvements for ``Sur.''
+
+\begin{table}[!ht]
+\caption{Summarry per land cover macroclass and macrozone regarding the correlation between zcNDVI with the drought indices EDDI, SPI, SPEI, and SSI for time scales of 1, 3, 6, 12, 24, and 36. The numbers in each cell indicate the time scale that reached the maximum correlation for the land cover and macrozone, and the color indicates the strength of the r-squared obtained with the index and the time scale.}
+\label{tab-corlandcover}
+\includegraphics[]{../output/figs/tabla_r_cor_macro_indice.png}
+\end{table}
+
+In \#ref\{tab-corlandcover\}, we aggregate per macrozone and landcover
+the correlation analysis presented in Figure~\ref{fig-corTimeScale} and
+Figure~\ref{fig-corPerson}. According to what is shown, forests seem to
+be the most resistant to drought. Showing that only ``Centro'' is
+slightly (rsq = 0.25) impacted by a 12-month soil moisture deficit
+(SSI-12). In the ``Norte Chico'' and to a lesser extent in the ``Norte
+Grande,'' it is evident that a SSI-12 with a rsq = 0.45 and a decrease
+in water supply (SPI-36 and SPEI-24 with rsq = 0.28 and 0.34,
+respectively) have an impact on grasslands. However, this type was
+unaffected by soil moisture, water supply, or demand in macrozones
+further south. The types that show to be most affected by variation in
+climate conditions are shrublands, savannas, and croplands. For savannas
+in ``Norte Chico,'' the SSI-12 and SPI-24 reached an rsq of 0.74 and
+0.58, respectively. This value decreases to the south, but the SSI-12 is
+still the variable explaining more of the variation in vegetation
+productivity (rsq = 0.45 in ``Centro'' and 0.2 in ``Sur''). In the case
+of croplands, the SPEI-12, SPI-36, and SSI-12 explain between 45\% and
+66\% of the variability in ``Norte Chico.'' The type of land most
+impacted by climatic variation was shrubland, where soil moisture
+explained 59\% and precipitation, 37\%, in ``Norte Chico'' and
+``Centro,'' with SSI-12 being the most relevant variable, then SPI-36 in
+``Norte Chico'' and SPI-24 in ``Sur.''
+
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-\hypertarget{drought-trend-and-attribution-to-lulcc}{%
-\subsection{Drought trend and attribution to
-LULCC}\label{drought-trend-and-attribution-to-lulcc}}
+\hypertarget{drought-trend-and-attribution-to-land-cover}{%
+\subsection{Drought trend and attribution to land
+cover}\label{drought-trend-and-attribution-to-land-cover}}
 
-\citet{Vicente-Serrano2021}, in a study at the global scale of drought
-trends, indicates that there have not been significant trends in
+\citet{Vicente-Serrano2022}, in a study at the global scale of drought
+trends, indicate that there have not been significant trends in
 meteorological drought since 1950. Also, state that the increase in
 hidrological trend in some parts of the globe (northeast Brazil and the
 Mediterranean region) is related to changes in land cover and
@@ -1120,50 +1081,52 @@ specifically to the rapidly increasing irrigated area, which
 consequently increases water extraction. \citet{Kogan2020} analyzed the
 agricultural drought impact globally and in the main grain producer
 countries, finding that \emph{``since 1980, the Earth warming has not
-changed the drought area or intensity''}.
-
-In our study, we considered the variation in vegetation productivity in
-Chile for areas without changes in land cover macroclasses (see
-Section~\ref{sec-persistence_mask}), to avoid misleading conclusions
-that could be related to the increase in water demand due to LULCC. Our
+changed the drought area or intensity.''} In our study, we considered
+the variation in vegetation productivity in Chile for areas without
+changes in land cover, to avoid misleading conclusions that could be
+related to the increase in water demand due to land cover change. Our
 results show a contrasting perspective. There has been a significant
 trend in the decline of vegetation productivity (zcNDVI) since 2000 for
 ``Norte Chico'' and ``Centro,'' which has been extreme between 2020 and
 2022, seemsly due to an intense hydrological drought due to the
-persistance of the Mega Drought \citep{Garreaud2017}. Despite using the
-persistance mask for vegetation's trend analysis, cropland, which is the
-most water-demand type, showed a decrease trend in ``Norte Chico'' and
-``Centro.'' Also, there was an increase in barren land for both types.
-These changes are associated with a decrease in water demand from
-vegetation. Nonetheless, we used the persistant land cover to ensure
-that the pixel has the same class; in the case of croplands, it could
-happen that some areas had changed crops for others with higher water
-consumption. But this effect should be minor compared to the results
-from ladcover macroclasses.
+persistance of the mega drought \citep{Garreaud2017}. However, a rise in
+irrigated land doesn't seem to have an impact on this hydrological
+drought. Despite using the persistance mask for vegetation's trend
+analysis, cropland, which is the most water-demand type, showed a
+decrease trend in ``Norte Chico'' and ``Centro.'' Also, there was an
+increase in barren land for both types. These changes are associated
+with a decrease in water demand from vegetation. Nonetheless, we used
+the persistant land cover to ensure that the pixel has the same class;
+in the case of croplands, it could happen that some areas had changed
+crops for others with higher water consumption and consequently increase
+water demand. But this effect should be minor compared to the results
+from land cover change at this scale of analysis.
 
 On the other hand, for ``Norte Chico'' and ``Centro,'' our results show
 a decrease in trends of water supply (SPI and SSI), which are higher at
-larger time scales and consequently impact the hydrological system. We
-claim that what occurred in central Chile defies findings made at the
-global level \citep{Vicente-Serrano2021, Kogan2020}, demonstrating that
-a constant decrease in water supply rather than an increase in water
-demand (i.e., irrigated crops) is the main cause of the hydrological
-drought. Finally, central Chile has shown a diminishment in vegetation
-productivity for all macroclasses, mainly attributed to variation in
-water supply, i.e., precipitation, which could be strengthened by an
-increase in water demand by, for example, an increase in the surface
-area of irrigated crops.
+larger time scales, which is evidence of the hydrological drought. We
+say that what happened in central Chile goes against what has been found
+on a global scale \citep{Vicente-Serrano2022, Kogan2020}. This shows
+that the main cause of the hydrological drought in Chile was a steady
+drop in water supply made worse by an increase in AED, but it seems that
+in zones most affected by drought, the main cause is not an increase in
+water demand by vegetation like irrigated crops. Finally, north-central
+Chile has experienced a decline in vegetation productivity across all
+macroclasses, which is primarily attributable to variations in water
+supply and soil moisture. An increase in water demand, such as an
+increase in the surface area of irrigated crops, could strengthen this
+trend.
 
 \hypertarget{land-cover-types-and-their-impact-by-drought}{%
 \subsection{Land cover types and their impact by
 drought}\label{land-cover-types-and-their-impact-by-drought}}
 
-We found that shrubland, savannas (Chilean matorral), and croplands are
-the most sensitive to climate conditions. Being most affected by the
-12-month soil moisture deficit. In a study in the Yangtze River Basin in
-China, Jiang2020 analyzed the impact of drought on vegetation using the
+We discovered that croplands, savannas, and shrubland are the most
+susceptible to climatic changes and are most affected by the 12-month
+soil moisture deficit. In a study in the Yangtze River Basin in China,
+\citet{Jiang2020} analyzed the impact of drought on vegetation using the
 SPEI and the Enahanced Vegetation Index (EVI). They found that cropland
-was more sensitive to drought than cropland, showing that cropland
+was more sensitive to drought than grassland, showing that cropland
 responds strongly to short- and medium-term drought (\textless{}
 SPEI-6). In our case, the SPEI-12 was the one that most impacted the
 croplands in ``Norte Chico'' and ``Centro.'' In general, most studies
@@ -1179,27 +1142,27 @@ has decreased groundwater storage \citep{Taucare2024}, which in turn is
 impacted by long-term deficits, and consequently, the vegetation is more
 dependent on groundwater. In ``Sur'' and ``Austral,'' the correlations
 between drought indices and vegetation productivity decrease, as do the
-time scales that reach the maximum r-squared (\ref{tab-corlandcover}).
-What can be explained is that, south of ``Centro,'' predominate forest
-and grassland, the most resistant types. Also, drought episodes have
-been less frequent and intense. The drought episodes have had a lower
-impact on water availability for vegetation.
+time scales that reach the maximum r-squared. What can be explained is
+that, south of ``Centro,'' predominate forest and grassland, the most
+resistant types. Also, drought episodes have been less frequent and
+intense. The drought episodes have had a lower impact on water
+availability for vegetation.
 
-Extreme drought conditions are an important driver of tree mortality, as
-shown by \citet{Senf2020} in Europe. However, we found that forest is
+According to \citet{Senf2020}, severe drought conditions in Europe are a
+significant cause of tree mortality. However, we found that forest is
 the type of land cover macroclass less affected by variation in drought
 indices, being the most resistant land cover class to drought.
-Supporting this is \citet{Fathi-Taperasht2022}, who asserts that Indian
-forests are the most drought-resistant and recover rapidly. Similarly,
-the work of \citet{Wu2024}, who analyzed vegetation loss and recovery in
-response to meteorological drought in the humid subtropical Pearl River
-basin in China, indicates that forests showed higher drought resistance.
-Using Vegetation Optical Depth (VOD), kNDVI, and EVI, \citet{Xiao2023},
-tests the resistance of ecosystems and finds that ecosystems with more
-forests are better able to handle severe droughts than croplands. They
-attribute the difference to a deeper rooting depth of trees, a higher
-water storage capacity, and different water use strategies between
-forest and cropland \citep{Xiao2023}.
+Supporting this is \citet{Fathi-Taperasht2022}{]}, who assert that
+Indian forests are the most drought-resistant and recover rapidly.
+Similarly, the work of \citet{Wu2024}, who analyzed vegetation loss and
+recovery in response to meteorological drought in the humid subtropical
+Pearl River basin in China, indicates that forests showed higher drought
+resistance. Using Vegetation Optical Depth (VOD), kNDVI, and EVI,
+\citet{Xiao2023} test the resistance of ecosystems and find that
+ecosystems with more forests are better able to handle severe droughts
+than croplands. They attribute the difference to a deeper rooting depth
+of trees, a higher water storage capacity, and different water use
+strategies between forest and cropland \citep{Xiao2023}.
 
 In contrast to what we obtained, \citet{Venegas2022}, who studied
 Cryptocarya alba and Beilschmiedia miersii (both from the Lauraceae
@@ -1214,45 +1177,45 @@ classes. Nonetheless, if we want to go deep in our analysis, we should
 use earth observation data that is able to capture a higher level of
 detail. For example, when we used MOD13A3 with a 1km spatial resolution
 to measure vegetation condition, it took the average condition of 1
-square kilometer. Then, to study how a type of forest (e.g.,
-sclerophyllous forest) changes in response to drought on a local level
-using remote sensing, we should use operational products with higher
-spatial resolutions, such as those from Landsat or Sentinel.
+square kilometer. Then, to use remote sensing to look at how a certain
+type of forest (like sclerophyllous forest) changes in response to
+drought on a local level, we should use operational products with higher
+spatial resolutions, like those from Landsat or Sentinel. This will let
+us do a more thorough analysis.
 
 \hypertarget{soil-moisture-vegetation-productivity-and-agricultural-drought.}{%
 \subsection{Soil moisture, vegetation productivity, and agricultural
 drought.}\label{soil-moisture-vegetation-productivity-and-agricultural-drought.}}
 
 The main external factors that affect biomass production by vegetation
-are ET and SM, and the rate of ET in turn depends on the availability of
-water storage in the root zone. Thus, soil moisture plays a key role in
-land carbon uptake and, consequently, in the production of biomass
-\citep{Humphrey2021}. Moreover, \citet{Zhang2022} indicates there is a
-bidirectional causality between soil moisture and vegetation
-productivity. Lastly, some studies have redefined agricultural drought
-as soil moisture drought from an hydrological perspective
-\citep{Loon2016, Samaniego2018}. Even though soil moisture is the
-external factor most determinant of vegetation biomass, there are
-multiple internal factors, such as species, physiological
-characteristics, and plant hydraulics, that would affect vegetation
-productivity. Because of that, we believe that agricultural drought,
-referring to the drought that impacts vegetation productivity, is the
-most proper term, as originally defined by \citet{Wilhite1985}.
+are actual evapotranspiration and soil moisture, and the rate of ET in
+turn depends on the availability of water storage in the root zone.
+Thus, soil moisture plays a key role in land carbon uptake and,
+consequently, in the production of biomass \citep{Humphrey2021}.
+Moreover, \citet{Zhang2022} indicate there is a bidirectional causality
+between soil moisture and vegetation productivity. Lastly, some studies
+have redefined agricultural drought as soil moisture drought from a
+hydrological perspective \citep{Loon2016, Samaniego2018}. Even though
+soil moisture is the external factor most determinant of vegetation
+biomass, there are multiple internal factors, such as species,
+physiological characteristics, and plant hydraulics, that would affect
+vegetation productivity. Because of that, we believe that agricultural
+drought, referring to the drought that impacts vegetation productivity,
+is the most proper term, as originally defined by \citet{Wilhite1985}.
 
 The study results showed that the soil moisture-based drought index
 (SSI) was better at explaining vegetation productivity across land cover
 macroclasses than meteorological drought indices like SPI, SPEI, and
 EDDI. In the early growing season and especially in irrigated rather
 than rainfed croplands, soil moisture has better skills than SPI and
-SPEI for estimating gross primary production (GPP), according to
-\citet{Chatterjee2022}'s evaluation of the SPI and SPEI and their
-correlation with GPP in the CONUS. Also, \citet{Zhou2021} indicates that
+SPEI for estimating gross primary production (GPP). This according to
+\citet{Chatterjee2022} evaluation of the SPI and SPEI and their
+correlation with GPP in the CONUS. Also, \citet{Zhou2021} indicate that
 the monthly scaled Standardized Water Deficit Index (SWDI) can
 accurately show the effects of agricultural drought in most of China.
-Complementary, \citet{Nicolai2017} analyzed the time-lag between SWDI
-and the Vegetation Condition Index (VCI), and they state that there was
-no or little time-lag with croplands but a significant time-lag in the
-case of forests.
+\citet{Nicolai2017} also looked at the time-lag between the SWDI and the
+Vegetation Condition Index (VCI). They found that there was little to no
+time-lag in croplands but a greater time-lag in forests.
 
 In our case, there is strong spatial variability throughout Chile and
 between classes, mainly attributable to climate heterogeneity,
@@ -1270,25 +1233,6 @@ orchards are more dependent on the storage of water in dams of
 groundwater reservoirs, which are affected by long-term drought (e.g.,
 SPI-36).
 
-\hypertarget{early-drought-forecasting-for-vegetation-productivity}{%
-\subsection{Early drought forecasting for vegetation
-productivity}\label{early-drought-forecasting-for-vegetation-productivity}}
-
-We analyzed the correlation between meteorological and soil moisture
-drought indices with zcNDVI. From our findings, we could further use the
-drought indices and time scales that have the highest r-squared to
-develop a combined model to forecast vegetation productivity in Chile.
-Despite the fact that SSI was the best-performing index, the rest of the
-indices should help to enhance predictability. \citet{Zambrano2018}
-proposed a prediction model for cropland surface in Chile at
-administrative units with a 1- to 6-month lead time using zcNDVI from
-MODIS and climate oscilation indices. The results given were r-squared,
-ranging from 0.95 at a 1-month lead time to 0.37 at a 6-month lead time.
-Thus, incorporating the results of this study with those made by
-\citet{Zambrano2018}, we could develop a combined forecasting model at
-the pixel level for the macroclasses in Chile based on drought indices
-of water demand and supply and soil moisture.
-
 \hypertarget{future-outlook-to-complete}{%
 \subsection{Future outlook (to
 complete)}\label{future-outlook-to-complete}}
@@ -1297,12 +1241,12 @@ complete)}\label{future-outlook-to-complete}}
 \section{Conclusion}\label{conclusion}}
 
 There is a trend toward decreasing water supply in most parts of Chile,
-less in the ``Austral,'' which is stronger in the ``Centro'' and ``Norte
-Chico.'' The whole country showed an increase in water demand.
-Vegetation productivity only showed a decrease in the ``Norte Chico''
-and ``Centro,'' being highest for shrubland and croplands. Forest is the
-land cover most resistant to drought, and shrubland and cropland are the
-most sensitive.
+particularly in the ``Centro'' and ``Norte Chico'' regions. The whole
+country showed an increase in AED. Vegetation productivity only showed a
+decrease in the ``Norte Chico'' and ``Centro,'' being highest for
+shrubland and croplands. Forest is the land cover most resistant to
+drought, as shown along Chile, and shrubland and cropland are the most
+sensitive.
 
 A soil moisture deficit of 12 months (SSI-12) is highly correlated with
 vegetation productivity for the land cover classes of shrubland,
@@ -1320,7 +1264,7 @@ vegetation, this would need to be more thoroughly investigated, for
 instance at the watershed level.
 
 The results of this study could help in the development of a robust
-forecasting system for land cover classes in Chile., helping to improve
+forecasting system for land cover classes in Chile, helping to improve
 preparedness for climate change impacts on vegetation.
 
 \hypertarget{supplementary-material}{%
