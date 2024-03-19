@@ -52,7 +52,7 @@ get_rf_imp <- function(x) {
  
 df <- map(1:6,\(i){
   t <- which(vars == vars[[i]])
-  df_split <- initial_split(data_model |> select(-vars[-t]),prop =.8)
+  df_split <- initial_split(data_model |> select(-vars[-t]),prop =0.99)
   df_train <- training(df_split)
   df_test <- testing(df_split)
   
@@ -110,7 +110,7 @@ df <- map(1:6,\(i){
     labs(x = "Variable importance", y = NULL) +
     annotate("text",x=max(df_var_imp$Mean),y=1,label =paste0('rsq=',round(df_met$mean[2],2))) +
     theme_bw()
-  ggsave(paste0('output/figs/fig_errorbar_resample_random_forest_trends_',vars[i],'.png'))
+  ggsave(paste0('output/figs/fig_errorbar_resample_random_forest_trends_',vars[i],'.png'),scale =1.5)
   df_var_imp <- df_var_imp |> 
     slice_max(Mean, n = 5) |> 
     mutate(type = vars[i])
@@ -134,36 +134,20 @@ tabla2 <- tabla2 |>
   pivot_wider(names_from = type,values_from = mean) |> 
   select(.metric,Forest,Cropland,Grassland, Savanna,Shrubland,Barren_land )
 
-head <- paste0(names(tabla2[2:7]),'\n rsq=',round(tabla2[1,2:7],2))
+head <- c('Position',paste0(names(tabla2[2:7]),'\n (rsq=',round(tabla2[1,2:7],2),')'))
 
+library(gt)
+library(broom.helpers)
 tabla |> 
   select(-Mean,-Variance) |> 
-  mutate(pos = rep(1:5,6)) |> 
+  mutate(pos = rep(1:5,6),
+         Variable = .clean_backticks(Variable)) |>
   pivot_wider(names_from = type,values_from = Variable) |> 
-  select(Forest,Cropland,Grassland, Savanna,Shrubland,Barren_land )
+  select(pos,Forest,Cropland,Grassland, Savanna,Shrubland,Barren_land) |> 
+  set_names(head) |> 
+  gt() |> 
+  cols_align(align = 'center') |> 
+  gtsave('output/figs/table_importance_trends_landcover_vs_drought.png')
+  
+  
 
-# para zcNDVI
-
-df_split <- initial_split(data_model,prop =.8)
-df_train <- training(df_split)
-df_test <- testing(df_split)
-
-rf_spec <- rand_forest(trees = 1000, mode = "regression") |>
-  set_args(importance = 'impurity')
-# lasso_spec <- linear_reg(penalty = 0.1, mixture = 1) %>%
-#   set_engine("glmnet")
-
-rf_wflow <- workflow(as.formula(`zcNDVI-6`~.), rf_spec)
-rf_fit <- fit(rf_wflow, df_train)
-
- augment(rf_fit, new_data = df_train) %>%
-   metrics(as.name(vars[i]),.pred)
-
- augment(rf_fit, new_data = df_test) %>%
-   metrics(vars[i],.pred)
-
- library(vip)
- rf_fit |>
-   extract_fit_parsnip() |>
-   vip(geom = "point",num_features = 20) +
-   labs(title = "Random forest variable importance")

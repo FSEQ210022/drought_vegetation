@@ -7,9 +7,9 @@ format:
 editor: source
 ---
 
-# Validation of ERA5L variables
+# Validation of ERA5L variables 
 
-## Methods
+## Methods 
 
 We compared the ERA5L variables for monthly mean temperature, total precipitation, and volumetric soil water content against values retrieved by weather stations. For temperature and precipitation, we used the weather network from the Ministry of Agriculture of Chile (www.agromet.com) between 2015 and 2023. We used 277 stations located throughout Chile. For soil moisture, we select a private soil network that is owned by the agricultural enterprise Garces Fruit, which has 99 stations in Central Chile, located in cherry fruit crops. The sensors are installed at 30, 60, and 90m and are the model Teros 12 from MeterGroup. To avoid the effect of irrigation on soil moisture, which ERA5L hardly captures, we used daily data for the year 2022 and the months outside the growing season, May to September.
 
@@ -46,3 +46,25 @@ where $TP$ and $FN$ refer to true positive and false negative, correctly classif
 ## Results
 
 For vegetation, we obtained and use hereafter five macroclasses of land cover from IGBP MODIS: forest, shrubland, savanna, grassland, and croplands. Figure 1 c shows the spatial distribution of the macroclasses through Chile for the year 2022. The validation of IGBP2013 and IGBP2014 with LCChile reached near the same metrics of performance, having an accuracy of \~0.82 and a F1 score of \~0.66.
+
+# Relationship between drought indices and land cover change
+
+::: {#fig-varImportance layout-ncol=3}
+
+![Forest](../output/figs/fig_errorbar_resample_random_forest_trends_Forest.png){#fig-varimp_forest}
+
+![Cropland](../output/figs/fig_errorbar_resample_random_forest_trends_Cropland.png){#fig-varimp_crops}
+
+![Grassland](../output/figs/fig_errorbar_resample_random_forest_trends_Grassland.png){#fig-varimp_grass}
+
+![Savanna](../output/figs/fig_errorbar_resample_random_forest_trends_Savanna.png){#fig-varimp_savanna}
+
+![Shrubland](../output/figs/fig_errorbar_resample_random_forest_trends_Shrubland.png){#fig-varimp_shrubs}
+
+![Barren land](../output/figs/fig_errorbar_resample_random_forest_trends_Barren_land.png){#fig-varimp_barren}
+
+Error bar for the variables importance obtained from the 10 resamples folded by the Random Forest.
+
+:::
+
+
