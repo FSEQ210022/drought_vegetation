@@ -20,7 +20,7 @@ lc2<- c(lc_modis_r,lc_chile)
 
 chl <- ne_countries(country = 'chile',scale = 'small',returnclass = 'sf') |> 
   st_transform(32719)
-samples <- st_sample(chl,1000)
+samples <- st_sample(chl,10000)
 
 df <- terra::extract(lc2,vect(samples))
 names(df) <- c('ID','IGBP2013','IGBP2014','LC_CHILE')
@@ -40,6 +40,7 @@ data <- df |>
   ungroup() |> 
   mutate(LC_CHILE_2 = ifelse(LC_CHILE_2 == 0, 6,LC_CHILE_2),
          LC_CHILE_2 = ifelse(LC_CHILE_2 == 80, 8,LC_CHILE_2)) |> 
+  filter(LC_CHILE_2 != 5) |> 
   mutate(across(everything(),\(x) fct(sort(as.character(x)))))
 
 library(yardstick)

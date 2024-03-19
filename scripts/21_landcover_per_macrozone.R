@@ -40,11 +40,11 @@ LC_data |>
   na.omit() |>  
   group_by(zone,LC_type)|> 
   summarize(ntot = n()) -> summ_data2
-
+write_rds(summ_data2,'data/processed_data/surface_landcover_macrozone.rds')
 #tabla con superficie
 #
 summ_data2 |> 
-  mutate(surface = 21.19*ntot*0.01) |> 
+  mutate(surface = 21.5*ntot*0.01) |> 
   select(-ntot) |> 
   mutate(surface = case_when(surface <=20~NA,
                            .default = surface)) |> 
@@ -53,6 +53,12 @@ summ_data2 |>
   ungroup() |> 
    select(1,7:6,4:2,5) |> 
   gt() |> 
+  grand_summary_rows(
+    columns = 2:7,
+    fmt = ~ fmt_number(., decimal = 0, use_seps = TRUE),
+    fns = list(
+      label = 'Total',fn ="sum"
+    )) |> 
   fmt_number(decimals = 0) |> 
   sub_missing(
     columns = everything(),

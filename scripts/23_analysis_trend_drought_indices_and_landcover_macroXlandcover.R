@@ -13,16 +13,74 @@ data_ana <- data_trend_di |>
   full_join(data_trend_lc) |> 
   drop_na()
 
-data_model <- data_ana[,c(1:6,9:12,15:18,21:24,29,31)]
+#cargar la superficie de landcover ṕor macro class para relativizar las superficies
+
+lc_surf <- read_rds('data/processed_data/surface_landcover_macrozone.rds') |> 
+  set_names(c('macro','class','surf_total'))
+
+#buscando una relación con visualización
+#
+data_ana |> 
+  left_join(lc_surf) |> 
+  mutate(landcover_r = landcover) |> 
+  select(-surf_total) |> 
+  pivot_longer(-c(1:2,landcover,landcover_r)) |> 
+  mutate(
+    index = str_extract(name,'[[:alpha:]]+'),
+    scale = str_extract(name,'[0-9]+'),
+    landcover = landcover_r,
+    scale_t =fct(scale,levels =as.character(c(1,3,6,12,24,36))),
+    macro = fct(macro,levels = c('Norte Grande','Norte Chico','Centro','Sur','Austral')),
+    class = fct(class,levels = c('Forest','Cropland','Grassland','Savanna','Shrubland','Barren land')),
+    landcover = case_when(
+      macro == 'Norte Grande' & class %in% c('Forest', 'Cropland','Savanna') ~ NA,
+      macro == 'Norte Chico' & class == 'Forest' ~ NA,
+      macro == 'Sur' & class %in% c('Shrubland') ~ NA,
+      macro == 'Austral' & class == 'Cropland' ~ NA,
+      .default = landcover
+    ),
+    index = case_when(
+      index == 'zcSM' ~ 'SSI',
+      .default = index)) |>  
+  filter(index != 'zcNDVI' & 
+           name %in% c('EDDI-6','EDDI-36',
+                        'SPI-6','SPI-36',
+                       'zcSM-6','zcSM-36')) |> 
+  mutate(name = factor(name,
+                     levels = c('SPI-6','EDDI-6','zcSM-6',
+                                'SPI-36','EDDI-36','zcSM-36'),
+                    labels = c('SPI-6','EDDI-6','SSI-6',
+                               'SPI-36','EDDI-36','SSI-36'))) |> 
+  ggplot(aes(value*10,landcover,color = macro,shape = class)) +
+  geom_point() + 
+  geom_hline(yintercept = 0,color = 'red',linetype = 'dashed',alpha = .6) +
+  geom_vline(xintercept = 0,color = 'red',linetype = 'dashed',alpha = .6) +
+  labs(x = 'Trend of drought index (per decade)',
+       y = 'Relative trend of land cover change') +
+  scale_color_viridis_d('Macrozone') +
+  #scale_x_sqrt() +
+  scale_shape('Land cover') +
+  facet_wrap(.~name,ncol=3,nrow=2) +
+  theme_bw() +
+  theme(strip.background = element_rect(fill = 'white'))
+ggsave('output/figs/points_landcover_drought_indices_trend_and_time_scale.png',scale =1.2,width=10,height = 6)
+
+data_model <- data_ana[,c(1:6,9:12,15:18,21:24,29,31)] |> 
+  left_join(lc_surf) |> 
+  mutate(landcover = landcover/surf_total) |> 
+  select(-surf_total) |> 
+  pivot_longer(-c(1:2,landcover)) |> 
+  pivot_wider(names_from = name,values_from = value) 
+
 data_model <- data_model |> 
-  filter(macro %in% c('Norte Chico','Centro')) |> 
+  #filter(macro %in% c('Norte Chico','Centro')) |> 
   #select(-starts_with('EDDI')) |> 
   mutate(
     #landcover = cut(landcover,5),
-    landcover = cut(landcover,quantile(landcover,c(0,1/3,2/3,1)),
-                    include.lowest = TRUE),
+    #landcover = cut(landcover,quantile(landcover,c(0,1/3,2/3,1)),
+    #                include.lowest = TRUE),
          class = factor(class),
-         macro = factor(macro))
+         macro = factor(macro)) 
 
 df_split <- initial_split(data_model,prop =.9)
 df_train <- training(df_split)
@@ -30,13 +88,15 @@ df_test <- testing(df_split)
 
 #random forest
 
-rf_spec <- rand_forest(trees = 1000, mode = "classification") |> 
+rf_spec <- rand_forest(trees = 1000, mode = "regression") |> 
   set_args(importance = 'impurity')
 rf_wflow <- workflow(landcover ~ ., rf_spec)
 rf_fit <- fit(rf_wflow, df_train)
 
- augment(rf_fit, new_data = df_train) %>%
-   conf_mat(truth = landcover, estimate = .pred_class)
+ augment(rf_fit, new_data = df_train) %>% 
+   metrics(truth = landcover, estimate = .pred)
+   
+#conf_mat(truth = landcover, estimate = .pred_class)
 
  # 
 augment(rf_fit, new_data = df_train) %>%

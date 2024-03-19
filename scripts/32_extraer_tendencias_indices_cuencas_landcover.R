@@ -52,3 +52,4 @@ df_scales |>
   rename(index = name,trend = value) |> 
   unnest(trend) |> 
   write_rds('data/processed_data/df_trends_indices_cuencas.rds')
+
