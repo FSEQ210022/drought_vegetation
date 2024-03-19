@@ -255,7 +255,7 @@ lasting longer than a year.
 \end{frontmatter}
     \captionsetup{justification=raggedright,singlelinecheck=false}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, sharp corners, frame hidden, enhanced, interior hidden, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, breakable, interior hidden, boxrule=0pt, enhanced]}{\end{tcolorbox}}\fi
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -754,9 +754,8 @@ containing the raster with values of the time scales that reached the
 maximum correlation, and 2) having the value of the correlation
 obtained.
 
-\hypertarget{software-and-packages-used}{%
-\subsection{Software and packages
-used}\label{software-and-packages-used}}
+\hypertarget{software}{%
+\subsection{Software}\label{software}}
 
 For the downloading, processing, and analysis of the spatio-temporal
 data, we used the open source software for statistical computing and
@@ -767,7 +766,9 @@ data, we used \texttt{\{terra\}} \citep{Hijmans2023} and
 used \texttt{\{sf\}} \citep{Pebesma2018}. For the calculation of AED, we
 used \texttt{\{SPEI\}} \citep{Bergueria2023}. For mapping, we use
 \{tmap\} \citep{Tennekes2018}. For data analysis, the suite
-\{tidyverse\} \citep{Wickham2019} was used.
+\{tidyverse\} \citep{Wickham2019} was used. For the random forest
+modeling we used the \{tidymodels\}\citep{Kuhn2020} and
+\{ranger\}\citep{Wright2017} packages.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
