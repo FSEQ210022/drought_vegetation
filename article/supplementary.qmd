@@ -1,6 +1,7 @@
 ---
 title: "Supplementary Material"
 author: "Francisco Zambrano"
+date: "`r Sys.Date()`"
 format: 
   pdf:
     number-sections: true
@@ -66,5 +67,14 @@ For vegetation, we obtained and use hereafter five macroclasses of land cover fr
 Error bar for the variables importance obtained from the 10 resamples folded by the Random Forest.
 
 :::
+
+# Trend of vegetation productivity
+
+```{r}
+#| echo: false
+#| out-width: 75%
+#| fig-cap: "Heatmap of trends in zcNDVI for 2000 to 2023 per macrozone and landcover macroclass."
+knitr::include_graphics('../output/figs/heatmap_trends_zcNDVI_macro_landcover.png')
+```
 
 
