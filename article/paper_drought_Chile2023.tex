@@ -256,7 +256,7 @@ lasting longer than a year.
 \end{frontmatter}
     \captionsetup{justification=raggedright,singlelinecheck=false}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, breakable, borderline west={3pt}{0pt}{shadecolor}, frame hidden, sharp corners, interior hidden, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, boxrule=0pt, sharp corners, breakable, frame hidden]}{\end{tcolorbox}}\fi
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -304,8 +304,8 @@ in regions with high water demand and land cover change''. Similarly,
 \citet{Kogan2020} analyzed the drought trend using vegetation health
 methods, finding that for the globe, hemispheres, and main
 grain-producing countries, drought has not expanded or intensified for
-the last 38 years. Further, the \citet{IPCC2021} suggests that there is
-a high degree of confidence that rising temperatures will increase the
+the last 38 years. Further, \citet{IPCC2021} suggests that there is a
+high degree of confidence that rising temperatures will increase the
 extent, frequency, and severity of droughts. Also, AR6 \citep{IPCC2023}
 predicts that many regions of the world will experience more severe
 agricultural and ecological droughts even if global warming stabilizes
@@ -515,9 +515,9 @@ volumetric soil water layers between 0 and 100cm of depth (layer 1 to
 layer 3). Table \ref{tab-desEOD} shows a summary of the data and its
 main characteristics.
 
-\hypertarget{short--to-long-term-drought}{%
-\subsection{Short- to long-term
-drought}\label{short--to-long-term-drought}}
+\hypertarget{short--to-long-term-drought-trends}{%
+\subsection{Short- to long-term drought
+trends}\label{short--to-long-term-drought-trends}}
 
 \hypertarget{atmospheric-evaporative-demand-aed}{%
 \subsubsection{Atmospheric Evaporative Demand
@@ -614,11 +614,13 @@ W=\(\sqrt{-2\cdot ln(P(A_i))}\) , and for \(P(A_i) > 0.5\), replace
 The drought indices were calculated for time scales of 1, 3, 6, 12, 24,
 and 36 months at a monthly frequency for 1981--2023 in order to be used
 for short- to long-term evaluation of drought. In the case of the proxy
-of vegetation productivity (zcNDVI) it was calculated for a time scale
+of vegetation productivity (zcNDVI), it was calculated for a time scale
 of six months at monthly frequency for 2000--2023. For zcNDVI, we test
-time scales of 1, 3, 6, and 12 months; we choose to use six months
-because that shows a more stable representation of vegetation
-productivity.
+time scales of 1, 3, 6, and 12 months in December and its correlation
+with net primary production (NPP) obtained from the MOD17A3HGF product
+from MODIS. We choose to use six months because r-squared with NPP
+increases from one to six months and from six to 12 months has little
+improvement (see supplementary material in Section S5).
 
 \hypertarget{trend-of-drought-indices}{%
 \subsubsection{Trend of drought
@@ -775,9 +777,9 @@ modeling, we used the \{tidymodels\}\citep{Kuhn2020} and
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\hypertarget{short--to-long-term-drought-1}{%
-\subsection{Short- to long-term
-drought}\label{short--to-long-term-drought-1}}
+\hypertarget{short--to-long-term-drought-trends-1}{%
+\subsection{Short- to long-term drought
+trends}\label{short--to-long-term-drought-trends-1}}
 
 Figure~\ref{fig-trendDI} shows the spatial variation of the trend for
 the drought indices from short- to long-term scales. SPI and SPEI have a
@@ -1027,7 +1029,7 @@ productivity}\label{trends-in-vegetation-productivity}}
 zcNDVI for 2000--2023. Greener colors indicate a positive trend; reder
 colors correspond to a negative trend and a decrease in vegetation
 productivity. Grey colors indicate either no vegetation or a change in
-land cover type for 2001--2022. (b) Temporal variation of zcNDVI-6
+land cover type for 2001--2022. (b) Temporal variation of zcNDVI
 aggregated at macrozone level within continental Chile. Each horizontal
 panel corresponds to a macrozone from `Norte Grande' to `Austral'.}
 
@@ -1080,12 +1082,12 @@ determination}
 
 Figure~\ref{fig-corTimeScale} shows the highest coefficient of
 determination (r-squared, or rsq) found in the regression analysis
-between different drought indicators and zcNDVI over time scales (1, 3,
-6, 12, 24, and 36 months). The spatial variation of time scales reached
-per index is mostly for time scales above 12 months. In the case of SSI,
-the predominant scales are 6 and 12 months. For all indices, to the
-north, the time scales are higher and diminish toward the south until
-the south part of ``Austral,'' where they increase. In
+between zcNDVI and different drought indicators over time scales of 1,
+3, 6, 12, 24, and 36 months. The spatial variation of time scales
+reached per index is mostly for time scales above 12 months. In the case
+of SSI, the predominant scales are 6 and 12 months. For all indices, to
+the north, the time scales are higher and diminish toward the south
+until the south part of ``Austral,'' where they increase. In
 Figure~\ref{fig-corPerson}, the map of Pearson correlation values (r) is
 shown. The EDDI reached correlations above 0.5 between ``Norte Chico''
 and ``Sur.'' The correlation changes from negative to positive toward
@@ -1129,9 +1131,9 @@ moisture explained 59\% and precipitation, 37\%, in ``Norte Chico'' and
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-\hypertarget{drought-trend-and-attribution-to-land-cover-change}{%
-\subsection{Drought trend and attribution to land cover
-change}\label{drought-trend-and-attribution-to-land-cover-change}}
+\hypertarget{the-main-drivers-of-drought-in-chile}{%
+\subsection{The main drivers of drought in
+Chile}\label{the-main-drivers-of-drought-in-chile}}
 
 \citet{Vicente-Serrano2022}, in a study at the global scale of drought
 trends, indicates that there have not been significant trends in
@@ -1178,27 +1180,40 @@ analysis.
 This shows that the main cause of the hydrological drought in Chile was
 a steady drop in water supply made worse by an increase in AED, but it
 seems that in zones most affected by drought, the main cause is not an
-increase in water demand due to an intensification of cultivated land
-(e.g., an increase in irrigated crops). North-central Chile has
-experienced a decline in vegetation productivity across land cover
-types, which is primarily attributable to variations in water supply and
-soil moisture. An increase in water demand, such as an increase in the
-surface area of irrigated crops, could strengthen this trend.
+increase in vegetation water demand due to an intensification of
+cultivated land (e.g., an increase in irrigated crops). North-central
+Chile has experienced a decline in vegetation productivity across land
+cover types, which is primarily attributable to variations in water
+supply and soil moisture. An increase in water demand, such as an
+increase in the surface area of irrigated crops, could strengthen this
+trend. But it is out of the scope of this study. Future work should
+focus on the regions where the drought has been more severe and has a
+high proportion of irrigated crops to get insight on the real impact of
+irrigation on those zones.
 
-\hypertarget{impact-of-short--to-long-term-droughts-on-land-cover-types}{%
-\subsection{Impact of short- to long-term droughts on land cover
-types}\label{impact-of-short--to-long-term-droughts-on-land-cover-types}}
+\hypertarget{land-cover-sensitivity-to-drought}{%
+\subsection{Land cover sensitivity to
+drought}\label{land-cover-sensitivity-to-drought}}
 
-We found that the 12-month soil moisture deficit most affects the
-productivity of vegetation in all land cover types along Chile. In a
-study in the Yangtze River Basin in China, \citet{Jiang2020} analyzed
-the impact of drought on vegetation using the SPEI and the Enahanced
-Vegetation Index (EVI). They found that cropland was more sensitive to
-drought than grassland, showing that cropland responds strongly to
-short- and medium-term drought (\textless{} SPEI-6). In our case, the
-SPEI-12 was the one that most impacted the croplands in ``Norte Chico''
-and ``Centro.'' In general, most studies show that croplands are most
-sensitive to short-term drought (\textless{} SPI-6)
+We analyzed two main impacts of drought on land cover. First, the
+attribution of drought to the change in surface area per land cover
+type. Drought accounts for about 30\% of the surface change per land
+cover type, with the exception of croplands. The main variables
+associated with these changes are the increase in AED and, in second
+place, the decrease in precipitation. Second, we analyzed the time
+series of drought indices and vegetation productivity per land cover
+type. In this case, the most important variables that had an impact on
+zcNDVI were the soil moisture deficit, followed by the precipitation
+deficit, and in third place, AED.
+
+In a study in the Yangtze River Basin in China, \citet{Jiang2020}
+analyzed the impact of drought on vegetation using the SPEI and the
+Enahanced Vegetation Index (EVI). They found that cropland was more
+sensitive to drought than grassland, showing that cropland responds
+strongly to short- and medium-term drought (\textless{} SPEI-6). In our
+case, the SPEI-12 was the one that most impacted the croplands in
+``Norte Chico'' and ``Centro.'' In general, most studies show that
+croplands are most sensitive to short-term drought (\textless{} SPI-6)
 \citep{Zambrano2016, Potopova2015, Dai2020, Rhee2010}. Short-term
 precipitation deficits impact soil water, and thus less water is
 available for plant growth. However, we found that in ``Norte Chico,''
@@ -1254,14 +1269,16 @@ more thorough analysis.
 \subsection{Vegetation productivity and
 drought.}\label{vegetation-productivity-and-drought.}}
 
-The main external factors that affect biomass production by vegetation
-are actual evapotranspiration and soil moisture, and the rate of ET in
-turn depends on the availability of water storage in the root zone.
-Thus, soil moisture plays a key role in land carbon uptake and,
-consequently, in the production of biomass \citep{Humphrey2021}.
-Moreover, \citet{Zhang2022} indicate there is a bidirectional causality
-between soil moisture and vegetation productivity. Lastly, some studies
-have redefined agricultural drought as soil moisture drought from a
+We found that the 12-month soil moisture deficit most affects the
+productivity of vegetation in all land cover types along Chile. The main
+external factors that affect biomass production by vegetation are actual
+evapotranspiration and soil moisture, and the rate of ET in turn depends
+on the availability of water storage in the root zone. Thus, soil
+moisture plays a key role in land carbon uptake and, consequently, in
+the production of biomass \citep{Humphrey2021}. Moreover,
+\citet{Zhang2022} indicate there is a bidirectional causality between
+soil moisture and vegetation productivity. Lastly, some studies have
+redefined agricultural drought as soil moisture drought from a
 hydrological perspective \citep{Loon2016, Samaniego2018}. Even though
 soil moisture is the external factor most determinant of vegetation
 biomass, there are multiple internal factors, such as species,
@@ -1333,10 +1350,6 @@ instance at the watershed level.
 The results of this study could help in the development of a robust
 forecasting system for land cover classes in Chile, helping to improve
 preparedness for climate change impacts on vegetation.
-
-\hypertarget{supplementary-material}{%
-\section*{Supplementary material}\label{supplementary-material}}
-\addcontentsline{toc}{section}{Supplementary material}
 
 
 \renewcommand\refname{References}

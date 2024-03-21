@@ -73,8 +73,28 @@ Error bar for the variables importance obtained from the 10 resamples folded by 
 ```{r}
 #| echo: false
 #| out-width: 75%
+#| fig-pos: '!ht'
 #| fig-cap: "Heatmap of trends in zcNDVI for 2000 to 2023 per macrozone and landcover macroclass."
 knitr::include_graphics('../output/figs/heatmap_trends_zcNDVI_macro_landcover.png')
 ```
 
+# Vegetation productivity
+
+We analyzed the correlation of zcNDVI for time scales of 1, 3, 6, and 12 months versus net primary production (NPP). Both were obtained from MODIS products. zcNDVI from MOD13A3.061 and NPP from MOD17A3HGF.061.
+
+```{r}
+#| echo: false
+#| out-width: 75%
+#| fig-pos: '!ht'
+#| fig-cap: "Spatial variation of the r-squared values obtained from the yearly correlation of zcNDVI of 1, 3, 6, and 12 months with the net primary productivity (NPP) for continental Chile."
+knitr::include_graphics('../output/figs/map_r2_NPP_vs_zcNDVI.png')
+```
+
+```{r}
+#| echo: false
+#| out-width: 75%
+#| fig-pos: '!ht'
+#| fig-cap: "A heatmap showing the r-squared values obtained from the yearly correlation of zcNDVI of 1, 3, 6, and 12 months with the net primary productivity (NPP) for continental Chile."
+knitr::include_graphics('../output/figs/heatmap_r2_npp_vs_zcndvi_per_landcover.png')
+```
 
