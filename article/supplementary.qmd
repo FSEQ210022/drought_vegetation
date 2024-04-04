@@ -1,6 +1,6 @@
 ---
 title: "Supplementary Material"
-author: "Francisco Zambrano"
+author: "Francisco Zambrano et al."
 date: "`r Sys.Date()`"
 format: 
   pdf:

@@ -13,6 +13,11 @@ data_ana <- data_trend_di |>
   full_join(data_trend_lc) |> 
   drop_na()
 
+paleta <- read_csv('data/processed_data/paleta_colores_landcover.csv')
+colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
+attr(colors,'names') <- paleta$Name
+colors[3] <- 'red'
+
 #cargar la superficie de landcover ṕor macro class para relativizar las superficies
 
 lc_surf <- read_rds('data/processed_data/surface_landcover_macrozone.rds') |> 
@@ -51,13 +56,13 @@ data_ana |>
                                 'SPI-36','EDDI-36','zcSM-36'),
                     labels = c('SPI-6','EDDI-6','SSI-6',
                                'SPI-36','EDDI-36','SSI-36'))) |> 
-  ggplot(aes(value*10,landcover,color = macro,shape = class)) +
+  ggplot(aes(value*10,landcover,color = class,shape = macro)) +
   geom_point() + 
   geom_hline(yintercept = 0,color = 'red',linetype = 'dashed',alpha = .6) +
   geom_vline(xintercept = 0,color = 'red',linetype = 'dashed',alpha = .6) +
   labs(x = 'Trend of drought index (per decade)',
        y = 'Relative trend of land cover change') +
-  scale_color_viridis_d('Macrozone') +
+  scale_color_manual('class',values = colors,name = 'Land cover') +
   #scale_x_sqrt() +
   scale_shape('Land cover') +
   facet_wrap(.~name,ncol=3,nrow=2) +
