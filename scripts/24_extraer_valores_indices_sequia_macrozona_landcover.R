@@ -58,6 +58,7 @@ data_index <- map_df(indices,\(index){
   })
   return(data_trend)
 })
+})
 
 # data_t |> 
 #   pivot_wider(names_from = scale)

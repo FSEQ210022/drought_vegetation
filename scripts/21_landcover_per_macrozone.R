@@ -49,7 +49,7 @@ summ_data2 |>
   mutate(surface = case_when(surface <=20~NA,
                            .default = surface)) |> 
   pivot_wider(names_from = LC_type,values_from=surface) |> 
-  rename(macrozone = zone) |> 
+  rename(Macrozone = zone) |> 
   ungroup() |> 
    select(1,7:6,4:2,5) |> 
   gt() |> 
@@ -65,7 +65,7 @@ summ_data2 |>
     missing_text = ""
   ) |> 
   tab_header(
-    title = md("Surface  [km<sup>2]"),
+    title = md("Surface  [km<sup>2</sup>]"),
   ) |> 
   gt::gtsave('output/figs/table_surface_landcover_macrozone.png')
 

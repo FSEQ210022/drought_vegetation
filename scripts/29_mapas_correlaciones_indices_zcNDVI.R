@@ -54,9 +54,11 @@ names(cors_r) <- 1:4
 map_r <- tm_shape(bm) + 
   tm_rgb() +
   tm_shape(cors_r) +
-  tm_raster(style='equal',palette = viridis::inferno(20),
+  tm_raster(style='equal',palette = rev(viridis::inferno(20)),
             midpoint = 0,
-            title = 'r',legend.hist = TRUE) +
+            title = 'r',
+            legend.hist = TRUE,
+            legend.reverse = TRUE) +
   tm_facets(free.scales	= FALSE) + 
   tm_layout(
     panel.labels = c('EDDI','SPI','SPEI','SSI'),

@@ -121,6 +121,7 @@ tabla_gt$Shrubland_SSI_r[5] <- NA
 
 #tabla_gt[1,2] <- NA
 tabla_gt |> 
+  rename(Macrozone = macrozone) |> 
   dplyr::select(1,22:25,18:21,10:13,6:9,2:5,
          46:49,38:41,34:37,30:33,26:29
          ) |> 
@@ -129,7 +130,7 @@ tabla_gt |>
   data_color(
     columns = 22:41,
     target_columns =2:21,
-    palette = viridis::inferno(20),
+    palette = rev(viridis::inferno(20)),
     na_color = 'white',
     alpha = .8,
     domain = c(0,.8)  
@@ -152,7 +153,10 @@ plot <- data_r_4gt |>
   pivot_longer(-macro) |> 
   ggplot(aes(name,value,color=value)) + 
   geom_point() + 
-  scale_color_viridis_c(option = 'inferno',name = 'r-squared',alpha = .8) + theme(legend.position = 'bottom')
+  scale_color_viridis_c(option = 'inferno',
+                        name = 'r-squared',
+                        direction = -1,
+                        alpha = .8) + theme(legend.position = 'bottom')
 
 ggpubr::get_legend(plot) |> 
   ggpubr::as_ggplot() |> 

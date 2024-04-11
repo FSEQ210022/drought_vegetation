@@ -117,7 +117,7 @@ map_chl <- tm_shape(bm2) +
   tm_raster(palette = colores,
             style = 'cat',
             labels = labs,
-            title = 'Climate (1990-2020)') +
+            title = 'Climate (1991-2020)') +
   tm_shape(zones) +
   tm_borders(lwd=2,col='black',lty='solid',alpha=0.8) +
   tm_text('macrozona',just='top',xmod=c(5,-7,3,-4,-4),ymod=c(0,-3.5,1,0,0),size=1.5) +

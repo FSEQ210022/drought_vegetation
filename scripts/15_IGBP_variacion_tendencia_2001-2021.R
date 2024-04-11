@@ -80,3 +80,25 @@ data3 |>
   summarize(trend = trend_func(sup_km2,start = c(2001,1),end =c(2022,1),frecuency=1)[2]) |> 
   pivot_wider(names_from = 'LC_type',values_from=3) |> 
   saveRDS('data/processed_data/trends_landcover_2001-2022.rds')  
+
+data3 |> 
+  ggplot(aes(year,sup_km2,fill=LC_type)) + 
+  geom_col(position = 'fill') +
+  scale_fill_manual(values = colors, name = 'Macroclass')+
+  scale_x_continuous(expand = c(0,0),breaks = 2001:2022) + 
+  scale_y_continuous(expand = c(0,0),breaks = seq(0,1,.10), 
+                     labels = scales::percent_format(accuracy = 1)) +
+  facet_grid(.~zone) +
+  theme_bw() + 
+  theme(axis.title = element_blank(),
+        axis.text.x = element_text(angle = 90),
+        strip.background = element_rect(fill = 'white'),
+        legend.position = 'bottom') +
+  guides(fill = guide_legend(nrow = 1))
+ggsave('output/figs/proportion_landcover_macroclass_2001-2022.png',width=10,height=2.5,scale =1.5)
+
+fill = guide_legend(nrow = 1)
+  scale_y_continuous(breaks = seq(0,1,.1), 
+                     labels = scales::percent_format(accuracy = 1),
+                     expand = c(0.01,0)) 
+  

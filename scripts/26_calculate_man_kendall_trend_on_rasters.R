@@ -24,7 +24,7 @@ map(indices,\(index){
       index_ts <- rast(files)
       cl <- snow::makeCluster(80,"SOCK")
       snow::clusterExport(cl, list = c('trend_func','mk.test','sens.slope'))
-      trend <- app(index_ts,trend_func,cores = cl,start = c(2002,2),end =c(2023,10))
+      trend <- app(index_ts,trend_func,cores = cl,start = c(2022,2),end =c(2024,2))
       snow::stopCluster(cl)
       writeRaster(trend,glue('/mnt/md0/raster_procesada/analysis/trends/trend_mann_kendall_{index}-{scale}.tif'),overwrite = TRUE)
       

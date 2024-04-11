@@ -68,9 +68,9 @@ data_gt$Shrubland.x[4] <- NA
 data_gt$Shrubland.y[4] <- NA
 
 data_gt |> 
-  rename(macrozone = zone) |> 
+  rename(Macrozone = zone) |> 
   gt() |> 
-  fmt_number(decimals = 1) |> 
+  fmt_number(decimals = 0) |> 
   sub_missing(
     columns = everything(),
     missing_text = ""

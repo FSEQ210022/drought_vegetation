@@ -20,7 +20,7 @@ lc_pers[lc_pers %in% c(5,7:10)] <- NA
 lc_pers <- resample(lc_pers,zcndvi)
 
 #aplicar mascara de landcover permanenete 
-lc_pers <- resample(lc_pers,zcndvi,method = 'near')
+lc_pers <- resample(lc_pers,zcndvi,method = 'mode')
 zcndvi <- mask(zcndvi,lc_pers)
 
 macro_mask <- rasterize(st_transform(macro,32719),zcndvi[[1]],field ='macrozona')

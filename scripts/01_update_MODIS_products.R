@@ -8,7 +8,7 @@ library(httr)
 library(curl)
 
 type <- c('MOLA','MOLT','MOTA')[2]
-product <- 'MOD13A3.061'
+product <- 'MOD17A3HGF.061'
 dir_out <- '/mnt/md0/raster_raw/MODIS/'
 
 updt_modis(type,product,dir_out)
