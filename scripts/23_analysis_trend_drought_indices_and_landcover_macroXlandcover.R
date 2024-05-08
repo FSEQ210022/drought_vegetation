@@ -13,11 +13,6 @@ data_ana <- data_trend_di |>
   full_join(data_trend_lc) |> 
   drop_na()
 
-paleta <- read_csv('data/processed_data/paleta_colores_landcover.csv')
-colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
-attr(colors,'names') <- paleta$Name
-colors[3] <- 'red'
-
 #cargar la superficie de landcover ṕor macro class para relativizar las superficies
 
 lc_surf <- read_rds('data/processed_data/surface_landcover_macrozone.rds') |> 
@@ -56,13 +51,13 @@ data_ana |>
                                 'SPI-36','EDDI-36','zcSM-36'),
                     labels = c('SPI-6','EDDI-6','SSI-6',
                                'SPI-36','EDDI-36','SSI-36'))) |> 
-  ggplot(aes(value*10,landcover,color = class,shape = macro)) +
+  ggplot(aes(value*10,landcover,color = macro,shape = class)) +
   geom_point() + 
   geom_hline(yintercept = 0,color = 'red',linetype = 'dashed',alpha = .6) +
   geom_vline(xintercept = 0,color = 'red',linetype = 'dashed',alpha = .6) +
   labs(x = 'Trend of drought index (per decade)',
        y = 'Relative trend of land cover change') +
-  scale_color_manual('class',values = colors,name = 'Land cover') +
+  scale_color_viridis_d('Macrozone') +
   #scale_x_sqrt() +
   scale_shape('Land cover') +
   facet_wrap(.~name,ncol=3,nrow=2) +
@@ -70,6 +65,35 @@ data_ana |>
   theme(strip.background = element_rect(fill = 'white'))
 ggsave('output/figs/points_landcover_drought_indices_trend_and_time_scale.png',scale =1.2,width=10,height = 6)
 
+#Tendencia por land cover type and macrozone
+#
+data_trend_di |> 
+  select(1:2,`zcNDVI-6`) |>   
+  dplyr::filter(class %in% c('Forest','Shrubland',
+                             'Savanna','Grassland',
+                             'Cropland','Barren land')
+                ) |> 
+  mutate(
+    class = as.character(class),
+    macro = fct(macro,levels = c('Norte Grande','Norte Chico','Centro','Sur','Austral')),
+    class = fct(class,levels = c('Forest','Cropland','Grassland','Savanna','Shrubland','Barren land')),
+    `zcNDVI-6` = case_when(
+      macro == 'Norte Grande' & class %in% c('Forest', 'Cropland','Savanna') ~ NA,
+      macro == 'Norte Chico' & class == 'Forest' ~ NA,
+      macro == 'Sur' & class %in% c('Shrubland') ~ NA,
+      macro == 'Austral' & class == 'Cropland' ~ NA,
+      .default = `zcNDVI-6`
+    ) 
+  ) |>
+  drop_na() |> 
+  ggplot(aes(class, macro, fill = `zcNDVI-6`)) + 
+  geom_tile() +
+  scale_fill_viridis_b(name = 'Trend of zcNDVI')  +
+  scale_y_discrete(limits=rev) +
+  theme_bw()+
+  theme(axis.title = element_blank())
+ggsave('output/figs/heatmap_trends_zcNDVI_macro_landcover.png',scale=2)
+  
 data_model <- data_ana[,c(1:6,9:12,15:18,21:24,29,31)] |> 
   left_join(lc_surf) |> 
   mutate(landcover = landcover/surf_total) |> 

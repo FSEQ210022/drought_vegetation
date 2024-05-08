@@ -34,9 +34,9 @@ cuencas <- read_sf('data/processed_data/spatial/subcuencas_bna.gpkg')
 data <- terra::extract(igbpRecl,cuencas)
 data <- data |> 
   repair_names() |> 
-  cbind(cuencas[data$ID,'COD_CUEN']) |> 
+  cbind(cuencas[data$ID,'COD_SUBC']) |> 
   select(-geom,-ID) |> 
-  relocate("COD_CUEN",.before = "Land_Cover_Type_1") 
+  relocate("COD_SUBC",.before = "Land_Cover_Type_1") 
 names(data) <- c('cuenca',2001:2022)
 
 library(dplyr)

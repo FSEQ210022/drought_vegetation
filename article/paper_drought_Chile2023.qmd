@@ -346,8 +346,7 @@ From the trend analysis in Table \ref{tab-landcoverTrend}, we can indicate that 
 #| echo: false
 #| fig-pos: "!ht"
 #| fig-cap: "cdcdcdc"
-#| fig-width: 3
-#| out-width: ".01\\textwidth"
+#| out-width: "\\textwidth"
 knitr::include_graphics("../output/figs/bars_relative_importance_RF.png")
 ```
 
