@@ -149,15 +149,20 @@ tabla <- map_df(1:6,\(i){
 library(broom.helpers)
 
 paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv') |> 
-  dplyr::filter(Name %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land'))
+  dplyr::filter(Name %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land')) |> 
+  mutate(Name = case_when(Name == 'Barren land' ~ "Barren Land",
+                          .default = Name))
 
 colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
 #attr(colors,'names') <- paleta$class
-paleta$Name[6] <- 'Barren_land'
+#paleta$Name[6] <- 'Barren_land'
 attr(colors,'names') <- paleta$Name
 
 tabla |>
-  mutate(type = factor(type,levels=paleta$Name),
+  mutate(
+    type = case_when(type == 'Barren_land' ~ 'Barren Land',
+                     .default = type),
+    type = factor(type,levels=paleta$Name),
          macrozona = factor(macrozona,levels=c("norte grande", "norte chico",
                                                'zona central','zona sur','zona austral'),
                             labels = c('Norte Grande','Norte Chico','Centro','Sur','Austral')),
@@ -168,9 +173,17 @@ tabla |>
                           macrozona == "Austral" & type == "Cropland" ~ NA,
                           .default = Mean)
   ) |> 
+  mutate(Variable = 
+           factor(Variable,
+             levels = rev(c(
+                 paste0('SPI-',c(12,24,36)),
+                 paste0('EDDI-',c(1,3,6,12,24,36)),
+                 paste0('SPEI-',c(3,24,36)),
+                 paste0('SSI-',c(1,3,36))
+                 )))) |>
   group_by(type,macrozona) |> 
   mutate(rel_imp = Mean*10e2) |> 
-  slice_max(rel_imp, n= 1) |> 
+  slice_max(rel_imp, n= 3) |> 
   ggplot(aes(Variable,rel_imp)) +
   geom_col(aes(fill = type),position = 'dodge') +
   scale_y_continuous(expand = c(0,0)) +
@@ -178,16 +191,17 @@ tabla |>
                     values=colors) +
   labs(y = 'Relative variable importance') +
   coord_flip() +
-  facet_grid(macrozona~.) +
+  facet_grid(.~macrozona) +
   theme_bw() +
   theme(strip.background = element_rect('white'),
-        legend.key.size = unit(0.2, "cm"),
+        legend.background = element_rect('transparent'),
+        legend.key.size = unit(0.4, "cm"),
         legend.title = element_text(size=10),
         legend.text = element_text(size=8),
         panel.grid = element_blank(),
         axis.title.y = element_blank(),
-        legend.position = c(.9,.85))
-ggsave('output/figs/bars_relative_importance_RF.png',height = 10,width=7,scale = 1.2)
+        legend.position = c(.15,.25))
+ggsave('output/figs/bars_relative_importance_RF.png',height = 2.5,width=12,scale = 1.3)
 
 
 tabla2 <- map_df(1:6,\(i){
@@ -199,10 +213,20 @@ tabla2 <- map_df(1:6,\(i){
 r2s <- tabla2 |> 
   filter(.metric == 'rsq') |> 
   select(-std_err,-n) |>
+  mutate(
+    mean = case_when(
+      macrozona == "norte grande" & (type == "Forest" | type == "Cropland" | type == "Savanna") ~ NA,
+      macrozona == "norte chico" & type == "Forest" ~ NA,
+      macrozona == "zona sur" & type == "Shrubland" ~ NA,
+      macrozona == "zona austral" & type == "Cropland" ~ NA,
+      .default = mean)
+    
+  ) |> 
   # group_by(type) |> 
   # summarize(mean = mean(mean)) |> 
   pivot_wider(names_from = type,values_from = mean) |> 
-  select(Forest,Cropland,Grassland, Savanna,Shrubland,Barren_land )
+  _[c(2,1,4,5,3),] |> 
+  select(Forest,Cropland,Grassland, Savanna,Shrubland,Barren_land ) 
 
 head <- c('Macrozone',paste0(names(r2s),'\n (R<sup>2=',round(r2s[1,],2),')'))
 
@@ -210,7 +234,7 @@ library(gt)
 tabla_gt <- tabla |> 
   mutate(macrozona = factor(macrozona),
          macrozona = fct_relevel(macrozona,c('norte grande','norte chico','zona central','zona sur','zona austral')),
-         macrozona =factor(macrozona,labels = c('Norte Grande','Norte Chico','Centro','Sur','Austral'))) |> 
+         macrozona =factor(macrozona,labels = c('Norte Grande','Norte Chico','Centro','Sur','Austral')))  |> 
   group_by(type,macrozona) |> 
   slice_max(Mean,n =1) |> 
   select(-Mean,-Variance) |> 
@@ -219,6 +243,10 @@ tabla_gt <- tabla |>
   select(Forest,Cropland,Grassland, Savanna,Shrubland,Barren_land ) |> 
   bind_cols(set_names(r2s,paste0(names(r2s),'r2')))
 
+tabla_gt$Forest[1:2] <- ''
+tabla_gt$Cropland[c(1,5)] <- ''
+tabla_gt$Savanna[1] <- ''
+tabla_gt$Shrubland[4] <- ''
 
 tabla_gt |> 
   rename(Macrozone = macrozona,
@@ -231,12 +259,13 @@ tabla_gt |>
     target_columns =2:7,
     palette = rev(viridis::inferno(20)),
     na_color = 'white',
-    domain = c(0,.51),
+    domain = c(0.12,.51),
     alpha = .8
   ) |> 
   cols_hide(columns = 8:13) |> 
+  cols_align(align = 'center') |> 
   tab_footnote(
-    footnote = html(local_image('output/figs/leyenda_tabla_r2_random_forest.png',height = 250))) |> 
+    footnote = html(local_image('output/figs/leyenda_tabla_r2_random_forest.png',height = 150))) |> 
   gt::gtsave('output/figs/table_r2_most_important_variables.png')  
 
 #crear legenda para incluir en la tabla
