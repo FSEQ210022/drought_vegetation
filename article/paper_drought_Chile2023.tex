@@ -81,6 +81,10 @@
 
 \usepackage{lineno}\linenumbers \usepackage{multirow} \usepackage{lscape} \newcommand{\blandscape}{\begin{landscape}} \newcommand{\elandscape}{\end{landscape}}
 \makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
 \ifdefined\contentsname
@@ -116,10 +120,18 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
-\makeatother
-\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
 \makeatother
 \journal{Journal Name}
 \ifLuaTeX
@@ -127,8 +139,7 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{elsarticle-harv}
-\usepackage{bookmark}
-
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
@@ -156,7 +167,7 @@ productivity in continental Chile}
 \author[3]{Anton Vrieling%
 %
 }
- \ead{a.vrieling@utwente.nl} 
+
 \author[4,5,6]{Francisco Meza%
 %
 }
@@ -168,6 +179,7 @@ productivity in continental Chile}
 \author[8,9]{Francisco Fernández%
 %
 }
+
 \author[10]{Alejandro Venegas-González%
 %
 }
@@ -184,42 +196,43 @@ productivity in continental Chile}
 \affiliation[1]{organization={Hémera Centro de Observación de la Tierra,
 Facultad de Ciencias, Escuela de Ingeniería en Medio Ambiente y
 Sustentabilidad, Universidad Mayor},city={Santiago},country={7500994,
-Chile.}}
+Chile.},countrysep={,},postcodesep={}}
 \affiliation[2]{organization={Observatorio de Sequía para la Agricultura
 y la Biodiversidad de Chile (ODES), Universidad
 Mayor},city={Santiago},country={7500994,
-Chile.}}
+Chile.},countrysep={,},postcodesep={}}
 \affiliation[3]{organization={Faculty of Geo-Information Science and
 Earth, University of Twente},city={Enschede},country={The
-Netherlands.}}
+Netherlands.},countrysep={,},postcodesep={}}
 \affiliation[4]{organization={Facultad de Agronomía y Sistemas
 Naturales, Pontificia Universidad Católica de
-Chile.},city={Santiago},country={Chile.}}
+Chile.},city={Santiago},country={Chile.},countrysep={,},postcodesep={}}
 \affiliation[5]{organization={Instituto para el Desarrollo Sustentable.
 Pontificia Universidad Católica de
-Chile},city={Santiago},country={Chile.}}
+Chile},city={Santiago},country={Chile.},countrysep={,},postcodesep={}}
 \affiliation[6]{organization={Centro Interdisciplinario de Cambio
 Global, Pontificia Universidad Católica de
-Chile},city={Santiago},country={Chile.}}
+Chile},city={Santiago},country={Chile.},countrysep={,},postcodesep={}}
 \affiliation[7]{organization={Hémera Centro de Observación de la Tierra,
 Facultad de Ciencias, Universidad
 Mayor,},city={Santiago},country={7500994,
-Chile.}}
+Chile.},countrysep={,},postcodesep={}}
 \affiliation[8]{organization={Center of Economics for Sustainable
 Development (CEDES), Faculty of Economics and Government, Universidad
 San
-Sebastian},city={Santiago},country={Chile.}}
+Sebastian},city={Santiago},country={Chile.},countrysep={,},postcodesep={}}
 \affiliation[9]{organization={Center of Applied Ecology and
 Sustainability
-(CAPES)},city={Santiago},country={Chile.}}
+(CAPES)},city={Santiago},country={Chile.},countrysep={,},postcodesep={}}
 \affiliation[10]{organization={Instituto de Ciencias Agroalimentarias,
 Animales y Ambientales (ICA3), Universidad de O'Higgins},city={San
-Fernando},country={Chile.}}
-\affiliation[11]{organization={, GEMA Center for Genomics, Ecology \&
+Fernando},country={Chile.},countrysep={,},postcodesep={}}
+\affiliation[11]{organization={},,postcodesep={}}
+\affiliation[12]{organization={, GEMA Center for Genomics, Ecology \&
 Environment, Universidad Mayor, Camino La Pirámide Huechuraba
-5750},city={Santiago},country={Chile.}}
-\affiliation[12]{organization={Data Observatory
-Foundation},city={Santiago},country={Chile.}}
+5750},city={Santiago},country={Chile.},countrysep={,},postcodesep={}}
+\affiliation[13]{organization={Data Observatory
+Foundation},city={Santiago},country={Chile.},countrysep={,},postcodesep={}}
 
 \cortext[cor1]{Corresponding author}
 
@@ -274,10 +287,12 @@ and drought.
     ecosystem
 \end{keyword}
 \end{frontmatter}
-    
-\captionsetup{justification=raggedright,singlelinecheck=false}
+    \captionsetup{justification=raggedright,singlelinecheck=false}
 
-\section{Introduction}\label{introduction}
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, sharp corners, boxrule=0pt, interior hidden]}{\end{tcolorbox}}\fi
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Drought can be classified as 1) meteorological, when precipitation in a
 specific period remains below the mean precipitation experienced in the
@@ -442,7 +457,8 @@ their relationships with trends in drought indices; and iii) the trend
 in vegetation productivity and its relationship with drought indices
 across Chilean ecosystems.
 
-\section{Study area}\label{study-area}
+\hypertarget{study-area}{%
+\section{Study area}\label{study-area}}
 
 Continental Chile has diverse climate conditions with strong gradients
 from north to south and east to west \citep{Aceituno2021}
@@ -469,9 +485,7 @@ extended surface of grassland, forest, and, to a lesser extent, savanna.
 
 \begin{figure*}[!ht]
 
-\centering{
-
-\includegraphics{../output/figs/map_study_con_landcover.png}
+{\centering \includegraphics{../output/figs/map_study_con_landcover.png}
 
 }
 
@@ -481,14 +495,17 @@ classes and the five macrozones ``Norte Grande'', ``Norte Chico'',
 land cover classes for 2022. (d) Persistent land cover classes
 (\textgreater{} 80\%) for 2001-2022}
 
-\end{figure*}%
+\end{figure*}
 
-\section{Materials and Methods}\label{materials-and-methods}
+\hypertarget{materials-and-methods}{%
+\section{Materials and Methods}\label{materials-and-methods}}
 
-\subsection{Data}\label{data}
+\hypertarget{data}{%
+\subsection{Data}\label{data}}
 
+\hypertarget{gridded-meteorological-and-vegetation-data}{%
 \subsubsection{Gridded meteorological and vegetation
-data}\label{gridded-meteorological-and-vegetation-data}
+data}\label{gridded-meteorological-and-vegetation-data}}
 
 To analyze land cover change, we used the classification scheme by the
 IGBP (International Geosphere-Biosphere Programme) from the product
@@ -506,13 +523,9 @@ Resources Observation and Science (EROS) Center, Sioux Falls, South
 Dakota, provided the MOD13A3 and MCD12Q1 from the online Data Pool,
 accessible at \url{https://lpdaa.usgs.gov/tools/data-pool/}.
 
-\begin{table}
-
-\centering{
-
-[!ht]
-
-
+\begin{table}[!ht]
+\caption{Description of the satellite and reanalysis data used}
+\label{tab-desEOD}
 \scriptsize
 \centering
 \begin{tabular}{p{0.1\textwidth}cp{0.3\textwidth}p{0.095\textwidth}ccc}
@@ -529,12 +542,7 @@ ERA5L* & & Atmospheric Evaporative Demand & 0.1° & 1981-2023 & mm & AED \\
 \hline
 \end{tabular}
 {\raggedright *Calculated from maximum and minimum temperatures derived from ERA5L with Eq. \ref{eq-AED}. \par}
-
-}
-
-\caption{\label{tab-desEOD}Description of the satellite and reanalysis data used}
-
-\end{table}%
+\end{table}
 
 For soil moisture, water supply, and water demand variables, we used
 ERA5-Land (ERA5L) (ECMWF Reanalysis version 5 over land)
@@ -546,25 +554,27 @@ temperature at 2 meters, and volumetric soil water layers between 0 and
 100 cm of depth (layer 1 to layer 3). Table \ref{tab-desEOD} shows a
 summary of the data and its main characteristics.
 
+\hypertarget{short--to-long-term-drought-trends}{%
 \subsection{Short- to long-term drought
-trends}\label{short--to-long-term-drought-trends}
+trends}\label{short--to-long-term-drought-trends}}
 
+\hypertarget{atmospheric-evaporative-demand-aed}{%
 \subsubsection{Atmospheric Evaporative Demand
-(AED)}\label{atmospheric-evaporative-demand-aed}
+(AED)}\label{atmospheric-evaporative-demand-aed}}
 
 To compute the drought indices that use water demand, it is necessary to
 first calculate the AED. To do this, we employed the Hargreaves method
 \citep{Hargreaves1994, Hargreaves1985} by applying the following
 equation:
 
-\begin{equation}\phantomsection\label{eq-AED}{AED = 0.0023\cdot Ra\cdot (T+17.8)\cdot (T_{max}-T_{min})^{0.5}}\end{equation}
+\begin{equation}\protect\hypertarget{eq-AED}{}{AED = 0.0023\cdot Ra\cdot (T+17.8)\cdot (T_{max}-T_{min})^{0.5}}\label{eq-AED}\end{equation}
 
 where \(Ra\) \((MJ\,m^2\, day^{-1})\) is extraterrestrial radiation;
 \(T\), \(T_{max}\), and \(T_{min}\) are mean, maximum, and minimum
 temperature \((°C)\) at 2m. For calculating \(Ra\) we used the
 coordinate of the latitud of the centroid of each pixel as follow:
 
-\begin{equation}\phantomsection\label{eq-Ra}{R_a = \frac{14,400}{\pi}\cdot G_{sc}\cdot d_r \left[\omega_s\cdot sin(\phi)\cdot sin(\delta)+cos(\phi)\cdot cos(\delta)\cdot sin(\omega_s) \right]}\end{equation}
+\begin{equation}\protect\hypertarget{eq-Ra}{}{R_a = \frac{14,400}{\pi}\cdot G_{sc}\cdot d_r \left[\omega_s\cdot sin(\phi)\cdot sin(\delta)+cos(\phi)\cdot cos(\delta)\cdot sin(\omega_s) \right]}\label{eq-Ra}\end{equation}
 
 where:
 
@@ -581,8 +591,9 @@ radiation. Also, it has been recommended over other methods (e.g.,
 Penman-Monteith) when the access to climatic variables is limited
 \citep{Vicente-Serrano2014}.
 
+\hypertarget{non-parametric-calculation-of-drought-indices}{%
 \subsubsection{Non-parametric calculation of drought
-indices}\label{non-parametric-calculation-of-drought-indices}
+indices}\label{non-parametric-calculation-of-drought-indices}}
 
 To derive the drought indices of water supply and demand, soil moisture,
 and vegetation (i.e., the proxy of productivity), we used the ERA5L
@@ -626,7 +637,7 @@ generalization purposes, we will use \(V\), referring to variables
 accumulated each over the time series of values (months), and for the
 time scales \(s\):
 
-\begin{equation}\phantomsection\label{eq-sumvar}{A^s_i = \sum_{i=n-s-i+2}^{n-i+1} V_i\,\, \forall\, i\geq n-s+1  }\end{equation}
+\begin{equation}\protect\hypertarget{eq-sumvar}{}{A^s_i = \sum_{i=n-s-i+2}^{n-i+1} V_i\,\, \forall\, i\geq n-s+1  }\label{eq-sumvar}\end{equation}
 
 The \(A^s_i\) corresponds to a moving window (convolution) that sums the
 variable for time scales \(s\). This summation is done over \(s\)
@@ -647,14 +658,14 @@ Then, we used the empirical Tukey plotting position \citep{Wilks2011}
 over \(A_i^s\) to derive the \(P(A_i^s)\) probabilities across a period
 of interest:
 
-\begin{equation}\phantomsection\label{eq-probPai}{P(A^s_i) = \frac{i-0.33}{n+0.33'}}\end{equation}
+\begin{equation}\protect\hypertarget{eq-probPai}{}{P(A^s_i) = \frac{i-0.33}{n+0.33'}}\label{eq-probPai}\end{equation}
 
 An inverse normal approximation \citep{Abramowitz1968} obtains the
 empirically derived probabilities once the variable cumulates over time
 for the scale \(s\). Thus, the drought indices \(SPI\), \(SPEI\),
 \(EDDI\), \(SSI\), and \(zcNDVI\) and obtained following the equation:
 
-\begin{equation}\phantomsection\label{eq-DI}{DI(A^s_i) = W - \frac{C_0+C_1\cdot W + c_2 \cdot W^2}{1+d_1\cdot W +d_2\cdot W^2 +d_3\cdot W^3}}\end{equation}
+\begin{equation}\protect\hypertarget{eq-DI}{}{DI(A^s_i) = W - \frac{C_0+C_1\cdot W + c_2 \cdot W^2}{1+d_1\cdot W +d_2\cdot W^2 +d_3\cdot W^3}}\label{eq-DI}\end{equation}
 
 \(DI\) is referring to the drought index calculated for the variable
 \(V\) (i.e., SPI, SPEI, EDDI, SSI, and zcNDVI). The values for the
@@ -680,7 +691,9 @@ supplementary material in Section S5). Then, we chose the proxy of
 vegetation productivity for six months, which we will name zcNDVI
 hereafter. It was calculated at a monthly frequency for 2000--2023.
 
-\subsubsection{Trend of drought indices}\label{trend-of-drought-indices}
+\hypertarget{trend-of-drought-indices}{%
+\subsubsection{Trend of drought
+indices}\label{trend-of-drought-indices}}
 
 To estimate if there are significant positive or negative trends for the
 drought indices, we used the non-parametric Mann-Kendall test
@@ -697,10 +710,12 @@ five macrozones: ``Norte Grande'' to ``Austral'', and per land cover
 type: grassland, forest, cropland, shrubland, savanna, and barren land
 (Figure~\ref{fig-studyArea}d).
 
+\hypertarget{interaction-of-land-cover-and-drought}{%
 \subsection{Interaction of land cover and
-drought}\label{interaction-of-land-cover-and-drought}
+drought}\label{interaction-of-land-cover-and-drought}}
 
-\subsubsection{Land cover change}\label{land-cover-change}
+\hypertarget{land-cover-change}{%
+\subsubsection{Land cover change}\label{land-cover-change}}
 
 To analyze the land cover change, we use the IGBP scheme from the
 MCD12Q1 Collection 6.1 from MODIS. This product has been previously used
@@ -732,8 +747,9 @@ cover change, we developed a persistence mask for land cover, which only
 retains pixels for which the macroclass remained the same for at least
 80\% of the 22 years (Figure~\ref{fig-studyArea}d).
 
+\hypertarget{relationship-between-land-cover-and-drought-trends}{%
 \subsubsection{Relationship between land cover and drought
-trends}\label{relationship-between-land-cover-and-drought-trends}
+trends}\label{relationship-between-land-cover-and-drought-trends}}
 
 To identify which drought indices and time scales have a major impact on
 changes in land cover type, we examined the relationship between the
@@ -777,8 +793,9 @@ terms of the total surface area per land cover type and macrozone) with
 the drought indices of six (short-term) and thirty-six months
 (long-term).
 
+\hypertarget{drought-impacts-on-vegetation-productivity}{%
 \subsection{Drought impacts on vegetation
-productivity}\label{drought-impacts-on-vegetation-productivity}
+productivity}\label{drought-impacts-on-vegetation-productivity}}
 
 For each land cover macroclass, we analyzed the trend of vegetation
 productivity over the unchanged land cover macroclasses. To achieve
@@ -819,7 +836,8 @@ containing the raster with values of the time scales and drought index
 that reached the maximum correlation, and 2) having the magnitude of the
 correlation obtained by the drought index at the time scales.
 
-\subsection{Software}\label{software}
+\hypertarget{software}{%
+\subsection{Software}\label{software}}
 
 For the downloading, processing, and analysis of the spatio-temporal
 data, we used the open source software for statistical computing and
@@ -833,10 +851,12 @@ visualization, the suite \{tidyverse\} \citep{Wickham2019} was used. For
 the random forest modeling, we used the \{tidymodels\} \citep{Kuhn2020}
 and \{ranger\} \citep{Wright2017} packages.
 
-\section{Results}\label{results}
+\hypertarget{results}{%
+\section{Results}\label{results}}
 
+\hypertarget{short--to-long-term-drought-trends-1}{%
 \subsection{Short- to long-term drought
-trends}\label{short--to-long-term-drought-trends-1}
+trends}\label{short--to-long-term-drought-trends-1}}
 
 Figure~\ref{fig-trendDI} shows the spatial variation of the trend for
 the drought indices from short- to long-term scales. SPI and SPEI have a
@@ -851,77 +871,87 @@ at higher time scales.
 
 \blandscape
 
-\begin{figure*}[!ht]
+\begin{figure}
 
-\begin{minipage}{0.50\linewidth}
+\begin{minipage}[t]{0.50\linewidth}
 
-\centering{
+{\centering 
+
+\raisebox{-\height}{
 
 \includegraphics{../output/figs/trend_raster_SPI_1981-2023.png}
 
 }
 
-\subcaption{\label{fig-trendDI-1}SPI (Standardized Precipitation Index)}
+}
 
+\subcaption{\label{fig-trendDI-1}SPI (Standardized Precipitation Index)}
 \end{minipage}%
 %
-\begin{minipage}{0.50\linewidth}
+\begin{minipage}[t]{0.50\linewidth}
 
-\centering{
+{\centering 
+
+\raisebox{-\height}{
 
 \includegraphics{../output/figs/trend_raster_EDDI_1981-2023.png}
 
 }
 
+}
+
 \subcaption{\label{fig-trendDI-2}EDDI (Evaporative Demand Drought
 Index)}
-
 \end{minipage}%
 \newline
-\begin{minipage}{0.50\linewidth}
+\begin{minipage}[t]{0.50\linewidth}
 
-\centering{
+{\centering 
+
+\raisebox{-\height}{
 
 \includegraphics{../output/figs/trend_raster_SPEI_1981-2023.png}
 
 }
 
+}
+
 \subcaption{\label{fig-trendDI-3}SPEI (Standardized Precipitation
 Evapotranspiration Index)}
-
 \end{minipage}%
 %
-\begin{minipage}{0.50\linewidth}
+\begin{minipage}[t]{0.50\linewidth}
 
-\centering{
+{\centering 
+
+\raisebox{-\height}{
 
 \includegraphics{../output/figs/trend_raster_zcSM_1981-2023.png}
 
 }
 
-\subcaption{\label{fig-trendDI-4}SSI (Standardized Soil Moisture Index)}
+}
 
+\subcaption{\label{fig-trendDI-4}SSI (Standardized Soil Moisture Index)}
 \end{minipage}%
 
 \caption{\label{fig-trendDI}Linear trend of the drought index (*) at
 time scales of 1, 3, 6, 12, 24, and 36 months for 1981-2023}
 
-\end{figure*}%
+\end{figure}
 
 \elandscape
 
 \begin{figure}[!ht]
 
-\centering{
-
-\includegraphics{../output/figs/trend_macrozone_drought_indices.png}
+{\centering \includegraphics{../output/figs/trend_macrozone_drought_indices.png}
 
 }
 
 \caption{\label{fig-trendDIMacro}Trend per decade for the drought
 indices SPI, EDDI, SPEI, and SSI aggregated by macrozone.}
 
-\end{figure}%
+\end{figure}
 
 The Figure~\ref{fig-trendDIMacro} displays the aggregated trend per
 macrozone, drought index, and timescale. The macrozones that reached the
@@ -941,10 +971,12 @@ macrozones. Contrary to the other macrozones, ``Austral'' showed an
 increase in all indices, being the highest for EDDI at 36 months (0.025)
 and the lowest for SSI, which shows only a minor increase in the trend.
 
+\hypertarget{interaction-of-land-cover-and-drought-1}{%
 \subsection{Interaction of land cover and
-drought}\label{interaction-of-land-cover-and-drought-1}
+drought}\label{interaction-of-land-cover-and-drought-1}}
 
-\subsubsection{Land cover change}\label{land-cover-change-1}
+\hypertarget{land-cover-change-1}{%
+\subsubsection{Land cover change}\label{land-cover-change-1}}
 
 \begin{table}[!ht]
 \caption{Surface per land cover class that persists during 2001–2022.}
@@ -954,9 +986,7 @@ drought}\label{interaction-of-land-cover-and-drought-1}
 
 \begin{figure}[!ht]
 
-\centering{
-
-\includegraphics{../output/figs/proportion_landcover_macroclass_2001-2022.png}
+{\centering \includegraphics{../output/figs/proportion_landcover_macroclass_2001-2022.png}
 
 }
 
@@ -964,7 +994,7 @@ drought}\label{interaction-of-land-cover-and-drought-1}
 persistent land cover for 2001-2022 (\textgreater80\%) per macrozone and
 land cover macroclass.}
 
-\end{figure}%
+\end{figure}
 
 For vegetation, we obtained and used hereafter five macroclasses of land
 cover from IGBP MODIS: forest, shrubland, savanna, grassland, and
@@ -1003,8 +1033,9 @@ Also, there is a high increase in forest (397 \(km^2 yr^{-1}\)) in the
 ``Sur'', seemingly replacing the savanna lost (Table
 \ref{tab-landcoverTrend}).
 
+\hypertarget{relationship-between-drought-indices-and-land-cover-change}{%
 \subsubsection{Relationship between drought indices and land cover
-change}\label{relationship-between-drought-indices-and-land-cover-change}
+change}\label{relationship-between-drought-indices-and-land-cover-change}}
 
 \begin{table}[!ht]
 \caption{The five most important trends of drought indices in estimating the landcover trend per land cover type and the $R^2$ reached by each random forest model. The white cells indicate that the landcover class is not significant in terms of surface area.}
@@ -1014,9 +1045,7 @@ change}\label{relationship-between-drought-indices-and-land-cover-change}
 
 \begin{figure}[!ht]
 
-\centering{
-
-\includegraphics[width=1\textwidth,height=\textheight]{../output/figs/bars_relative_importance_RF.png}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{../output/figs/bars_relative_importance_RF.png}
 
 }
 
@@ -1027,7 +1056,7 @@ Demand Drought Index; SPEI, Standardized Precipitation
 Evapotranspiration Index; SSI, Standardized Soil Moisture Index. The
 numbers beside the drough index correspond to the time scales.}
 
-\end{figure}%
+\end{figure}
 
 Table \ref{tab-landcoverTrendRF} shows the drought indices that are the
 most important variables in the random forest models, together with the
@@ -1051,9 +1080,7 @@ variable's importance.
 
 \begin{figure}[!ht]
 
-\centering{
-
-\includegraphics{../output/figs/points_landcover_drought_indices_trend_and_time_scale.png}
+{\centering \includegraphics{../output/figs/points_landcover_drought_indices_trend_and_time_scale.png}
 
 }
 
@@ -1063,7 +1090,7 @@ the five macrozones. Vertical panels correspond to short (6 months) and
 long (36 months) time scales. Horizontal panels show the drought indices
 SPI, EDDI, and SSI.}
 
-\end{figure}%
+\end{figure}
 
 Figure~\ref{fig-TrendsLandDrought} shows the connection between the SPI,
 EDDI, and SSI drought indices for time scales of 6 and 36 months against
@@ -1078,17 +1105,17 @@ grassland in ``Centro'', forest in ``Sur'', and barren land in ``Norte
 Chico'', as well as a decrease trend in savanna in ``Norte Chico'',
 ``Centro'', and ``Sur''.
 
+\hypertarget{drought-impacts-on-vegetation-productivity-within-land-cover}{%
 \subsection{Drought impacts on vegetation productivity within land
-cover}\label{drought-impacts-on-vegetation-productivity-within-land-cover}
+cover}\label{drought-impacts-on-vegetation-productivity-within-land-cover}}
 
+\hypertarget{trends-in-vegetation-productivity}{%
 \subsubsection{Trends in vegetation
-productivity}\label{trends-in-vegetation-productivity}
+productivity}\label{trends-in-vegetation-productivity}}
 
 \begin{figure}[!ht]
 
-\centering{
-
-\includegraphics{../output/figs/temporal_variation_zcNDVI6_macrozonas_con_mapa.png}
+{\centering \includegraphics{../output/figs/temporal_variation_zcNDVI6_macrozonas_con_mapa.png}
 
 }
 
@@ -1100,7 +1127,7 @@ land cover type for 2001--2022. (b) Temporal variation of zcNDVI
 aggregated at macrozone level within continental Chile. Each horizontal
 panel corresponds to a macrozone from `Norte Grande' to `Austral'.}
 
-\end{figure}%
+\end{figure}
 
 Figure~\ref{fig-zcNDVI_var} shows a spatial map of trends in zcNDVI
 (Figure~\ref{fig-zcNDVI_var}a). In ``Norte Grande'', vegetation
@@ -1120,14 +1147,13 @@ early 2020 and 2022 in the ``Norte Chico'' and ``Centro''. The ``Sur''
 and ``Austral'' show a positive trend of around 0.012 and 0.016,
 respectively, per decade (Figure~\ref{fig-zcNDVI_var}).
 
+\hypertarget{correlation-between-vegetation-productivity-and-drought-indices}{%
 \subsubsection{Correlation between vegetation productivity and drought
-indices}\label{correlation-between-vegetation-productivity-and-drought-indices}
+indices}\label{correlation-between-vegetation-productivity-and-drought-indices}}
 
 \begin{figure}[!ht]
 
-\centering{
-
-\includegraphics{../output/figs/mapa_cor_selec_indices_zcNDVI6.png}
+{\centering \includegraphics{../output/figs/mapa_cor_selec_indices_zcNDVI6.png}
 
 }
 
@@ -1135,13 +1161,11 @@ indices}\label{correlation-between-vegetation-productivity-and-drought-indices}
 reach the maximum coefficient of determination. White spaces indicate no
 significant correlation.}
 
-\end{figure}%
+\end{figure}
 
 \begin{figure}[!ht]
 
-\centering{
-
-\includegraphics{../output/figs/mapa_cor_r_indices_zcNDVI6.png}
+{\centering \includegraphics{../output/figs/mapa_cor_r_indices_zcNDVI6.png}
 
 }
 
@@ -1149,7 +1173,7 @@ significant correlation.}
 scales and drought index that reach the maximum coefficient of
 determination. White spaces indicate no significant correlation.}
 
-\end{figure}%
+\end{figure}
 
 Figure~\ref{fig-corTimeScale} shows the time scales that reached the
 highest r-squared in the regression analysis between zcNDVI and
@@ -1199,10 +1223,12 @@ precipitation, 37\%, in ``Norte Chico'' and ``Centro'', with SSI-12
 being the most relevant variable, then SPI-36 in ``Norte Chico'' and
 SPI-24 in ``Sur''.
 
-\section{Discussion}\label{discussion}
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
 
+\hypertarget{vegetation-water-demand-and-its-relation-to-drought}{%
 \subsection{Vegetation water demand and its relation to
-drought}\label{vegetation-water-demand-and-its-relation-to-drought}
+drought}\label{vegetation-water-demand-and-its-relation-to-drought}}
 
 In our study, we considered the variation in vegetation productivity in
 Chile, specifically in areas without any changes in land cover, to
@@ -1252,8 +1278,9 @@ Future work should focus on the regions where the drought has been more
 severe and has a high proportion of irrigated crops to get insight on
 the real impact of irrigation on ecosystems in those zones.
 
+\hypertarget{sensitivity-of-land-cover-vegetation-to-short--and-long-term-drought}{%
 \subsection{Sensitivity of land cover vegetation to short- and long-term
-drought}\label{sensitivity-of-land-cover-vegetation-to-short--and-long-term-drought}
+drought}\label{sensitivity-of-land-cover-vegetation-to-short--and-long-term-drought}}
 
 We analyzed the time series of drought indices and vegetation
 productivity per land cover type. Our results indicate that forest is
@@ -1326,8 +1353,9 @@ longer SPEI time scales. Thus, according to the results presented in
 this study, for the assessment of drought, it is necessary to consider
 drought indices on a short- to long-scale basis.
 
+\hypertarget{vegetation-productivity-and-drought}{%
 \subsection{Vegetation productivity and
-drought}\label{vegetation-productivity-and-drought}
+drought}\label{vegetation-productivity-and-drought}}
 
 We found that the 12-month soil moisture deficit affected plant
 productivity in all land cover types in Chile. The main external factors
@@ -1365,8 +1393,9 @@ Chico'', the orchards are more dependent on irrigation, which in turn
 depends on the availability of storage water in dams or groundwater
 reservoirs, which are affected by long-term drought (e.g., SPI-36).
 
+\hypertarget{drought-information-to-aid-in-adaptation}{%
 \subsection{Drought information to aid in
-adaptation}\label{drought-information-to-aid-in-adaptation}
+adaptation}\label{drought-information-to-aid-in-adaptation}}
 
 Our findings present valuable information for policymakers in developing
 adaptation strategies for droughts. Our results show that the different
@@ -1403,7 +1432,8 @@ about climate change in Chile (Law 21.455,
 to implement sectoral adaptation plans for agriculture, forests, and
 biodiversity, could benefit from this information.
 
-\section{Conclusion}\label{conclusion}
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
 
 We found a significant trend toward decreasing water supply (SPI, SPEI,
 and SSI) in most of the Chilean territory, with the exception of the
@@ -1447,12 +1477,14 @@ climate change and drought. This information could be used in the scope
 of the national law on climate change, which seeks to implement
 adaptation strategies for agriculture, forests, and biodiversity.
 
-\section{Acknowledgment}\label{acknowledgment}
+\hypertarget{acknowledgment}{%
+\section{Acknowledgment}\label{acknowledgment}}
 
 The National Research and Development Agency of Chile (ANID) funded this
 study through the drought emergency project FSEQ210022, Fondecyt
 Iniciación N°11190360, Fondecyt Postdoctorado N°3230678, and Fondecyt
-Regular N°1210526.
+Regular N°1210526. The companies Garces Fruit and CER Analytics provided
+access to the \emph{in-situ} soil moisture data used in this work.
 
 
 \renewcommand\refname{References}

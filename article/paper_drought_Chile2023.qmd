@@ -17,7 +17,7 @@ author:
         corresponding: true
     #note: This is the first author footnote.
   - name: Anton Vrieling
-    email: a.vrieling@utwente.nl
+    #email: a.vrieling@utwente.nl
     affiliations:
         - id: itc
           name: Faculty of Geo-Information Science and Earth, University of Twente
@@ -44,7 +44,7 @@ author:
           city: Santiago
           country: 7500994, Chile.
   - name: Francisco Fernández
-    email: francisco.fernandez@uss.cl
+    #email: francisco.fernandez@uss.cl
     affiliations:
         - id: uss
           name: Center of Economics for Sustainable Development (CEDES), Faculty of Economics and Government, Universidad San Sebastian
@@ -482,6 +482,6 @@ The results of this study provide insightful information that can assist in deve
 
 # Acknowledgment
 
-The National Research and Development Agency of Chile (ANID) funded this study through the drought emergency project FSEQ210022, Fondecyt Iniciación N°11190360, Fondecyt Postdoctorado N°3230678, and Fondecyt Regular N°1210526.
+The National Research and Development Agency of Chile (ANID) funded this study through the drought emergency project FSEQ210022, Fondecyt Iniciación N°11190360, Fondecyt Postdoctorado N°3230678, and Fondecyt Regular N°1210526. The companies Garces Fruit and CER Analytics provided access to the _in-situ_ soil moisture data used in this work. 
 
 # References {-}
