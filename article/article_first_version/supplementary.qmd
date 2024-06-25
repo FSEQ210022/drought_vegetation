@@ -1,0 +1,274 @@
+---
+title: "Supplementary Material"
+subtitle: "The effects of drought on land cover change and vegetation productivity in continental Chile"
+author:
+  - name: Francisco Zambrano
+    email: francisco.zambrano@umayor.cl
+    affiliations: 
+        - id: umayor
+          name: Hémera Centro de Observación de la Tierra, Facultad de Ciencias, Escuela de Ingeniería en Medio Ambiente y Sustentabilidad, Universidad Mayor
+          city: Santiago
+          country: 7500994, Chile.
+        - id: odes
+          name: Observatorio de Sequía para la Agricultura y la Biodiversidad de Chile (ODES), Universidad Mayor
+          city: Santiago
+          country: 7500994, Chile.
+    attributes:
+        corresponding: true
+    #note: This is the first author footnote.
+  - name: Anton Vrieling
+    #email: a.vrieling@utwente.nl
+    affiliations:
+        - id: itc
+          name: Faculty of Geo-Information Science and Earth, University of Twente
+          city:  Enschede
+          country: The Netherlands.
+  - name: Francisco Meza
+    affiliations:
+        - id: agrouc
+          name: Facultad de Agronomía y Sistemas Naturales, Pontificia Universidad Católica de Chile. 
+          city: Santiago
+          country: Chile.
+        - id: instuc
+          name: Instituto para el Desarrollo Sustentable. Pontificia Universidad Católica de Chile
+          city: Santiago
+          country: Chile.
+        - id: cambioglobal
+          name: Centro Interdisciplinario de Cambio Global, Pontificia Universidad Católica de Chile
+          city: Santiago
+          country: Chile.
+  - name: Iongel Duran-Llacer
+    affiliations:
+        - id: umayor-io
+          name: Hémera Centro de Observación de la Tierra, Facultad de Ciencias, Universidad Mayor,
+          city: Santiago
+          country: 7500994, Chile.
+  - name: Francisco Fernández
+    #email: francisco.fernandez@uss.cl
+    affiliations:
+        - id: uss
+          name: Center of Economics for Sustainable Development (CEDES), Faculty of Economics and Government, Universidad San Sebastian
+          city: Santiago
+          country: Chile.
+        - id: capes
+          name: Center of Applied Ecology and Sustainability (CAPES)
+          city: Santiago
+          country: Chile.
+  - name: Alejandro Venegas-González
+    affiliations:
+        - id: ica3
+          name: Instituto de Ciencias Agroalimentarias, Animales y Ambientales (ICA3), Universidad de O'Higgins
+          city: San Fernando
+          country: Chile.
+  - name: Nicolas Raab
+    affiliations:
+        - id: agrouc
+  - name: Dylan Craven
+    affiliations:
+        - id: gema
+          department: GEMA Center for Genomics, Ecology & Environment, Universidad Mayor, Camino La Pirámide Huechuraba 5750
+          city: Santiago
+          country: Chile.
+        - id: do
+          name: Data Observatory Foundation
+          city: Santiago
+          country: Chile.
+date: "`r Sys.Date()`"
+include-before-body:
+  - text: |
+      \renewcommand\thesection{S\arabic{section}}
+      \renewcommand\thefigure{S\arabic{figure}}
+      \renewcommand\thetable{S\arabic{table}}
+bibliography: references.bib
+format:
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: Journal Name
+      formatting: preprint
+      layout: onecolumn
+      model: 3p
+      cite-style: authoryear
+      natbiboptions: numbers
+    include-in-header: 
+      text: \usepackage{lineno}\linenumbers
+            \usepackage{multirow}
+            \usepackage{lscape}
+            \newcommand{\blandscape}{\begin{landscape}}
+            \newcommand{\elandscape}{\end{landscape}}
+editor: source
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(gt)
+```
+
+# Data 
+
+```{=latex}
+\begin{table}[!ht]
+\caption{Description of the satellite and reanalysis data used}
+\label{tab-desEOD}
+\scriptsize
+\centering
+\begin{tabular}{p{0.1\textwidth}cp{0.3\textwidth}p{0.095\textwidth}ccc}
+\hline
+\multirow{1}{*}{\centering Product} & Sub-product & Variable & Spatial Resolution  & Period & Units & Short Name \\ 
+\hline
+\multirow{4}{*}{ERA5L} & ~ & Precipitation & \multirow{4}{*}{~0.1°} & \multirow{4}{*}{1981-2023} & mm & P \\ 
+         &  & Maximum temperature & ~ & & $°C$ & $T_{max}$ \\ 
+         &  & Minimum temperature & ~ & & $°C$ & $T_{min}$ \\ 
+         &  & Volumetric Soil Water Content at 1m & ~ & & $m3/m3$ & SM \\ 
+ERA5L* & & Atmospheric Evaporative Demand & 0.1° & 1981-2023 & mm & AED \\
+        \multirow{2}{*}{MODIS} & MOD13A3.061 & Normalized Difference Vegetation Index & \multirow{2}{*}{~1 km} & 2000-2023 & ~ & NDVI \\ 
+         & MCD12Q1.061 & land cover IGBP scheme & & 2001-2022 & ~ & land cover \\ 
+\hline
+\end{tabular}
+{\raggedright *Calculated from maximum and minimum temperatures derived from ERA5L with Eq. \ref{eq-AED}. \par}
+\end{table}
+```
+
+# Validation of ERA5L variables 
+
+## Methods 
+
+We compared the ERA5L [@MunozSabater2021] variables for monthly mean temperature, total precipitation, and volumetric soil water content against values retrieved by weather stations. For temperature and precipitation, we used data from the weather network from the Ministry of Agriculture of Chile (www.agromet.com) between 2015 and 2023. We used 277 stations located throughout Chile. For _in-situ_ soil moisture, we used a private soil network that is owned by the agricultural enterprise Garces Fruit (https://garcesfruit.com/), which has 99 stations in Central Chile, located in fields with cherry fruit crops. The sensors are installed at 30, 60, and 90cm and are a Advanced Soil Moisture Sensor model Teros 12 from the METER Group ([https://metergroup.com/products/teros-12/](https://metergroup.com/products/teros-12/)). To avoid comparing ERA5L with _in-situ_ soil moisture levels caused by irrigation, which are not captured by ERA5L, we used daily data for the year 2022 and the months outside the growing season, May to September.
+
+We selected the following metrics:
+
+$$MAE = \frac{1}{n}\sum |{E-S}|$$ $$Bias = \frac{\sum E}{\sum S}$$ $$ubRMSE =\sqrt{\frac{\sum{ \left[ (E_i-\overline{E})-(S_i-\overline{S}) \right ] ^2}}{n}}$$
+
+$$CC = \frac{\sum (S_i-\bar{S})(E_i-\bar{E})}{\sqrt{(Si-\bar{S})^2(E_i-\bar{E})^2}}$$
+
+$MAE$: mean absolute error   
+$bias$: bias  
+$ubRMSE$: unbiassed root mean squared error  
+$CC$: coefficient of correlation  
+$S$: value of the variable measure by the weather station  
+$E$: value of the variable measure by ERA5L
+
+## Results
+
+The average performance metrics of ERA5L over the weather and soil moisture stations are shown in @tbl-metricsera5. In the case of the 97 soil moisture stations, we averaged for the three depths (30, 60, and 90cm) and then compared it with the volumetric water content in the top 100cm of the soil derived from ERA5L. For this case, we made a daily comparison to determine the performance metrics per station, then we averaged the measured soil moisture at the three levels and over all stations.
+
+
+<!-- were in the case of monthly temperature: $ubRMSE=1.06\,°C$, $MAE=1.131\,°C$, and $CC=0.963$, showing a good agreement, low error, and low overestimation. For cumulative monthly precipitation, $MAE=28.1\,mm$, $bias=1.93$, and $CC=0.845$, showing a high correlation and a 93% bias and being overestimated by ERA5L. -->
+
+
+```{r}
+#| echo: false
+#| label: tbl-metricsera5
+#| tbl-cap: "Metrics of performance for the climatic and soil moisture variables from ERA5-Land with data from 277 stations in Central Chile for temperature and precipitation and 99 stations of soil moisture."
+tribble(~Variable,~ubRMSE,~MAE,~Bias,~CC,
+        "Temperature","1.06 °C","1.13 °C","1.02","0.96",
+        "Precipitation","35.5 mm","28.1 mm","1.93","0.85",
+        "Soil Moisture (1m)","0.174 cc/cc","0.167 cc/cc","1.74", "0.71") |> 
+  gt()
+```
+
+# Land cover macroclasses and validation
+
+## Methods
+
+To analyze the LULCC, we used the IGBP scheme from the MCD12Q1 Collection 6.1 from MODIS. This product has a yearly frequency from 2001 to 2022. The IGBP defines 17 classes; we regrouped these into ten macroclasses, as follows: classes 1-4 to forest, 5-7 to schrublands, 8-9 to savannas, 10 as grasslands, 11 as wetlands, 12 and 14 to croplands, 13 as urban, 15 as snow and ice, 16 as barren, and 17 to water bodies. 
+
+To assess the accuracy of the regrouped MCD12Q1 land cover maps, we compared the macroclasses with those of a more detailed land cover map made by @Zhao2016 for Chile with samples acquired in the years 2013–2014 (LCChile). The latter has a spatial resolution of 30 m and three hierarchy levels of defined classes; from those, we used level 1, which fits with the macroclass land cover. We chose the years 2013 (IGBP2013) and 2014 (IGBP2014) from the land cover macroclasses to compare with LCChile. For this comparison, we used the following procedure:
+
+i)  we resampled LCChile to the spatial resolution (500m) of the land cover macroclasses using the majority method,
+ii) we took a random sample of 1000 points within continental Chile and extracted the classes that fell within each point for LCChile, IGBP2013, and IGBP2014; we considered the point extracted from LCChile as the truth and the values from the other two years as predictions.
+iii) we derived a confusion matrix with the classes extracted from the 1000 points for LCChile, IGBP2013, and IGBP2014; and calculated the performance metrics of accuracy and F1.
+
+$$Accuracy = \frac{TP+TN}{TP+TN+FP+FN}=\frac{correct\,\, classifications}{all\,\, classifications}$$ $$F1=\frac{2\cdot TP}{2\cdot TP + FP +FN}$$
+
+where $TP$ and $FN$ refer to true positive and false negative, correctly classified classes; $TN$ and $FP$ to true negative and false positive, wrongly classified classes.
+
+## Results
+
+Our results showed a global accuracy of ~0.82 and a F1 score of ~0.66 between the high resolution landcover (LCChile) and the landcover IGBP from MODIS. Thus, for vegetation, we obtained and use hereafter five macroclasses of land cover from IGBP MODIS: forest, shrubland, savanna, grassland, and croplands (Table \ref{tab-landIGBPmacro}).
+
+```{=latex}
+\begin{table}[!ht]
+\caption{Landcover clases from IGBP MODIS and the corresponding macroclasses.}
+\label{tab-landIGBPmacro}
+\centering
+\includegraphics[width = .5\textwidth]{../output/figs/tabla_landcover_macroclass.png}
+\end{table}
+```
+
+# Relationship between drought indices and land cover change
+
+@fig-RF_importance shows the ranking of variable importance obtained with the ten folds used in the resampling of the Random Forest model per land cover type. 
+
+```{r fig-RF_importance}
+#| echo: false
+#| layout-nrow: 2
+#| fig-pos: "!ht"
+#| fig-env: "figure*"
+#| out-width: 100%
+#| fig-cap: "Error bar for the variables importance obtained from the 10 resamples folded by the Random Forest used to model land cover trend using as predictors the trend in drought indices of water supply, water demand, soil moisture, and vegetation productivity."
+#| fig-subcap: 
+#| - "Forest"
+#| - "Cropland"
+#| - "Grassland" 
+#| - "Savanna"
+#| - "Shrubland"
+#| - "Barren Land"
+
+knitr::include_graphics("../output/figs/fig_errorbar_resample_random_forest_trends_Forest.png")
+knitr::include_graphics("../output/figs/fig_errorbar_resample_random_forest_trends_Cropland.png")
+knitr::include_graphics("../output/figs/fig_errorbar_resample_random_forest_trends_Grassland.png")
+knitr::include_graphics("../output/figs/fig_errorbar_resample_random_forest_trends_Savanna.png")
+knitr::include_graphics("../output/figs/fig_errorbar_resample_random_forest_trends_Shrubland.png")
+knitr::include_graphics("../output/figs/fig_errorbar_resample_random_forest_trends_Barren_land.png")
+```
+
+# Trend of vegetation productivity
+
+@fig-hetmaptrendzcNDVI shows the average trend for zcNDVI for 2000-2023 per macrozone and landcover macroclass.
+
+```{r fig-hetmaptrendzcNDVI}
+#| echo: false
+#| out-width: 75%
+#| fig-pos: '!ht'
+#| fig-cap: "Heatmap of trends in zcNDVI for 2000 to 2023 per macrozone and landcover macroclass."
+knitr::include_graphics('../output/figs/heatmap_trends_zcNDVI_macro_landcover.png')
+```
+
+# Vegetation productivity
+
+We analyzed the correlation of zcNDVI for time scales of 1, 3, 6, and 12 months versus net primary production (NPP). We obtained both the zcNDVI from MOD13A3.061 and the NPP from MOD17A3HGF.061, using MODIS products. We used the zcNDVI in December to correlate with the annual NPP. @fig-r2_npp_zcNDVI shows a map of the r-squared correlation between zcNDVI and NPP, and @fig-hetmap_npp_zcndvi shows the aggregated values per macrozone.
+
+```{r fig-r2_npp_zcNDVI}
+#| echo: false
+#| out-width: 75%
+#| fig-pos: '!ht'
+#| fig-cap: "Spatial variation of the r-squared values obtained from the yearly correlation of zcNDVI of 1, 3, 6, and 12 months with the net primary productivity (NPP) for continental Chile."
+knitr::include_graphics('../output/figs/map_r2_NPP_vs_zcNDVI.png')
+```
+
+```{r fig-hetmap_npp_zcndvi}
+#| echo: false
+#| out-width: 50%
+#| fig-pos: '!ht'
+#| fig-cap: "A heatmap showing the r-squared values obtained from the yearly correlation of zcNDVI of 1, 3, 6, and 12 months with the net primary productivity (NPP) for continental Chile."
+knitr::include_graphics('../output/figs/heatmap_r2_npp_vs_zcndvi_per_landcover.png')
+```
+
+# Relationship of drought indices and vegetation productivity
+
+```{r}
+#| echo: false
+#| out-width: 100%
+#| fig-pos: '!ht'
+#| fig-cap: "Summary per land cover and study region regarding the correlation between zcNDVI with the drought indices EDDI, SPI, SPEI, and SSI for time scales of 1, 3, 6, 12, 24, and 36. The numbers in each cell indicate the time scale that reached the maximum correlation for the land cover and macrozone, and the color indicates the strength of the r-squared obtained with the index and the time scale. Cells without values indicate that the land cover type was not significant in that macrozone."
+knitr::include_graphics('../output/figs/tabla_r_cor_macro_indice.png')
+```
+
+\newpage
+
+# References {-}
+
+::: {#refs}
+:::
