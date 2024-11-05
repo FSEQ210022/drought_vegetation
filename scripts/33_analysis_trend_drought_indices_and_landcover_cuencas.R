@@ -72,17 +72,19 @@ df <- map(1:6,\(i){
     rf_wflow <- workflow(as.formula(paste0(vars[i],'~ .')), rf_spec)
     rf_fit <- fit(rf_wflow, df_train)
     
-    # df_test |> 
-    #   predict(rf_fit,df_test) |> 
-    #   bind_cols(trend = df_test$Cropland) |> 
-    #   ggplot(aes(.pred,trend)) + geom_point()
+    # predict(rf_fit,new_data =df_test) |>
+    #   bind_cols(trend = df_test$Shrubland) |>
+    #   ggplot(aes(.pred,trend)) + geom_point() + geom_abline(col='green') +
+    #   ggtitle(paste0('Macrozona: ',macro,' \n Uso de suelo: ',vars[t]))
     # 
     # # 
     #  augment(rf_fit, new_data = df_test) %>%
     #    metrics(as.name(vars[i]),.pred)
     # # 
-    #  augment(rf_fit, new_data = df_test) %>%
-    #    metrics(vars[i],.pred)
+    print(macro)
+    print(vars[t])
+    augment(rf_fit, new_data = df_test) %>%
+        metrics(vars[i],.pred) |> print()
     #  
     # library(vip)
     # rf_fit |> 
@@ -181,6 +183,7 @@ tabla |>
                  paste0('SPEI-',c(3,24,36)),
                  paste0('SSI-',c(1,3,36))
                  )))) |>
+  drop_na() |> 
   group_by(type,macrozona) |> 
   mutate(rel_imp = Mean*10e2) |> 
   slice_max(rel_imp, n= 3) |> 
@@ -191,17 +194,18 @@ tabla |>
                     values=colors) +
   labs(y = 'Relative variable importance') +
   coord_flip() +
+  guides(fill = guide_legend(nrow = 1)) +
   facet_grid(.~macrozona) +
   theme_bw() +
   theme(strip.background = element_rect('white'),
         legend.background = element_rect('transparent'),
         legend.key.size = unit(0.4, "cm"),
-        legend.title = element_text(size=10),
+        legend.title = element_text(size=9),
         legend.text = element_text(size=8),
         panel.grid = element_blank(),
         axis.title.y = element_blank(),
-        legend.position = c(.15,.25))
-ggsave('output/figs/bars_relative_importance_RF.png',height = 2.5,width=12,scale = 1.3)
+        legend.position = 'bottom')
+ggsave('output/figs/bars_relative_importance_RF.png',height = 3,width=12,scale = 1)
 
 
 tabla2 <- map_df(1:6,\(i){

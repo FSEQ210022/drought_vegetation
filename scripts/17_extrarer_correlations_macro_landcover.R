@@ -20,9 +20,10 @@ files <- dir_ls(dir,regexp = 'tif$')
 cors <- rast(files)
 cors <- resample(cors,lc)
 
-macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
+eco <- read_sf('data/processed_data/spatial/ecoregiones_2017.gpkg') |> 
   st_transform(32719) |> 
-  mutate(macrozona = c('norte chico','norte grande','austral','centro','sur'))
+  filter(ECO_NAME != "Rock and Ice") |> 
+  mutate(ECO_NAME = fct(ECO_NAME,levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe"))) 
 
 library(tidyverse)
 getmode <- function(v) {
@@ -33,28 +34,27 @@ getmode <- function(v) {
 #obtener los indices y escalas de tiempo en dónde se alcanza la máxima correlación
 cors1 <- subset(cors,seq(1,8,2))
 data_ind <- map_df(1:5,function(i){
-  cors_m <- mask(cors1,macro[i,])
-  lc_m <- mask(lc,macro[i,])
+  cors_m <- mask(cors1,eco[i,])
+  lc_m <- mask(lc,eco[i,])
   cors_df <- zonal(cors_m,lc_m,getmode)
   names(cors_df)[2:5] <- c('EDDI','SPI','SPEI','SSI')
   cors_df |> 
     pivot_longer(-1) |> 
     rename(indice = name) |> 
     mutate(clase = factor(lyr.1,levels = paleta$class, labels = paleta$Name),
-           macro = macro[i,]$macrozona) |> 
-    select(macro,indice,clase,value) 
+           eco = eco[i,]$ECO_NAME) |> 
+    select(eco,indice,clase,value) 
 })
 
 data_ind_4gt <- data_ind |> 
   filter(clase %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land')) |> 
   mutate(value = ceiling(value),
-         value = factor(value,levels = 1:6,labels = c(1,3,6,12,24,36)),
-         macro = fct_relevel(macro, "norte grande", "norte chico",
-                             'centro','sur','austral')) |> 
+         value = factor(value,levels = 1:6,labels = c(1,3,6,12,24,36))
+         ) |> 
   pivot_wider(names_from = indice,values_from = value) |> 
-  arrange(macro) |> 
+  arrange(eco) |> 
   #mutate(row=row_number()) |> 
-  pivot_longer(-c(clase,macro))  |> 
+  pivot_longer(-c(clase,eco))  |> 
   mutate(clase = str_to_title(clase)) |> 
   pivot_wider(names_from=c(clase, name), values_from=value) 
 
@@ -62,68 +62,50 @@ data_ind_4gt <- data_ind |>
   
 cors2 <- subset(cors,seq(2,8,2))
 data_r <- map_df(1:5,function(i){
-  cors_m <- mask(cors2,macro[i,])
-  lc_m <- mask(lc,macro[i,])
+  cors_m <- mask(cors2,eco[i,])
+  lc_m <- mask(lc,eco[i,])
   cors_df <- zonal(cors_m,lc_m,na.rm = TRUE)
   names(cors_df)[2:5] <- c('EDDI','SPI','SPEI','SSI')
   cors_df |> 
     pivot_longer(-1) |> 
     rename(indice = name) |> 
     mutate(clase = factor(lyr.1,levels = paleta$class, labels = paleta$Name),
-           macro = macro[i,]$macrozona) |> 
-    select(macro,indice,clase,value) 
+           eco = eco[i,]$ECO_NAME) |> 
+    select(eco,indice,clase,value) 
 })
 
 data_r_4gt <- data_r |> 
   filter(clase %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land')) |> 
-  mutate(macro = fct_relevel(macro, "norte grande", "norte chico",
-                             'centro','sur','austral')) |> 
   mutate(clase = str_to_title(clase),
          value = value^2) |> #value^2 for R2
   pivot_wider(names_from = indice,values_from = value) |> 
-  pivot_longer(-c(clase,macro))  |> 
+  pivot_longer(-c(clase,eco))  |> 
   mutate(clase = str_to_title(clase)) |> 
   pivot_wider(names_from=c(clase, name), values_from=value) |> 
-  rename_with(\(x) str_c(x,'_r'),-macro)
+  rename_with(\(x) str_c(x,'_r'),-eco)
 
-tabla_gt <- full_join(data_ind_4gt,data_r_4gt,by = 'macro') 
-tabla_gt <- tabla_gt |> mutate(macrozone = str_to_title(macro)) |> 
-  select(-macro) |> relocate(macrozone)
+tabla_gt <- full_join(data_ind_4gt,data_r_4gt,by = 'eco') 
+# tabla_gt <- tabla_gt |> mutate(macrozone = str_to_title(macro)) |> 
+#   select(-macro) |> relocate(macrozone)
 
 library(gt)
 
-tabla_gt$Savanna_EDDI[1] <- tabla_gt$Savanna_SPI[1] <- tabla_gt$Savanna_SPEI[1] <- tabla_gt$Savanna_SSI[1] <- NA
-tabla_gt$Savanna_EDDI_r[1] <- tabla_gt$Savanna_SPI_r[1] <- tabla_gt$Savanna_SPEI_r[1] <- tabla_gt$Savanna_SSI_r[1] <- NA
-tabla_gt$Cropland_EDDI_r[5] <- tabla_gt$Cropland_SPI_r[5] <- tabla_gt$Cropland_SPEI_r[5] <- tabla_gt$Cropland_SSI_r[5] <- NA
-tabla_gt$Cropland_EDDI[5] <- tabla_gt$Cropland_SPI[5] <- tabla_gt$Cropland_SPEI[5] <- tabla_gt$Cropland_SSI[5] <- NA
-tabla_gt$Shrubland_EDDI_r[4] <- tabla_gt$Shrubland_SPI_r[4] <- tabla_gt$Shrubland_SPEI_r[4] <- tabla_gt$Shrubland_SSI_r[4] <- NA
-tabla_gt$Shrubland_EDDI[4] <- tabla_gt$Shrubland_SPI[4] <- tabla_gt$Shrubland_SPEI[4] <- tabla_gt$Shrubland_SSI[4] <- NA
+tabla_gt$Forest_EDDI[1] <- NA
+tabla_gt$Forest_EDDI_r[1] <- NA
+tabla_gt$Forest_SPI[1] <- NA
+tabla_gt$Forest_SPI_r[1] <- NA
+tabla_gt$Forest_SPEI[1] <- NA
+tabla_gt$Forest_SPEI_r[1] <- NA
+tabla_gt$Forest_SSI[1] <- NA
+tabla_gt$Forest_SSI_r[1] <- NA
 
-tabla_gt$Forest_EDDI[3] <- NA
-tabla_gt$Forest_EDDI_r[3] <- NA
+tabla_gt$Shrubland_SPI[5] <- NA
+tabla_gt$Shrubland_SPI_r[5] <- NA
 
-tabla_gt$Forest_SPI[4] <- NA
-tabla_gt$Forest_SPI_r[4] <- NA
-
-tabla_gt$Forest_SPEI[4] <- NA
-tabla_gt$Forest_SPEI_r[4] <- NA
-
-tabla_gt$Forest_SPEI[5] <- NA
-tabla_gt$Forest_SPEI_r[5] <- NA
-tabla_gt$Forest_SSI[5] <- NA
-tabla_gt$Forest_SSI_r[5] <- NA
-
-tabla_gt$Savanna_SPEI[5] <- NA
-tabla_gt$Savanna_SPEI_r[5] <- NA
-
-tabla_gt$Shrubland_SSI[5] <- NA
-tabla_gt$Shrubland_SSI_r[5] <- NA
-
-#tabla_gt[1,2] <- NA
 tabla_gt |> 
-  rename(Macrozone = macrozone) |> 
+  rename(Ecoregion = eco) |> 
   dplyr::select(1,22:25,18:21,10:13,6:9,2:5,
-         46:49,38:41,34:37,30:33,26:29
+         46:49,42:45,34:37,30:33,26:29
          ) |> 
   gt() %>% 
   #opt_stylize(style = 6, color = 'gray')
@@ -150,7 +132,7 @@ tabla_gt |>
 
 #crear legenda para incluir en la tabla
 plot <- data_r_4gt |> 
-  pivot_longer(-macro) |> 
+  pivot_longer(-eco) |> 
   ggplot(aes(name,value,color=value)) + 
   geom_point() + 
   scale_color_viridis_c(option = 'inferno',

@@ -2,7 +2,10 @@
 # by Francisco Zambrano Bigiarini (frzambra@gmail.com)
 # July 2018
 
-updt_modis <- function(type,product,dir_out){
+updt_modis <- function(type,product,dir_out,token = NULL){
+  
+  if (is.null(token)) token <- Sys.getenv('token_nasa')
+  
   URL <- paste0("https://e4ftl01.cr.usgs.gov/",type,"/",product,'/')
 
   htmlContent <- RCurl::getURL(URL)
@@ -36,17 +39,18 @@ updt_modis <- function(type,product,dir_out){
     files <- files[filesInd]
     dir.create(paste0(dir_out,product,'/',dir,'/'))
     
-    purrr::map(files,function(name){
-      tryCatch(
-      httr::GET(url = paste0(URL,dir,'/',name),
-          config = httr::config(connecttimeout = 120),
-          httr::authenticate("frzambra@gmail.com","Traplozx398#"),
-          write_disk(paste0(dir_out,product,'/',dir,'/',name),
-                     overwrite=TRUE),
-          progress()),
-      error = function(e) print(paste('Error:',e))
+    out <- purrr::map(files,function(name){
+        tryCatch(
+        paste0(URL,dir,'/',name) |> 
+          httr2::request() |> 
+          httr2::req_auth_bearer_token(token) |> 
+          httr2::req_perform(path = paste0(dir_out,product,'/',dir,'/',name),
+                             verbosity = 0)
       )
-    })
+    }, .progress = list(
+      type = "iterator", 
+      format = "Downloading {cli::pb_bar} {cli::pb_percent}",
+      clear = TRUE))
   })
 }
 

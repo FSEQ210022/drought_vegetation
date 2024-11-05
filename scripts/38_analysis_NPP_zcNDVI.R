@@ -82,6 +82,8 @@ r2_land |>
   mutate(landcover = paleta$Name) |> 
   write_rds('data/processed_data/r2_npp_vs_zcndvi.rds')
 
+r2_land <- read_rds('data/processed_data/r2_npp_vs_zcndvi.rds')
+
 r2_land |> 
   mutate(landcover = paleta$Name) |> 
   dplyr::filter(landcover %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land')) |> 
@@ -95,7 +97,7 @@ r2_land |>
   scale_fill_viridis_c(name = 'r-squared') + 
   theme_bw() + 
   theme(axis.title = element_blank())
-ggsave('output/figs/heatmap_r2_npp_vs_zcndvi_per_landcover.png',scale=2)  
+ggsave('output/figs/heatmap_r2_npp_vs_zcndvi_per_landcover.png',scale=2,width=3,height=2)  
 
 macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> st_transform(32719)
 df_cov <- extract(cov,macro)

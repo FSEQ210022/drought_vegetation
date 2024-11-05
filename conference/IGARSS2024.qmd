@@ -38,6 +38,7 @@ pageheader:
   left: IGARSS, January 2024
   right: 'D. Folio:  A Sample Article Using quarto-ieee'
 bibliography: references.bib
+csl: ieee.csl
 date: 2024-01-05
 ---
 
@@ -56,12 +57,12 @@ Chile has been facing a persistent rainfall deficit for more than a decade [@Gar
 
 To evaluate meteorological drought (i.e., water supply), the World Meteorological Organization (WMO; @WMO2012;@Hayes2011) recommends the Standardized Precipitation Index (SPI; @McKee1993), a multiscalar drought index that allows to monitor precipitation deficits from short- to long-term. Following the same approach, @Vicente-Serrano2010 incorporates into the SPI the effect of temperature through the use of potential evapotranspiration, thus proposing the SPEI (Standardized Precipitation Evapotranspiration Index). Similarly, to evaluate solely the evaporative demand driven by temperature, @Hobbins2016 and @McEvoy2016 came up with the Evaporative Demand Drought Index (EDDI). To assess the impact of water supply and demand on vegetation, Zambrano (2018) proposed the zcNDVI. This is a standardized anomaly of the cumulative Normalized Difference Vegetation Index (NDVI). It's similar to the SPI, SPEI, and EDDI. The zcNDVI could be accumulated over the growing season or any period (e.g., months). It results in a multiscalar drought index. Several drought indices exist for soil moisture. These include the Soil Moisture Deficit Index (SDMI), a normalized index [@Narasimhan2005], and the Soil Moisture Agricultural Drought Index (SMADI) [@Souza2021]. SMADI is a normalized index that uses vegetation, land surface temperature, and a vegetation condition index (VCI, [@Kogan1995]).
 
-We evaluated the trend of the drought indices SPI, SPEI, EDDI, and zcSM; and their relation to vegetation productivity. Our goal is to assess the impact on vegetation of the climate variables of water demand and supply and soil moisture.
+We evaluated the trend of the drought indices SPI, SPEI, EDDI, and zcSM (standardized anomaly of cumulative soil moisture at one meter); and their relation to vegetation productivity. Our goal is to assess the impact on vegetation of the climate variables of water demand and supply and soil moisture.
 
 ```{r fig-studyArea}
 #| fig-pos: "!ht"
 #| fig-env: "figure*"
-#| fig-cap: '(a) Chile with the Koppen-Geiger climate classes and the five macrozones "Norte Grande", "Norte Chico",  "Centro", "Sur", and "Austral". (b) Topography reference map. (c) Land cover classes for 2022. (d) Persistent land cover classes (> 80%) for 2001-2022'
+#| fig-cap: '(a) Chile with the Koppen-Geiger climate classes and the five macrozones "Norte Grande", "Norte Chico",  "Centro", "Sur", and "Austral". (b) Topography reference map. (c) Land cover classes for 2022. (d) Persistent land cover classes (> 80%) for 2001-2022. The legend in (d) denotes both (c) and (d).'
 #| out-width: "\\textwidth"
 
 knitr::include_graphics("../output/figs/map_study_con_landcover.png")
@@ -136,6 +137,14 @@ knitr::include_graphics("../output/figs/mapa_cor_selec_indices_zcNDVI6.png")
 #| fig-cap: "Pearson correlation value for the time scales and drought index that reach the maximum coefficient of determination"
 knitr::include_graphics("../output/figs/mapa_cor_r_indices_zcNDVI6.png")
 ```
+
+# **Discusion**
+
+In our study, we considered the variation in vegetation productivity in Chile, specifically in areas without any changes in land cover, to prevent any misleading conclusions about the increase in water demand due to land cover change. Our results show a contrasting perspective regarding the evidence provided by @Vicente-Serrano2022 on a global scale, who indicates that the increase in drought is led by an increase in agricultural land, which in turn increases water demand.
+
+Our results indicate that except for the southern part of the country, the SPI, SPEI, and SSI (water supply) showed declining trends, while the EDDI (water demand) increased across continental Chile. The trends in water demand and supply were stronger as the time scales increased, indicating a long-term reduction in water supply (except for the southern part) and an increase in water demand by the atmosphere. Also, we found that there has been a significant declining trend in vegetation productivity (zcNDVI) since 2000 for the north-central part of the country, which reached its lowest level between 2020 and 2022 and has impacted natural and cultivated land. Further, croplands showed a decrease in surface area for the north-central region, while barren land increased. We link these changes to a decrease in the water demand from vegetation because, despite the increase in AED, the surface area for water-demanding vegetation is declining as well as the vegetation productivitybiomass production. However, some questions arise regarding what is occurring with the cultivated land. Evidence suggests that higher-water-demanding crops have replaced less demanding crops in the Petorca basin (central Chile), leading to an increase in water abstraction [@Munoz2020;@Duran2020]. Nonetheless, at this scale of analysis, the effect of higher crop water demand on drought is minor compared to the decrease in water supply and increase in AED over all land cover types.
+
+The long-scale trends (e.g., 36 months) demonstrate the impact of climate change on water availability in Chile, potentially due to an intense hydrological drought stemming from the ongoing precipitation deficit and rising AED. But it is likely that in zones most affected by drought, the main cause is not an increase in vegetation water demand due to an intensification of cultivated land (e.g., an increase in irrigated crops) like in other parts of the globe (Vicente‐Serrano et al. 2020). North-central Chile has experienced a decline in vegetation productivity across land cover types, which is primarily attributable to variations in water supply and soil moisture. An increase in water demand, led by an increase in the surface area of irrigated crops or the change to more water-demanding crops, could strengthen this trend, however, it escapes the scope of this study. Future work should focus on the regions where the drought has been more severe and has a high proportion of irrigated crops to get insight on the real impact of irrigation on ecosystems in those zones.
 
 
 # **Conlusion**

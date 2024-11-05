@@ -1,0 +1,1411 @@
+
+@article{Loon2016,
+	title = {Drought in the {Anthropocene}},
+	volume = {9},
+	issn = {17520908},
+	doi = {10.1038/ngeo2646},
+	number = {2},
+	journal = {Nature Geoscience},
+	author = {Van Loon, Anne F. and Gleeson, Tom and Clark, Julian and Van Dijk, Albert I.J.M. and Stahl, Kerstin and Hannaford, Jamie and Di Baldassarre, Giuliano and Teuling, Adriaan J. and Tallaksen, Lena M. and Uijlenhoet, Remko and Hannah, David M. and Sheffield, Justin and Svoboda, Mark and Verbeiren, Boud and Wagener, Thorsten and Rangecroft, Sally and Wanders, Niko and Van Lanen, Henny A.J.},
+	year = {2016},
+	pages = {89--91},
+	file = {PDF:/home/francisco/Zotero/storage/X7LVQEQD/2016-Drought_in_the_Anthropocene.pdf:application/pdf},
+}
+
+@techreport{Didan2015,
+	title = {{MOD13Q1} {MODIS}/{Terra} {Vegetation} {Indices} 16-{Day} {L3} {Global} 250m {SIN} {Grid} {V006}},
+	institution = {NASA EOSDIS Land Processes DAAC},
+	author = {Didan, K},
+	year = {2015},
+	doi = {http://dx.doi.org/10.5067/MODIS/MOD13Q1.006},
+}
+
+@article{Funk2015,
+	title = {The climate hazards infrared precipitation with stations - {A} new environmental record for monitoring extremes},
+	volume = {2},
+	issn = {20524463},
+	doi = {10.1038/sdata.2015.66},
+	abstract = {The Climate Hazards group Infrared Precipitation with Stations (CHIRPS) dataset builds on previous approaches to 'smart' interpolation techniques and high resolution, long period of record precipitation estimates based on infrared Cold Cloud Duration (CCD) observations. The algorithm i) is built around a 0.05° climatology that incorporates satellite information to represent sparsely gauged locations, ii) incorporates daily, pentadal, and monthly 1981-present 0.05° CCD-based precipitation estimates, iii) blends station data to produce a preliminary information product with a latency of about 2 days and a final product with an average latency of about 3 weeks, and iv) uses a novel blending procedure incorporating the spatial correlation structure of CCD-estimates to assign interpolation weights. We present the CHIRPS algorithm, global and regional validation results, and show how CHIRPS can be used to quantify the hydrologic impacts of decreasing precipitation and rising air temperatures in the Greater Horn of Africa. Using the Variable Infiltration Capacity model, we show that CHIRPS can support effective hydrologic forecasts and trend analyses in southeastern Ethiopia.},
+	number = {150066},
+	journal = {Scientific Data},
+	author = {Funk, Chris and Peterson, Pete and Landsfeld, Martin and Pedreros, Diego and Verdin, James and Shukla, Shraddhanand and Husak, Gregory and Rowland, James and Harrison, Laura and Hoell, Andrew and Michaelsen, Joel},
+	year = {2015},
+	pages = {21},
+	file = {PDF:/home/francisco/Zotero/storage/BZFACBE5/2015-The_climate_hazards_infrared_precipitation_with_stations_-_A_new_environmental_record_for_monitoring_extremes.pdf:application/pdf},
+}
+
+@article{McKee1993,
+	title = {The relationship of drought frequency and duration to time scales. {In}: {Proceedings} of the {Ninth} {Conference} on {Applied} {Climatology}.},
+	abstract = {The definition of drought has continually been a stumbling block for drought monitoring and analysis. Wilhite and Glantz (1985) completed a thorough review of dozens of drought definitions and identified six overall categories: atmospheric, management. definitions. meteorological, agricultural, hydrologic climatological, and water Dracup et al. (1980) also reviewed All points of view seem to agree that drought is a condition of insufficient moisture caused by a deficit in precipitation over some time period. Difficulties are primarily related to the time period over which deficits accumulate and to the connection of the deficit in precipitation to deficits in usable water sources and the impacts that ensue.},
+	number = {Boston},
+	journal = {American Metereological Society},
+	author = {Mckee, Thomas B and Doesken, Nolan J and Kleist, John},
+	year = {1993},
+	pages = {179--184},
+}
+
+@article{Ahmed2014,
+	title = {The use of {GRACE} data to monitor natural and anthropogenic induced variations in water availability across {Africa}},
+	volume = {136},
+	issn = {0012-8252},
+	doi = {10.1016/J.EARSCIREV.2014.05.009},
+	abstract = {Inter-annual trends in terrestrial water storage (TWS) were extracted from monthly (01/2003-09/2012) Gravity Recovery and Climate Experiment (GRACE) data acquired over Africa and correlated (in a geographic information system [GIS] environment) with relevant temporal remote sensing, geologic, and hydrologic datasets. Findings include the following: (1) large sectors of Africa are undergoing statistically significant TWS variations (+. 44. mm/yr to -15. mm/yr) due to natural and anthropogenic causes; (2) warming of the tropical Atlantic Ocean apparently intensified Atlantic monsoons and increased precipitation and TWS over western and central Africa; (3) warming in the central Indian Ocean decreased precipitation and TWS over eastern Africa; (4) the high frequency of flooding events increased TWS over the Zambezi and Okavango basins; (5) extraction of fossil groundwater decreased TWS over the Saharan aquifers; (6) deforestation decreased TWS in three subbasins (Ubangi, Congo, and Sangha) of the Congo River Basin; and (7) the construction of dams increased TWS in the Blue Nile and Atbara subbasins. Given the 10. years of monthly GRACE data acquired on the subbasin scale across the globe, as well as the plans underway for deployment of a GRACE-FO and GRACE-II, using GRACE-derived TWS data should be considered an alternative, viable index for measuring temporal and spatial variations in water availability. © 2014 Elsevier B.V.},
+	urldate = {2021-09-02},
+	journal = {Earth-Science Reviews},
+	author = {Ahmed, Mohamed and Sultan, Mohamed and Wahr, John and Yan, Eugene},
+	month = sep,
+	year = {2014},
+	note = {Publisher: Elsevier},
+	keywords = {Climate change, Africa, Anthropogenic effects, GRACE, TWS, Water availability},
+	pages = {289--300},
+}
+
+@article{Ma2017,
+	title = {Temporal {Evolution} of {Regional} {Drought} {Detected} from {GRACE} {TWSA} and {CCI} {SM} in {Yunnan} {Province}, {China}},
+	volume = {9},
+	url = {https://www.mdpi.com/2072-4292/9/11/1124/htm},
+	doi = {10.3390/RS9111124},
+	abstract = {Droughts are one of the most devastating natural disasters, which impose increasing risks to humanity and the environment in the 21st century. The recent and continuous drought in China has led to detrimental effects on the local environment and societies in Yunnan Province, thus there is an urgent need to monitor the spatial and temporal evolution of the drought. The characteristics of the spatial distribution of drought processes and the impact of droughts on soil moisture and water storage remains unclear. In this study, the direction, magnitude, start time, and duration of droughts were investigated, based on Total Water Storage Anomalies (TWSA) of Gravity Recovery and Climate Experiment (GRACE), Climate Change Initiative Soil Moisture (CCI SM), and observed precipitation data. The spatial patterns of TWSA trends at each time duration segment suggest that the evolution of drought processes is very complex, and can be clustered into three zones. The spatial distribution of TWSA revealed that the drought status lasted more than one year longer in the north and east parts compared to other parts of Yunnan Province. Water losses occurred in the south part, while water gains were found in the central, north, and east parts of Yunnan Province, from 2002 to 2014, indicating a higher possibility of droughts in the south part in the future. Both de-seasonalized TWSA and CCI SM effectively captured the serious drought from 2009 to 2010 in Yunnan, and their spatial patterns were found to be consistent. The drought detected from CCI SMA had a one-month lag and TWSA had a two-month lag, in comparison to the meteorological drought from precipitation data, which indicates that the drought data derived from CCI SMA and TWSA are better able to represent the impact of droughts, particularly on agriculture. The contribution of surface SM changes in TWSA was determined to be about 41.94\%, suggesting that variations in soil moisture only explain less than half of the total water storage change. GRACE observations and CCI SM can be used as important indicators of the spatial distribution of the drought process and its impact on the environment and local communities, which will improve the management of water resources and early detection and monitoring of droughts.},
+	number = {11},
+	urldate = {2021-09-02},
+	journal = {Remote Sensing 2017, Vol. 9, Page 1124},
+	author = {Ma, Siyu and Wu, Qianxin and Wang, Jie and Zhang, Shiqiang},
+	month = nov,
+	year = {2017},
+	note = {Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {drought, GRACE, CCI SM, evolution stage, Yunnan Province},
+	pages = {1124},
+	file = {PDF:/home/francisco/Zotero/storage/DDTGGDP2/full-text.pdf:application/pdf},
+}
+
+@article{Zhang2019,
+	title = {Drought {Monitoring} and {Evaluation} by {ESA} {CCI} {Soil} {Moisture} {Products} over the {Yellow} {River} {Basin}},
+	volume = {12},
+	doi = {10.1109/JSTARS.2019.2934732},
+	abstract = {The multisatellite-retrieved soil moisture (SM) products released by the Europe Space Agency's Climate Change Initiative (ESA CCI) program have been widely used in numerous fields, including drought monitoring. In this article, a cumulative distribution function is applied to match the simulated SM from the Variable Infiltration Capacity (VIC) model and fill in the missing records of ESA CCI SM. The weekly standard SM index (SSI) calculated from the ESA CCI SM dataset is utilized to monitor the agricultural drought over the Yellow River Basin (YRB) during 2000-2012. The performance of the ESA CCI SSI is compared with the Standard Precipitation Index (SPI), the Standard Precipitation Evapotranspiration Index (SPEI), the self-calibrating Palmer Drought Severity Index based on VIC model (VIC-scPDSI) and the anomalies of ESA CCI SM and Normalized Difference Vegetation Index (NDVI). The results show that the interpolated ESA CCI SM is significantly (p {\textless} 0.05) correlated with the observed SM, and more than 84\% of the grids in the YRB display strong correlations with the global reanalysis SM. ESA CCI SSI presents a similar spatiotemporal pattern as VIC-scPDSI, while exhibiting a significantly delayed response to SPI and SPEI. The average residence time of drought reflected by ESA CCI SSI from short periods of extreme drought and long periods of less extreme drought are above 1 week and 3 weeks later than that represented by SPI and SPEI. Severe and extreme drought areas detected by ESA CCI SSI are generally larger than that captured by SPI, SPEI, and VIC-scPDSI.},
+	number = {9},
+	urldate = {2021-09-02},
+	journal = {IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
+	author = {Zhang, Linqi and Liu, Yi and Ren, Liliang and Jiang, Shanhu and Yang, Xiaoli and Yuan, Fei and Wang, Menghao and Wei, Linyong},
+	month = sep,
+	year = {2019},
+	note = {Publisher: Institute of Electrical and Electronics Engineers},
+	keywords = {Agricultural drought, drought index, Europe Space Agency's Climate Change Initiative (E, soil moisture (SM), Variable Infiltration Capacity (VIC) model},
+	pages = {3376--3386},
+}
+
+@article{Dorigo2017,
+	title = {{ESA} {CCI} {Soil} {Moisture} for improved {Earth} system understanding: {State}-of-the art and future directions},
+	volume = {203},
+	issn = {0034-4257},
+	doi = {10.1016/J.RSE.2017.07.001},
+	abstract = {Climate Data Records of soil moisture are fundamental for improving our understanding of long-term dynamics in the coupled water, energy, and carbon cycles over land. To respond to this need, in 2012 the European Space Agency (ESA) released the first multi-decadal, global satellite-observed soil moisture (SM) dataset as part of its Climate Change Initiative (CCI) program. This product, named ESA CCI SM, combines various single-sensor active and passive microwave soil moisture products into three harmonised products: a merged ACTIVE, a merged PASSIVE, and a COMBINED active + passive microwave product. Compared to the first product release, the latest version of ESA CCI SM includes a large number of enhancements, incorporates various new satellite sensors, and extends its temporal coverage to the period 1978–2015. In this study, we first provide a comprehensive overview of the characteristics, evolution, and performance of the ESA CCI SM products. Based on original research and a review of existing literature we show that the product quality has steadily increased with each successive release and that the merged products generally outperform the single-sensor input products. Although ESA CCI SM generally agrees well with the spatial and temporal patterns estimated by land surface models and observed in-situ, we identify surface conditions (e.g., dense vegetation, organic soils) for which it still has large uncertainties. Second, capitalising on the results of {\textgreater} 100 research studies that made use of the ESA CCI SM data we provide a synopsis of how it has contributed to improved process understanding in the following Earth system domains: climate variability and change, land-atmosphere interactions, global biogeochemical cycles and ecology, hydrological and land surface modelling, drought applications, and meteorology. While in some disciplines the use of ESA CCI SM is already widespread (e.g. in the evaluation of model soil moisture states) in others (e.g. in numerical weather prediction or flood forecasting) it is still in its infancy. The latter is partly related to current shortcomings of the product, e.g., the lack of near-real-time availability and data gaps in time and space. This study discloses the discrepancies between current ESA CCI SM product characteristics and the preferred characteristics of long-term satellite soil moisture products as outlined by the Global Climate Observing System (GCOS), and provides important directions for future ESA CCI SM product improvements to bridge these gaps.},
+	urldate = {2021-09-02},
+	journal = {Remote Sensing of Environment},
+	author = {Dorigo, Wouter and Wagner, Wolfgang and Albergel, Clement and Albrecht, Franziska and Balsamo, Gianpaolo and Brocca, Luca and Chung, Daniel and Ertl, Martin and Forkel, Matthias and Gruber, Alexander and Haas, Eva and Hamer, Paul D. and Hirschi, Martin and Ikonen, Jaakko and de Jeu, Richard and Kidd, Richard and Lahoz, William and Liu, Yi Y. and Miralles, Diego and Mistelbauer, Thomas and Nicolai-Shaw, Nadine and Parinussa, Robert and Pratola, Chiara and Reimer, Christoph and van der Schalie, Robin and Seneviratne, Sonia I. and Smolander, Tuomo and Lecomte, Pascal},
+	month = dec,
+	year = {2017},
+	note = {Publisher: Elsevier},
+	keywords = {Climate change, Soil moisture, Biogeochemistry, Climate Data Record, Earth observation, Earth system modelling, Essential Climate Variable, Microwave remote sensing},
+	pages = {185--215},
+}
+
+@article{Mu2011,
+	title = {Improvements to a {MODIS} global terrestrial evapotranspiration algorithm},
+	volume = {115},
+	issn = {0034-4257},
+	doi = {10.1016/J.RSE.2011.02.019},
+	abstract = {MODIS global evapotranspiration (ET) products by Mu et al. [Mu, Q., Heinsch, F. A., Zhao, M., Running, S. W. (2007). Development of a global evapotranspiration algorithm based on MODIS and global meteorology data. Remote Sensing of Environment, 111, 519-536. doi: 10.1016/j.rse.2007.04.015] are the first regular 1-km2 land surface ET dataset for the 109.03Millionkm2 global vegetated land areas at an 8-day interval. In this study, we have further improved the ET algorithm in Mu et al. (2007a, hereafter called old algorithm) by 1) simplifying the calculation of vegetation cover fraction; 2) calculating ET as the sum of daytime and nighttime components; 3) adding soil heat flux calculation; 4) improving estimates of stomatal conductance, aerodynamic resistance and boundary layer resistance; 5) separating dry canopy surface from the wet; and 6) dividing soil surface into saturated wet surface and moist surface. We compared the improved algorithm with the old one both globally and locally at 46 eddy flux towers. The global annual total ET over the vegetated land surface is 62.8×103km3, agrees very well with other reported estimates of 65.5×103km3 over the terrestrial land surface, which is much higher than 45.8×103km3 estimated with the old algorithm. For ET evaluation at eddy flux towers, the improved algorithm reduces mean absolute bias (MAE) of daily ET from 0.39mm day-1 to 0.33mmday-1 driven by tower meteorological data, and from 0.40mmday-1 to 0.31mmday-1 driven by GMAO data, a global meteorological reanalysis dataset. MAE values by the improved ET algorithm are 24.6\% and 24.1\% of the ET measured from towers, within the range (10-30\%) of the reported uncertainties in ET measurements, implying an enhanced accuracy of the improved algorithm. Compared to the old algorithm, the improved algorithm increases the skill score with tower-driven ET estimates from 0.50 to 0.55, and from 0.46 to 0.53 with GMAO-driven ET. Based on these results, the improved ET algorithm has a better performance in generating global ET data products, providing critical information on global terrestrial water and energy cycles and environmental changes. © 2011 Elsevier Inc.},
+	number = {8},
+	urldate = {2021-09-02},
+	journal = {Remote Sensing of Environment},
+	author = {Mu, Qiaozhen and Zhao, Maosheng and Running, Steven W.},
+	month = aug,
+	year = {2011},
+	note = {Publisher: Elsevier},
+	keywords = {MODIS, Evapotranspiration, Stomatal conductance, Vegetation cover fraction, Soil surface evaporation},
+	pages = {1781--1800},
+}
+
+@article{Pereira2015,
+	title = {Crop evapotranspiration estimation with {FAO56}: {Past} and future},
+	volume = {147},
+	issn = {0378-3774},
+	doi = {10.1016/J.AGWAT.2014.07.031},
+	abstract = {The FAO Irrigation and Drainage Paper No 56 on Crop Evapotranspiration has been in publication for more than 15 years. The paper advanced the accuracy and consistency of operational computation of evapotranspiration (ET) for agricultural and other land use types. The paper included updated definition and procedures for computing reference ET, an update on estimating crop coefficients (Kc), the adoption of the dual Kc for separate estimation of crop transpiration and soil evaporation, and an upgraded estimation of crop ET under water and salt stress and other non-standard conditions. These advances are retrospectively reviewed in this paper. The advances in computing reference ET were primarily through the adoption of specific and consistent characteristics for the grass reference crop using the Penman-Monteith equation parameterized to represent a living reference surface. That standardization made the Kc more visual and understandable as a factor that relates the ET characteristics of a specific crop to the defined reference crop. Methodologies were introduced to estimate reference ET under conditions of limited weather data while retaining the use of the PM equation. Advances in adopted Kc research included techniques to estimate Kc based on the architecture of crops, notably height and fraction of ground cover. Other advances included consistent and straight-forward techniques for applying the dual Kc method via soil and evaporation process modeling on a daily timestep. New techniques were introduced for using yield response and salinity threshold values to estimate reductions in ET caused by elevated soil salinity. In addition, recommendations were given for adjusting ET for impacts of surface mulching, intercropping, and sparse vegetation. The successful adoption of the FAO-PM reference ET and Kc approaches owes primarily to the simplicity, yet relatively high level of robustness of the procedures, and to transferability and repeatability of the Kc method. Future development needs are discussed.},
+	urldate = {2021-09-02},
+	journal = {Agricultural Water Management},
+	author = {Pereira, Luis S. and Allen, Richard G. and Smith, Martin and Raes, Dirk},
+	month = jan,
+	year = {2015},
+	note = {Publisher: Elsevier},
+	keywords = {Reference evapotranspiration, Crop coefficients, Dual crop coefficient approach, Evapotranspiration from remote sensing, Evapotranspiration under non-standard conditions, Future developments},
+	pages = {4--20},
+}
+
+@article{Milly2016,
+	title = {Potential evapotranspiration and continental drying},
+	volume = {6},
+	issn = {17586798},
+	url = {https://www.nature.com/articles/nclimate3046},
+	doi = {10.1038/nclimate3046},
+	abstract = {By various measures (drought area and intensity, climatic aridity index, and climatic water deficits), some observational analyses have suggested that much of the Earth's land has been drying during recent decades, but such drying seems inconsistent with observations of dryland greening and decreasing pan evaporation. 'Offline' analyses of climate-model outputs from anthropogenic climate change (ACC) experiments portend continuation of putative drying through the twenty-first century, despite an expected increase in global land precipitation. A ubiquitous increase in estimates of potential evapotranspiration (PET), driven by atmospheric warming, underlies the drying trends, but may be a methodological artefact. Here we show that the PET estimator commonly used (the Penman-Monteith PET for either an open-water surface or a reference crop) severely overpredicts the changes in non-water-stressed evapotranspiration computed in the climate models themselves in ACC experiments. This overprediction is partially due to neglect of stomatal conductance reductions commonly induced by increasing atmospheric CO2 concentrations in climate models. Our findings imply that historical and future tendencies towards continental drying, as characterized by offline-computed runoff, as well as other PET-dependent metrics, may be considerably weaker and less extensive than previously thought.},
+	number = {10},
+	urldate = {2021-09-02},
+	journal = {Nature Climate Change},
+	author = {Milly, P. C.D. and Dunne, K. A.},
+	month = jun,
+	year = {2016},
+	note = {Publisher: Nature Publishing Group},
+	keywords = {Hydrology, change impacts, Climate},
+	pages = {946--949},
+}
+
+@misc{Running2021,
+	title = {{MODIS}/{Terra} {Net} {Evapotranspiration} 8-{Day} {L4} {Global} 500m {SIN} {Grid} {V061}. 2021, distributed by {NASA} {EOSDIS} {Land} {Processes} {DAAC}},
+	author = {Running, S {and} Mu, Q {and} Zhao, M},
+	doi = {10.5067/MODIS/MOD16A2.061},
+}
+
+@article{Mu2013,
+	title = {A {Remotely} {Sensed} {Global} {Terrestrial} {Drought} {Severity} {Index}},
+	volume = {94},
+	url = {http://dx.doi.org/10.1175/BAMS-D-11-00213.1},
+	doi = {10.1175/BAMS-D-11-00213.1},
+	number = {1},
+	journal = {Bull. Amer. Meteor. Soc.},
+	author = {Mu, Qiaozhen and Zhao, Maosheng and Kimball, John S and McDowell, Nathan G and Running, Steven W},
+	year = {2013},
+	pages = {83--98},
+	file = {PDF:/home/francisco/Zotero/storage/UTDMB4YE/2013-A_Remotely_Sensed_Global_Terrestrial_Drought_Severity_Index.pdf:application/pdf},
+}
+
+@article{FAO66,
+	title = {Crop yield response to water},
+	issn = {0254-5284},
+	urldate = {2021-09-02},
+	author = {Steduto, Pasquale and Hsiao, Theodore C and Fereres, Elias and Raes, Dirk},
+	keywords = {crop yield, irrigation, water management, agricultural planning, drainage},
+	file = {PDF:/home/francisco/Zotero/storage/5DNVEBBL/full-text.pdf:application/pdf},
+}
+
+@misc{Allen2005,
+	title = {reference {ETo} by the {FAO56}},
+	author = {Allen, Richard G and Pruitt, William O and Wright, James L and Howell, Terry A and Ventura, Francesca and Snyder, Richard and Itenfisu, Daniel and Steduto, Pasquale and Berengena, Joaquin and Yrisarry, Javier Baselga and Smith, Martin and Pereira, Luis S and Raes, Dirk and Perrier, Alain and Alves, Isabel and Walter, Ivan and Elliott, Ronald},
+	year = {2005},
+}
+
+@book{WMO2012,
+	address = {Geneva},
+	title = {Standardized {Precipitation} {Index} {User} {Guide}},
+	isbn = {978-92-63-11091-6},
+	url = {http://library.wmo.int/opac/index.php?lvl=notice_display&id=13682},
+	abstract = {Drought is an insidious natural hazard that results from lower levels of precipitations than what is considered normal. When this phenomenon extends over a season or a longer period of time, precipitation is insufficient to meet the demands of human activities and the environment. Drought must be considered a relative, rather than absolute, condition. There are also many different methodologies for monitoring drought. Droughts are regional in extent and each region has specific climatic characteristics. Droughts that occur in the North American Great Plains will differ from those that occur in northeast Brazil, southern Africa, western Europe, eastern Australia, or the North China Plain. The amount, seasonality and form of precipitation differ widely between each of these locations. Temperature, wind and relative humidity are also important factors to include in characterizing drought. Drought monitoring also needs to be application-specific because drought impacts will vary between sectors. Drought means different things to different users such as water managers, agricultural producers, hydroelectric power plant operators and wildlife biologists. Even within sectors, there are many different perspectives of drought because impacts may differ markedly. Droughts are commonly classified by type as meteorological, agricultural and hydrological, and differ from one another in intensity, duration and spatial coverage.},
+	urldate = {2021-09-01},
+	publisher = {WMO},
+	author = {{WMO} and Svoboda, Mark and Hayes, Michael and Wood, Deborah A.},
+	year = {2012},
+	note = {Series Title: WMO
+Publication Title: WMO-No. 1090 ©
+Issue: 1090},
+	keywords = {SPI},
+}
+
+@article{Vrieling2018,
+	title = {Vegetation phenology from {Sentinel}-2 and field cameras for a {Dutch} barrier island},
+	volume = {215},
+	issn = {00344257},
+	url = {https://www.sciencedirect.com/science/article/pii/S003442571830107X},
+	doi = {10.1016/j.rse.2018.03.014},
+	abstract = {Remote sensing studies of vegetation phenology increasingly benefit from freely available satellite imagery acquired with high temporal frequency at fine spatial resolution. Particularly for heterogeneous landscapes this is good news, given the drawback of medium-resolution sensors commonly used for phenology retrieval (e.g., MODIS) to properly represent the fine-scale spatial variability of vegetation types. The Sentinel-2 mission acquires spectral data globally at 10 to 60 m resolution every five days. To illustrate the mission's potential for studying vegetation phenology, we retrieved phenological parameters for the Dutch barrier island Schiermonnikoog for a full season of Sentinel-2A observations in 2016. Overlapping orbits resulted in two acquisitions per 10 days, similar to what is achieved globally since the launch of Sentinel-2B. For eight locations on the island's salt marsh we compared greenness chromatic coordinate (GCC) series derived from digital repeat RGB-cameras with vegetation index series derived from Sentinel-2 (NDVI and GCC). For each series, a double hyperbolic tangent model was fitted and thresholds were applied to the modelled data to estimate start-, peak-, and end-of-season (SOS/PS/EOS). Variability in Sentinel-2 derived SOS, when taken as the midpoint between minimum and peak NDVI, was well-explained by camera GCC-based SOS (R2 = 0.74, MSD = 8.0 days, RMSD = 13.0 days). However, EOS estimates from camera GCC series were on average almost two months before NDVI-based estimates. This could partially be explained by the observed exponential relationship between GCC and NDVI, as well as by the combined effect of viewing angle differences and the presence of non-photosynthetic elements in the vegetation canopy. A two-layer canopy radiative transfer model incorporating reduced chlorophyll levels in the upper layer provided a physically-based explanation of the viewing angle effect. Finally, we applied the phenology retrieval approach to NDVI series for all pixels of the island in order to map spatial patterns of phenology at fine resolution. Our results demonstrate the potential of the Sentinel-2 mission for providing spatially-detailed retrievals of phenology.},
+	urldate = {2018-08-22},
+	journal = {Remote Sensing of Environment},
+	author = {Vrieling, Anton and Meroni, Michele and Darvishzadeh, Roshanak and Skidmore, Andrew K. and Wang, Tiejun and Zurita-Milla, Raul and Oosterbeek, Kees and O'Connor, Brian and Paganini, Marc},
+	month = sep,
+	year = {2018},
+	note = {Publisher: Elsevier},
+	keywords = {Sentinel-2, Digital repeat photography, Landscape variability, Multi-temporal analysis, NDVI time series, Phenology, Radiative transfer modelling, Salt marsh, Spatial resolution},
+	pages = {517--529},
+	file = {PDF:/home/francisco/Zotero/storage/EAN34VE2/full-text.pdf:application/pdf},
+}
+
+@article{Cai2017,
+	title = {Performance of {Smoothing} {Methods} for {Reconstructing} {NDVI} {Time}-{Series} and {Estimating} {Vegetation} {Phenology} from {MODIS} {Data}},
+	volume = {9},
+	issn = {2072-4292},
+	url = {http://www.mdpi.com/2072-4292/9/12/1271},
+	doi = {10.3390/rs9121271},
+	number = {12},
+	urldate = {2019-11-28},
+	journal = {Remote Sensing},
+	author = {Cai, Zhanzhang and Jönsson, Per and Jin, Hongxiao and Eklundh, Lars},
+	month = dec,
+	year = {2017},
+	pages = {1271},
+	file = {PDF:/home/francisco/Zotero/storage/2AU6HJZ4/full-text.pdf:application/pdf},
+}
+
+@article{Younes2021,
+	title = {All models of satellite-derived phenology are wrong, but some are useful: {A} case study from northern {Australia}},
+	volume = {97},
+	issn = {0303-2434},
+	doi = {10.1016/J.JAG.2020.102285},
+	abstract = {Satellite-derived phenology (or apparent phenology) is frequently used to illustrate changes in plant phenology (i.e. true phenology) and the effects of climate forcing. However, each study uses a different method to detect phenology. Plant phenology refers to the relationship between the life cycle of plants and weather and climate events. Phenology is often studied in the field, but recently studies have transitioned towards using satellite images to monitor phenology at the plot, country, and continental scales. The problem with this approach is that there is an ever-increasing variety of earth observation satellites collecting data with different spatial, spectral, and temporal characteristics. In this paper we ask if studies that detect phenology using different sensors over the same site produce comparable results. Mangrove forests are one example where different methods have been used to examine their apparent phenology. In general, plant phenology, including mangroves, is described using few individual plants, but continental-scale descriptions of phenological events are scarce or inexistent. Few attempts have been made to describe the phenology of mangroves using satellite imagery, and each study presents a different method. We hypothesize that apparent phenology changes with: 1) areal extent; 2) site location; 3) frequency of observation; 4) spatial resolution; 5) temporal coverage; and 6) the number of cloud contaminated observations. Intuitively, one would assume that these hypotheses hold true, yet few studies have investigated this. For example, one would expect that clouds change the observed phenology of vegetation, that the number of species captured at spatial resolution will impact the apparent phenology, or that mangroves in different places display different phenologies, but how are these changes represented in the apparent phenology? We use the Enhanced Vegetation Index (EVI) to examine the changes in the start of season and peak growing season dates, as well as the shape and amplitude of the apparent phenology in each hypothesis. We use Landsat and Sentinel 2 imagery over the mangrove forests in Darwin Harbour (Northern Territory, Australia) as a case study, and found that apparent phenology does change with the sensor, site, and cloud contamination. Importantly, the apparent phenology is comparable between Landsat and Sentinel 2 sensors, but it is not comparable to phenology derived from MODIS. This is due to differences in the spatial resolution of the sensors. Cloud contamination also significantly changes the apparent phenology of vegetation. In this paper we expose the complexity of modelling phenology with remote sensing and help guide future phenology investigations.},
+	urldate = {2021-09-01},
+	journal = {International Journal of Applied Earth Observation and Geoinformation},
+	author = {Younes, Nicolas and Joyce, Karen E. and Maier, Stefan W.},
+	month = may,
+	year = {2021},
+	note = {Publisher: Elsevier},
+	pages = {102285},
+	file = {PDF:/home/francisco/Zotero/storage/ZTWWGVAM/full-text.pdf:application/pdf},
+}
+
+@misc{Friedl2019,
+	title = {{MCD12Q1} {MODIS}/{Terra}+{Aqua} {Land} {Cover} {Type} {Yearly} {L3} {Global} 500m {SIN} {Grid} {V006} [{Data} set]. {NASA} {EOSDIS} {Land} {Processes} {DAAC}},
+	author = {Friedl, M and Sulla-Menashe, D},
+	year = {2019},
+	doi = {10.5067/MODIS/MCD12Q1.006},
+}
+
+@article{Akinyemi2021,
+	title = {Vegetation {Trends}, {Drought} {Severity} and {Land} {Use}-{Land} {Cover} {Change} during the {Growing} {Season} in {Semi}-{Arid} {Contexts}},
+	volume = {13},
+	url = {https://www.mdpi.com/2072-4292/13/5/836/htm},
+	doi = {10.3390/RS13050836},
+	abstract = {Drought severity and impact assessments are necessary to effectively monitor droughts in semi-arid contexts. However, little is known about the influence land use-land cover (LULC) has—in terms of the differences in annual sizes and configurations—on drought effects. Coupling remote sensing and Geographic Information System techniques, drought evolution was assessed and mapped. During the growing season, drought severity and the effects on LULC were examined and whether these differed between areas of land change and persistence. This study used areas of economic importance to Botswana as case studies. Vegetation Condition Index, derived from Normalised Difference Vegetation Index time series for the growing seasons (2000–2018 in comparison to 2020–2021), was used to assess droughts for 17 constituencies (Botswana’s fourth administrative level) in the Central District of Botswana. Further analyses by LULC types and land change highlighted the vulnerability of both human and natural systems to drought. Identified drought periods in the time series correspond to declared drought years by the Botswana government. Drought severity (extreme, severe, moderate and mild) and the percentage of land areas affected varied in both space and time. The growing seasons of 2002–2003, 2003–2004 and 2015–2016 were the most drought-stricken in the entire time series, coinciding with the El Niño southern oscillation (ENSO). The lower-than-normal vegetation productivity during these growing seasons was evident from the analysis. With the above-normal vegetation productivity in the ongoing season (2020–2021), the results suggest the reversal of the negative vegetation trends observed in the preceding growing seasons. However, the extent of this reversal cannot be confidently ascertained with the season still ongoing. Relating drought severity and intensities to LULC and change in selected drought years revealed that most lands affected by extreme and severe drought (in descending order) were in tree-covered areas (forests and woodlands), grassland/rangelands and croplands. These LULC types were the most affected as extreme drought intersected vegetation productivity decline. The most impacted constituencies according to drought severity and the number of drought events were Mahalapye west (eight), Mahalapye east (seven) and Boteti west (seven). Other constituencies experienced between six and two drought events of varying durations throughout the time series. Since not all constituencies were affected similarly during declared droughts, studies such as this contribute to devising appropriate context-specific responses aimed at minimising drought impacts on social-ecological systems. The methodology utilised can apply to other drylands where climatic and socioeconomic contexts are similar to those of Botswana.},
+	number = {5},
+	urldate = {2021-09-01},
+	journal = {Remote Sensing 2021, Vol. 13, Page 836},
+	author = {Akinyemi, Felicia O.},
+	month = feb,
+	year = {2021},
+	note = {Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {drought, remote sensing, land cover, Botswana, land use, Normalised Difference Vegetation Index (NDVI), Vegetation Condition Index (VCI)},
+	pages = {836},
+	file = {PDF:/home/francisco/Zotero/storage/49WZFI6N/full-text.pdf:application/pdf},
+}
+
+@article{Tran2019,
+	title = {Drought and {Human} {Impacts} on {Land} {Use} and {Land} {Cover} {Change} in a {Vietnamese} {Coastal} {Area}},
+	volume = {11},
+	url = {https://www.mdpi.com/2072-4292/11/3/333/htm},
+	doi = {10.3390/RS11030333},
+	abstract = {Drought is a dry-weather event characterized by a deficit of water resources in a period of year due to less rainfall than normal or overexploitation. This insidious hazard tends to occur frequently and more intensively in sub-humid regions resulting in changes in the landscape, transitions in agricultural practices and other environmental-social issues. The study area is in the sub-humid region of the northern coastal zone of Binh Thuan province, Vietnam\&mdash;Tuy Phong district. This area is indicated as a subject of prolonged droughts during 6-month dry seasons, which have occurred more frequently in recent years. Associated with economic transitions in agricultural practicing, urbanization, and industrialization, prolonged droughts have resulted in rapid changes in land use and land cover (LULC) in Tuy Phong, especially in three coastal communes: Binh Thanh, Lien Huong, and Phuoc The. A bi-temporal analysis using high-resolution data, the 2011 WorldView2 and the 2016 GeoEye1, was examined to assess LULC changes from observed severe droughts in those three communes. Results showed a dramatic reduction in the extent of hydrological systems (about 20\%), and significant increases of tree canopies in urban areas and near the coastal areas (approximately 76.8\%). Paddy fields declined by 51\% in 2016; such areas transitioned to inactive status or were alternated for growing drought-tolerant plants. Shrimp farming experienced a recognizable decrease by approximately 44\%. The 2014 map and field observations during summer 2016 provide references for object-based classification and validation. Overall agreement of results is about 85\%.},
+	number = {3},
+	urldate = {2021-08-31},
+	journal = {Remote Sensing 2019, Vol. 11, Page 333},
+	author = {Tran, Hoa Thi and Campbell, James B. and Wynne, Randolph H. and Shao, Yang and Phan, Son Viet},
+	month = feb,
+	year = {2019},
+	note = {Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {drought, high, based classification, Binh Thuan, human impacts, humid region, LULC, object, resolution images, sub, Vietnam},
+	pages = {333},
+	file = {PDF:/home/francisco/Zotero/storage/RGMLKSDT/full-text.pdf:application/pdf},
+}
+
+@article{Meroni2017,
+	title = {Evaluation of the {Standardized} {Precipitation} {Index} as an early predictor of seasonal vegetation production anomalies in the {Sahel}},
+	volume = {8},
+	url = {http://www.tandfonline.com/doi/abs/10.1080/2150704X.2016.1264020},
+	doi = {10.1080/2150704X.2016.1264020},
+	abstract = {ABSTRACTWe analysed the performance and timeliness of the Standardized Precipitation Index (SPI) in anticipating deviations from mean seasonal vegetation productivity in the Sahel. Gridded rainfall estimates are used to compute the SPI for 1–6-month timescales, whereas the Z-score of the cumulative value of the Fraction of Absorbed Photosynthetically Active Radiation over the growing season (zCFAPAR) is used as a proxy of seasonal productivity. Results show that the strength of the link varies in space as a function of both the SPI timescale and the timing of the SPI calculation with respect to the vegetative season’s progress. For productivity forecasting, we propose an operational strategy to select per grid cell the SPI timescale and computation time with the highest correlation with zCFAPAR at different moments of the season. The linear relationship between SPI and zCFAPAR is significant for 32–66\% of the study area, depending on the timing at which SPI is considered (at 0\% and 75\% of the seasonal progress, respectively). For these areas, the selected SPI explains on average about 40\% of the variance of zCFAPAR and may thus assist in the earlier identification of agricultural drought.},
+	number = {4},
+	journal = {Remote Sensing Letters},
+	author = {Meroni, Michele and Rembold, Felix and Fasbender, Dominique and Vrieling, Anton},
+	year = {2017},
+	pages = {301--310},
+	file = {PDF:/home/francisco/Zotero/storage/XIN8ACND/2017-Evaluation_of_the_Standardized_Precipitation_Index_as_an_early_predictor_of_seasonal_vegetation_production_anomalie.pdf:application/pdf},
+}
+
+@article{Mishra2015,
+	title = {Anatomy of a local-scale drought: {Application} of assimilated remote sensing products, crop model, and statistical methods to an agricultural drought study},
+	volume = {526},
+	issn = {00221694},
+	url = {http://www.sciencedirect.com/science/article/pii/S0022169414008336},
+	doi = {10.1016/j.jhydrol.2014.10.038},
+	abstract = {Drought is of global concern for society but it originates as a local problem. It has a significant impact on water quantity and quality and influences food, water, and energy security. The consequences of drought vary in space and time, from the local scale (e.g. county level) to regional scale (e.g. state or country level) to global scale. Within the regional scale, there are multiple socio-economic impacts (i.e., agriculture, drinking water supply, and stream health) occurring individually or in combination at local scales, either in clusters or scattered. Even though the application of aggregated drought information at the regional level has been useful in drought management, the latter can be further improved by evaluating the structure and evolution of a drought at the local scale. This study addresses a local-scale agricultural drought anatomy in Story County in Iowa, USA. This complex problem was evaluated using assimilated AMSR-E soil moisture and MODIS-LAI data into a crop model to generate surface and sub-surface drought indices to explore the anatomy of an agricultural drought. Quantification of moisture supply in the root zone remains a gray area in research community, this challenge can be partly overcome by incorporating assimilation of soil moisture and leaf area index into crop modeling framework for agricultural drought quantification, as it performs better in simulating crop yield. It was noted that the persistence of subsurface droughts is in general higher than surface droughts, which can potentially improve forecast accuracy. It was found that both surface and subsurface droughts have an impact on crop yields, albeit with different magnitudes, however, the total water available in the soil profile seemed to have a greater impact on the yield. Further, agricultural drought should not be treated equal for all crops, and it should be calculated based on the root zone depth rather than a fixed soil layer depth. We envisaged that the results of this study will enhance our understanding of agricultural droughts in different parts of the world.},
+	journal = {Journal of Hydrology},
+	author = {Mishra, Ashok K. and Ines, Amor V.M. and Das, Narendra N. and Prakash Khedun, C. and Singh, Vijay P. and Sivakumar, Bellie and Hansen, James W.},
+	year = {2015},
+	keywords = {Data assimilation, Crop yield, Copulas, Drought anatomy, Root zone soil moisture},
+	pages = {15--29},
+	file = {PDF:/home/francisco/Zotero/storage/3SZXJ4GH/2015-Anatomy_of_a_local-scale_drought_Application_of_assimilated_remote_sensing_products_crop_model_and_statistical_meth.pdf:application/pdf},
+}
+
+@article{Peters2002,
+	title = {Drought monitoring with {NDVI}-based {Standardized} {Vegetation} {Index}},
+	volume = {68},
+	issn = {00991112},
+	abstract = {Drought is onee of the major natural hazards affecting the environment and economy of countries worldwide. Reliance on weather data alone is not sufficient to monitor areas of drought, particularly when these data can be untimely, sparse, and incomplete. Augmenting weather data with satellite images to identify the location and severity of droughts is a must for complete, up-to-date, and comprehensive coverage of current drought conditions. The objective of this research was to standardize, by time of year, the Normalized Difference Vegetation Index (NDVI) to augment drought-monitoring techniques. The Standardized Vegetation Index (SVI) describes the probability of vegetation condition deviation from "normal," based on calculations from weekly NDVI values. The study was conducted with 12 years (1989-2000) of Advanced Very High-Resolution Radiometer (AVHRR) satellite images. Z-scores of the NDVI distribution are used to estimate the probability of occurrence of the present vegetation condition at a given location relative to the possible range of vegetative vigor, historically. The SVI can be interpreted as vegetation condition based on the fact that vegetation is an efficient integrator of climatic and anthropogenic impacts in the boundary layer of the atmosphere. It thereby provides a spatially and temporally continuous short-term indicator of climatic conditions. Findings indicate that the SVI, along with other drought monitoring tools, is useful for assessing the extent and severity of drought at a spatial resolution of 1 km. The SVI is capable of providing a near-real-time indicator of vegetation condition within drought regions, and more specifically areas of varying drought conditions.},
+	number = {1},
+	journal = {Photogrammetric Engineering and Remote Sensing},
+	author = {Peters, Albert J. and Walter-Shea, Elizabeth A. and Ji, Lei and Viña, Andrés and Hayes, Michael and Svoboda, Mark D.},
+	year = {2002},
+	pages = {71--75},
+	file = {PDF:/home/francisco/Zotero/storage/QR7PCEZC/2002-Drought_monitoring_with_NDVI-based_Standardized_Vegetation_Index.pdf:application/pdf},
+}
+
+@article{Kogan1990,
+	title = {Remote sensing of weather impacts on vegetation in non-homogeneous areas},
+	volume = {11},
+	url = {http://dx.doi.org/10.1080/01431169008955102},
+	doi = {10.1080/01431169008955102},
+	abstract = {Abstract Successful application of the normalized difference vegetation index (NDVI) for estimating weather impacts on vegetation is currently hindered in non-homogeneous areas. The problem is that the differences between the level of vegetation in these areas can be related, in addition to weather impacts, to the differences in geographic resources (climate, soil, vegetation type and topography). These differences should be eliminated when weather impacts on vegetation are estimated from NDVI data. This paper discusses a concept and a technique for eliminating that portion of the NDVI which is related to the contribution of geographic resources to the amount of vegetation. The Advanced Very High Resolution Radiometer (AVHRR) data of the Global Vegetation Index format were used for the 1984-1987 seasons in Sudan. The procedure suggests normalization of NDVI values relative to the absolute maximum and the absolute minimum of NDVI. These two criteria were shown to be an appropriate characteristic of geographic resources of an area. The modified NDVI was named the Vegetation Condition Index (VCI). Comparison between VCI, NDVI and precipitation dynamics showed that the VCI estimates better portray precipitation dynamics as compared to the NDVI. The VCI permits not only the desciption of vegetation but also estimation of spatial and temporal vegetation changes and weather impacts on vegetation.},
+	number = {8},
+	journal = {Int. J. Remote Sens.},
+	author = {Kogan, F N},
+	year = {1990},
+	pages = {1405--1419},
+	file = {PDF:/home/francisco/Zotero/storage/EZR775E9/1990-Remote_sensing_of_weather_impacts_on_vegetation_in_non-homogeneous_areas.pdf:application/pdf},
+}
+
+@article{Kogan1995,
+	title = {Application of vegetation index and brightness temperature for drought detection},
+	volume = {15},
+	issn = {02731177},
+	doi = {10.1016/0273-1177(95)00079-T},
+	abstract = {In recent years the National Oceanic and Atmospheric Administration (NOAA) has designed a new AVHRR-based Vegetation Condition Index (VCI) that has showed to be useful for drought detection and tracking. Validations showed that the VCI has excellent ability to detect drought and to measure time of its onset, intensity, duration, and impact on vegetation. The VCI provides accurate drought information not only for well-defined, prolonged, widespread, and intensive droughts, but also for very localized, short-term, and non well-defined droughts. In addition to the VCI, the AVHRR-based observations in thermal bands were used to develop the Temperature Condition Index (TCI). This index was used to determine temperature-related vegetation stress and also stress caused by an excessive wetness. This paper provides principles of these indices, describes data processing, and gives examples of VCI/TCI application in different ecological environments of the United States. © 1995.},
+	number = {11},
+	journal = {Advances in Space Research},
+	author = {Kogan, F. N.},
+	year = {1995},
+	pages = {91--100},
+}
+
+@article{Brown2008,
+	title = {The {Vegetation} {Drought} {Response} {Index} ({VegDRI}): {A} new integrated approach for monitoring drought stress in vegetation},
+	volume = {45(1)},
+	journal = {GIScience and Remote Sensing},
+	author = {Brown, J F and Wardlow, B D and Tadesse, T and Hayes, M J and Reed, B C},
+	year = {2008},
+	pages = {16--46},
+	file = {PDF:/home/francisco/Zotero/storage/ZN6FRAAT/2008-The_Vegetation_Drought_Response_Index_(VegDRI)_A_new_integrated_approach_for_monitoring_drought_stress_in_vegetatio.pdf:application/pdf},
+}
+
+@article{West2019,
+	title = {Remote sensing for drought monitoring {\textbackslash}\& impact assessment: {Progress}, past challenges and future opportunities},
+	volume = {232},
+	issn = {00344257},
+	doi = {10.1016/j.rse.2019.111291},
+	abstract = {Drought is a common hydrometeorological phenomenon and a pervasive global hazard. As our climate changes, it is likely that drought events will become more intense and frequent. Effective drought monitoring is therefore critical, both to the research community in developing an understanding of drought, and to those responsible for drought management and mitigation. Over the past 50 years remote sensing has shifted the field away from reliance on traditional site-based measurements and enabled observations and estimates of key drought-related variables over larger spatial and temporal scales than was previously possible. This has proven especially important in data poor regions with limited in-situ monitoring stations. Available remotely sensed data products now represent almost all aspects of drought propagation and have contributed to our understanding of the phenomena. In this review we chart the rise of remote sensing for drought monitoring, examining key milestones and technologies for assessing meteorological, agricultural and hydrological drought events. We reflect on challenges the research community has faced to date, such as limitations associated with data record length and spatial, temporal and spectral resolution. This review then looks ahead to the future in terms of new technologies, such as the ESA Sentinel satellites, analytical platforms and approaches, such as Google EarthEngine, and the utility of existing data in new drought monitoring applications. We look forward to the continuation of 50 years of progress to provide effective, innovative and efficient drought monitoring solutions utilising remote sensing technology.},
+	urldate = {2020-01-16},
+	journal = {Remote Sensing of Environment},
+	author = {West, Harry and Quinn, Nevil and Horswell, Michael},
+	month = oct,
+	year = {2019},
+	note = {Publisher: Elsevier Inc.},
+	keywords = {Agricultural drought, Drought, Drought monitoring, Hydrological drought, Meteorological drought, Remote sensing of drought, Review paper},
+	file = {PDF:/home/francisco/Zotero/storage/T95WM8N4/full-text.pdf:application/pdf},
+}
+
+@article{AghaKouchak2015,
+	title = {Remote sensing of drought: {Progress}, challenges and opportunities},
+	volume = {53},
+	issn = {19449208},
+	url = {http://dx.doi.org/10.1002/2014RG000456.},
+	doi = {10.1002/2014RG000456},
+	abstract = {This review surveys current and emerging drought monitoring approaches using satellite remote sensing observations from climatological and ecosystem perspectives. We argue that satellite observations not currently used for operational drought monitoring, such as near-surface air relative humidity data from the Atmospheric Infrared Sounder mission, provide opportunities to improve early drought warning. Current and future satellite missions offer opportunities to develop composite and multi-indicator drought models. While there are immense opportunities, there are major challenges including data continuity, unquantified uncertainty, sensor changes, and community acceptability. One of the major limitations of many of the currently available satellite observations is their short length of record. A number of relevant satellite missions and sensors (e.g., the Gravity Recovery and Climate Experiment) provide only a decade of data, which may not be sufficient to study droughts from a climate perspective. However, they still provide valuable information about relevant hydrologic and ecological processes linked to this natural hazard. Therefore, there is a need for models and algorithms that combine multiple data sets and/or assimilate satellite observations into model simulations to generate long-term climate data records. Finally, the study identifies a major gap in indicators for describing drought impacts on the carbon and nitrogen cycle, which are fundamental to assessing drought impacts on ecosystems. Key Points Current and emerging approaches in satellite remote sensing of drought Limitations of currently available satellite observations and challenges ahead Opportunities for advancing science of drought remote sensing},
+	number = {2},
+	journal = {Reviews of Geophysics},
+	author = {AghaKouchak, A. and Farahmand, A. and Melton, F. S. and Teixeira, J. and Anderson, M. C. and Wardlow, B. D. and Hain, C. R.},
+	year = {2015},
+	keywords = {drought, remote sensing},
+	pages = {452--480},
+	file = {PDF:/home/francisco/Zotero/storage/B2YDJ4WL/2015-Remote_sensing_of_drought_Progress_challenges_and_opportunities.pdf:application/pdf},
+}
+
+@book{IPCCCH112021,
+	title = {Weather and {Climate} {Extreme} {Events} in a {Changing} {Climate}},
+	publisher = {Cambridge University Press. In Press.},
+	author = {Seneviratne, S {and} Zhang, X {and} Adnan, M {and} Badi, W {and} Dereczynski, C {and} Luca, A {and} Ghosh, S {and} Iskandar, I {and} Kossin, J {and} Lewis, S {and} Otto, F {and} Pinto, I {and} Satoh, M {and} Vicente-Serrano, S {and} Wehner, M {and} Zhou ; Masson-Delmotte, B {and} V and, O},
+	editor = {Masson-Delmotte, V., P. Zhai and A. Pirani, S. L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M. I. Gomis, M. Huang, K. Leitzell, E. and Lonnoy, J. B. R. Matthews, T. K. Maycock, T. Waterfield, O. Yelekçi, R. Yu {and} B. Zhou},
+	year = {2021},
+	note = {Publication Title: Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change},
+}
+
+@article{Wilhite1985,
+	title = {Understanding: {The} drought phenomenon: {The} role of definitions},
+	volume = {10},
+	issn = {02508060},
+	url = {http://dx.doi.org/10.1080/02508068508686328},
+	doi = {10.1080/02508068508686328},
+	number = {3},
+	journal = {Water International},
+	author = {Wilhite, Donald A. and Glantz, Michael H.},
+	year = {1985},
+	pages = {111--120},
+}
+
+@article{Garreaud2017,
+	title = {The 2010-2015 mega drought in {Central} {Chile}: {Impacts} on regional hydroclimate and vegetation},
+	volume = {2017},
+	issn = {1812-2116},
+	url = {http://www.hydrol-earth-syst-sci-discuss.net/hess-2017-191/},
+	doi = {10.5194/hess-2017-191},
+	abstract = {Since 2010 an uninterrupted sequence of dry years, with annual rainfall deficits ranging from 25 to 45\&amp;thinsp;\%, has prevailed in Central Chile (western South America, 30\&amp;ndash;38\&amp;deg;\&amp;thinsp;S). Although intense 1- or 2-year droughts are recurrent in this Mediterranean-like region, the ongoing event stands out because of its longevity and large spatial extent. The extraordinary character of the so-called Central Chile Mega Drought (MD) was established against century long historical records and a millennial tree-ring reconstruction of regional precipitation. The largest MD-averaged rainfall relative anomalies occurred in the northern, semi-arid sector of central Chile but the event was unprecedented to the south of 35\&amp;deg;\&amp;thinsp;S. ENSO neutral conditions have prevailed since 2011 (but for the strong El Niño 2015) contrasting with La Niña conditions that often accompanied past droughts. The precipitation deficit diminished the Andean snowpack and resulted in amplified declines (up to 90\&amp;thinsp;\%) of river flow, reservoir volumes and groundwater levels along central Chile and westernmost Argentina. In some semiarid basins we also found a conspicuous decrease in the runoff-to-rainfall coefficient. A substantial decrease in vegetation productivity occurred in the shrubland-dominated, northern sector, but a mix of greening and browning patches occurred farther south where irrigated croplands and exotic forest plantations dominate. The ongoing warming in central Chile, making the MD one of the warmest 6-year period on record, may have also contributed to such complex vegetation changes by increasing potential evapotranspiration. The understanding of the nature and biophysical impacts of the MD contributes to preparedness efforts to face a dry, warm future regional climate scenario.},
+	journal = {Hydrology and Earth System Sciences Discussions},
+	author = {Garreaud, René and Alvarez-Garreton, Camila and Barichivich, Jonathan and Boisier, Juan Pablo and Christie, Duncan and Galleguillos, Mauricio and LeQuesne, Carlos and McPhee, James and Zambrano-Bigiarini, Mauricio},
+	year = {2017},
+	pages = {1--37},
+	file = {PDF:/home/francisco/Zotero/storage/H9EFGQFT/Garreaud et al. - 2017 - The 2010--2015 mega drought in Central Chile Impacts on regional hydroclimate and vegetation.pdf:application/pdf},
+}
+
+@article{Zambrano2017,
+	title = {Evaluating satellite-derived long-term historical precipitation datasets for drought monitoring in {Chile}},
+	volume = {186},
+	copyright = {All rights reserved},
+	issn = {01698095},
+	url = {https://www.sciencedirect.com/science/article/pii/S0169809516305865},
+	doi = {10.1016/j.atmosres.2016.11.006},
+	abstract = {Precipitation is a key parameter for the study of climate change and variability and the detection and monitoring of natural disaster such as drought. Precipitation datasets that accurately capture the amount and spatial variability of rainfall is critical for drought monitoring and a wide range of other climate applications. This is challenging in many parts of the world, which often have a limited number of weather stations and/or historical data records. Satellite-derived precipitation products offer a viable alternative with several remotely sensed precipitation datasets now available with long historical data records (+30years), which include the Climate Hazards Group InfraRed Precipitation with Station (CHIRPS) and Precipitation Estimation from Remotely Sensed Information using Artificial Neural Networks-Climate Data Record (PERSIANN-CDR) datasets. This study presents a comparative analysis of three historical satellite-based precipitation datasets that include Tropical Rainfall Measuring Mission (TRMM) Multi-satellite Precipitation Analysis (TMPA) 3B43 version 7 (1998–2015), PERSIANN-CDR (1983–2015) and CHIRPS 2.0 (1981–2015) over Chile to assess their performance across the country and for the case of the two long-term products the applicability for agricultural drought were evaluated when used in the calculation of commonly used drought indicator as the Standardized Precipitation Index (SPI). In this analysis, 278 weather stations of in situ rainfall measurements across Chile were initially compared to the satellite data. The study area (Chile) was divided into five latitudinal zones: North, North-Central, Central, South-Central and South to determine if there were a regional difference among these satellite products, and nine statistics were used to evaluate their performance to estimate the amount and spatial distribution of historical rainfall across Chile. Hierarchical cluster analysis, k-means and singular value decomposition were used to analyze these datasets to better understand their similarities and differences in characterizing rainfall patterns across Chile. Monthly analysis showed that all satellite products highly overestimated rainfall in the arid North zone. However, there were no major difference between all three products from North to South-Central zones. Though, in the South zone, PERSIANN-CDR shows the lowest fit with high underestimation, while CHIRPS 2.0 and TMPA 3B43 v7 had better agreement with in situ measurements. The accuracy of satellite products were highly dependent on the amount of monthly rainfall with the best results found during winter seasons and in zones (Central to South) with higher amounts of precipitation. PERSIANN-CDR and CHIRPS 2.0 were used to derive SPI at time-scale of 1, 3 and 6 months, both satellite products presented similar results when it was compared in situ against satellite SPI's. Because of its higher spatial resolution that allows better characterizing of spatial variation in precipitation pattern, the CHIRPS 2.0 was used to mapping the SPI-3 over Chile. The results of this study show that in order to use the CHIRPS 2.0 and PERSIANN-CDR datasets in Chile to monitor spatial patterns in the rainfall and drought intensity conditions, these products should be calibrated to adjust for the overestimation/underestimation of rainfall geographically specially in the North zone and seasonally during the summer and spring months in the other zones.},
+	urldate = {2019-03-23},
+	journal = {Atmospheric Research},
+	author = {Zambrano, Francisco and Wardlow, Brian and Tadesse, Tsegaye and Lillo-Saavedra, Mario and Lagos, Octavio},
+	month = apr,
+	year = {2017},
+	note = {Publisher: Elsevier},
+	keywords = {Agriculture, Chile, CHIRPS 2.0, Drought, PERSIANN-CDR, Precipitation, TMPA 3B43 v7},
+	pages = {26--42},
+	file = {PDF:/home/francisco/Zotero/storage/9D2IY6WM/full-text.pdf:application/pdf},
+}
+
+@book{IPCC2013,
+	address = {Cambridge, UK; New York, USA},
+	title = {Climate {Change} 2013: {The} {Physical} {Science} {Basis}. {Contribution} of {Working} {Group} {I} to the {Fifth} {Assessment} {Report} of the {Intergovernmental} {Panel} on {Climate} {Change}},
+	isbn = {ISBN 978-1-107-66182-0},
+	url = {www.climatechange2013.org},
+	publisher = {Cambridge University Press},
+	author = {{IPCC}},
+	year = {2013},
+	doi = {10.1017/CBO9781107415324},
+}
+
+@techreport{IPCC2021,
+	title = {{IPCC}, 2021: {Climate} {Change} 2021: {The} {Physical} {Science} {Basis}. {Contribution} of {Working} {Group} {I} to the {Sixth} {Assessment} {Report} of the {Intergovernmental} {Panel} on {Climate} {Change}},
+	url = {https://www.ipcc.ch/},
+	urldate = {2021-08-31},
+	author = {Masson-Delmotte, V., P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M. I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J. B. R. Matthews, T. K. Maycock, T. Waterfield, O. Yelekçi, R. Yu {and} B. Zhou (eds.)},
+	year = {2021},
+	note = {Publication Title: Cambridge University Press. In Press.},
+	file = {PDF:/home/francisco/Zotero/storage/X4FJWQS3/full-text.pdf:application/pdf},
+}
+
+@article{Vicente-Serrano2010,
+	title = {A multiscalar drought index sensitive to global warming: {The} standardized precipitation evapotranspiration index},
+	volume = {23},
+	issn = {08948755},
+	url = {http://dx.doi.org/10.1175/2009JCLI2909.1},
+	doi = {10.1175/2009JCLI2909.1},
+	abstract = {The authors propose a new climatic drought index: the standardized precipitation evapotranspiration index (SPEI). The SPEI is based on precipitation and temperature data, and it has the advantage of combining multiscalar character with the capacity to include the effects of temperature variability on drought assessment. The procedure to calculate the index is detailed and involves a climatic water balance, the accumulation of deficit/surplus at different time scales, and adjustment to a log-logistic probability distribution. Mathematically, the SPEI is similar to the standardized precipitation index (SPI), but it includes the role of temperature. Because the SPEI is based on a water balance, it can be compared to the self-calibrated Palmer drought severity index (sc-PDSI). Time series of the three indices were compared for a set of observatories with different climate characteristics, located in different parts of the world. Under global warming conditions, only the sc-PDSI and SPEI identified an increase in drought severity associated with higher water demand as a result of evapotranspiration. Relative to the sc-PDSI, the SPEI has the advantage of being multiscalar, which is crucial for drought analysis and monitoring. © 2010 American Meteorological Society.},
+	number = {7},
+	journal = {Journal of Climate},
+	author = {Vicente-Serrano, Sergio M. and Beguería, Santiago and López-Moreno, Juan I.},
+	year = {2010},
+	pages = {1696--1718},
+	file = {PDF:/home/francisco/Zotero/storage/DUJWY7NF/2010-A_multiscalar_drought_index_sensitive_to_global_warming_The_standardized_precipitation_evapotranspiration_index.pdf:application/pdf},
+}
+
+@article{Zambrano2018,
+	title = {Prediction of drought-induced reduction of agricultural productivity in {Chile} from {MODIS}, rainfall estimates, and climate oscillation indices},
+	volume = {219},
+	issn = {00344257},
+	url = {https://www.sciencedirect.com/science/article/pii/S0034425718304541},
+	doi = {10.1016/j.rse.2018.10.006},
+	abstract = {Global food security is negatively affected by drought. Climate projections show that drought frequency and intensity may increase in different parts of the globe. These increases are particularly hazardous for developing countries. Early season forecasts on drought occurrence and severity could help to better mitigate the negative consequences of drought. The objective of this study was to assess if interannual variability in agricultural productivity in Chile can be accurately predicted from freely-available, near real-time data sources. As the response variable, we used the standard score of seasonal cumulative NDVI (zcNDVI), based on 2000–2017 data from Moderate Resolution Imaging Spectroradiometer (MODIS), as a proxy for anomalies of seasonal primary productivity. The predictions were performed with forecast lead times from one- to six-month before the end of the growing season, which varied between census units in Chile. Predictor variables included the zcNDVI obtained by cumulating NDVI from season start up to prediction time; standardised precipitation indices derived from satellite rainfall estimates, for time-scales of 1, 3, 6, 12 and 24 months; the Pacific Decadal Oscillation and the Multivariate ENSO oscillation indices; the length of the growing season, and latitude and longitude. For each of the 758 census units considered, the time series of the response and the predictor variables were averaged for agricultural areas resulting in a 17-season time series per unit for each variable. We used two prediction approaches: (i) optimal linear regression (OLR) whereby for each census unit the single predictor was selected that best explained the interannual zcNDVI variability, and (ii) a multi-layer feedforward neural network architecture, often called deep learning (DL), where all predictors for all units were combined in a single spatio-temporal model. Both approaches were evaluated with a leave-one-year-out cross-validation procedure. Both methods showed good prediction accuracies for small lead times and similar values for all lead times. The mean Rcv2 values for OLR were 0.95, 0.83, 0.68, 0.56, 0.46 and 0.37, against 0.96, 0.84, 0.65, 0.54, 0.46 and 0.38 for DL, for one, two, three, four, five, and six months lead time, respectively. Given the wide range of climates and vegetation types covered within the study area, we expect that the presented models can contribute to an improved early warning system for agricultural drought in different geographical settings around the globe.},
+	urldate = {2018-11-22},
+	journal = {Remote Sensing of Environment},
+	author = {Zambrano, Francisco and Vrieling, Anton and Nelson, Andy and Meroni, Michele and Tadesse, Tsegaye},
+	month = dec,
+	year = {2018},
+	note = {Publisher: Elsevier},
+	keywords = {Agriculture, Phenology, MODIS, Chile, Drought, Early-warning, Prediction, Productivity, zcNDVI},
+	pages = {15--30},
+	file = {PDF:/home/francisco/Zotero/storage/CSVB6PT5/full-text.pdf:application/pdf},
+}
+
+@article{Zambrano2016,
+	title = {Sixteen years of agricultural drought assessment of the biobío region in chile using a 250 m resolution vegetation condition index ({VCI})},
+	volume = {8},
+	issn = {20724292},
+	url = {http://www.mdpi.com/2072-4292/8/6/530},
+	doi = {10.3390/rs8060530},
+	abstract = {Drought is one of the most complex natural hazards because of its slow onset and long-term impact; it has the potential to negatively affect many people. There are several advantages to using remote sensing to monitor drought, especially in developing countries with limited historical meteorological records and a low weather station density. In the present study, we assessed agricultural drought in the croplands of the BioBío Region in Chile. The vegetation condition index (VCI) allows identifying the temporal and spatial variations of vegetation conditions associated with stress because of rainfall deficit. The VCI was derived at a 250 m spatial resolution for the 2000-2015 period with the Moderate Resolution Imaging Spectroradiometer (MODIS) MOD13Q1 product. We evaluated VCI for cropland areas using the land cover MCD12Q1 version 5.1 product and compared it to the in situ Standardized Precipitation Index (SPI) for six-time scales (1-6 months) from 26 weather stations. Results showed that the 3-month SPI (SPI-3), calculated for the modified growing season (November-April) instead of the regular growing season (September-April), has the best Pearson correlation with VCI values with an overall correlation of 0.63 and between 0.40 and 0.78 for the administrative units. These results show a very short-term vegetation response to rainfall deficit in September, which is reflected in the vegetation in November, and also explains to a large degree the variation in vegetation stress. It is shown that for the last 16 years in the BioBío Region we could identify the 2007/2008, 2008/2009, and 2014/2015 seasons as the three most important drought events; this is reflected in both the overall regional and administrative unit analyses. These results concur with drought emergencies declared by the regional government. Future studies are needed to associate the remote sensing values observed at high resolution (250 m) with the measured crop yield to identify more detailed individual crop responses.},
+	number = {6},
+	urldate = {2019-03-28},
+	journal = {Remote Sensing},
+	author = {Zambrano, Francisco and Lillo-Saavedra, Mario and Verbist, Koen and Lagos, Octavio},
+	month = jun,
+	year = {2016},
+	note = {Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {Agriculture, MODIS, Drought, SPI, VCI},
+	pages = {1--20},
+	file = {PDF:/home/francisco/Zotero/storage/JVQD28FT/full-text.pdf:application/pdf},
+}
+
+@article{Boisier2018,
+	title = {Anthropogenic drying in central-southern {Chile} evidenced by long-term observations and climate model simulations},
+	volume = {6},
+	issn = {23251026},
+	url = {https://www.elementascience.org/article/10.1525/elementa.328/},
+	doi = {10.1525/elementa.328},
+	abstract = {The socio-ecological sensitivity to water deficits makes Chile highly vulnerable to global change. New evidence of a multi-decadal drying trend and the impacts of a persistent drought that since 2010 has affected several regions of the country, reinforce the need for clear diagnoses of the hydro-climate changes in Chile. Based on the analysis of long-term records (50+ years) of precipitation and streamflow, we confirm a tendency toward a dryer condition in central-southern Chile (30-48°S). We describe the geographical and seasonal character of this trend, as well as the associated large-scale circulation patterns. When a large ensemble of climate model simulations is contrasted to observations, anthropogenic forcing appears as the leading factor of precipitation change. In addition to a drying trend driven by greenhouse gas forcing in all seasons, our results indicate that the Antarctic stratospheric ozone depletion has played a major role in the summer rainfall decline. Although average model results agree well with the drying trend's seasonal character, the observed change magnitude is two to three times larger than that simulated, indicating a potential underestimation of future projections for this region. Under present-day carbon emission rates, the drying pathway in Chile will likely prevail during the next decades, although the summer signal should weaken as a result of the gradual ozone layer recovery. The trends and scenarios shown here pose substantial stress on Chilean society and its institutions, and call for urgent action regarding adaptation measures.},
+	number = {1},
+	urldate = {2019-02-04},
+	journal = {Elementa},
+	author = {Boisier, Juan P. and Alvarez-Garreton, Camila and Cordero, Raúl R. and Damiani, Alessandro and Gallardo, Laura and Garreaud, René D. and Lambert, Fabrice and Ramallo, Cinthya and Rojas, Maisa and Rondanelli, Roberto},
+	month = dec,
+	year = {2018},
+	keywords = {Climate change, Chile, Drought, Drying trends, Greenhouse gas and ozone depletion, Southern annular mode},
+	pages = {74},
+}
+
+@article{Beck2023,
+	title = {High-resolution (1 km) {Köppen}-{Geiger} maps for 1901–2099 based on constrained {CMIP6} projections},
+	volume = {10},
+	issn = {2052-4463},
+	url = {http://dx.doi.org/10.1038/s41597-023-02549-6},
+	doi = {10.1038/s41597-023-02549-6},
+	number = {1},
+	journal = {Scientific Data},
+	author = {Beck, Hylke E. and McVicar, Tim R. and Vergopolan, Noemi and Berg, Alexis and Lutsko, Nicholas J. and Dufour, Ambroise and Zeng, Zhenzhong and Jiang, Xin and van Dijk, Albert I. J. M. and Miralles, Diego G.},
+	month = oct,
+	year = {2023},
+}
+
+@incollection{Aceituno2021,
+	address = {Cham},
+	title = {Climate and {Weather} in {Chile}},
+	volume = {8},
+	isbn = {978-3-030-56900-6 978-3-030-56901-3},
+	url = {http://link.springer.com/10.1007/978-3-030-56901-3_2},
+	language = {en},
+	urldate = {2024-01-11},
+	booktitle = {Water {Resources} of {Chile}},
+	publisher = {Springer International Publishing},
+	author = {Aceituno, Patricio and Boisier, Juan Pablo and Garreaud, René and Rondanelli, Roberto and Rutllant, José A.},
+	editor = {Fernández, Bonifacio and Gironás, Jorge},
+	year = {2021},
+	pages = {7--29},
+}
+
+@article{Garreaud2009,
+	title = {The {Andes} climate and weather},
+	volume = {22},
+	issn = {1680-7359},
+	url = {https://adgeo.copernicus.org/articles/22/3/2009/},
+	doi = {10.5194/adgeo-22-3-2009},
+	abstract = {Abstract. This paper documents the main features of the weather, climate and climate variability over Andes cordillera in South America on the basis of instrumental observations. We first provide a basic physical understanding of the mean annual cycle of the atmospheric circulation and precipitation and over the Andes and adjacent lowlands. In particular, the diversity of precipitation, temperature and wind patterns is interpreted in terms of the long meridional extent of the Andes and the disruption of the large-scale circulation by this formidable topographic barrier. We also document the impact of the El Niño Southern Oscillation phenomenon on the temperature and precipitation regimes along the Andes.},
+	language = {en},
+	urldate = {2024-01-11},
+	journal = {Advances in Geosciences},
+	author = {Garreaud, R. D.},
+	month = oct,
+	year = {2009},
+	pages = {3--11},
+	file = {Texto completo:/home/francisco/Zotero/storage/LURZUEB3/Garreaud - 2009 - The Andes climate and weather.pdf:application/pdf},
+}
+
+@article{wang_global_2022,
+	title = {The global pattern and development trends \& directions on the drought monitoring research from 1983 to 2020 by using bibliometric analysis},
+	issn = {0003-0007, 1520-0477},
+	url = {https://journals.ametsoc.org/view/journals/bams/aop/BAMS-D-21-0324.1/BAMS-D-21-0324.1.xml},
+	doi = {10.1175/BAMS-D-21-0324.1},
+	abstract = {Abstract
+            
+              As impacted by climate change and further global warming, drought turns out to be the most frequent meteorological extreme event worldwide, which severely affects agriculture, ecosystem, water management and even human survival. In this study, the global pattern and development trends \& directions on drought monitoring were presented based on Web of Science database by conducting a bibliometric analysis from 1983 to 2020. The following conclusions were drawn. (1) The USA and China were found as the most productive and influential nations, accounting for 24.63\% and 14.30\% in publication outputs and taking up 5023 and 2040 in local citations, respectively. (2) Chinese Academy of Science was reported as the core institution with 5.73\% publication outputs and 829 local citations. (3)
+              Remote Sensing of Environment and Remote Sensing
+              were found as the most influential journals and the most productive journals with 1045 local citations and 210 publication outputs, respectively. (4) Agricultural drought profoundly affecting food security was found as the most concerned drought type in the world. The drought monitoring research mainly focus on the research and development of drought index, the response of terrestrial ecosystems to drought, and the trends and dynamics of drought in context of climate change. This study explored key findings, contradictions, and limitations of drought monitoring studies were summarized and explored. In addition, the development trend and research direction of drought monitoring researches in the future were also explored.},
+	urldate = {2024-01-09},
+	journal = {Bulletin of the American Meteorological Society},
+	author = {Wang, Jianshun and Zhang, Qiang and Zhang, Liang and Wang, Ying and Yue, Ping and Hu, Yanbin and Ye, Peilong},
+	month = jun,
+	year = {2022},
+	file = {Texto completo:/home/francisco/Zotero/storage/HFB2BH7P/Wang et al. - 2022 - The global pattern and development trends & direct.pdf:application/pdf},
+}
+
+@article{Hayes2011,
+	title = {The {Lincoln} {Declaration} on {Drought} {Indices}: {Universal} {Meteorological} {Drought} {Index} {Recommended}},
+	volume = {92},
+	issn = {0003-0007, 1520-0477},
+	shorttitle = {The {Lincoln} {Declaration} on {Drought} {Indices}},
+	url = {https://journals.ametsoc.org/doi/10.1175/2010BAMS3103.1},
+	doi = {10.1175/2010BAMS3103.1},
+	abstract = {No Abstract available.},
+	language = {en},
+	number = {4},
+	urldate = {2024-01-09},
+	journal = {Bulletin of the American Meteorological Society},
+	author = {Hayes, Michael and Svoboda, Mark and Wall, Nicole and Widhalm, Melissa},
+	month = apr,
+	year = {2011},
+	pages = {485--488},
+	file = {Texto completo:/home/francisco/Zotero/storage/4QUFNNYB/Hayes et al. - 2011 - The Lincoln Declaration on Drought Indices Univer.pdf:application/pdf},
+}
+
+@article{vicente-serrano_global_2022,
+	title = {Global drought trends and future projections},
+	volume = {380},
+	issn = {1364-503X, 1471-2962},
+	url = {https://royalsocietypublishing.org/doi/10.1098/rsta.2021.0285},
+	doi = {10.1098/rsta.2021.0285},
+	abstract = {Drought is one of the most difficult natural hazards to quantify and is divided into categories (meteorological, agricultural, ecological and hydrological), which makes assessing recent changes and future scenarios extremely difficult. This opinion piece includes a review of the recent scientific literature on the topic and analyses trends in meteorological droughts by using long-term precipitation records and different drought metrics to evaluate the role of global warming processes in trends of agricultural, hydrological and ecological drought severity over the last four decades, during which a sharp increase in atmospheric evaporative demand (AED) has been recorded. Meteorological droughts do not show any substantial changes at the global scale in at least the last 120 years, but an increase in the severity of agricultural and ecological droughts seems to emerge as a consequence of the increase in the severity of AED. Lastly, this study evaluates drought projections from earth system models and focuses on the most important aspects that need to be considered when evaluating drought processes in a changing climate, such as the use of different metrics and the uncertainty of modelling approaches.
+            This article is part of the Royal Society Science+ meeting issue ‘Drought risk in the Anthropocene’.},
+	language = {en},
+	number = {2238},
+	urldate = {2024-01-09},
+	journal = {Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences},
+	author = {Vicente-Serrano, Sergio M. and Peña-Angulo, Dhais and Beguería, Santiago and Domínguez-Castro, Fernando and Tomás-Burguera, Miquel and Noguera, Iván and Gimeno-Sotelo, Luis and El Kenawy, Ahmed},
+	month = dec,
+	year = {2022},
+	pages = {20210285},
+	file = {Texto completo:/home/francisco/Zotero/storage/GM5VN864/Vicente-Serrano et al. - 2022 - Global drought trends and future projections.pdf:application/pdf},
+}
+
+@article{camps-valls_unified_2021,
+	title = {A unified vegetation index for quantifying the terrestrial biosphere},
+	volume = {7},
+	issn = {2375-2548},
+	url = {https://www.science.org/doi/10.1126/sciadv.abc7447},
+	doi = {10.1126/sciadv.abc7447},
+	abstract = {Machine learning generalizes vegetation indices to better quantify the terrestrial biosphere.
+          , 
+            
+              Empirical vegetation indices derived from spectral reflectance data are widely used in remote sensing of the biosphere, as they represent robust proxies for canopy structure, leaf pigment content, and, subsequently, plant photosynthetic potential. Here, we generalize the broad family of commonly used vegetation indices by exploiting all higher-order relations between the spectral channels involved. This results in a higher sensitivity to vegetation biophysical and physiological parameters. The presented nonlinear generalization of the celebrated normalized difference vegetation index (NDVI) consistently improves accuracy in monitoring key parameters, such as leaf area index, gross primary productivity, and sun-induced chlorophyll fluorescence. Results suggest that the statistical approach maximally exploits the spectral information and addresses long-standing problems in satellite Earth Observation of the terrestrial biosphere. The nonlinear NDVI will allow more accurate measures of terrestrial carbon source/sink dynamics and potentials for stabilizing atmospheric CO
+              2
+              and mitigating global climate change.},
+	language = {en},
+	number = {9},
+	urldate = {2023-11-23},
+	journal = {Science Advances},
+	author = {Camps-Valls, Gustau and Campos-Taberner, Manuel and Moreno-Martínez, Álvaro and Walther, Sophia and Duveiller, Grégory and Cescatti, Alessandro and Mahecha, Miguel D. and Muñoz-Marí, Jordi and García-Haro, Francisco Javier and Guanter, Luis and Jung, Martin and Gamon, John A. and Reichstein, Markus and Running, Steven W.},
+	month = feb,
+	year = {2021},
+	pages = {eabc7447},
+	file = {Texto completo:/home/francisco/Zotero/storage/26FYCNPC/Camps-Valls et al. - 2021 - A unified vegetation index for quantifying the ter.pdf:application/pdf},
+}
+
+@misc{NASA2019,
+	title = {{JPL} {GRACE} {Mascon} {Ocean}, {Ice}, and {Hydrology} {Equivalent} {Water} {Height} {Release} 06 {Coastal} {Resolution} {Improvement} ({CRI}) {Filtered} {Version} 1.0},
+	url = {https://podaac.jpl.nasa.gov/dataset/TELLUS_GRACE_MASCON_CRI_GRID_RL06_V1},
+	doi = {10.5067/TEMSC-3MJC6},
+	urldate = {2023-10-09},
+	publisher = {NASA Physical Oceanography Distributed Active Archive Center},
+	author = {{NASA Jet Propulsion Laboratory (JPL) Tellus}},
+	year = {2018},
+}
+
+@article{Wiese2016,
+	title = {Quantifying and reducing leakage errors in the {JPL} {RL05M} {GRACE} mascon solution},
+	volume = {52},
+	issn = {0043-1397, 1944-7973},
+	url = {https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2016WR019344},
+	doi = {10.1002/2016WR019344},
+	abstract = {Abstract
+            
+              Recent advances in processing data from the Gravity Recovery and Climate Experiment (GRACE) have led to a new generation of gravity solutions constrained within a Bayesian framework to remove correlated errors rather than relying on empirical filters. The JPL RL05M mascon solution is one such solution, solving for mass variations using spherical cap mass concentration elements (mascons), while relying on external information provided by near‐global geophysical models to constrain the solution. This new gravity solution is fundamentally different than the traditional spherical harmonic gravity solution, and as such, requires different care when postprocessing. Here we discuss two classes of postprocessing considerations for the JPL RL05M GRACE mascon solution: (1) reducing leakage errors across land/ocean boundaries, and (2) scaling the solutions to account for leakage errors introduced through parameterizing the gravity solution in terms of mascons. A Coastline Resolution Improvement (CRI) filter is developed to reduce leakage errors across coastlines. Synthetic simulations reveal a reduction in leakage errors of ∼50\%, such that residual leakage errors are ∼1 cm equivalent water height (EWH) averaged globally. A set of gain factors is derived to reduce leakage errors for continental hydrology applications. The combined effect of the CRI filter coupled with application of the gain factors, is shown to reduce leakage errors when determining the mass balance of large ({\textgreater}160,000 km
+              2
+              ) hydrological basins from 11\% to 30\% (0.6–1.5 mm EWH) averaged globally, with local improvements up to 38\%–81\% (9–19 mm EWH).
+            
+          , 
+            Key Points:
+            
+              
+                
+                  A Coastline Resolution Improvement filter is derived to reduce leakage errors across land/ocean boundaries
+                
+                
+                  A global set of gain factors is derived to reduce leakage errors for continental hydrology applications
+                
+                
+                  Leakage error reductions are greatest (up to 1–2 cm equivalent water height) for small river basins},
+	language = {en},
+	number = {9},
+	urldate = {2023-10-09},
+	journal = {Water Resources Research},
+	author = {Wiese, David N. and Landerer, Felix W. and Watkins, Michael M.},
+	month = sep,
+	year = {2016},
+	pages = {7490--7502},
+}
+
+@article{Cui2021,
+	title = {Use of a multiscalar {GRACE}-based standardized terrestrial water storage index for assessing global hydrological droughts},
+	volume = {603},
+	issn = {00221694},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0022169421009215},
+	doi = {10.1016/j.jhydrol.2021.126871},
+	language = {en},
+	urldate = {2023-10-09},
+	journal = {Journal of Hydrology},
+	author = {Cui, Aihong and Li, Jianfeng and Zhou, Qiming and Zhu, Ruoxin and Liu, Huizeng and Wu, Guofeng and Li, Qingquan},
+	month = dec,
+	year = {2021},
+	pages = {126871},
+}
+
+@article{Souza2021,
+	title = {Soil moisture-based index for agricultural drought assessment: {SMADI} application in {Pernambuco} {State}-{Brazil}},
+	volume = {252},
+	issn = {00344257},
+	shorttitle = {Soil moisture-based index for agricultural drought assessment},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0034425720304971},
+	doi = {10.1016/j.rse.2020.112124},
+	language = {en},
+	urldate = {2023-10-09},
+	journal = {Remote Sensing of Environment},
+	author = {Souza, Alzira Gabrielle Soares Saraiva and Ribeiro Neto, Alfredo and Souza, Laio Lucas De},
+	month = jan,
+	year = {2021},
+	pages = {112124},
+}
+
+@article{Narasimhan2005,
+	title = {Development and evaluation of {Soil} {Moisture} {Deficit} {Index} ({SMDI}) and {Evapotranspiration} {Deficit} {Index} ({ETDI}) for agricultural drought monitoring},
+	volume = {133},
+	issn = {01681923},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0168192305001565},
+	doi = {10.1016/j.agrformet.2005.07.012},
+	language = {en},
+	number = {1-4},
+	urldate = {2023-10-09},
+	journal = {Agricultural and Forest Meteorology},
+	author = {Narasimhan, B. and Srinivasan, R.},
+	month = nov,
+	year = {2005},
+	pages = {69--88},
+}
+
+@article{McEvoy2016,
+	title = {The {Evaporative} {Demand} {Drought} {Index}. {Part} {II}: {CONUS}-{Wide} {Assessment} against {Common} {Drought} {Indicators}},
+	volume = {17},
+	issn = {1525-755X, 1525-7541},
+	shorttitle = {The {Evaporative} {Demand} {Drought} {Index}. {Part} {II}},
+	url = {http://journals.ametsoc.org/doi/10.1175/JHM-D-15-0122.1},
+	doi = {10.1175/JHM-D-15-0122.1},
+	abstract = {Abstract
+            Precipitation, soil moisture, and air temperature are the most commonly used climate variables to monitor drought; however, other climatic factors such as solar radiation, wind speed, and humidity can be important drivers in the depletion of soil moisture and evolution and persistence of drought. This work assesses the Evaporative Demand Drought Index (EDDI) at multiple time scales for several hydroclimates as the second part of a two-part study. EDDI and individual evaporative demand components were examined as they relate to the dynamic evolution of flash drought over the central United States, characterization of hydrologic drought over the western United States, and comparison to commonly used drought metrics of the U.S. Drought Monitor (USDM), Standardized Precipitation Index (SPI), Standardized Soil Moisture Index (SSI), and the evaporative stress index (ESI). Two main advantages of EDDI over other drought indices are that it is independent of precipitation (similar to ESI) and it can be decomposed to identify the role individual evaporative drivers have on drought onset and persistence. At short time scales, spatial distributions and time series results illustrate that EDDI often indicates drought onset well in advance of the USDM, SPI, and SSI. Results illustrate the benefits of physically based evaporative demand estimates and demonstrate EDDI’s utility and effectiveness in an easy-to-implement agricultural early warning and long-term hydrologic drought–monitoring tool with potential applications in seasonal forecasting and fire-weather monitoring.},
+	language = {en},
+	number = {6},
+	urldate = {2023-10-09},
+	journal = {Journal of Hydrometeorology},
+	author = {McEvoy, Daniel J. and Huntington, Justin L. and Hobbins, Michael T. and Wood, Andrew and Morton, Charles and Anderson, Martha and Hain, Christopher},
+	month = jun,
+	year = {2016},
+	pages = {1763--1779},
+	file = {Submitted Version:/home/francisco/Zotero/storage/JR2ZHFSY/McEvoy et al. - 2016 - The Evaporative Demand Drought Index. Part II CON.pdf:application/pdf},
+}
+
+@article{Hobbins2016,
+	title = {The {Evaporative} {Demand} {Drought} {Index}. {Part} {I}: {Linking} {Drought} {Evolution} to {Variations} in {Evaporative} {Demand}},
+	volume = {17},
+	issn = {1525-755X, 1525-7541},
+	shorttitle = {The {Evaporative} {Demand} {Drought} {Index}. {Part} {I}},
+	url = {http://journals.ametsoc.org/doi/10.1175/JHM-D-15-0121.1},
+	doi = {10.1175/JHM-D-15-0121.1},
+	abstract = {Abstract
+            Many operational drought indices focus primarily on precipitation and temperature when depicting hydroclimatic anomalies, and this perspective can be augmented by analyses and products that reflect the evaporative dynamics of drought. The linkage between atmospheric evaporative demand E0 and actual evapotranspiration (ET) is leveraged in a new drought index based solely on E0—the Evaporative Demand Drought Index (EDDI). EDDI measures the signal of drought through the response of E0 to surface drying anomalies that result from two distinct land surface–atmosphere interactions: 1) a complementary relationship between E0 and ET that develops under moisture limitations at the land surface, leading to ET declining and increasing E0, as in sustained droughts, and 2) parallel ET and E0 increases arising from increased energy availability that lead to surface moisture limitations, as in flash droughts. To calculate EDDI from E0, a long-term, daily reanalysis of reference ET estimated from the American Society of Civil Engineers (ASCE) standardized reference ET equation using radiation and meteorological variables from the North American Land Data Assimilation System phase 2 (NLDAS-2) is used. EDDI is obtained by deriving empirical probabilities of aggregated E0 depths relative to their climatologic means across a user-specific time period and normalizing these probabilities. Positive EDDI values then indicate drier-than-normal conditions and the potential for drought. EDDI is a physically based, multiscalar drought index that that can serve as an indicator of both flash and sustained droughts, in some hydroclimates offering early warning relative to current operational drought indices. The performance of EDDI is assessed against other commonly used drought metrics across CONUS in Part II.},
+	language = {en},
+	number = {6},
+	urldate = {2023-10-09},
+	journal = {Journal of Hydrometeorology},
+	author = {Hobbins, Michael T. and Wood, Andrew and McEvoy, Daniel J. and Huntington, Justin L. and Morton, Charles and Anderson, Martha and Hain, Christopher},
+	month = jun,
+	year = {2016},
+	pages = {1745--1761},
+	file = {Submitted Version:/home/francisco/Zotero/storage/L9ZWKMHA/Hobbins et al. - 2016 - The Evaporative Demand Drought Index. Part I Link.pdf:application/pdf},
+}
+
+@article{vicente-serrano_performance_2012,
+	title = {Performance of {Drought} {Indices} for {Ecological}, {Agricultural}, and {Hydrological} {Applications}},
+	volume = {16},
+	issn = {1087-3562},
+	url = {https://journals.ametsoc.org/doi/10.1175/2012EI000434.1},
+	doi = {10.1175/2012EI000434.1},
+	abstract = {Abstract
+            In this study, the authors provide a global assessment of the performance of different drought indices for monitoring drought impacts on several hydrological, agricultural, and ecological response variables. For this purpose, they compare the performance of several drought indices [the standardized precipitation index (SPI); four versions of the Palmer drought severity index (PDSI); and the standardized precipitation evapotranspiration index (SPEI)] to predict changes in streamflow, soil moisture, forest growth, and crop yield. The authors found a superior capability of the SPEI and the SPI drought indices, which are calculated on different time scales than the Palmer indices to capture the drought impacts on the aforementioned hydrological, agricultural, and ecological variables. They detected small differences in the comparative performance of the SPI and the SPEI indices, but the SPEI was the drought index that best captured the responses of the assessed variables to drought in summer, the season in which more drought-related impacts are recorded and in which drought monitoring is critical. Hence, the SPEI shows improved capability to identify drought impacts as compared with the SPI. In conclusion, it seems reasonable to recommend the use of the SPEI if the responses of the variables of interest to drought are not known a priori.},
+	language = {en},
+	number = {10},
+	urldate = {2023-10-09},
+	journal = {Earth Interactions},
+	author = {Vicente-Serrano, Sergio M. and Beguería, Santiago and Lorenzo-Lacruz, Jorge and Camarero, Jesús Julio and López-Moreno, Juan I. and Azorin-Molina, Cesar and Revuelto, Jesús and Morán-Tejeda, Enrique and Sanchez-Lorenzo, Arturo},
+	month = sep,
+	year = {2012},
+	pages = {1--27},
+	file = {Full Text:/home/francisco/Zotero/storage/Q5YV8N3N/Vicente-Serrano et al. - 2012 - Performance of Drought Indices for Ecological, Agr.pdf:application/pdf},
+}
+
+@article{Grekousis2015,
+	title = {An overview of 21 global and 43 regional land-cover mapping products},
+	volume = {36},
+	issn = {0143-1161, 1366-5901},
+	url = {https://www.tandfonline.com/doi/full/10.1080/01431161.2015.1093195},
+	doi = {10.1080/01431161.2015.1093195},
+	language = {en},
+	number = {21},
+	urldate = {2023-10-09},
+	journal = {International Journal of Remote Sensing},
+	author = {Grekousis, George and Mountrakis, Giorgos and Kavouras, Marinos},
+	month = nov,
+	year = {2015},
+	pages = {5309--5335},
+}
+
+@article{Llu2018,
+	title = {Identifying patterns and hotspots of global land cover transitions using the {ESA} {CCI} {Land} {Cover} dataset},
+	volume = {9},
+	issn = {2150-704X, 2150-7058},
+	url = {https://www.tandfonline.com/doi/full/10.1080/2150704X.2018.1500070},
+	doi = {10.1080/2150704X.2018.1500070},
+	language = {en},
+	number = {10},
+	urldate = {2023-10-09},
+	journal = {Remote Sensing Letters},
+	author = {Liu, Xiaoxuan and Yu, Le and Si, Yali and Zhang, Chi and Lu, Hui and Yu, Chaoqing and Gong, Peng},
+	month = oct,
+	year = {2018},
+	pages = {972--981},
+}
+
+@article{Luo2017,
+	title = {Contribution of temperature and precipitation anomalies to the {California} drought during 2012–2015},
+	volume = {44},
+	issn = {0094-8276, 1944-8007},
+	url = {https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2016GL072027},
+	doi = {10.1002/2016GL072027},
+	abstract = {Abstract
+            The recent multiyear drought over California was characterized by large precipitation deficits and abnormally high temperatures during both wet and dry seasons. This study investigates and quantifies the contributions of precipitation and temperature anomalies to the development of the multiyear drought with a set of modeling experiments where the anomalies are either removed or randomly replaced with other historical observations. The study reveals that precipitation deficits have been largely responsible for producing the extreme agricultural drought (i.e., large soil moisture deficits) while warmer temperatures have only marginally intensified the drought. However, the warmer temperatures over the high‐elevation areas during the wet season have contributed equally or more than the precipitation deficits to the reduction of snowpack. The interplay between temperature and precipitation anomalies in space and time also appears to be important for the drought development.
+          , 
+            Key Points
+            
+              
+                
+                  Precipitation deficits have been largely responsible for producing the multiyear agricultural drought over California
+                
+                
+                  Warmer temperatures have only marginally intensified the agricultural drought
+                
+                
+                  Warmer temperatures during wet seasons have contributed equally or more than the precipitation deficits to the reduction of snowpack},
+	language = {en},
+	number = {7},
+	urldate = {2023-10-09},
+	journal = {Geophysical Research Letters},
+	author = {Luo, Lifeng and Apps, Deanna and Arcand, Samuel and Xu, Huating and Pan, Ming and Hoerling, Martin},
+	month = apr,
+	year = {2017},
+	pages = {3184--3192},
+}
+
+@article{MunozSabater2021,
+	title = {{ERA5}-{Land}: a state-of-the-art global reanalysis dataset for land applications},
+	volume = {13},
+	issn = {1866-3516},
+	shorttitle = {{ERA5}-{Land}},
+	url = {https://essd.copernicus.org/articles/13/4349/2021/},
+	doi = {10.5194/essd-13-4349-2021},
+	abstract = {Abstract. Framed within the Copernicus Climate Change Service (C3S) of the European Commission, the European Centre for Medium-Range Weather Forecasts (ECMWF) is producing an enhanced global dataset for the land component of the fifth generation of European ReAnalysis (ERA5), hereafter referred to as ERA5-Land. Once completed, the period covered will span from 1950 to the present, with continuous updates to support land monitoring applications. ERA5-Land describes the evolution of the water and energy cycles over land in a consistent manner over the production period, which, among others, could be used to analyse trends and anomalies. This is achieved through global high-resolution numerical integrations of the ECMWF land surface model driven by the downscaled meteorological forcing from the ERA5 climate reanalysis, including an elevation correction for the thermodynamic near-surface state. ERA5-Land shares with ERA5 most of the parameterizations that guarantees the use of the state-of-the-art land surface modelling applied to numerical weather prediction (NWP) models. A main advantage of ERA5-Land compared to ERA5 and the older ERA-Interim is the horizontal resolution, which is enhanced globally to 9 km compared to 31 km (ERA5) or 80 km (ERA-Interim), whereas the temporal resolution is hourly as in ERA5. Evaluation against independent in situ observations and global model or satellite-based reference datasets shows the added value of ERA5-Land in the description of the hydrological cycle, in particular with enhanced soil moisture and lake description, and an overall better agreement of river discharge estimations with available observations. However, ERA5-Land snow depth fields present a mixed performance when compared to those of ERA5, depending on geographical location and altitude. The description of the energy cycle shows comparable results with ERA5. Nevertheless, ERA5-Land reduces the global averaged root mean square error of the skin temperature, taking as reference MODIS data, mainly due to the contribution of coastal points where spatial resolution is important. Since January 2020, the ERA5-Land period available has extended from January 1981 to the near present, with a 2- to 3-month delay with respect to real time. The segment prior to 1981 is in production, aiming for a release of the whole dataset in summer/autumn 2021. The high spatial and temporal resolution of ERA5-Land, its extended period, and the consistency of the fields produced makes it a valuable dataset to support hydrological studies, to initialize NWP and climate models, and to support diverse applications dealing with water resource, land, and environmental management. The full ERA5-Land hourly (Muñoz-Sabater, 2019a) and monthly (Muñoz-Sabater, 2019b) averaged datasets presented in this paper are available through the C3S Climate Data Store at https://doi.org/10.24381/cds.e2161bac and https://doi.org/10.24381/cds.68d2bb30, respectively.},
+	language = {en},
+	number = {9},
+	urldate = {2023-10-08},
+	journal = {Earth System Science Data},
+	author = {Muñoz-Sabater, Joaquín and Dutra, Emanuel and Agustí-Panareda, Anna and Albergel, Clément and Arduini, Gabriele and Balsamo, Gianpaolo and Boussetta, Souhail and Choulga, Margarita and Harrigan, Shaun and Hersbach, Hans and Martens, Brecht and Miralles, Diego G. and Piles, María and Rodríguez-Fernández, Nemesio J. and Zsoter, Ervin and Buontempo, Carlo and Thépaut, Jean-Noël},
+	month = sep,
+	year = {2021},
+	pages = {4349--4383},
+	file = {Full Text:/home/francisco/Zotero/storage/6Q7RVV8Z/Muñoz-Sabater et al. - 2021 - ERA5-Land a state-of-the-art global reanalysis da.pdf:application/pdf},
+}
+
+@article{Nouri2023,
+	title = {Drought {Assessment} {Using} {Gridded} {Data} {Sources} in {Data}-{Poor} {Areas} with {Different} {Aridity} {Conditions}},
+	volume = {37},
+	issn = {0920-4741, 1573-1650},
+	url = {https://link.springer.com/10.1007/s11269-023-03555-4},
+	doi = {10.1007/s11269-023-03555-4},
+	language = {en},
+	number = {11},
+	urldate = {2023-10-08},
+	journal = {Water Resources Management},
+	author = {Nouri, Milad},
+	month = sep,
+	year = {2023},
+	pages = {4327--4343},
+}
+
+@article{Wang2023,
+	title = {Evaluation of flash drought under the impact of heat wave events in southwestern {Germany}},
+	volume = {904},
+	issn = {00489697},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0048969723054402},
+	doi = {10.1016/j.scitotenv.2023.166815},
+	language = {en},
+	urldate = {2023-10-08},
+	journal = {Science of The Total Environment},
+	author = {Wang, Menghao and Menzel, Lucas and Jiang, Shanhu and Ren, Liliang and Xu, Chong-Yu and Cui, Hao},
+	month = dec,
+	year = {2023},
+	pages = {166815},
+}
+
+@article{AlvarezGarreton2021,
+	title = {Progressive water deficits during multiyear droughts in basins with long hydrological memory in {Chile}},
+	volume = {25},
+	issn = {1607-7938},
+	url = {https://hess.copernicus.org/articles/25/429/2021/},
+	doi = {10.5194/hess-25-429-2021},
+	abstract = {Abstract. A decade-long (2010–2020) period with precipitation deficits in central–south Chile (30–41∘ S), the so-called megadrought (MD), has led to streamflow depletions of larger amplitude than expected from precipitation anomalies, indicating an intensification in drought propagation. We analysed the catchment characteristics and runoff mechanisms modulating such intensification by using the CAMELS-CL dataset and simulations from the HBV hydrological model. We compared annual precipitation–runoff (P–R) relationships before and during the MD across 106 basins with varying snow-/rainfall regimes and identified those catchments where drought propagation was intensified. Our results show that catchments' hydrological memory – modulated by snow and groundwater – is a key control of drought propagation. Snow-dominated catchments (30–35∘ S) feature larger groundwater contribution to streamflow than pluvial basins, which we relate to the infiltration of snowmelt over the Western Andean Front. This leads to longer memory in these basins, represented by a significative correlation between autumn streamflow (when snow has already melted) and the precipitation from the preceding year. Hence, under persistent drought conditions, snow-dominated catchments accumulate the effects of precipitation deficits and progressively generate less water, compared with their historical behaviour, notably affecting central Chile, a region with limited water supply and which concentrates most of the country's population and water demands. Finally, we addressed a general question: what is worse – an extreme single-year drought or a persistent moderate drought? In snow-dominated basins, where water provision strongly depends on both the current and previous precipitation seasons, an extreme drought induces larger absolute streamflow deficits; however persistent deficits induce a more intensified propagation of the meteorological drought. Hence, the worst scenario would be an extreme meteorological drought following consecutive years of precipitation below average, as occurred in 2019. In pluvial basins of southern Chile
+(35–41∘ S), hydrologic memory is still an important factor, but water supply is more strongly dependant on the meteorological conditions of the current year, and therefore an extreme drought would have a higher impact on water supply than a persistent but moderate drought.},
+	language = {en},
+	number = {1},
+	urldate = {2023-10-08},
+	journal = {Hydrology and Earth System Sciences},
+	author = {Alvarez-Garreton, Camila and Boisier, Juan Pablo and Garreaud, René and Seibert, Jan and Vis, Marc},
+	month = jan,
+	year = {2021},
+	pages = {429--446},
+	file = {Full Text:/home/francisco/Zotero/storage/QSHAUU6Q/Alvarez-Garreton et al. - 2021 - Progressive water deficits during multiyear drough.pdf:application/pdf},
+}
+
+@article{Fernandez2023,
+	title = {The economics impacts of long-run droughts: {Challenges}, gaps, and way forward},
+	volume = {344},
+	issn = {03014797},
+	shorttitle = {The economics impacts of long-run droughts},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0301479723015141},
+	doi = {10.1016/j.jenvman.2023.118726},
+	language = {en},
+	urldate = {2023-10-08},
+	journal = {Journal of Environmental Management},
+	author = {Fernández, Francisco J. and Vásquez-Lavín, Felipe and Ponce, Roberto D. and Garreaud, René and Hernández, Francisco and Link, Oscar and Zambrano, Francisco and Hanemann, Michael},
+	month = oct,
+	year = {2023},
+	pages = {118726},
+}
+
+@article{Miranda2020,
+	title = {Forest browning trends in response to drought in a highly threatened mediterranean landscape of {South} {America}},
+	volume = {115},
+	issn = {1470160X},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S1470160X20303381},
+	doi = {10.1016/j.ecolind.2020.106401},
+	language = {en},
+	urldate = {2023-10-08},
+	journal = {Ecological Indicators},
+	author = {Miranda, Alejandro and Lara, Antonio and Altamirano, Adison and Di Bella, Carlos and González, Mauro E. and Julio Camarero, Jesus},
+	month = aug,
+	year = {2020},
+	pages = {106401},
+	file = {Full Text:/home/francisco/Zotero/storage/NP65UYEV/Miranda et al. - 2020 - Forest browning trends in response to drought in a.pdf:application/pdf},
+}
+
+@article{Fuentes2021,
+	title = {Water scarcity in central {Chile}: the effect of climate and land cover changes on hydrologic resources},
+	volume = {66},
+	issn = {0262-6667, 2150-3435},
+	shorttitle = {Water scarcity in central {Chile}},
+	url = {https://www.tandfonline.com/doi/full/10.1080/02626667.2021.1903475},
+	doi = {10.1080/02626667.2021.1903475},
+	language = {en},
+	number = {6},
+	urldate = {2023-10-08},
+	journal = {Hydrological Sciences Journal},
+	author = {Fuentes, Ignacio and Fuster, Rodrigo and Avilés, David and Vervoort, Willem},
+	month = apr,
+	year = {2021},
+	pages = {1028--1044},
+}
+
+@article{Venegas2018,
+	title = {Recent radial growth decline in response to increased drought conditions in the northernmost {Nothofagus} populations from {South} {America}},
+	volume = {409},
+	issn = {03781127},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0378112717313993},
+	doi = {10.1016/j.foreco.2017.11.006},
+	language = {en},
+	urldate = {2023-10-08},
+	journal = {Forest Ecology and Management},
+	author = {Venegas-González, Alejandro and Juñent, Fidel Roig and Gutiérrez, Alvaro G. and Filho, Mario Tomazello},
+	month = feb,
+	year = {2018},
+	pages = {94--104},
+}
+
+@article{UrrutiaJalabert2018,
+	title = {Climate variability and forest fires in central and south‐central {Chile}},
+	volume = {9},
+	issn = {2150-8925, 2150-8925},
+	url = {https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecs2.2171},
+	doi = {10.1002/ecs2.2171},
+	abstract = {Abstract
+            This paper evaluates the relationship between fire occurrence (number and burned area) and climate variability (precipitation and maximum temperatures) across central and south‐central Chile (32°–43° S) during recent decades (1976–2013). This region sustains the largest proportion of the Chilean population, contains ecologically important remnants of endemic ecosystems, the largest extension of forest exotic plantations, and concentrates most of the fire activity in the country. Fire activity in central Chile was mainly associated with above‐average precipitation during winter of the previous year and with dry conditions during spring to summer. The later association was particularly strong in the southern, wetter part of the study region. Maximum temperature had a positive significant relationship with burned area across the study region, with stronger correlations toward the south. Fires in central Chile were significantly related to El Niño–Southern Oscillation, through rainfall anomalies during the year previous to the fire season. The Antarctic Oscillation during winter through summer was positively related to fires across the study area due to drier/warmer conditions associated with the positive polarity of this oscillation. Climate change projections for the region reveal an all‐season decrease in precipitation and increases in temperature, that may likely result in an increment of the occurrence and the area affected by fires, as it has been observed during a multi‐year drought afflicting central Chile since 2010.},
+	language = {en},
+	number = {4},
+	urldate = {2023-10-08},
+	journal = {Ecosphere},
+	author = {Urrutia‐Jalabert, Rocío and González, Mauro E. and González‐Reyes, Álvaro and Lara, Antonio and Garreaud, René},
+	month = apr,
+	year = {2018},
+	pages = {e02171},
+}
+
+@article{AghaKouchak2021,
+	title = {Anthropogenic {Drought}: {Definition}, {Challenges}, and {Opportunities}},
+	volume = {59},
+	issn = {8755-1209, 1944-9208},
+	shorttitle = {Anthropogenic {Drought}},
+	url = {https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2019RG000683},
+	doi = {10.1029/2019RG000683},
+	abstract = {Abstract
+            
+              Traditional, mainstream definitions of drought describe it as deficit in water‐related variables or water‐dependent activities (e.g., precipitation, soil moisture, surface and groundwater storage, and irrigation) due to natural variabilities that are out of the control of local decision‐makers. Here, we argue that within coupled human‐water systems, drought must be defined and understood as a
+              process
+              as opposed to a
+              product
+              to help better frame and describe the complex and interrelated dynamics of both natural and human‐induced changes that define
+              anthropogenic drought
+              as a compound multidimensional and multiscale phenomenon, governed by the combination of natural water variability, climate change, human decisions and activities, and altered micro‐climate conditions due to changes in land and water management. This definition considers the full spectrum of dynamic feedbacks and processes (e.g., land‐atmosphere interactions and water and energy balance) within human‐nature systems that drive the development of
+              anthropogenic drought
+              . This process magnifies the water supply demand gap and can lead to water bankruptcy, which will become more rampant around the globe in the coming decades due to continuously growing water demands under compounding effects of climate change and global environmental degradation. This challenge has de facto implications for both short‐term and long‐term water resources planning and management, water governance, and policymaking. Herein, after a brief overview of the anthropogenic drought concept and its examples, we discuss existing research gaps and opportunities for better understanding, modeling, and management of this phenomenon.
+            
+          , 
+            Plain Language Summary
+            
+              This article reviews research and progress on the notion of
+              anthropogenic drought
+              broadly defined as drought events caused or intensified by human activities. Most commonly used drought definitions are based on deficit in hydrologic/meteorologic drivers such as precipitation and runoff. Within coupled human‐water systems, however, drought must be defined and understood as the complex and interrelated dynamics of both natural and human‐induced changes. This
+              anthropogenic drought
+              definition considers the full spectrum of dynamic feedbacks and processes (e.g., land‐atmosphere interactions and water and energy balance) within human‐nature systems. Ideally,
+              anthropogenic drought
+              and the corresponding human interactions should be incorporated in models that include land‐atmosphere interactions, water balance, and energy balance. In this article, we review existing research gaps and opportunities for better understanding, modeling, and management of this phenomenon.
+            
+          , 
+            Key Points
+            
+              
+                
+                  
+                    Anthropogenic drought
+                    is primarily governed by the joint impacts of natural renewable water variability, climate change, and human decisions
+                  
+                
+                
+                  
+                    Anthropogenic drought
+                    and water bankruptcy will become more ubiquitous under current development and climate change trajectories
+                  
+                
+                
+                  Ideally, human interactions should be incorporated in models that include land‐atmosphere interactions, water balance and energy balance},
+	language = {en},
+	number = {2},
+	urldate = {2023-10-07},
+	journal = {Reviews of Geophysics},
+	author = {AghaKouchak, Amir and Mirchi, Ali and Madani, Kaveh and Di Baldassarre, Giuliano and Nazemi, Ali and Alborzi, Aneseh and Anjileli, Hassan and Azarderakhsh, Marzi and Chiang, Felicia and Hassanzadeh, Elmira and Huning, Laurie S. and Mallakpour, Iman and Martinez, Alexandre and Mazdiyasni, Omid and Moftakhari, Hamed and Norouzi, Hamid and Sadegh, Mojtaba and Sadeqi, Dalal and Van Loon, Anne F. and Wanders, Niko},
+	month = jun,
+	year = {2021},
+	pages = {e2019RG000683},
+	file = {Full Text:/home/francisco/Zotero/storage/FI3Y6IN2/AghaKouchak et al. - 2021 - Anthropogenic Drought Definition, Challenges, and.pdf:application/pdf},
+}
+
+@article{Slette2019,
+	title = {How ecologists define drought, and why we should do better},
+	volume = {25},
+	issn = {1354-1013, 1365-2486},
+	url = {https://onlinelibrary.wiley.com/doi/10.1111/gcb.14747},
+	doi = {10.1111/gcb.14747},
+	abstract = {Abstract
+            Drought, widely studied as an important driver of ecosystem dynamics, is predicted to increase in frequency and severity globally. To study drought, ecologists must define or at least operationalize what constitutes a drought. How this is accomplished in practice is unclear, particularly given that climatologists have long struggled to agree on definitions of drought, beyond general variants of “an abnormal deficiency of water.” We conducted a literature review of ecological drought studies (564 papers) to assess how ecologists describe and study drought. We found that ecologists characterize drought in a wide variety of ways (reduced precipitation, low soil moisture, reduced streamflow, etc.), but relatively few publications ({\textasciitilde}32\%) explicitly define what are, and are not, drought conditions. More troubling, a surprising number of papers ({\textasciitilde}30\%) simply equated “dry conditions” with “drought” and provided little characterization of the drought conditions studied. For a subset of these, we calculated Standardized Precipitation Evapotranspiration Index values for the reported drought periods. We found that while almost 90\% of the studies were conducted under conditions quantifiable as slightly to extremely drier than average, {\textasciitilde}50\% were within the range of normal climatic variability. We conclude that the current state of the ecological drought literature hinders synthesis and our ability to draw broad ecological inferences because drought is often declared but is not explicitly defined or well characterized. We suggest that future drought publications provide at least one of the following: (a) the climatic context of the drought period based on long‐term records; (b) standardized climatic index values; (c) published metrics from drought‐monitoring organizations; (d) a quantitative definition of what the authors consider to be drought conditions for their system. With more detailed and consistent quantification of drought conditions, comparisons among studies can be more rigorous, increasing our understanding of the ecological effects of drought.},
+	language = {en},
+	number = {10},
+	urldate = {2023-10-07},
+	journal = {Global Change Biology},
+	author = {Slette, Ingrid J. and Post, Alison K. and Awad, Mai and Even, Trevor and Punzalan, Arianna and Williams, Sere and Smith, Melinda D. and Knapp, Alan K.},
+	month = oct,
+	year = {2019},
+	pages = {3193--3200},
+}
+
+@article{Sabzehee2023,
+	title = {Enhancing spatial resolution of {GRACE}-derived groundwater storage anomalies in {Urmia} catchment using machine learning downscaling methods},
+	volume = {330},
+	issn = {03014797},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0301479722027530},
+	doi = {10.1016/j.jenvman.2022.117180},
+	language = {en},
+	urldate = {2023-10-07},
+	journal = {Journal of Environmental Management},
+	author = {Sabzehee, F. and Amiri-Simkooei, A.R. and Iran-Pour, S. and Vishwakarma, B.D. and Kerachian, R.},
+	month = mar,
+	year = {2023},
+	pages = {117180},
+	file = {Full Text:/home/francisco/Zotero/storage/LG2H383T/Sabzehee et al. - 2023 - Enhancing spatial resolution of GRACE-derived grou.pdf:application/pdf},
+}
+
+@article{Wahr2004,
+	title = {Time-variable gravity from {GRACE}: {First} results: {TIME}-{VARIABLE} {GRAVITY} {FROM} {GRACE}},
+	volume = {31},
+	issn = {00948276},
+	shorttitle = {Time-variable gravity from {GRACE}},
+	url = {http://doi.wiley.com/10.1029/2004GL019779},
+	doi = {10.1029/2004GL019779},
+	language = {en},
+	number = {11},
+	urldate = {2023-10-07},
+	journal = {Geophysical Research Letters},
+	author = {Wahr, John and Swenson, Sean and Zlotnicki, Victor and Velicogna, Isabella},
+	month = jun,
+	year = {2004},
+	pages = {n/a--n/a},
+	file = {Full Text:/home/francisco/Zotero/storage/PPT4KGV2/Wahr et al. - 2004 - Time-variable gravity from GRACE First results T.pdf:application/pdf},
+}
+
+@article{Yin2022,
+	title = {Improving understanding of spatiotemporal water storage changes over {China} based on multiple datasets},
+	volume = {612},
+	issn = {00221694},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0022169422006734},
+	doi = {10.1016/j.jhydrol.2022.128098},
+	language = {en},
+	urldate = {2023-10-07},
+	journal = {Journal of Hydrology},
+	author = {Yin, Wenjie and Yang, Shuai and Hu, Litang and Tian, Siyuan and Wang, Xuelei and Zhao, Ruxin and Li, Peijun},
+	month = sep,
+	year = {2022},
+	pages = {128098},
+}
+
+@article{Landerer2020,
+	title = {Extending the {Global} {Mass} {Change} {Data} {Record}: {GRACE} {Follow}‐{On} {Instrument} and {Science} {Data} {Performance}},
+	volume = {47},
+	issn = {0094-8276, 1944-8007},
+	shorttitle = {Extending the {Global} {Mass} {Change} {Data} {Record}},
+	url = {https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020GL088306},
+	doi = {10.1029/2020GL088306},
+	abstract = {Abstract
+            Since June, 2018, the Gravity Recovery and Climate Experiment Follow‐On (GRACE‐FO) is extending the 15‐year monthly mass change record of the GRACE mission, which ended in June 2017. The GRACE‐FO instrument and flight system performance has improved over GRACE. Better attitude solutions and enhanced pointing performance result in reduced fuel consumption and gravity range rate post‐fit residuals. One accelerometer requires additional calibrations due to unexpected measurement noise. The GRACE‐FO gravity and mass change fields from June 2018 through December 2019 continue the GRACE record at an equivalent precision and spatiotemporal sampling. During this period, GRACE‐FO observed large interannual terrestrial water variations associated with excess rainfall (Central US, Middle East), drought (Europe, Australia), and ice melt (Greenland). These observations are consistent with independent mass change estimates, providing high confidence that no intermission biases exist from GRACE to GRACE‐FO, despite the 11‐month gap. GRACE‐FO has also successfully demonstrated satellite‐to‐satellite laser ranging interferometry.
+          , 
+            Plain Language Summary
+            Mass change is a fundamental climate system indicator and provides an integrated global view of how Earth's water cycle and energy balance are evolving. The Gravity Recovery and Climate Experiment (GRACE) mission monitored mass changes every month from 2002 through 2017. Since June 2018, GRACE Follow‐On (GRACE‐FO) continues this data record, tracking and monitoring changes in ice sheets and glaciers, near‐surface and underground water storage, as well as changes in sea level and ocean currents. GRACE‐FO instruments have been successfully calibrated and are providing new monthly mass change observations at a consistent spatial resolution and data quality with GRACE. Since its launch, GRACE‐FO has measured record land water storage changes in 2018 and 2019 in response to extreme heat waves and droughts over Europe and Australia, as well as to extreme rainfall events over the United States and Middle East. In the summer of 2019, GRACE‐FO measured record‐level Greenland mass loss rates. A novel laser ranging interferometer was successfully demonstrated on GRACE‐FO, laying the groundwork for improved future satellite gravity observations.
+          , 
+            Key Points
+            
+              
+                
+                  GRACE‐FO is extending the 15‐year GRACE record of global monthly mass change at an equivalent precision and spatiotemporal sampling
+                
+                
+                  Since its launch in 2018, GRACE‐FO has observed large water storage and ice mass changes driven by interannual climate anomalies
+                
+                
+                  GRACE‐FO's instrument/flight system performance has largely improved over GRACE. The novel laser ranging instrument works successfully},
+	language = {en},
+	number = {12},
+	urldate = {2023-10-07},
+	journal = {Geophysical Research Letters},
+	author = {Landerer, Felix W. and Flechtner, Frank M. and Save, Himanshu and Webb, Frank H. and Bandikova, Tamara and Bertiger, William I. and Bettadpur, Srinivas V. and Byun, Sung Hun and Dahle, Christoph and Dobslaw, Henryk and Fahnestock, Eugene and Harvey, Nate and Kang, Zhigui and Kruizinga, Gerhard L. H. and Loomis, Bryant D. and McCullough, Christopher and Murböck, Michael and Nagel, Peter and Paik, Meegyeong and Pie, Nadege and Poole, Steve and Strekalov, Dmitry and Tamisiea, Mark E. and Wang, Furun and Watkins, Michael M. and Wen, Hui‐Ying and Wiese, David N. and Yuan, Dah‐Ning},
+	month = jun,
+	year = {2020},
+	pages = {e2020GL088306},
+	file = {Full Text:/home/francisco/Zotero/storage/DBR9X4GX/Landerer et al. - 2020 - Extending the Global Mass Change Data Record GRAC.pdf:application/pdf},
+}
+
+@article{Ramjeawon2022,
+	title = {Analyses of groundwater storage change using {GRACE} satellite data in the {Usutu}-{Mhlatuze} drainage region, north-eastern {South} {Africa}},
+	volume = {42},
+	issn = {22145818},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S2214581822001318},
+	doi = {10.1016/j.ejrh.2022.101118},
+	language = {en},
+	urldate = {2023-10-07},
+	journal = {Journal of Hydrology: Regional Studies},
+	author = {Ramjeawon, Manish and Demlie, Molla and Toucher, Michele},
+	month = aug,
+	year = {2022},
+	pages = {101118},
+}
+
+@article{Ferreira2023,
+	title = {Estimating {GRACE} terrestrial water storage anomaly using an improved point mass solution},
+	volume = {10},
+	issn = {2052-4463},
+	url = {https://www.nature.com/articles/s41597-023-02122-1},
+	doi = {10.1038/s41597-023-02122-1},
+	abstract = {Abstract
+            The availability of terrestrial water storage anomaly (TWSA) data from the Gravity Recovery and Climate Experiment (GRACE) supports many hydrological applications. Five TWSA products are operational and publicly available, including three based on mass concentration (mascon) solutions and two based on the synthesis of spherical harmonic coefficients (SHCs). The mascon solutions have advantages regarding the synthesis of SHCs since the basis functions are represented locally rather than globally, which allows geophysical data constraints. Alternative new solutions based on SHCs are, therefore, critical and warranted to enrich the portfolio of user-friendly TWSA data based on different algorithms. TWSA data based on novel processing protocols is presented with a spatial re-sampling of 0.25 arc-degrees covering 2002–2022. This approach parameterizes the improved point mass (IPM) and adopts the synthesized residual gravitational potential as observations. The assay indicates that the proposed Hohai University (HHU-) IPM TWSA data reliably agree with the mascon solutions. The presented HHU-IPM TWSA data set would be instrumental in regional hydrological applications, particularly enabling improved assessment of regional water budgets.},
+	language = {en},
+	number = {1},
+	urldate = {2023-10-07},
+	journal = {Scientific Data},
+	author = {Ferreira, Vagner and Yong, Bin and Montecino, Henry and Ndehedehe, Christopher E. and Seitz, Kurt and Kutterer, Hansjörg and Yang, Kun},
+	month = apr,
+	year = {2023},
+	pages = {234},
+	file = {Full Text:/home/francisco/Zotero/storage/NCC3UAVM/Ferreira et al. - 2023 - Estimating GRACE terrestrial water storage anomaly.pdf:application/pdf},
+}
+
+@article{Tapley2019,
+	title = {Contributions of {GRACE} to understanding climate change},
+	volume = {9},
+	issn = {1758-678X, 1758-6798},
+	url = {https://www.nature.com/articles/s41558-019-0456-2},
+	doi = {10.1038/s41558-019-0456-2},
+	language = {en},
+	number = {5},
+	urldate = {2023-10-07},
+	journal = {Nature Climate Change},
+	author = {Tapley, Byron D. and Watkins, Michael M. and Flechtner, Frank and Reigber, Christoph and Bettadpur, Srinivas and Rodell, Matthew and Sasgen, Ingo and Famiglietti, James S. and Landerer, Felix W. and Chambers, Don P. and Reager, John T. and Gardner, Alex S. and Save, Himanshu and Ivins, Erik R. and Swenson, Sean C. and Boening, Carmen and Dahle, Christoph and Wiese, David N. and Dobslaw, Henryk and Tamisiea, Mark E. and Velicogna, Isabella},
+	month = may,
+	year = {2019},
+	pages = {358--369},
+	file = {Full Text:/home/francisco/Zotero/storage/26B3CACN/Tapley et al. - 2019 - Contributions of GRACE to understanding climate ch.pdf:application/pdf},
+}
+
+@article{Abolafia2021,
+	title = {Remotely sensed ensembles of the terrestrial water budget over major global river basins: {An} assessment of three closure techniques},
+	volume = {252},
+	issn = {00344257},
+	shorttitle = {Remotely sensed ensembles of the terrestrial water budget over major global river basins},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0034425720305642},
+	doi = {10.1016/j.rse.2020.112191},
+	language = {en},
+	urldate = {2023-10-07},
+	journal = {Remote Sensing of Environment},
+	author = {Abolafia-Rosenzweig, R. and Pan, M. and Zeng, J.L. and Livneh, B.},
+	month = jan,
+	year = {2021},
+	pages = {112191},
+}
+
+@article{Deng2023,
+	title = {A {Comprehensive} {Evaluation} of {GRACE}‐{Like} {Terrestrial} {Water} {Storage} ({TWS}) {Reconstruction} {Products} at an {Interannual} {Scale} {During} 1981–2019},
+	volume = {59},
+	issn = {0043-1397, 1944-7973},
+	url = {https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2022WR034381},
+	doi = {10.1029/2022WR034381},
+	abstract = {Abstract
+            
+              Given the success of the Gravity Recovery and Climate Experiment (GRACE) mission in mapping terrestrial water storage (TWS) since 2002, recent reconstructions of long‐term TWS rely on the use of statistical machine learning to apply GRACE‐derived information to past decades. Evaluating the interannual accuracy during nonobservational periods is a key challenge. This study develops a comprehensive framework to discuss the interannual accuracy of three different TWS reconstructions during 1981–2019, including (a) global‐scale accuracy assessment using GRACE and satellite laser ranging data; (b) regional‐scale accuracy testing across various underlying surfaces (i.e., rivers, lakes, and glaciers); and (c) investigation of relevant evidence from other Earth subsystems (i.e., historic climate events, sea level budget, and polar motion). Among the three reconstructions, the one that additionally corrects glacial TWS changes (REC2) detects a breaking point in the 1990s and further closes the interannual sea level budget with an absolute difference reduction to 5.13 mm; the reconstruction that is forced by local meteorological conditions (REC1), accounting for 54\% of the GRACE‐derived signal energy, underestimates glacial TWS variability but outperforms the other reconstructions in reproducing lake levels, basin‐scale water balances, and climate events at the interannual scale, while the others consider 95\%–99\% of the GRACE‐derived signal energy. The relatively high accuracy of REC1 (and REC2) in reflecting interannual changes in nonglacial (and glacial) regions is further confirmed by explaining the
+              χ
+              2
+              ‐ (and
+              χ
+              1
+              ‐) component polar motion. Ten to 20\% of the interannual polar motion remains unexplained, indicating room for improvement in interannual TWS reconstruction.
+            
+          , 
+            Key Points
+            
+              
+                
+                  We investigate multisource evidence among Earth subsystems to develop a comprehensive evaluation framework for terrestrial water storage (TWS) reconstructions
+                
+                
+                  There are some drawbacks at the interannual scale when using statistical machine learning to generate Gravity Recovery and Climate Experiment‐like TWS reconstructions
+                
+                
+                  Polar motion evaluates TWS reconstructions from multiple perspectives and reinforces the reliability of results using other metrics},
+	language = {en},
+	number = {3},
+	urldate = {2023-10-07},
+	journal = {Water Resources Research},
+	author = {Deng, Shanshan and Liu, Yuxin and Zhang, Wenxi},
+	month = mar,
+	year = {2023},
+	pages = {e2022WR034381},
+}
+
+@article{Humphrey2023,
+	title = {Using {Satellite}-{Based} {Terrestrial} {Water} {Storage} {Data}: {A} {Review}},
+	volume = {44},
+	issn = {0169-3298, 1573-0956},
+	shorttitle = {Using {Satellite}-{Based} {Terrestrial} {Water} {Storage} {Data}},
+	url = {https://link.springer.com/10.1007/s10712-022-09754-9},
+	doi = {10.1007/s10712-022-09754-9},
+	abstract = {Abstract
+            Land water storage plays a key role for the Earth’s climate, natural ecosystems, and human activities. Since the launch of the first Gravity Recovery and Climate Experiment (GRACE) mission in 2002, spaceborne observations of changes in terrestrial water storage (TWS) have provided a unique, global perspective on natural and human-induced changes in freshwater resources. Even though they have become much used within the broader Earth system science community, space-based TWS datasets still incorporate important and case-specific limitations which may not always be clear to users not familiar with the underlying processing algorithms. Here, we provide an accessible and illustrated overview of the measurement concept, of the main available data products, and of some frequently encountered technical terms and concepts. We summarize concrete recommendations on how to use TWS data in combination with other hydrological or climatological datasets, and guidance on how to avoid possible pitfalls. Finally, we provide an overview of some of the main applications of GRACE TWS data in the fields of hydrology and climate science. This review is written with the intention of supporting future research and facilitating the use of satellite-based terrestrial water storage datasets in interdisciplinary contexts.},
+	language = {en},
+	number = {5},
+	urldate = {2023-10-07},
+	journal = {Surveys in Geophysics},
+	author = {Humphrey, Vincent and Rodell, Matthew and Eicker, Annette},
+	month = oct,
+	year = {2023},
+	pages = {1489--1517},
+	file = {Full Text:/home/francisco/Zotero/storage/SY4D2GT7/Humphrey et al. - 2023 - Using Satellite-Based Terrestrial Water Storage Da.pdf:application/pdf},
+}
+
+@article{Schucknecht2017,
+	title = {Phenology-{Based} {Biomass} {Estimation} to {Support} {Rangeland} {Management} in {Semi}-{Arid} {Environments}},
+	volume = {9},
+	issn = {2072-4292},
+	url = {http://www.mdpi.com/2072-4292/9/5/463},
+	doi = {10.3390/rs9050463},
+	abstract = {Livestock plays an important economic role in Niger, especially in the semi-arid regions, while being highly vulnerable as a result of the large inter-annual variability of precipitation and, hence, rangeland production. This study aims to support effective rangeland management by developing an approach for mapping rangeland biomass production. The observed spatiotemporal variability of biomass production is utilised to build a model based on ground and remote sensing data for the period 2001 to 2015. Once established, the model can also be used to estimate herbaceous biomass for the current year at the end of the season without the need for new ground data. The phenology-based seasonal cumulative Normalised Difference Vegetation Index (cNDVI), computed from 10-day image composites of the Moderate-resolution Imaging Spectroradiometer (MODIS) NDVI data, was used as proxy for biomass production. A linear regression model was fitted with multi-annual field measurements of herbaceous biomass at the end of the growing season. In addition to a general model utilising all available sites for calibration, different aggregation schemes (i.e., grouping of sites into calibration units) of the study area with a varying number of calibration units and different biophysical meaning were tested. The sampling sites belonging to a specific calibration unit of a selected scheme were aggregated to compute the regression. The different aggregation schemes were evaluated with respect to their predictive power. The results gathered at the different aggregation levels were subjected to cross-validation (cv), applying a jackknife technique (leaving out one year at a time). In general, the model performance increased with increasing model parameterization, indicating the importance of additional unobserved and spatially heterogeneous agro-ecological effects (which might relate to grazing, species composition, optical soil properties, etc.) in modifying the relationship between cNDVI and herbaceous biomass at the end of the season. The biophysical aggregation scheme, the calibration units for which were derived from an unsupervised ISODATA classification utilising 10-day NDVI images taken between January 2001 and December 2015, showed the best performance in respect to the predictive power (R2cv = 0.47) and the cross-validated root-mean-square error (398 kg·ha−1) values, although it was not the model with the highest number of calibration units. The proposed approach can be applied for the timely production of maps of estimated biomass at the end of the growing season before field measurements are made available. These maps can be used for the improved management of rangeland resources, for decisions on fire prevention and aid allocation, and for the planning of more in-depth field missions.},
+	number = {5},
+	urldate = {2019-01-10},
+	journal = {Remote Sensing},
+	author = {Schucknecht, Anne and Meroni, Michele and Kayitakire, Francois and Boureima, Amadou and Schucknecht, Anne and Meroni, Michele and Kayitakire, Francois and Boureima, Amadou},
+	month = may,
+	year = {2017},
+	note = {Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {NDVI, MODIS, Sahel, food security, livestock, Niger, rangeland productivity},
+	pages = {463},
+	file = {PDF:/home/francisco/Zotero/storage/WBWGVMMG/full-text.pdf:application/pdf},
+}
+
+@article{Paruelo2016,
+	title = {An integrative index of {Ecosystem} {Services} provision based on remotely sensed data},
+	volume = {71},
+	issn = {1470-160X},
+	url = {https://www.sciencedirect.com/science/article/pii/S1470160X16303843},
+	doi = {10.1016/J.ECOLIND.2016.06.054},
+	abstract = {We present an approach to generate estimates and to map Ecosystem Services (ES) related to C and water dynamics (Soil Carbon sequestration, evapotranspiration and groundwater recharge) and biodiversity (Avian Richness) from remotely sensed data in two ecoregions of South America: the Semiarid Chaco woodlands and the Rio de la Plata grasslands. Two attributes of the seasonal dynamics of the Normalized Difference Vegetation Index (NDVI); the annual mean (NDVI mean), an indicator of light interception and hence of total C gains and the intra-annual Coefficient of Variation of the NDVI (NDVI CV), a descriptor of seasonality; were combined into an ES provision index (ESPI=NDVImean * (1-NDVICV)). The proportion of the variance in ES provision explained by the ESPI varied from 0.484 for avian richness up to 0.662 for C sequestration. A relatively large proportion of the studied area presented changes in ES provision. A 32,4\% of the Semiarid Chaco and the Rio de la Plata grasslands presented significant (p{\textless}0.01) trends. Most of the trends (30.2\%) were negative, showing a decrease in ESPI. An index like the one proposed here can be used as an aggregated indicator of the status and/or trends of ES supply at large spatial scales (subcontinental in our case).},
+	urldate = {2018-10-07},
+	journal = {Ecological Indicators},
+	author = {Paruelo, José M. and Texeira, Marcos and Staiano, Luciana and Mastrángelo, Matías and Amdan, Laura and Gallego, Federico},
+	month = dec,
+	year = {2016},
+	note = {Publisher: Elsevier},
+	pages = {145--154},
+}
+
+@article{Crausbay2017,
+	title = {Defining {Ecological} {Drought} for the {Twenty}-{First} {Century}},
+	volume = {98},
+	issn = {0003-0007},
+	url = {https://journals.ametsoc.org/view/journals/bams/98/12/bams-d-16-0292.1.xml},
+	doi = {10.1175/BAMS-D-16-0292.1},
+	abstract = {THE RISING RISK OF DROUGHT. Droughts of the twenty-first century are characterized by hotter temperatures, longer duration, and greater spatial extent, and are increasingly exacerbated by human demands for water. This situation increases the vulnerability of ecosystems to drought, including a rise in drought-driven tree mortality globally (Allen et al. 2015) and anticipated ecosystem transformations from one state to another-for example, forest to a shrubland (Jiang et al. 2013). When a drought drives changes within ecosystems, there can be a ripple effect through human communities that depend on those ecosystems for critical goods and services (Millar and Stephenson 2015). For example, the "Millennium Drought" (2002-10) in Australia caused unanticipated losses to key services provided by hydrological ecosystems in the Murray-Darling basin-including air quality regulation, waste treatment, erosion prevention , and recreation. The costs of these losses exceeded AUD \$800 million, as resources were spent to replace these services and adapt to new drought-impacted ecosystems (Banerjee et al. 2013). Despite the high costs to both nature and people, current drought research, management, and policy perspectives often fail to evaluate how drought affects ecosystems and the "natural capital" they provide to human communities. Integrating these human and natural dimensions of drought is an essential step toward addressing the rising risk of drought in the twenty-first century. Part of the problem is that existing drought definitions describing meteorological drought impacts (agricultural, hydrological, and socioeconomic) view drought through a human-centric lens and do not fully address the ecological dimensions of drought.},
+	number = {12},
+	urldate = {2021-08-24},
+	journal = {Bulletin of the American Meteorological Society},
+	author = {Crausbay, Shelley D. and Ramirez, Aaron R. and Carter, Shawn L. and Cross, Molly S. and Hall, Kimberly R. and Bathke, Deborah J. and Betancourt, Julio L. and Colt, Steve and Cravens, Amanda E. and Dalton, Melinda S. and Dunham, Jason B. and Hay, Lauren E. and Hayes, Michael J. and McEvoy, Jamie and McNutt, Chad A. and Moritz, Max A. and Nislow, Keith H. and Raheem, Nejem and Sanford, Todd},
+	month = dec,
+	year = {2017},
+	note = {Publisher: American Meteorological Society},
+	pages = {2543--2550},
+}
+
+@techreport{IPCC2023,
+	title = {{IPCC}, 2023: {Climate} {Change} 2023: {Synthesis} {Report}. {Contribution} of {Working} {Groups} {I}, {II} and {III} to the {Sixth} {Assessment} {Report} of the {Intergovernmental} {Panel} on {Climate} {Change} [{Core} {Writing} {Team}, {H}. {Lee} and {J}. {Romero} (eds.)]. {IPCC}, {Geneva}, {Switzerland}.},
+	shorttitle = {{IPCC}, 2023},
+	url = {https://www.ipcc.ch/report/ar6/syr/},
+	abstract = {The Synthesis Report (SYR) is a stand-alone synthesis of the most policy-relevant evidence from the scientific, technical, and socio-economic literature assessed in the Sixth Assessment Report (AR6) of the Intergovernmental Panel on Climate Change (IPCC). The SYR distils and integrates the main findings of the three reports of the Working Groups of the IPCC during the AR6, and the three AR6 Special Reports into a concise document. It consists of a Summary for Policymakers and a longer report.},
+	urldate = {2023-10-07},
+	institution = {Intergovernmental Panel on Climate Change (IPCC)},
+	author = {Calvin, Katherine and Dasgupta, Dipak and Krinner, Gerhard and Mukherji, Aditi and Thorne, Peter W. and Trisos, Christopher and Romero, José and Aldunce, Paulina and Barrett, Ko and Blanco, Gabriel and Cheung, William W.L. and Connors, Sarah and Denton, Fatima and Diongue-Niang, Aïda and Dodman, David and Garschagen, Matthias and Geden, Oliver and Hayward, Bronwyn and Jones, Christopher and Jotzo, Frank and Krug, Thelma and Lasco, Rodel and Lee, Yune-Yi and Masson-Delmotte, Valérie and Meinshausen, Malte and Mintenbeck, Katja and Mokssit, Abdalah and Otto, Friederike E.L. and Pathak, Minal and Pirani, Anna and Poloczanska, Elvira and Pörtner, Hans-Otto and Revi, Aromar and Roberts, Debra C. and Roy, Joyashree and Ruane, Alex C. and Skea, Jim and Shukla, Priyadarshi R. and Slade, Raphael and Slangen, Aimée and Sokona, Youba and Sörensson, Anna A. and Tignor, Melinda and Van Vuuren, Detlef and Wei, Yi-Ming and Winkler, Harald and Zhai, Panmao and Zommers, Zinta and Hourcade, Jean-Charles and Johnson, Francis X. and Pachauri, Shonali and Simpson, Nicholas P. and Singh, Chandni and Thomas, Adelle and Totin, Edmond and Arias, Paola and Bustamante, Mercedes and Elgizouli, Ismail and Flato, Gregory and Howden, Mark and Méndez-Vallejo, Carlos and Pereira, Joy Jacqueline and Pichs-Madruga, Ramón and Rose, Steven K. and Saheb, Yamina and Sánchez Rodríguez, Roberto and Ürge-Vorsatz, Diana and Xiao, Cunde and Yassaa, Noureddine and Alegría, Andrés and Armour, Kyle and Bednar-Friedl, Birgit and Blok, Kornelis and Cissé, Guéladio and Dentener, Frank and Eriksen, Siri and Fischer, Erich and Garner, Gregory and Guivarch, Céline and Haasnoot, Marjolijn and Hansen, Gerrit and Hauser, Mathias and Hawkins, Ed and Hermans, Tim and Kopp, Robert and Leprince-Ringuet, Noëmie and Lewis, Jared and Ley, Debora and Ludden, Chloé and Niamir, Leila and Nicholls, Zebedee and Some, Shreya and Szopa, Sophie and Trewin, Blair and Van Der Wijst, Kaj-Ivar and Winter, Gundula and Witting, Maximilian and Birt, Arlene and Ha, Meeyoung and Romero, José and Kim, Jinmi and Haites, Erik F. and Jung, Yonghun and Stavins, Robert and Birt, Arlene and Ha, Meeyoung and Orendain, Dan Jezreel A. and Ignon, Lance and Park, Semin and Park, Youngin and Reisinger, Andy and Cammaramo, Diego and Fischlin, Andreas and Fuglestvedt, Jan S. and Hansen, Gerrit and Ludden, Chloé and Masson-Delmotte, Valérie and Matthews, J.B. Robin and Mintenbeck, Katja and Pirani, Anna and Poloczanska, Elvira and Leprince-Ringuet, Noëmie and Péan, Clotilde},
+	collaborator = {Lee, Hoesung},
+	month = jul,
+	year = {2023},
+}
+
+@incollection{Zambrano2023,
+	title = {Four decades of satellite data for agricultural drought monitoring throughout the growing season in {Central} {Chile}},
+	copyright = {All rights reserved},
+	booktitle = {Integrated {Drought} {Management}, {Two} {Volume} {Set}},
+	publisher = {CRC Press},
+	author = {Zambrano, Francisco},
+	editor = {Vijay P. Singh Deepak Jhajharia, Rasoul Mirabbasi and Kumar, Rohitashw},
+	year = {2023},
+	pages = {28},
+}

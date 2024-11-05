@@ -13,8 +13,8 @@ lc[lc %in% c(5,7:10)] <- NA
 dir <- '/mnt/md0/raster_procesada/analysis/correlations/'
 files <- dir_ls(dir,type = 'file',regexp = 'tif$')
 
-chl <- ne_countries(country = 'chile',returnclass = 'sf') |> st_transform(32719)
-
+chl <- ne_countries(country = 'chile',scale='medium',returnclass = 'sf') |> st_transform(32719)
+macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg')
 cors <- rast(files)
 
 cors <- crop(cors,lc)
@@ -24,7 +24,7 @@ cors_i <- subset(cors,seq(1,8,2))
 cors_r <- subset(cors,seq(2,8,2))
 
 set_defaults(map_token = "pk.eyJ1IjoiZnJ6YW1icmEiLCJhIjoiY2tqdmw5Z3QxMDZyZjJydG54M2RobWMyeSJ9.rl8_KzhiKaV0wgsLL2Y1WQ")
-bm <- basemap_raster(chl,map_service = 'osm',map_type="streets")
+bm <- basemap_raster(chl,map_service = 'carto',map_type="light_no_labels")
 
 names(cors_i) <- 1:4
 
@@ -38,8 +38,8 @@ map_i <- tm_shape(bm) +
             palette = '-magma',
             title =  'Time-scale (months)',
             legend.is.portrait = FALSE) +
-  # tm_shape(chl) +
-  # tm_borders() +
+  tm_shape(chl) +
+  tm_borders() +
   tm_facets(nrow = 1) + 
   tm_layout(
     panel.labels = c('EDDI','SPEI','SPI','SSI'),
@@ -59,6 +59,8 @@ map_r <- tm_shape(bm) +
             title = 'r',
             legend.hist = TRUE,
             legend.reverse = TRUE) +
+  tm_shape(chl) + 
+  tm_borders() +
   tm_facets(free.scales	= FALSE) + 
   tm_layout(
     panel.labels = c('EDDI','SPI','SPEI','SSI'),

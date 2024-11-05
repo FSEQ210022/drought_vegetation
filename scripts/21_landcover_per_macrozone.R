@@ -19,10 +19,12 @@ names(t) <- pal$Name
 lc <- rast('/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/IGBP80_reclassified.tif') |> 
   project('EPSG:4326')
 
-macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg') |> 
-  dplyr::mutate(macrozona = c('Norte Chico','Norte Grande','Austral','Centro','Sur'))
+ecoregions <- read_sf('data/processed_data/spatial/ecoregiones_2017.gpkg') |> 
+  filter(ECO_NAME != "Rock and Ice") |> 
+  mutate(ECO_NAME = fct(ECO_NAME,levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe")))
+  
 
-LC_data <- terra::extract(lc,macro)
+LC_data <- terra::extract(lc,ecoregions,bind = TRUE)
 
 library(tidyverse)
 
@@ -32,24 +34,22 @@ attr(colors,'names') <- paleta$Name
 
 LC_data |> 
   mutate(LC_type = factor(lyr.1,levels=paleta$class,labels=paleta$Name),
-         zone = factor(ID,levels=1:5,labels=macro$macrozona),
-         zone = fct_relevel(zone, "Norte Grande", "Norte Chico",
-                            'Centro','Sur','Austral')
-         ) |> 
-  select(LC_type,zone) |> 
+         ECO_NAME = factor(as.character(ID),labels = c("Atacama desert", "Chilean Matorral", "Magellanic subpolar forests","Patagonian steppe", "Valdivian temperate forests"))) |> 
+  select(LC_type,ECO_NAME) |> 
   na.omit() |>  
-  group_by(zone,LC_type)|> 
+  group_by(ECO_NAME,LC_type)|> 
   summarize(ntot = n()) -> summ_data2
 write_rds(summ_data2,'data/processed_data/surface_landcover_macrozone.rds')
 #tabla con superficie
 #
+library(gt)
 summ_data2 |> 
   mutate(surface = 21.5*ntot*0.01) |> 
   select(-ntot) |> 
   mutate(surface = case_when(surface <=20~NA,
                            .default = surface)) |> 
   pivot_wider(names_from = LC_type,values_from=surface) |> 
-  rename(Macrozone = zone) |> 
+  rename(Ecoregions = ECO_NAME) |> 
   ungroup() |> 
    select(1,7:6,4:2,5) |> 
   gt() |> 
@@ -70,13 +70,13 @@ summ_data2 |>
   gt::gtsave('output/figs/table_surface_landcover_macrozone.png')
 
 summ_data2 |> 
-  group_by(zone) |>  
+  group_by(ECO_NAME) |>  
   summarize(totZone = sum(ntot)) |>  
-  left_join(summ_data2,by='zone') |>  
+  left_join(summ_data2,by='ECO_NAME') |>  
   mutate(propClusZon = ntot/totZone) |>  
   ggplot() +
-  geom_col(aes(x=zone,y=propClusZon,fill=LC_type)) +
-  scale_x_discrete(limits = rev(levels(summ_data2$zone))) +
+  geom_col(aes(x=ECO_NAME,y=propClusZon,fill=LC_type)) +
+  scale_x_discrete(limits = rev(levels(summ_data2$ECO_NAME))) +
   coord_flip() +
   scale_y_continuous(breaks = seq(0,1,.1), 
                      labels = scales::percent_format(accuracy = 1),

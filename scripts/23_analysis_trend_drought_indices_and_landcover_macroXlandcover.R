@@ -90,9 +90,10 @@ data_trend_di |>
   geom_tile() +
   scale_fill_viridis_b(name = 'Trend of zcNDVI')  +
   scale_y_discrete(limits=rev) +
+  geom_text(aes(label = round(`zcNDVI-6`,3))) +
   theme_bw()+
   theme(axis.title = element_blank())
-ggsave('output/figs/heatmap_trends_zcNDVI_macro_landcover.png',scale=2)
+ggsave('output/figs/heatmap_trends_zcNDVI_macro_landcover.png',scale=1.2,width=6,height=3)
   
 data_model <- data_ana[,c(1:6,9:12,15:18,21:24,29,31)] |> 
   left_join(lc_surf) |> 

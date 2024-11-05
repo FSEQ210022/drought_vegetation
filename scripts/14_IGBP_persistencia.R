@@ -2,8 +2,8 @@
 # by Francisco Zambrano (frzambra@gmail.com)
 # April 2021
 
-dir <- '/mnt/md0/raster_procesada/MODIS/'
-dir.out <- '/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/'
+dir <- '/mnt/discoB/processed/MODIS/'
+dir.out <- '/mnt/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/'
 
 library(terra)
 library(rnaturalearth)
@@ -62,9 +62,9 @@ igbpRecl[igbpRecl == 0] <- NA
 writeRaster(igbpRecl,paste0(dir.out,'IGBP',prop,'_reclassified.tif'),
             wopt=list(datatype='INT1U'))
 
-# landcover del último año (2021)
+# landcover del último año (2023)
 
 igbp2022 <- classify(igbp[[22]],rcl=classes,include.lowest = TRUE)
 igbp2022[igbp2022 == 0] <- NA
-writeRaster(igbp2022,paste0(dir.out,'IGBP_2022_reclassified.tif'),
+writeRaster(igbp2022,paste0(dir.out,'IGBP_2023_reclassified.tif'),
             wopt=list(datatype='INT1U'))

@@ -109,10 +109,11 @@ data_temp |>
   summarise(
     ubrmse = ubrmse(temp.x,temp.y),
     mae = mae_vec(temp.x,temp.y),
-    cor = cor(temp.x,temp.y)
+    cor = cor(temp.x,temp.y),
+    bias = sum(temp.x)/sum(temp.y)
   ) |> 
   filter(ubrmse < 4) |>
-  summarize(across(ubrmse:cor,\(x) mean(x)))
+  summarize(across(ubrmse:bias,\(x) mean(x)))
   
   
   ggplot(aes(ubrmse)) + 
@@ -159,7 +160,7 @@ data_pre |>
   drop_na() |> 
   summarise(
      mae = mae_vec(pre.y,pre.x),
-     rmse = rmse_vec(pre.y,pre.x),
+     ubrmse = ubrmse(pre.y,pre.x),
      bias =sum(pre.y)/sum(pre.x),
      cor  = cor(pre.y,pre.x)
    ) |> 

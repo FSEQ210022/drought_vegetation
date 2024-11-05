@@ -4,10 +4,10 @@
 
 require(purrr)
 
-dir_in <- '/mnt/md0/raster_raw/MODIS/MOD17A3HGF.061/'
-dir_out <- '/mnt/md0/raster_procesada/MODIS/NPP.MOD17A3HGF.061/'
+dir_in <- '/mnt/discoB/raw/MODIS/MOD13A3.061/'
+dir_out <- '/mnt/discoB/processed/MODIS/NDVI.MOD13A3.061/'
 
-mosaic_modisFromHDF(dir_in,dir_out,lyr=2)
+mosaic_modisFromHDF(dir_in,dir_out,lyr=1)
 
 datesUpdate <- dates2Update(dir.out,dirs)
 

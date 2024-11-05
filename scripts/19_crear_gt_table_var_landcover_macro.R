@@ -3,8 +3,13 @@ library(gtExtras)
 library(tidyverse)
 library(kableExtra)
 
-dataLCV_ts <- readRDS('data/processed_data/timeseries_landcover_zone_LCclass_2001-2022.rds')  
-dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2022.rds') 
+dataLCV_ts <- readRDS('data/processed_data/timeseries_landcover_ecoregion_LC_class_2001-2023.rds')  |> 
+  filter(eco != "Rock and Ice") |> 
+  mutate(eco =fct(as.character(eco),levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe")))
+
+dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2022.rds') |> 
+  filter(eco != "Rock and Ice") |> 
+  mutate(eco =fct(as.character(eco),levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe")))
 
 dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Cropland') %>% 
   map(function(class){
@@ -12,8 +17,8 @@ dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Crop
       complete(LC_type) |> 
       ungroup() |> 
       filter(LC_type == class) |>   
-      group_by(zone,LC_type) |> 
-      select(zone,LC_type,sup_km2) |> 
+      group_by(eco,LC_type) |> 
+      select(eco,LC_type,sup_km2) |> 
       group_split() |> 
       setNames(c('a','b','c','d','e')) |> 
       map(function(x) pull(x,sup_km2))
@@ -22,7 +27,8 @@ dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Crop
 
 
 dataLCV_trend |> 
-  pivot_longer(-zone,names_to = 'cropland_class') |> 
+  select(-eco) |> 
+  pivot_longer(-ECO_NAME,names_to = 'cropland_class') |> 
   write_rds('data/processed_data/trend_landcover_change_classXzone_2001_2022.rds')
 
 # dataLCV_trend  |> 
@@ -51,12 +57,12 @@ dataLCV_trend |>
 data_gt <- dataLCV_ts |> 
   ungroup() |> 
   #mutate(zone = fct_relevel(zone,c('norte grande','norte chico','centro', 'sur','austral'))) |> 
-  dplyr::group_by(zone,LC_type)  |> 
+  dplyr::group_by(eco,LC_type)  |> 
   # must end up with list of data for each row in the input dataframe
   dplyr::summarize(lc_data = list(prop), .groups = "drop") |> 
   pivot_wider(names_from = LC_type, values_from = lc_data) |> 
-  full_join(dataLCV_trend,by = 'zone') |> 
-  select(zone,Forest.x,Forest.y,Cropland.x,Cropland.y,Grassland.x,Grassland.y,Savanna.x,Savanna.y,Shrubland.x,Shrubland.y,`Barren land.x`,`Barren land.y`) 
+  full_join(dataLCV_trend,by = c('eco' = 'ECO_NAME')) |> 
+  select(eco,Forest.x,Forest.y,Cropland.x,Cropland.y,Grassland.x,Grassland.y,Savanna.x,Savanna.y,Shrubland.x,Shrubland.y,`Barren land.x`,`Barren land.y`) 
 
 data_gt$Savanna.x[1] <- NA
 data_gt$Savanna.y[1] <- NA
@@ -68,7 +74,7 @@ data_gt$Shrubland.x[4] <- NA
 data_gt$Shrubland.y[4] <- NA
 
 data_gt |> 
-  rename(Macrozone = zone) |> 
+  rename(Ecoregions = eco) |> 
   gt() |> 
   fmt_number(decimals = 0) |> 
   sub_missing(
