@@ -9,6 +9,6 @@ library(curl)
 
 type <- c('MOLA','MOLT','MOTA')[3]
 product <- 'MCD12Q1.061'
-dir_out <- '/mnt/discoB/raw/MODIS/'
+dir_out <- '/home/rstudio/raw/MODIS/'
 
 updt_modis(type,product,dir_out)
