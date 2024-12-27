@@ -67,7 +67,7 @@ df <- map(1:6,\(i){
     ind <- which(a %in% c(scale))
     
     data_m <- data_m |> 
-      select(ind,`zcNDVI-6`,trend_area_quemada,trend_luces_nocturnas,densidad_vial,last_col())
+      select(ind,`zcNDVI-6`,-`zcNDVI-1`,-`zcNDVI-3`,-`zcNDVI-12`,trend_area_quemada,trend_luces_nocturnas,densidad_vial,last_col())
     
     df_split <- initial_split(data_m,prop =0.75)
     df_train <- training(df_split)
@@ -135,7 +135,7 @@ df <- map(1:6,\(i){
       labs(x = "Variable importance", y = NULL) +
       annotate("text",x=max(df_var_imp$Mean),y=1,label =paste0('rsq=',round(df_met$mean[2],2))) +
       theme_bw()
-    ggsave(paste0('output/figs/fig_errorbar_resample_random_forest_trends_',vars[i],'_',eco,'.png'),scale =1.5)
+    #ggsave(paste0('output/figs/fig_errorbar_resample_random_forest_trends_',vars[i],'_',eco,'.png'),scale =1.5)
     df_var_imp <- df_var_imp |> 
       slice_max(Mean, n = 5) |> 
       mutate(type = vars[i],ecoregion = {{eco}}) 
@@ -176,6 +176,10 @@ tabla |>
                          Variable == 'trend_luces_nocturnas' ~ 'Nigh Lights',
                          Variable == 'densidad_vial' ~ 'Road density',
                          Variable == 'zcNDVI-6' ~ 'zcNDVI',
+                         Variable == "zcET-6" ~ "SETI-6",
+                         Variable == "zcET-12" ~ "SETI-12",
+                         Variable == "zcET-24" ~ "SETI-24",
+                         Variable == "zcET-36" ~ "SETI-36",
                          .default = Variable),
     type = case_when(type == 'Barren_land' ~ 'Barren Land',
                      .default = type),
@@ -224,11 +228,21 @@ tabla2 <- map_df(1:6,\(i){
 #Gráfico de los r-squared
 
 tabla2 |>  
-  filter(.metric == 'rsq') |> 
-  ggplot(aes(ecoregion,mean)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=mean - std_err,ymax= mean+std_err)) +
-  facet_grid(.~type)
+  filter(.metric == 'rsq' & ecoregion != "Rock and Ice") |> 
+  mutate(type = case_when(type == 'Barren_land' ~ 'Barren Land',
+                          .default = type)) |> 
+  ggplot(aes(ecoregion,mean,color=type)) +
+  geom_point(position = position_dodge(width = .5)) +
+  geom_errorbar(aes(ymin=mean - std_err,ymax= mean+std_err),position = position_dodge(width = .5)) +
+  scale_color_manual(name = 'Landcover class', values = colors) +
+  labs(y='r-squared') +
+  #facet_grid(.~type) +
+  theme_bw() +
+  theme(axis.text.x  =element_text(angle=0,hjust=.5),
+        axis.title.x = element_blank(),
+        strip.background = element_rect(fill = 'white'),
+        legend.position = 'bottom')
+ggsave(glue::glue('output/figs/error_bar_random_forest_10_fold_{scale}.png'),scale=1.5)
 
 r2s <- tabla2 |> 
   filter(.metric == 'rsq') |> 
@@ -246,6 +260,10 @@ r2s <- tabla2 |>
   # summarize(mean = mean(mean)) |> 
   pivot_wider(names_from = type,values_from = mean) |> 
   select(ecoregion,Forest,Cropland,Grassland, Savanna,Shrubland,Barren_land ) 
+write_rds(r2s,glue::glue('data/processed_data/r-squared_zcNDVI6_vs_drought_indices_{scale}_months.rds'))
+
+# Hay que modificar desde acá hacia abajo ----
+
 
 head <- c('Ecoregion',paste0(names(r2s),'\n (R<sup>2=',round(r2s[1,-1],2),')'))
 
