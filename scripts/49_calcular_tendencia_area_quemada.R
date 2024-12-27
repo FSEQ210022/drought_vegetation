@@ -29,6 +29,11 @@ arque_anual <- rast(arque_anual)
 names(arque_anual) <- 2002:2022
 plot(arque_anual)
 
+#Calcular suma de area quemada de todos los años
+
+arque_anual_sum <- app(arque_anual,'sum',na.rm = TRUE)
+writeRaster(arque_anual_sum,'~/Documentos/suma_area_quemada-2002-2023.tif')
+
 
 #Calcular la tendencia de el área quemada entre 2002 y 2022
 
