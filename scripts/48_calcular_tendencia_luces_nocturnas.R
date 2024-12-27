@@ -24,7 +24,10 @@ out <- files |>
     
 nbm_nl <- rast(out)
 
-plot(nbm_nl)
+# Calcular el promedio de todos los años
+
+nbm_nl_mean <- app(nbm_nl,'mean',na.rm = TRUE)
+writeRaster(nbm_nl_mean,'~/Documentos/promedio_luces_nocturnas_2012-2023.tif')
 
 #Calcular la tendencia de las luces nocturnas entre 2012 a 2023
 
