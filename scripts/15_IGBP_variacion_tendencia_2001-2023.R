@@ -2,7 +2,7 @@
 # August 2021
 # by frzambra
 
-dir <- '/mnt/md0/raster_procesada/MODIS/'
+dir <- '/home/rstudio/discoB/processed/MODIS/'
 
 paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv')
 colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
@@ -53,7 +53,7 @@ data2 |>
   left_join(dataSum,by='eco') |>  
   mutate(prop = n/ntot,sup_km2=n*0.2146587) -> data3
 
-saveRDS(data3,'data/processed_data/timeseries_landcover_ecoregion_LC_class_2001-2022.rds')  
+saveRDS(data3,'data/processed_data/timeseries_landcover_ecoregion_LC_class_2001-2023.rds')  
 
 #Figura variación landocver type por ecoregion entre 2001-2022
 #
@@ -79,7 +79,7 @@ data3 |>
     strip.background = element_rect(fill='white')
   ) + 
   guides(fill = guide_legend(nrow = 1)) 
-ggsave('output/figs/landcover_variation_per_ecoregions_2001-2022.png',scale=2,width=7, height=2)
+ggsave('output/figs/landcover_variation_per_ecoregions_2001-2023.png',scale=2,width=7, height=2)
 
 #plot
 data3  |>  

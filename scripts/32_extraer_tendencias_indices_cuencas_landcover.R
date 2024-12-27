@@ -24,16 +24,16 @@ df_scales_1 <- terra::extract(trends,cuencas,mean,na.rm = TRUE) |>
   mutate(across(everything(),\(x) replace_na(x,0)))
 
 # Ahora los índices derivados de MODIS (ET y PET)
-files2 <- files[c(25:30,35:40)]
-indices <- str_remove(basename(files2),'trend_mann_kendall_mod_*.tif')
+files2 <- files[25:30]
+indices <- str_remove(basename(files2),'trend_mann_kendall_mod_')
 
 trends <- rast(files2)
-
 # cargar la capa de landcover persistente para aplicar sobre el índice
 lc_pers <- rast('/home/rstudio/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/IGBP80_reclassified.tif') 
 lc_pers <- resample(lc_pers,trends) 
 
 trends <- mask(trends,lc_pers)
+
 ind <- sapply(1:length(files2),\(i) rep(i,2)) |> as.numeric()
 trends <- tapp(trends,ind,prod)
 names(trends) <- indices
@@ -45,11 +45,11 @@ df_scales_2 <- terra::extract(trends,cuencas,mean,na.rm = TRUE) |>
 files3 <- files[31:34]
 indices <- str_remove(basename(files3),'trend_mann_kendall_mod_')
 
+trends <- rast(files3)
 # cargar la capa de landcover persistente para aplicar sobre el índice
 lc_pers <- rast('/home/rstudio/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/IGBP80_reclassified.tif') 
 lc_pers <- resample(lc_pers,trends) 
 
-trends <- rast(files3)
 trends <- mask(trends,lc_pers)
 
 ind <- sapply(1:length(files3),\(i) rep(i,2)) |> as.numeric()
@@ -58,6 +58,7 @@ names(trends) <- indices
 
 df_scales_3 <- terra::extract(trends,cuencas,mean,na.rm = TRUE) |> 
   mutate(across(everything(),\(x) replace_na(x,0)))
+
 
 # Tendencia de área quemada
 
@@ -87,12 +88,26 @@ df_scales_6 <- terra::extract(densidad_vial,cuencas,mean,na.rm = TRUE) |>
   mutate(across(everything(),\(x) replace_na(x,0))) |> 
   rename(densidad_vial = 2)
 
+# promedio de luces nocturnas
+luces_nocturnas_mean <- rast(paste0(dir,'/../promedio_luces_nocturnas_2012-2023.tif'))
+
+df_scales_7 <- terra::extract(luces_nocturnas_mean,cuencas,mean,na.rm = TRUE) |> 
+  mutate(across(everything(),\(x) replace_na(x,0))) |> 
+  rename(luces_nocturnas_avg = 2)
+
+# suma área quemada 
+area_quemada_sum <- rast(paste0(dir,'/../suma_area_quemada_2002-2023.tif'))
+
+df_scales_8 <- terra::extract(area_quemada_sum,cuencas,mean,na.rm = TRUE) |> 
+  mutate(across(everything(),\(x) replace_na(x,0))) |> 
+  rename(area_quemada_sum = 2)
 
 # Unir todas las tendencias y predictores
 df_scales <- cbind(st_drop_geometry(cuencas),
                    df_scales_1,df_scales_2,
                    df_scales_3,df_scales_4,
-                   df_scales_5,df_scales_6) |> 
+                   df_scales_5,df_scales_6,
+                   df_scales_7,df_scales_8) |> 
   select(-starts_with('ID')) 
 
 sel_cuen <- df_scales |> 

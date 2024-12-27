@@ -29,7 +29,7 @@ dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Crop
 dataLCV_trend |> 
   select(-eco) |> 
   pivot_longer(-ECO_NAME,names_to = 'cropland_class') |> 
-  write_rds('data/processed_data/trend_landcover_change_classXzone_2001_2022.rds')
+  write_rds('data/processed_data/trend_landcover_change_classXzone_2001_2023.rds')
 
 # dataLCV_trend  |> 
 #   kbl(booktabs = TRUE,digits = 1,align ='r','latex',position='!ht',

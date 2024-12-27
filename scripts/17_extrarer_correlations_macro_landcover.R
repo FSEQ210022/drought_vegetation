@@ -3,7 +3,7 @@
 library(terra)
 library(fs)
 library(sf)
-library(purrr)
+library(tidyverse)
 
 #paleta colores landcover persistencia
 paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv') |> 
@@ -12,32 +12,35 @@ paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv') |>
 colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
 attr(colors,'names') <- paleta$class
 
-lc <- rast('/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/IGBP80_reclassified.tif')
+lc <- rast('/mnt/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/IGBP80_reclassified.tif')
 
-dir <- '/mnt/md0/raster_procesada/analysis/correlations/'
+dir <- '/mnt/discoB/processed/analysis/correlations/'
 files <- dir_ls(dir,regexp = 'tif$')
 
-cors <- rast(files)
-cors <- resample(cors,lc)
+cors <- files |> 
+  lapply(\(file) {
+    c(resample(rast(file)[[1]],lc,method = 'near'),
+      resample(rast(file)[[2]],lc))
+  })
 
+cors <- rast(cors)
 eco <- read_sf('data/processed_data/spatial/ecoregiones_2017.gpkg') |> 
   st_transform(32719) |> 
   filter(ECO_NAME != "Rock and Ice") |> 
   mutate(ECO_NAME = fct(ECO_NAME,levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe"))) 
 
-library(tidyverse)
 getmode <- function(v) {
   uniqv <- unique(v)
   uniqv[which.max(tabulate(match(v, uniqv)))]
 }
 
 #obtener los indices y escalas de tiempo en dónde se alcanza la máxima correlación
-cors1 <- subset(cors,seq(1,8,2))
+cors1 <- subset(cors,seq(1,10,2))
 data_ind <- map_df(1:5,function(i){
   cors_m <- mask(cors1,eco[i,])
   lc_m <- mask(lc,eco[i,])
   cors_df <- zonal(cors_m,lc_m,getmode)
-  names(cors_df)[2:5] <- c('EDDI','SPI','SPEI','SSI')
+  names(cors_df)[2:6] <- c('EDDI','SPEI','SPI','SSI','SETI')
   cors_df |> 
     pivot_longer(-1) |> 
     rename(indice = name) |> 
@@ -60,12 +63,12 @@ data_ind_4gt <- data_ind |>
 
 #obtener los valores de correlación para los indices y escalas de tiempo en dónde se alcanza la máxima correlación
   
-cors2 <- subset(cors,seq(2,8,2))
+cors2 <- subset(cors,seq(2,10,2))
 data_r <- map_df(1:5,function(i){
   cors_m <- mask(cors2,eco[i,])
   lc_m <- mask(lc,eco[i,])
   cors_df <- zonal(cors_m,lc_m,na.rm = TRUE)
-  names(cors_df)[2:5] <- c('EDDI','SPI','SPEI','SSI')
+  names(cors_df)[2:6] <- c('EDDI','SPEI','SPI','SSI','SETI')
   cors_df |> 
     pivot_longer(-1) |> 
     rename(indice = name) |> 
@@ -77,7 +80,7 @@ data_r <- map_df(1:5,function(i){
 data_r_4gt <- data_r |> 
   filter(clase %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land')) |> 
   mutate(clase = str_to_title(clase),
-         value = value^2) |> #value^2 for R2
+         value = value) |> #correlation
   pivot_wider(names_from = indice,values_from = value) |> 
   pivot_longer(-c(clase,eco))  |> 
   mutate(clase = str_to_title(clase)) |> 
@@ -90,59 +93,53 @@ tabla_gt <- full_join(data_ind_4gt,data_r_4gt,by = 'eco')
 
 library(gt)
 
-tabla_gt$Forest_EDDI[1] <- NA
-tabla_gt$Forest_EDDI_r[1] <- NA
-tabla_gt$Forest_SPI[1] <- NA
-tabla_gt$Forest_SPI_r[1] <- NA
-tabla_gt$Forest_SPEI[1] <- NA
-tabla_gt$Forest_SPEI_r[1] <- NA
-tabla_gt$Forest_SSI[1] <- NA
-tabla_gt$Forest_SSI_r[1] <- NA
+tabla_gt$Forest_SPEI_r[4] <- NA
+tabla_gt$Shrubland_EDDI_r[5] <- NA
+tabla_gt$Shrubland_SETI_r[5] <- NA
 
-tabla_gt$Shrubland_SPI[5] <- NA
-tabla_gt$Shrubland_SPI_r[5] <- NA
 
 tabla_gt |> 
   rename(Ecoregion = eco) |> 
-  dplyr::select(1,22:25,18:21,10:13,6:9,2:5,
-         46:49,42:45,34:37,30:33,26:29
+  dplyr::select(1,22:26,27:31,12:16,7:11,2:6,
+                52:56,57:61,42:46,37:41,32:36
          ) |> 
   gt() %>% 
   #opt_stylize(style = 6, color = 'gray')
   data_color(
-    columns = 22:41,
-    target_columns =2:21,
-    palette = rev(viridis::inferno(20)),
+    columns = 27:51,
+    target_columns =2:26,
+    palette = 'RdBu',
     na_color = 'white',
-    alpha = .8,
-    domain = c(0,.8)  
+    alpha = 1,
+    domain = c(-0.75,.75)  
   ) |> 
   tab_spanner_delim(
     delim="_"
   ) %>% 
-  fmt_missing(
+  sub_missing(
     columns=everything(),
     missing_text=""
   ) |> 
   fmt_number() |> 
-  cols_hide(columns = 22:41) |> 
+  cols_hide(columns = 27:51) |> 
   tab_footnote(
     footnote = html(local_image('output/figs/leyenda_tabla_correlaciones_macro_suelo.png',height = 50))) |> 
   gtsave('output/figs/tabla_r_cor_macro_indice.png')
 
 #crear legenda para incluir en la tabla
-plot <- data_r_4gt |> 
-  pivot_longer(-eco) |> 
+plot <- tibble(name = 1:50,value = seq(-0.75,0.75,length.out = 50)) |> 
   ggplot(aes(name,value,color=value)) + 
   geom_point() + 
-  scale_color_viridis_c(option = 'inferno',
-                        name = 'r-squared',
-                        direction = -1,
-                        alpha = .8) + theme(legend.position = 'bottom')
+  scale_colour_gradientn(
+    name = 'Pearson \ncorrelation',
+    colors = RColorBrewer::brewer.pal(10,'RdBu'),
+    breaks = scales::breaks_extended(10)) +
+  theme(legend.text = element_text(size=4),
+        legend.position = 'bottom')
 
 ggpubr::get_legend(plot) |> 
   ggpubr::as_ggplot() |> 
-  ggsave(filename = 'output/figs/leyenda_tabla_correlaciones_macro_suelo.png')
+  ggsave(filename = 'output/figs/leyenda_tabla_correlaciones_macro_suelo.png',scale=2)
 
 
   

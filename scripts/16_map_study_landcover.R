@@ -2,13 +2,14 @@
 # may 2023
 # by frzambra
 
-dir <- '/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/'
+dir <- '/home/rstudio/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/'
 
 library(terra)
 library(tmap)
 library(sf)
 library(basemaps)
 library(rnaturalearth)
+library(tidyverse)
 
 chl <- ne_countries(country = 'chile',scale = 'medium',returnclass = 'sf') |> st_transform(32719)
 ext <- st_bbox(chl)
@@ -34,8 +35,8 @@ igbp80 <- mask(igbp80,chl)
 #igbp80[igbp80 == 10] <- NA
 
 #landcover año 2021
-igbp2022 <- rast(paste0(dir,'IGBP_2022_reclassified.tif'))
-igbp2022 <- mask(igbp2022,chl)
+igbp2023 <- rast(paste0(dir,'IGBP_2023_reclassified.tif'))
+igbp2023 <- mask(igbp2023,chl)
 
 paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv')
 colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
@@ -70,14 +71,16 @@ m1 <- tm_shape(bm_topo) +
   # tm_shape(zones) +
   # tm_borders(lwd=1,col='white',lty='solid',alpha=0.8) +
   #tm_text('macrozona',just='top',xmod=c(-2,-2,2,-2,-2),size=.5) +
-  tm_credits('(b)',position = c('left','bottom'),fontface = 'bold')
+  tm_credits('(c)',position = c('left','bottom'),fontface = 'bold')
 
 map_eco <- tm_shape(bm) +
   tm_rgb() + 
   tm_shape(ecoregions) +
   tm_fill(col = 'ECO_NAME',palette = ecoregions$COLOR,title = 'Ecoregions',alpha = .7) +
   tm_borders(lwd=1.5) +
-  tm_layout(legend.width = 1)
+  tm_layout(legend.width = 1) +
+  tm_credits('(b)',position = c('left','bottom'),fontface = 'bold')
+
 
 mapArr <- tmap_arrange(map_eco,m1,m3,asp=0.23)
 tmap_save(mapArr,'output/figs/landcover_pers.png',dpi =300,width=7,height=10,scale=2)

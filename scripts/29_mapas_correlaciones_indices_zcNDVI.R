@@ -7,26 +7,33 @@ library(basemaps)
 library(rnaturalearth)
 
 #persistencia de landcover
-lc <- rast('/mnt/md0/raster_procesada/MODIS_derived/IGBP.MCD12Q1.061/IGBP80_reclassified.tif')
+lc <- rast('/home/rstudio/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/IGBP80_reclassified.tif')
 lc[lc %in% c(5,7:10)] <- NA
 
-dir <- '/mnt/md0/raster_procesada/analysis/correlations/'
+dir <- '/home/rstudio/discoB/processed/analysis/correlations/'
 files <- dir_ls(dir,type = 'file',regexp = 'tif$')
 
+#reordenar indices
+files <- files[c(3,1,2,5,4)]
 chl <- ne_countries(country = 'chile',scale='medium',returnclass = 'sf') |> st_transform(32719)
-macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg')
-cors <- rast(files)
 
-cors <- crop(cors,lc)
-cors <- resample(cors,lc)
+chl <- chl |> st_geometry() |> st_cast('POLYGON') |> _[-c(1,2)] 
+
+macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg')
+cors <- files |> 
+  lapply(\(file) {
+    resample(rast(file),lc)
+  })
+
+cors <- rast(cors)
 cors <- mask(cors,lc)
-cors_i <- subset(cors,seq(1,8,2))
-cors_r <- subset(cors,seq(2,8,2))
+cors_i <- subset(cors,seq(1,10,2))
+cors_r <- subset(cors,seq(2,10,2))
 
 set_defaults(map_token = "pk.eyJ1IjoiZnJ6YW1icmEiLCJhIjoiY2tqdmw5Z3QxMDZyZjJydG54M2RobWMyeSJ9.rl8_KzhiKaV0wgsLL2Y1WQ")
 bm <- basemap_raster(chl,map_service = 'carto',map_type="light_no_labels")
 
-names(cors_i) <- 1:4
+names(cors_i) <- 1:5
 
 # map_i <- tm_shape(bm) + 
 #   tm_rgb() + 
@@ -42,12 +49,12 @@ map_i <- tm_shape(bm) +
   tm_borders() +
   tm_facets(nrow = 1) + 
   tm_layout(
-    panel.labels = c('EDDI','SPEI','SPI','SSI'),
+    panel.labels = c('SPI','EDDI','SPEI','SETI','SSI'),
     panel.label.bg.color = 'white',
     legend.outside.position = 'bottom',
     legend.height = -.2
             )
-names(cors_r) <- 1:4
+names(cors_r) <- 1:5
 
 # map_r <- tm_shape(bm) + 
 #   tm_rgb() +
@@ -63,7 +70,7 @@ map_r <- tm_shape(bm) +
   tm_borders() +
   tm_facets(free.scales	= FALSE) + 
   tm_layout(
-    panel.labels = c('EDDI','SPI','SPEI','SSI'),
+    panel.labels = c('SPI','EDDI','SPEI','SETI','SSI'),
     panel.label.bg.color = 'white',
     legend.hist.bg.color = 'lightgrey',
     legend.outside = FALSE,

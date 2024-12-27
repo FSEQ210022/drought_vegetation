@@ -51,6 +51,8 @@ get_rf_imp <- function(x) {
 #
 # para tendencia en usos de suelo
 
+scale <- 6
+
 df <- map(1:6,\(i){
   map(ecoregiones,\(eco){
     t <- which(vars == vars[[i]])
@@ -62,7 +64,7 @@ df <- map(1:6,\(i){
     
     #seleccionar los indices para una escala de tiempo
     data_m |> names() |> str_extract("(\\d)+") -> a
-    ind <- which(a %in% c(24))
+    ind <- which(a %in% c(scale))
     
     data_m <- data_m |> 
       select(ind,`zcNDVI-6`,trend_area_quemada,trend_luces_nocturnas,densidad_vial,last_col())
@@ -164,9 +166,17 @@ colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
 #paleta$Name[6] <- 'Barren_land'
 attr(colors,'names') <- paleta$Name
 
+library(broom.helpers)
 tabla |>
   filter(ecoregion != "Rock and Ice") |> 
   mutate(
+    std.err = sqrt(Variance),
+    Variable = .clean_backticks(Variable),
+    Variable = case_when(Variable == 'trend_area_quemada' ~ 'Burned area',
+                         Variable == 'trend_luces_nocturnas' ~ 'Nigh Lights',
+                         Variable == 'densidad_vial' ~ 'Road density',
+                         Variable == 'zcNDVI-6' ~ 'zcNDVI',
+                         .default = Variable),
     type = case_when(type == 'Barren_land' ~ 'Barren Land',
                      .default = type),
     type = factor(type,levels=paleta$Name),
@@ -182,9 +192,10 @@ tabla |>
   ) |> 
   group_by(type,ecoregion) |> 
   mutate(rel_imp = Mean*10e2) |> 
-  slice_max(rel_imp, n= 5) |> 
+  slice_max(rel_imp, n= 2) |> 
   ggplot(aes(Variable,rel_imp)) +
-  geom_col(aes(fill = type),position = 'dodge') +
+  geom_col(aes(fill = type),position = position_dodge2(preserve = "single")) +
+  #geom_errorbar(aes(ymin = rel_imp-std.err,ymax = rel_imp+std.err),position = position_dodge2(preserve = "single")) +
   scale_y_continuous(expand = c(0,0)) +
   scale_fill_manual(name = 'Landcover class',
                     values=colors) +
@@ -201,7 +212,7 @@ tabla |>
         panel.grid = element_blank(),
         axis.title.y = element_blank(),
         legend.position = 'bottom')
-ggsave('output/figs/bars_relative_importance_RF.png',height = 3,width=12,scale = 1)
+ggsave(glue::glue('output/figs/bars_relative_importance_RF_scale_{scale}.png'),height = 3,width=12,scale = 1)
 
 
 tabla2 <- map_df(1:6,\(i){
@@ -209,6 +220,15 @@ tabla2 <- map_df(1:6,\(i){
     pluck(df,i,j,1)
   })
 })
+
+#Gráfico de los r-squared
+
+tabla2 |>  
+  filter(.metric == 'rsq') |> 
+  ggplot(aes(ecoregion,mean)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=mean - std_err,ymax= mean+std_err)) +
+  facet_grid(.~type)
 
 r2s <- tabla2 |> 
   filter(.metric == 'rsq') |> 
