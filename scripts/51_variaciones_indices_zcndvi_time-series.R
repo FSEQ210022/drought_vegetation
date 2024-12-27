@@ -148,13 +148,18 @@ data_unida <- data |>
   left_join(data_zcndvi,by = c('dates','punto','clase'))
 
 data_unida |> 
-  ggplot(aes(dates,value.x,color = clase)) +
-  geom_point(size = .3) + 
+  ggplot(aes(dates,value.x,color = clase),alpha = .6) +
+  #geom_point(size = .3) + 
   geom_line(size = .3) +
-  geom_line(aes(dates,value.y),col='red') +
-  scale_color_manual(values = colors,name = 'Landcover class') +
+  geom_line(aes(dates,value.y,col = 'zcNDVI')) +
+  scale_color_manual(values = colors) +
   facet_wrap(nivel_correl~indice.x+punto) +
-  theme_bw()
+  theme_bw()  +
+  theme(strip.background = element_rect(fill = 'white'),
+        axis.title = element_blank(),
+        legend.position = 'bottom',
+        legend.title = element_blank())
+ggsave('output/figs/variacion_cor_neg_pos_no_drought_indices_vs_zcndvi.png',scale=2,width = 10,height = 6)
 
 library(tmap)
 tm_shape(ecoregions) + 
