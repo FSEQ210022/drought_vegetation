@@ -7,6 +7,9 @@ library(basemaps)
 library(rnaturalearth)
 library(glue)
 
+ecoregions <- read_sf('data/processed_data/spatial/ecoregiones_2017.gpkg') |> 
+  st_transform(32719)
+
 #persistencia de landcover
 lc <- rast('/home/rstudio/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/IGBP80_reclassified.tif')
 lc[lc %in% c(5,7:10)] <- NA
@@ -43,11 +46,11 @@ cors_r1[cors_r1 == 0] <- NA
 ids <- which(values(cors_r1) == 1)
 df1 <- xyFromCell(cors_r1,ids)
 
-set.seed(123)
-coords1 <- df[sample(nrow(df1),5),] |> 
+set.seed(678)
+coords1 <- df1[sample(nrow(df1),3),] |> 
   data.frame() |> 
   st_as_sf(coords = c('x','y'),crs = 32719) |> 
-  mutate(correlacion = 'alta')
+  mutate(correlacion = 'strong positive correlation')
 
 # entre -0.1 a 0.1
 cors_r2 <- prod(subset(cors_r,c(1,3:5)) > -0.2 & subset(cors_r,c(1,3:5)) < 0.2)
@@ -57,11 +60,11 @@ cors_r2[cors_r2 == 0] <- NA
 ids <- which(values(cors_r2) == 1)
 df2 <- xyFromCell(cors_r2,ids)
 
-set.seed(123)
-coords2 <- df2[sample(nrow(df2),5),] |> 
+set.seed(678)
+coords2 <- df2[sample(nrow(df2),3),] |> 
   data.frame() |> 
   st_as_sf(coords = c('x','y'),crs = 32719) |> 
-  mutate(correlacion = 'sin')
+  mutate(correlacion = 'no correlation')
 
 # menor a -0.8
 cors_r3 <- prod(subset(cors_r,c(1,3:5)) < -0.3)
@@ -71,14 +74,13 @@ cors_r3[cors_r3 == 0] <- NA
 ids <- which(values(cors_r3) == 1)
 df3 <- xyFromCell(cors_r3,ids)
 
-set.seed(123)
-coords3 <- df3[sample(nrow(df3),5),] |> 
+set.seed(678)
+coords3 <- df3[sample(nrow(df3),3),] |> 
   data.frame() |> 
   st_as_sf(coords = c('x','y'),crs = 32719) |> 
-  mutate(correlacion = 'baja')
+  mutate(correlacion = 'strong negative correlation')
 
 coords <- bind_rows(coords1,coords2,coords3)
-
 
 df_scales <- terra::extract(cors_i,coords) |> 
   set_names(c('ID','SPI','EDDI','SPEI','SETI','SSI')) |> 
@@ -93,7 +95,8 @@ df_clase <- terra::extract(lc,coords) |>
   mutate(across(2,\(x) paleta$Name[x]))
 
 df1 <- cbind(df_clase,df_scales) |>
-  select(-ID)
+  select(-ID) |> 
+  drop_na()
   
 dir_indices1 <- '/home/rstudio/discoB/processed/ERA5-Land/sequia_2000-2023/monthly/'
 dir_indices2 <- '/home/rstudio/discoB/processed/MODIS/'
@@ -102,7 +105,7 @@ data <- 2:6 |>
   map_df(\(i){
     index <- names(df1)[i]
     
-    1:15 |> 
+    1:nrow(df1) |> 
       map_df(\(j){
         scale <- df1[index][j,1] 
         if (index != 'SETI'){
@@ -132,10 +135,10 @@ zcndvi <- rast(files)
 
 data_zcndvi <- terra::extract(zcndvi,coords) |> 
   bind_cols(clase = df1[,1]) |> 
-  mutate(punto = 1:15) |> 
+  mutate(punto = 1:9) |> 
   select(-ID) |> 
   pivot_longer(-c(clase,punto)) |> 
-  mutate(dates = rep(dates,15),.before = value) |> 
+  mutate(dates = rep(dates,9),.before = value) |> 
   select(-name) |>
   mutate(indice = 'zcNDVI') |> 
   filter(dates <= "2023-12-01")
@@ -145,10 +148,17 @@ data_unida <- data |>
   left_join(data_zcndvi,by = c('dates','punto','clase'))
 
 data_unida |> 
-  ggplot(aes(dates,value.x,color = clase,linetype = nivel_correl)) +
+  ggplot(aes(dates,value.x,color = clase)) +
   geom_point(size = .3) + 
   geom_line(size = .3) +
   geom_line(aes(dates,value.y),col='red') +
   scale_color_manual(values = colors,name = 'Landcover class') +
-  facet_wrap(nivel_correl~indice.x) +
+  facet_wrap(nivel_correl~indice.x+punto) +
   theme_bw()
+
+library(tmap)
+tm_shape(ecoregions) + 
+  tm_polygons(col = 'ECO_NAME',alpha = .6) + 
+  tm_shape(coords) +
+  tm_dots(col = 'correlacion',size=.2,palette = viridis::magma(4)) + 
+  tm_layout(legend.outside = TRUE)

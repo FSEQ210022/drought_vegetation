@@ -19,10 +19,10 @@ chl <- ne_countries(country = 'chile',scale='medium',returnclass = 'sf') |> st_t
 
 chl <- chl |> st_geometry() |> st_cast('POLYGON') |> _[-c(1,2)] 
 
-macro <- read_sf('data/processed_data/spatial/macrozonas_chile.gpkg')
 cors <- files |> 
   lapply(\(file) {
-    resample(rast(file),lc)
+    c(resample(rast(file)[[1]],lc,method = 'near'),
+      resample(rast(file)[[2]],lc))
   })
 
 cors <- rast(cors)
@@ -61,7 +61,7 @@ names(cors_r) <- 1:5
 map_r <- tm_shape(bm) + 
   tm_rgb() +
   tm_shape(cors_r) +
-  tm_raster(style='equal',palette = rev(viridis::inferno(20)),
+  tm_raster(style='equal',palette = 'RdBu',
             midpoint = 0,
             title = 'r',
             legend.hist = TRUE,
