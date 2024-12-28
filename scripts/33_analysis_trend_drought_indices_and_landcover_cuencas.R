@@ -51,7 +51,7 @@ get_rf_imp <- function(x) {
 #
 # para tendencia en usos de suelo
 
-scale <- 6
+scale <- 24
 
 df <- map(1:6,\(i){
   map(ecoregiones,\(eco){

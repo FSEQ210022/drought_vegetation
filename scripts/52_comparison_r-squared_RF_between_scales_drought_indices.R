@@ -15,7 +15,9 @@ data |>
   group_by(ecoregion,name) |> 
   slice_max(n=1,value) |> 
   filter(ecoregion != 'Rock and Ice') |> 
-  mutate(scale = factor(scale,levels = c(6,12,24,36))) |> 
+  mutate(scale = factor(scale,levels = c(6,12,24,36)),
+         name = case_when(name == 'Barren_land' ~ 'Barren Land',
+                          .default = name)) |> 
   ggplot(aes(name,value,color=scale)) +
   geom_point(aes(shape = ecoregion),size = 3) +
   scale_shape_discrete(name = 'Ecoregion') +
