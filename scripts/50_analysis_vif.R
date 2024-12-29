@@ -5,7 +5,7 @@ library(probably)
 # a que ecoregion pertenece cada cuenca
 cuenca_eco <- read_rds('data/processed_data/cuencas_ecoregiones.rds')
 
-data_trend_lc <- read_rds('data/processed_data/trends_landcover_cuencas_2001-2022.rds') |> 
+data_trend_lc <- read_rds('data/processed_data/trends_landcover_cuencas_2001-2023.rds') |> 
   pivot_longer(-cuenca) |> 
   rename(landcover = value,class = name) |> 
   replace_na(list(landcover = 0)) |> 
@@ -36,20 +36,23 @@ ecoregiones <- data_model |> distinct(ECO_NAME) |> pull(ECO_NAME)
 #
 # para tendencia en usos de suelo
 
-             
+scale <- 36
 df <- map_df(1:6,\(i){
   map(ecoregiones,\(eco){
     t <- which(vars == vars[[i]])
     data_m <- data_model |> 
       filter(ECO_NAME == {{ eco }}) |> 
       select(-cuenca,-ECO_NAME,-Latitude) |> 
-      select(-vars[-t]) 
+      select(-vars[-t]) |> 
+      select(-starts_with('SPEI'))
     
     data_m |> names() |> str_extract("(\\d)+") -> a
-    ind <- which(a %in% c(12))
+    ind <- which(a %in% scale)
     
     data_m <- data_m |> 
-      select(ind,trend_area_quemada,trend_luces_nocturnas,densidad_vial,last_col())
+      select(ind,`zcNDVI-6`,-`zcNDVI-1`,-`zcNDVI-3`,-`zcNDVI-12`,trend_area_quemada,trend_luces_nocturnas,densidad_vial,last_col()) |> 
+      rename_with(\(x) str_replace(x,'zcET','SETI'),contains('zcET'))
+    
     
     model <- lm(as.formula(paste0(vars[[i]],'~.')),data_m)
     
@@ -75,8 +78,17 @@ df <- map_df(1:6,\(i){
   })
 })
 
+library(broom.helpers)
+
+high_vif_threshold <- 5
 df |> 
-  filter(VIF < 10) |> 
+  #filter(VIF < 10) |> 
+  mutate(Variable = broom.helpers::.clean_backticks(Variable),
+         Variable = case_when(Variable == 'trend_area_quemada' ~ 'Bourned area',
+                              Variable == 'densidad_vial' ~ 'Road density',
+                              Variable == 'trend_luces_nocturnas' ~ 'Night lights',
+                              Variable == 'zcNDVI-6'~'zcNDVI',
+                              .default = Variable)) |> 
   ggplot(aes(x = Variable, y = VIF)) +
     #geom_col( aes(fill = VIF),position = 'stack') +
     geom_point() +
@@ -87,5 +99,9 @@ df |>
          y = "VIF",
          x = "Variable") +
   facet_wrap(.~type) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.background = element_rect(fill = 'white'),
+        axis.title.x = element_blank())
+ggsave(glue::glue('output/figs/vif_analysis_scale_{scale}.png'),scale=1.5)
+       

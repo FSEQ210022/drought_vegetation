@@ -78,7 +78,7 @@ set.seed(678)
 coords3 <- df3[sample(nrow(df3),3),] |> 
   data.frame() |> 
   st_as_sf(coords = c('x','y'),crs = 32719) |> 
-  mutate(correlacion = 'strong negative correlation')
+  mutate(correlacion = 'negative correlation')
 
 coords <- bind_rows(coords1,coords2,coords3)
 
@@ -147,6 +147,9 @@ data_unida <- data |>
   filter(between(dates,ymd("2000-02-01"),ymd("2023-12-01"))) |>
   left_join(data_zcndvi,by = c('dates','punto','clase'))
 
+colors[11] <- 'red'
+names(colors)[11] <- 'zcNDVI'
+
 data_unida |> 
   ggplot(aes(dates,value.x,color = clase),alpha = .6) +
   #geom_point(size = .3) + 
@@ -159,11 +162,15 @@ data_unida |>
         axis.title = element_blank(),
         legend.position = 'bottom',
         legend.title = element_blank())
-ggsave('output/figs/variacion_cor_neg_pos_no_drought_indices_vs_zcndvi.png',scale=2,width = 10,height = 6)
+ggsave('output/figs/variacion_cor_neg_pos_no_drought_indices_vs_zcndvi.png',scale=2.5,width = 10,height = 6)
 
 library(tmap)
-tm_shape(ecoregions) + 
-  tm_polygons(col = 'ECO_NAME',alpha = .6) + 
+coords$Point <- 1:9
+map <- tm_shape(ecoregions) + 
+  tm_polygons(col = 'ECO_NAME',alpha = .6,title = 'Ecoregions') + 
   tm_shape(coords) +
-  tm_dots(col = 'correlacion',size=.2,palette = viridis::magma(4)) + 
-  tm_layout(legend.outside = TRUE)
+  tm_dots(size=.1) + 
+  tm_text(text = 'Point',xmod = .5) +
+  tm_layout(legend.outside = TRUE,
+            legend.text.size=.2)
+tmap_save(map, 'output/figs/mapa_puntos_series_temporales.png',scale=1.7)

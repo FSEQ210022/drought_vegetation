@@ -42,17 +42,47 @@ paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv')
 colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
 attr(colors,'names') <- paleta$class
 
-m2 <- tm_shape(bm) +
-  tm_rgb() +
-  tm_credits('(c)',position = c('left','bottom'),fontface = 'bold') +
-  tm_shape(igbp2022) +
-  tm_raster(style = 'cat',
-            palette = colors,title = 'Landcover classes',
-            labels = paleta$Name) +
-  # tm_shape(zones,col=NA) + 
-  # tm_text('macrozona',just='top',xmod=c(-2,-2,2,-2,-2),size=.5) +
-  tm_layout(legend.show = FALSE) 
+# mapa hillshade ----
+library(geodata)
+dem <- elevation_30s('chile',path = tempdir())
 
+dem <- mask(dem, st_transform(ecoregiones,crs(dem)))
+dem_eco <- mask(dem, st_transform(ecoregiones,crs(dem)))
+
+slp <- terrain(dem_eco,v='slope',unit = 'radians')
+asp <- terrain(dem_eco,v='aspect',unit = 'radians')
+
+hill <- shade(slp,asp)
+
+library(tidyterra)
+pal_greys <- hcl.colors(1000, "Grays")
+grad <- hypso.colors(10, "dem_poster")
+
+dem[dem < 0] <- 0
+mapa_hill <- tm_shape(bm) + 
+  tm_rgb() + 
+  tm_shape(hill) +
+  tm_raster(style = 'cont',palette = pal_greys,legend.show = FALSE) + 
+  tm_shape(dem) + 
+  tm_raster(palette = grad,alpha = .4,
+            title = 'Elevation (m)' ) +
+  tm_shape(ecoregiones) +
+  tm_borders(lwd=1.5) +
+  tm_credits('(c)',position = c('left','bottom'),fontface = 'bold')
+  
+
+# m2 <- tm_shape(bm) +
+#   tm_rgb() +
+#   tm_credits('(c)',position = c('left','bottom'),fontface = 'bold') +
+#   tm_shape(igbp2023) +
+#   tm_raster(style = 'cat',
+#             palette = colors,title = 'Landcover classes',
+#             labels = paleta$Name) +
+#   # tm_shape(zones,col=NA) + 
+#   # tm_text('macrozona',just='top',xmod=c(-2,-2,2,-2,-2),size=.5) +
+#   tm_layout(legend.show = FALSE) 
+
+igbp80 <- mask(igbp80,st_transform(ecoregiones,crs(igbp80)))
 m3 <- tm_shape(bm) +
   tm_rgb() +
   tm_credits('(d)',position = c('left','bottom'),fontface = 'bold') +
@@ -62,27 +92,34 @@ m3 <- tm_shape(bm) +
   tm_raster(style = 'cat',
             palette = colors,title = 'Landcover class',
             labels = paleta$Name) +
+  tm_shape(ecoregiones) +
+  tm_borders(lwd =1.5) +
   # tm_shape(zones) +
   # tm_text('macrozona',just='top',xmod=c(-2,-2,2,-2,-2),size=.5) +
   tm_layout(legend.outside = FALSE) 
 
-m1 <- tm_shape(bm_topo) +
-  tm_rgb() +
-  # tm_shape(zones) +
-  # tm_borders(lwd=1,col='white',lty='solid',alpha=0.8) +
-  #tm_text('macrozona',just='top',xmod=c(-2,-2,2,-2,-2),size=.5) +
-  tm_credits('(c)',position = c('left','bottom'),fontface = 'bold')
+# bm_topo <- mask(bm_topo,st_transform(ecoregiones,crs(bm_topo)))
+# m1 <- tm_shape(bm) +
+#   tm_rgb() +
+#   tm_shape(bm_topo) +
+#   tm_rgb() +
+#   tm_shape(ecoregions) +
+#   tm_borders() +
+#   # tm_shape(zones) +
+#   # tm_borders(lwd=1,col='white',lty='solid',alpha=0.8) +
+#   #tm_text('macrozona',just='top',xmod=c(-2,-2,2,-2,-2),size=.5) +
+#   tm_credits('(c)',position = c('left','bottom'),fontface = 'bold')
 
 map_eco <- tm_shape(bm) +
   tm_rgb() + 
   tm_shape(ecoregions) +
   tm_fill(col = 'ECO_NAME',palette = ecoregions$COLOR,title = 'Ecoregions',alpha = .7) +
-  tm_borders(lwd=1.5) +
+  tm_borders(lwd = 1.5) +
   tm_layout(legend.width = 1) +
   tm_credits('(b)',position = c('left','bottom'),fontface = 'bold')
 
 
-mapArr <- tmap_arrange(map_eco,m1,m3,asp=0.23)
+mapArr <- tmap_arrange(map_eco,mapa_hill,m3,asp=0.23)
 tmap_save(mapArr,'output/figs/landcover_pers.png',dpi =300,width=7,height=10,scale=2)
 
 #mapa chile con planeta tierra
@@ -115,7 +152,7 @@ kp_chile <- raster::raster(kp_chile)
 vals <- values(kp_chile)
 vals[vals %in% c(6,26,10,30,27,18)] <- NA
 values(kp_chile) <- vals
-
+kp_chile <- mask(kp_chile,st_transform(ecoregiones,crs(kp_chile)))
 #eliminar rock and icwe
 ecoregions <- ecoregions |> filter(ECO_NAME != "Rock and Ice")
 
@@ -126,13 +163,14 @@ map_chl <- tm_shape(bm2) +
             style = 'cat',
             labels = labs,
             title = 'Climate (1991-2020)') +
-  # tm_shape(ecoregions) +
-  # tm_borders(lwd=2,col='black',lty='solid',alpha=0.8) +
+  tm_shape(ecoregions) +
+  tm_borders(lwd=2) +
   # tm_text('ECO_NAME',just='top',xmod=c(2,-7,3,-4,-4),ymod=c(3,-3.5,1,0,0),size=1.5) +
   tm_credits('(a)',position = c('left','bottom'),fontface = 'bold',size=1.7) +
   tm_layout(legend.outside = FALSE,
             legend.text.size = 1.2,
-            legend.position = c(0.1,0.7))
+            legend.position = c(0.1,0.7),
+            frame = TRUE)
 
 #tmap_save(map_chl,'output/figs/mapa_koppen_geiger.png')
 
@@ -150,5 +188,5 @@ vp <- viewport(x=.53, y=1.43, width = w, height=h, just=c("right", "top"))
 
 
 tmap_save(map_chl,filename="output/figs/map_study_area_koppen-geiger.png",
-          dpi=300, insets_tm=map_globe, insets_vp=vp,scale =1,
+          dpi=300, insets_tm=map_globe, insets_vp=vp,scale =1.5,
           height=asp*91, width=125, units="mm",bg="transparent")

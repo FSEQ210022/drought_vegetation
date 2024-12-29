@@ -21,7 +21,7 @@ data |>
   ggplot(aes(name,value,color=scale)) +
   geom_point(aes(shape = ecoregion),size = 3) +
   scale_shape_discrete(name = 'Ecoregion') +
-  scale_color_brewer(name = 'Scale',palette = 'RdBu') +
+  scale_color_brewer(name = 'Time scale',palette = 'RdBu') +
   labs(y = 'r-squared')+
   theme_bw() +
   theme(axis.title.x = element_blank())

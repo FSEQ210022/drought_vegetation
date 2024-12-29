@@ -7,7 +7,7 @@ dataLCV_ts <- readRDS('data/processed_data/timeseries_landcover_ecoregion_LC_cla
   filter(eco != "Rock and Ice") |> 
   mutate(eco =fct(as.character(eco),levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe")))
 
-dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2022.rds') |> 
+dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2023.rds') |> 
   filter(eco != "Rock and Ice") |> 
   mutate(eco =fct(as.character(eco),levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe")))
 
