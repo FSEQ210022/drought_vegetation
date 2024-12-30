@@ -74,14 +74,14 @@ data_gt <- dataLCV_ts |>
          "Patagonian steppe.x","Patagonian steppe.y")
          
          
-data_gt$Savanna.x[1] <- NA
-data_gt$Savanna.y[1] <- NA
-data_gt$Forest.x[c(1,2)] <- NA
-data_gt$Forest.y[c(1,2)] <- NA
-data_gt$Cropland.x[c(1,5)] <- NA
-data_gt$Cropland.y[c(1,5)] <- NA
-data_gt$Shrubland.x[4] <- NA
-data_gt$Shrubland.y[4] <- NA
+# data_gt$Savanna.x[1] <- NA
+# data_gt$Savanna.y[1] <- NA
+# data_gt$Forest.x[c(1,2)] <- NA
+# data_gt$Forest.y[c(1,2)] <- NA
+# data_gt$Cropland.x[c(1,5)] <- NA
+# data_gt$Cropland.y[c(1,5)] <- NA
+# data_gt$Shrubland.x[4] <- NA
+# data_gt$Shrubland.y[4] <- NA
 
 data_gt |> 
   mutate(LC_type = factor(LC_type,levels = c('Forest','Cropland','Grassland','Savanna','Shrubland','Barren land'))) |> 
