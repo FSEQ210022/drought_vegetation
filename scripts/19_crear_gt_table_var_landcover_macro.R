@@ -54,16 +54,26 @@ dataLCV_trend |>
 
 #con gt
 
+dataLCV_trend_tran <- dataLCV_trend |> 
+  select(-ECO_NAME) |> 
+  pivot_longer(-eco) |> 
+  pivot_wider(names_from = 'eco',values_from = 'value')
+
 data_gt <- dataLCV_ts |> 
   ungroup() |> 
   #mutate(zone = fct_relevel(zone,c('norte grande','norte chico','centro', 'sur','austral'))) |> 
   dplyr::group_by(eco,LC_type)  |> 
   # must end up with list of data for each row in the input dataframe
   dplyr::summarize(lc_data = list(prop), .groups = "drop") |> 
-  pivot_wider(names_from = LC_type, values_from = lc_data) |> 
-  full_join(dataLCV_trend,by = c('eco' = 'ECO_NAME')) |> 
-  select(eco,Forest.x,Forest.y,Cropland.x,Cropland.y,Grassland.x,Grassland.y,Savanna.x,Savanna.y,Shrubland.x,Shrubland.y,`Barren land.x`,`Barren land.y`) 
-
+  pivot_wider(names_from = eco, values_from = lc_data) |> 
+  full_join(dataLCV_trend_tran,by = c('LC_type' = 'name')) |> 
+  select(LC_type,"Atacama desert.x","Atacama desert.y",
+         "Chilean Matorral.x","Chilean Matorral.y",
+         "Valdivian temperate forests.x","Valdivian temperate forests.y",
+         "Magellanic subpolar forests.x","Magellanic subpolar forests.y",
+         "Patagonian steppe.x","Patagonian steppe.y")
+         
+         
 data_gt$Savanna.x[1] <- NA
 data_gt$Savanna.y[1] <- NA
 data_gt$Forest.x[c(1,2)] <- NA
@@ -74,19 +84,24 @@ data_gt$Shrubland.x[4] <- NA
 data_gt$Shrubland.y[4] <- NA
 
 data_gt |> 
-  rename(Ecoregions = eco) |> 
+  mutate(LC_type = factor(LC_type,levels = c('Forest','Cropland','Grassland','Savanna','Shrubland','Barren land'))) |> 
+  rename(`Land cover type` = "LC_type") |> 
+  arrange(`Land cover type`) |> 
   gt() |> 
   fmt_number(decimals = 0) |> 
   sub_missing(
     columns = everything(),
     missing_text = ""
   ) |> 
-  gt_plt_sparkline(Shrubland.x,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
-  gt_plt_sparkline(Savanna.x,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
-  gt_plt_sparkline(Grassland.x,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
-  gt_plt_sparkline('Barren land.x',same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
-  gt_plt_sparkline(Forest.x,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
-  gt_plt_sparkline(Cropland.x,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
+  gt_plt_sparkline(`Atacama desert.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
+  gt_plt_sparkline(`Chilean Matorral.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
+  gt_plt_sparkline(`Valdivian temperate forests.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
+  gt_plt_sparkline(`Magellanic subpolar forests.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
+  gt_plt_sparkline(`Patagonian steppe.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
+  cols_align(
+    align = "left",
+    columns = `Land cover type`
+  ) |> 
   tab_spanner_delim(
     delim="." ) |> 
   tab_header(
