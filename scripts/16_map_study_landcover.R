@@ -115,10 +115,8 @@ map_eco <- tm_shape(bm) +
   tm_shape(ecoregions) +
   tm_fill(col = 'ECO_NAME',palette = ecoregions$COLOR,title = 'Ecoregions',alpha = .7) +
   tm_borders(lwd = 1.5) +
-  tm_layout(legend.width = 1,
-            legend.key.frame = TRUE) +
+  tm_layout(legend.width = 1) +
   tm_credits('(b)',position = c('left','bottom'),fontface = 'bold')
-
 
 mapArr <- tmap_arrange(map_eco,mapa_hill,m3,asp=0.23)
 tmap_save(mapArr,'output/figs/landcover_pers.png',dpi =300,width=7,height=10,scale=2)
@@ -167,7 +165,7 @@ map_chl <- tm_shape(bm2) +
   tm_shape(ecoregions) +
   tm_borders(lwd=2) +
   # tm_text('ECO_NAME',just='top',xmod=c(2,-7,3,-4,-4),ymod=c(3,-3.5,1,0,0),size=1.5) +
-  tm_credits('(a)',position = c('left','bottom'),fontface = 'bold',size=1.7) +
+  tm_credits('(a)',position = c('left','bottom'),fontface = 'bold',size=1) +
   tm_layout(legend.outside = FALSE,
             legend.text.size = 1.2,
             legend.position = c(0.1,0.7),

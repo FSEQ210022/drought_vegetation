@@ -55,16 +55,21 @@ data2 |>
 
 saveRDS(data3,'data/processed_data/timeseries_landcover_ecoregion_LC_class_2001-2023.rds')  
 
-#Figura variación landocver type por ecoregion entre 2001-2022
+#Figura variación landocver type por ecoregion entre 2001-2023
 #
 data3 |> 
   filter(eco != 'Rock and Ice') |> 
-  mutate(eco = fct(as.character(eco),levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe"))) |> 
+  mutate(eco = factor(eco,
+                   levels = 
+                     c("Atacama desert","Central Andean dry puna",
+                       "Southern Andean steppe","Chilean Matorral",
+                       "Valdivian temperate forests","Magellanic subpolar forests",
+                       "Patagonian steppe"))) |> 
   ggplot(aes(year,prop,fill = LC_type)) +
   geom_col(position = 'fill') +
   facet_grid(.~eco) +
   #scale_x_discrete(limits = rev(levels(summ_data2$ECO_NAME))) +
-  scale_x_continuous(breaks= 2001:2022,expand = c(0,0)) +
+  scale_x_continuous(breaks= 2001:2023,expand = c(0,0)) +
   scale_y_continuous(breaks = seq(0,1,.1), 
                      labels = scales::percent_format(accuracy = 1),
                      expand = c(0.01,0)) +
@@ -75,11 +80,11 @@ data3 |>
     plot.margin = margin(3, 3, 3, 3, "pt"),
     legend.position = 'bottom',
     axis.title = element_blank(),
-    axis.text.x = element_text(angle = 90),
+    axis.text.x = element_text(angle = 90,size=5),
     strip.background = element_rect(fill='white')
   ) + 
   guides(fill = guide_legend(nrow = 1)) 
-ggsave('output/figs/landcover_variation_per_ecoregions_2001-2023.png',scale=2,width=7, height=2)
+ggsave('output/figs/landcover_variation_per_ecoregions_2001-2023.png',scale=1.7,width=7, height=2)
 
 #plot
 data3  |>  
@@ -88,7 +93,7 @@ data3  |>
   geom_line()+
   geom_smooth(method = 'lm',alpha=0.8,se = FALSE,linetype = 'dashed',col='darkblue') +
   scale_fill_manual(name = 'Landcover class',values=colors) +
-  scale_x_continuous(breaks = seq(2000,2019,2),expand=c(0,0)) +
+  scale_x_continuous(breaks = seq(2000,2023,2),expand=c(0,0)) +
   labs(y=expression(paste('Surface [',km^2,']'))) +
   # scale_y_continuous(labels = scales::percent_format(accuracy = .1),
   #                    expand = c(0,0)) +

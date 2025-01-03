@@ -5,11 +5,20 @@ library(kableExtra)
 
 dataLCV_ts <- readRDS('data/processed_data/timeseries_landcover_ecoregion_LC_class_2001-2023.rds')  |> 
   filter(eco != "Rock and Ice") |> 
-  mutate(eco =fct(as.character(eco),levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe")))
+  mutate(eco =factor(as.character(eco),levels = 
+                       c("Atacama desert","Central Andean dry puna",
+                         "Southern Andean steppe","Chilean Matorral",
+                         "Valdivian temperate forests","Magellanic subpolar forests",
+                         "Patagonian steppe")))
 
 dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2023.rds') |> 
   filter(eco != "Rock and Ice") |> 
-  mutate(eco =fct(as.character(eco),levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe")))
+  mutate(eco = factor(ECO_NAME,
+                   levels = 
+                     c("Atacama desert","Central Andean dry puna",
+                       "Southern Andean steppe","Chilean Matorral",
+                       "Valdivian temperate forests","Magellanic subpolar forests",
+                       "Patagonian steppe")))
 
 dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Cropland') %>% 
   map(function(class){
@@ -20,7 +29,7 @@ dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Crop
       group_by(eco,LC_type) |> 
       select(eco,LC_type,sup_km2) |> 
       group_split() |> 
-      setNames(c('a','b','c','d','e')) |> 
+      setNames(c('a','b','c','d','e','f','g')) |> 
       map(function(x) pull(x,sup_km2))
     map(a,\(x) ifelse(is.na(x),0,x))
   })
@@ -67,7 +76,10 @@ data_gt <- dataLCV_ts |>
   dplyr::summarize(lc_data = list(prop), .groups = "drop") |> 
   pivot_wider(names_from = eco, values_from = lc_data) |> 
   full_join(dataLCV_trend_tran,by = c('LC_type' = 'name')) |> 
-  select(LC_type,"Atacama desert.x","Atacama desert.y",
+  select(LC_type,
+         "Atacama desert.x","Atacama desert.y",
+         "Central Andean dry puna.x","Central Andean dry puna.y",
+         "Southern Andean steppe.x","Southern Andean steppe.y",
          "Chilean Matorral.x","Chilean Matorral.y",
          "Valdivian temperate forests.x","Valdivian temperate forests.y",
          "Magellanic subpolar forests.x","Magellanic subpolar forests.y",
@@ -94,6 +106,8 @@ data_gt |>
     missing_text = ""
   ) |> 
   gt_plt_sparkline(`Atacama desert.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
+  gt_plt_sparkline(`Central Andean dry puna.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
+  gt_plt_sparkline(`Southern Andean steppe.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
   gt_plt_sparkline(`Chilean Matorral.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
   gt_plt_sparkline(`Valdivian temperate forests.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 
   gt_plt_sparkline(`Magellanic subpolar forests.x`,same_limit = FALSE,label = FALSE,palette = c('grey','grey','red','blue','grey')) |> 

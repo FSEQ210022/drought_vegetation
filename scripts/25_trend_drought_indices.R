@@ -30,7 +30,12 @@ df_zcndvi |>
   filter(ECO_NAME != "Rock and Ice" ) |> 
   mutate(dates = str_extract(name,'[0-9]{4}-[0-9]{2}-[0-9]{2}'),
          dates = ymd(dates),
-         ECO_NAME = fct(ECO_NAME,levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe"))) |> 
+         ECO_NAME = fct(ECO_NAME,
+                        levels = 
+                          c("Atacama desert","Central Andean dry puna",
+                            "Southern Andean steppe","Chilean Matorral",
+                            "Valdivian temperate forests","Magellanic subpolar forests",
+                            "Patagonian steppe"))) |> 
   select(-name) |> 
   drop_na() |> 
   ggplot(aes(dates,value)) +
@@ -39,12 +44,13 @@ df_zcndvi |>
   geom_ribbon(aes(ymin = pmin(value,0),ymax = 0),fill = 'red',alpha=.7)+
   geom_ribbon(aes(ymin = 0,ymax = pmax(value,0)),fill = 'darkgreen',alpha=.7)+
   geom_hline(yintercept = 0,col = 'red') +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y",limits = c(as.Date("2000-01-01"),as.Date("2023-04-01")),expand = c(0,0)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y",limits = c(as.Date("2000-07-01"),as.Date("2023-04-01")),expand = c(0,0)) +
   geom_smooth(method = 'lm',se = FALSE,alpha=.8,lty = 'dashed',col='grey') +
   labs(y = 'zcNDVI') +
   facet_wrap(ECO_NAME~.,ncol=1) +
   theme_minimal() +
-  theme(axis.title.x = element_blank())
+  theme(axis.title.x = element_blank(),
+        strip.text.x = element_text(hjust=0))
 
 ggsave('output/figs/temporal_variation_zcNDVI6_ecoregiones.png',scale = 2,bg = 'white',width=6,height=3)
 
@@ -284,7 +290,6 @@ map_zcNDVI <- tm_shape(trend_zcndvi) +
             frame = FALSE)
 tmap_save(map_zcNDVI,'output/figs/trend_raster_zcNDVI6_2000-2023_v2.png',scale=1)
 
-
 mapa1 <- tmap_arrange(map_zcNDVI,map_zcNDVI,widths = c(.2,.8))
 tmap_save(mapa1,'output/figs/trend_raster_zcNDVI6_SPIs.png',asp=.3)
 
@@ -296,8 +301,13 @@ data_df |>
   filter(ECO_NAME != "Rock and Ice") |> 
   mutate(index =str_remove(name,'-.*'),
          index = case_when(index == 'zcSM' ~ 'SSI',
-                         .default = index),
-         ECO_NAME = fct(ECO_NAME,levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe"))) |> 
+                           .default = index),
+         ECO_NAME = fct(ECO_NAME,
+                        levels = 
+                          c("Atacama desert","Central Andean dry puna",
+                            "Southern Andean steppe","Chilean Matorral",
+                            "Valdivian temperate forests","Magellanic subpolar forests",
+                            "Patagonian steppe"))) |> 
   ggplot(aes(scale,value*10,color=index)) +
   geom_line() +
   geom_point() +
@@ -309,4 +319,4 @@ data_df |>
   theme_bw() +
   theme(strip.background = element_rect(fill = 'white'),
         legend.position = 'bottom')
-ggsave('output/figs/trend_macrozone_drought_indices.png',width =10,height=3)
+ggsave('output/figs/trend_macrozone_drought_indices.png',width =10,height=3,scale = 1.5)
