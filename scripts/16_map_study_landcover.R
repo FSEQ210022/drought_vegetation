@@ -115,7 +115,8 @@ map_eco <- tm_shape(bm) +
   tm_shape(ecoregions) +
   tm_fill(col = 'ECO_NAME',palette = ecoregions$COLOR,title = 'Ecoregions',alpha = .7) +
   tm_borders(lwd = 1.5) +
-  tm_layout(legend.width = 1) +
+  tm_layout(legend.width = 1,
+            legend.key.frame = TRUE) +
   tm_credits('(b)',position = c('left','bottom'),fontface = 'bold')
 
 

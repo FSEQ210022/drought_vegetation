@@ -5,6 +5,12 @@ library(fs)
 library(tmap)
 library(basemaps)
 library(rnaturalearth)
+library(rmapshaper)
+
+#cargar ecoregiones
+ecoregions <- read_sf('data/processed_data/spatial/ecoregiones_2017.gpkg') |> 
+  st_transform(32719) |> 
+  ms_simplify(keep=0.02)
 
 #persistencia de landcover
 lc <- rast('/home/rstudio/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/IGBP80_reclassified.tif')
@@ -43,10 +49,13 @@ map_i <- tm_shape(bm) +
   tm_raster(style = 'pretty',
             labels = as.character(c(3,6,12,24,36)),
             palette = '-magma',
+            alpha = .6,
             title =  'Time-scale (months)',
             legend.is.portrait = FALSE) +
-  tm_shape(chl) +
-  tm_borders() +
+  # tm_shape(chl) +
+  # tm_borders() +
+  tm_shape(ecoregions) + 
+  tm_borders(col = 'black') +
   tm_facets(nrow = 1) + 
   tm_layout(
     panel.labels = c('SPI','EDDI','SPEI','SETI','SSI'),
@@ -66,8 +75,8 @@ map_r <- tm_shape(bm) +
             title = 'r',
             legend.hist = TRUE,
             legend.reverse = TRUE) +
-  tm_shape(chl) + 
-  tm_borders() +
+  tm_shape(ecoregions) +
+  tm_borders(col = 'black') +
   tm_facets(free.scales	= FALSE) + 
   tm_layout(
     panel.labels = c('SPI','EDDI','SPEI','SETI','SSI'),
