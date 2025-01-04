@@ -1,7 +1,7 @@
 library(tidyverse)
 library(tidymodels)
 
-data_trend_lc <- read_rds('data/processed_data/trends_landcover_2001-2022.rds') |> 
+data_trend_lc <- read_rds('data/processed_data/trends_landcover_2001-2023.rds') |> 
   pivot_longer(-zone) |> 
   rename(landcover = value,macro = zone,class = name)
 

@@ -14,11 +14,11 @@ dataLCV_ts <- readRDS('data/processed_data/timeseries_landcover_ecoregion_LC_cla
 dataLCV_trend <- readRDS('data/processed_data/trends_landcover_2001-2023.rds') |> 
   filter(eco != "Rock and Ice") |> 
   mutate(eco = factor(ECO_NAME,
-                   levels = 
-                     c("Atacama desert","Central Andean dry puna",
-                       "Southern Andean steppe","Chilean Matorral",
-                       "Valdivian temperate forests","Magellanic subpolar forests",
-                       "Patagonian steppe")))
+                      levels = 
+                        c("Atacama desert","Central Andean dry puna",
+                          "Southern Andean steppe","Chilean Matorral",
+                          "Valdivian temperate forests","Magellanic subpolar forests",
+                          "Patagonian steppe")))
 
 dataSpark <- c('Shrubland', 'Savanna', 'Grassland', 'Barren land','Forest','Cropland') %>% 
   map(function(class){

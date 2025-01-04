@@ -3,19 +3,16 @@ library(fs)
 
 files <- dir_ls('data/processed_data/',regexp = 'r-squared_.*')
 
-scales <- c(12,24,36,6)
-data <-  seq_along(scales) |> 
-  map_df(\(i){
-  read_rds(files[i]) |> 
-      pivot_longer(-ecoregion) |> 
-      mutate(scale = scales[i])
-  })
+scales <- c(1,3,12,24,36,6)
+data <-  map_df(files,read_rds)
 
 data |> 
+  rename(name = type,
+         value = mean) |> 
   group_by(ecoregion,name) |> 
   slice_max(n=1,value) |> 
   filter(ecoregion != 'Rock and Ice') |> 
-  mutate(scale = factor(scale,levels = c(6,12,24,36)),
+  mutate(scale = factor(scale,levels = c(1,3,6,12,24,36)),
          name = case_when(name == 'Barren_land' ~ 'Barren Land',
                           .default = name)) |> 
   ggplot(aes(name,value,color=scale)) +
