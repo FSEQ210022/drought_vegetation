@@ -6,8 +6,9 @@ library(sf)
 library(tidyverse)
 
 #paleta colores landcover persistencia
-paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv') |> 
-  dplyr::filter(Name %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land'))
+paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv') 
+# |> 
+#   dplyr::filter(Name %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land'))
 
 colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
 attr(colors,'names') <- paleta$class
@@ -91,6 +92,11 @@ data_r_4gt <- data_r |>
   pivot_wider(names_from=c(clase, name), values_from=value) |> 
   rename_with(\(x) str_c(x,'_r'),-eco)
 
+# data_ind_4gt <-  data_ind_4gt |> pivot_longer(-eco) |> pivot_wider(names_from = eco,values_from = value)
+# data_r_4gt <- data_r_4gt |> pivot_longer(-eco) |> pivot_wider(names_from = 'eco',values_from = 'value')
+# data_r_4gt$name <- str_remove(data_r_4gt$name,'_r')
+# names(data_r_4gt)[2:8] <- paste0(names(data_r_4gt)[2:8],'_r')
+
 tabla_gt <- full_join(data_ind_4gt,data_r_4gt,by = 'eco') 
 # tabla_gt <- tabla_gt |> mutate(macrozone = str_to_title(macro)) |> 
 #   select(-macro) |> relocate(macrozone)
@@ -103,10 +109,9 @@ tabla_gt$Shrubland_EDDI_r[7] <- NA
 tabla_gt$Shrubland_SETI_r[7] <- NA
 
 tabla_gt |> 
-  rename(Ecoregion = eco) |> 
-  dplyr::select(1,22:26,27:31,12:16,7:11,2:6,
-                52:56,57:61,42:46,37:41,32:36
-  ) |> 
+  rename(`Ecoregion` = eco) |> 
+  dplyr::select(1,22:31,12:16,7:12,2:6,
+                52:61,42:46,37:41,32:36) |> 
   gt() %>% 
   #opt_stylize(style = 6, color = 'gray')
   data_color(

@@ -54,6 +54,19 @@ df_zcndvi |>
 
 ggsave('output/figs/temporal_variation_zcNDVI6_ecoregiones.png',scale = 2,bg = 'white',width=6,height=4)
 
+#calcular la tendencia Mann-Kendall para cada ecoregion
+
+source('R/trend_func.R')
+library(modifiedmk)
+df_zcndvi |> 
+  pivot_longer(-ECO_NAME) |> 
+  drop_na() |> 
+  group_by(ECO_NAME) |> 
+  summarize(trend_sig = trend_func2(value)[1],
+            trend_val = trend_func2(value)[2]) |> 
+  mutate(trend_decade = trend_val*10) |> 
+  arrange(trend_decade)
+
 #Mapa de tendencia Mann-Kendall
 
 #breaks para escalas
@@ -311,6 +324,7 @@ data_df |>
   ggplot(aes(scale,value*10,color=index)) +
   geom_line() +
   geom_point() +
+  geom_hline(yintercept = 0,linetype = 'dashed',col ='red') +
   scale_colour_viridis_d(name = 'Drought index') +
   scale_y_continuous(breaks= seq(-0.05,0.05,length.out=9)) +
   scale_x_continuous(breaks = c(1,3,6,12,24,36)) +

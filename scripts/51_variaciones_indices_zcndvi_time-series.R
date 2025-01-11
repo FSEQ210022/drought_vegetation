@@ -46,7 +46,8 @@ cors_r1[cors_r1 == 0] <- NA
 ids <- which(values(cors_r1) == 1)
 df1 <- xyFromCell(cors_r1,ids)
 
-set.seed(678)
+seed <- 678
+set.seed(seed)
 coords1 <- df1[sample(nrow(df1),3),] |> 
   data.frame() |> 
   st_as_sf(coords = c('x','y'),crs = 32719) |> 
@@ -60,7 +61,7 @@ cors_r2[cors_r2 == 0] <- NA
 ids <- which(values(cors_r2) == 1)
 df2 <- xyFromCell(cors_r2,ids)
 
-set.seed(678)
+set.seed(seed)
 coords2 <- df2[sample(nrow(df2),3),] |> 
   data.frame() |> 
   st_as_sf(coords = c('x','y'),crs = 32719) |> 
@@ -74,7 +75,7 @@ cors_r3[cors_r3 == 0] <- NA
 ids <- which(values(cors_r3) == 1)
 df3 <- xyFromCell(cors_r3,ids)
 
-set.seed(678)
+set.seed(seed)
 coords3 <- df3[sample(nrow(df3),3),] |> 
   data.frame() |> 
   st_as_sf(coords = c('x','y'),crs = 32719) |> 
@@ -151,18 +152,18 @@ colors[11] <- 'red'
 names(colors)[11] <- 'zcNDVI'
 
 data_unida |> 
-  ggplot(aes(dates,value.x,color = clase),alpha = .6) +
+  ggplot(aes(dates,value.x,color = clase),alpha = 1) +
   #geom_point(size = .3) + 
   geom_line(size = .3) +
-  geom_line(aes(dates,value.y,col = 'zcNDVI')) +
+  geom_line(aes(dates,value.y,col = 'zcNDVI'),lwd=.5,alpha=.3) +
   scale_color_manual(values = colors) +
-  facet_wrap(nivel_correl~indice.x+punto) +
+  facet_wrap(nivel_correl~indice.x+punto,ncol = 4) +
   theme_bw()  +
   theme(strip.background = element_rect(fill = 'white'),
         axis.title = element_blank(),
         legend.position = 'bottom',
         legend.title = element_blank())
-ggsave('output/figs/variacion_cor_neg_pos_no_drought_indices_vs_zcndvi.png',scale=2.5,width = 10,height = 6)
+ggsave('output/figs/variacion_cor_neg_pos_no_drought_indices_vs_zcndvi.png',scale=2,width = 6,height = 10)
 
 library(tmap)
 coords$Point <- 1:9
@@ -171,6 +172,6 @@ map <- tm_shape(ecoregions) +
   tm_shape(coords) +
   tm_dots(size=.1) + 
   tm_text(text = 'Point',xmod = .5) +
-  tm_layout(legend.outside = TRUE,
-            legend.text.size=.2)
-tmap_save(map, 'output/figs/mapa_puntos_series_temporales.png',scale=1.7)
+  tm_layout(legend.outside = FALSE,
+            legend.text.size=.3)
+tmap_save(map, 'output/figs/mapa_puntos_series_temporales.png',scale=2.5)

@@ -1,6 +1,7 @@
 library(tidyverse)
 library(tidymodels)
 library(probably)
+library(glue)
 
 # a que ecoregion pertenece cada cuenca
 cuenca_eco <- read_rds('data/processed_data/cuencas_ecoregiones.rds')
@@ -8,7 +9,7 @@ cuenca_eco <- read_rds('data/processed_data/cuencas_ecoregiones.rds')
 data_trend_lc <- read_rds('data/processed_data/trends_landcover_cuencas_2001-2023.rds') |> 
   pivot_longer(-cuenca) |> 
   rename(landcover = value,class = name) |> 
-  replace_na(list(landcover = 0)) |> 
+  #replace_na(list(landcover = 0)) |> 
   pivot_wider(names_from = 'class',values_from = 'landcover')
 
 data_trend_di <- read_rds('data/processed_data/df_trends_indices_cuencas.rds') |> 
@@ -19,8 +20,7 @@ data_ana <- data_trend_di |>
   full_join(data_trend_lc) |> 
   full_join(cuenca_eco,by = c('cuenca' = 'COD_SUBC')) |> 
   relocate(ECO_NAME,.after=cuenca) |> 
-  relocate(Latitude,.after=ECO_NAME) |> 
-  drop_na()
+  relocate(Latitude,.after=ECO_NAME) 
 
 #data_model <- data_ana[,c(1:6,9:12,15:18,21:24,29,31)]
 data_model <- data_ana 
@@ -62,7 +62,8 @@ scales |>
       data_m <- data_model |> 
         filter(ECO_NAME == {{ eco }}) |> 
         select(-cuenca,-ECO_NAME,-Latitude) |> 
-        select(-vars[-t]) 
+        select(-vars[-t]) |> 
+        drop_na(vars[t])
       
       
       #seleccionar los indices para una escala de tiempo
@@ -70,7 +71,9 @@ scales |>
       ind <- which(a %in% c(scale))
       
       data_m <- data_m |> 
-        select(ind,-`zcNDVI-6`,-`zcNDVI-1`,-`zcNDVI-3`,-`zcNDVI-12`,trend_area_quemada,trend_luces_nocturnas,densidad_vial,last_col())
+        select(ind,-`zcNDVI-6`,-`zcNDVI-1`,-`zcNDVI-3`,-`zcNDVI-12`,
+               -`SPI-1`,-`SPI-3`,-`SPI-6`,-`SPI-12`,-`SPI-24`,-`SPI-36`,
+                 trend_area_quemada,area_quemada_sum,trend_luces_nocturnas,luces_nocturnas_avg,densidad_vial,last_col())
       
       df_split <- initial_split(data_m,prop =0.75)
       df_train <- training(df_split)
@@ -203,7 +206,7 @@ scales |>
     group_by(type,ecoregion) |> 
     mutate(rel_imp = Mean*10e2) -> table_vip
   
-  write_rds(table_vip,glue('data/processed_data/tabla_vip_scale_{scale}.rds'))
+  write_rds(table_vip,glue::glue('data/processed_data/tabla_vip_scale_{scale}.rds'))
   
   table_vip |> 
     slice_max(rel_imp, n= 2) |> 
