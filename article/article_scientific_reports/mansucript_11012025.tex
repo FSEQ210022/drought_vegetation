@@ -1,0 +1,1041 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  sn-nature,
+  numbered]{sn-jnl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+%%%% Standard Packages
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+
+%%%%
+
+\raggedbottom
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Shifts in water supply and demand drive land cover change across Chile},
+  pdfauthor={Francisco Zambrano; Anton Vrieling; Francisco Meza; Iongel Duran-Llacer; Francisco Fernández; Alejandro Venegas-González; Nicolas Raab; Dylan Craven},
+  pdfkeywords={drought, land cover, water demand, water supply},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title[Shifts in water supply and demand drive land cover change across
+Chile]{Shifts in water supply and demand drive land cover change across
+Chile}
+
+% author setup
+\author*[1,2]{\fnm{Francisco} \sur{Zambrano}}\email{francisco.zambrano@umayor.cl}\author[3]{\fnm{Anton} \sur{Vrieling}}\author[4,5,6]{\fnm{Francisco} \sur{Meza}}\author[7]{\fnm{Iongel} \sur{Duran-Llacer}}\author[8,9]{\fnm{Francisco} \sur{Fernández}}\author[10]{\fnm{Alejandro} \sur{Venegas-González}}\author[4]{\fnm{Nicolas} \sur{Raab}}\author[11,12]{\fnm{Dylan} \sur{Craven}}
+% affil setup
+\affil[1]{, \orgname{Hémera Centro de Observación de la Tierra, Facultad
+de Ciencias, Escuela de Ingeniería en Medio Ambiente y Sustentabilidad,
+Universidad Mayor}}
+\affil[2]{, \orgname{Observatorio de Sequía para la Agricultura y la
+Biodiversidad de Chile (ODES), Universidad Mayor}}
+\affil[3]{, \orgname{Faculty of Geo-Information Science and Earth,
+University of Twente}}
+\affil[4]{, \orgname{Facultad de Agronomía y Sistemas Naturales,
+Pontificia Universidad Católica de Chile.}}
+\affil[5]{, \orgname{Instituto para el Desarrollo Sustentable.
+Pontificia Universidad Católica de Chile}}
+\affil[6]{, \orgname{Centro Interdisciplinario de Cambio Global,
+Pontificia Universidad Católica de Chile}}
+\affil[7]{, \orgname{Hémera Centro de Observación de la Tierra, Facultad
+de Ciencias, Universidad Mayor,}}
+\affil[8]{, \orgname{Center of Economics for Sustainable Development
+(CEDES), Faculty of Economics and Government, Universidad San
+Sebastian}}
+\affil[9]{, \orgname{Center of Applied Ecology and Sustainability
+(CAPES)}}
+\affil[10]{, \orgname{Instituto de Ciencias Agroalimentarias, Animales y
+Ambientales (ICA3), Universidad de O'Higgins}}
+\affil[4]{}
+\affil[11]{\orgdiv{GEMA Center for Genomics, Ecology \& Environment,
+Universidad Mayor, Camino La Pirámide Huechuraba 5750}}
+\affil[12]{, \orgname{Data Observatory Foundation}}
+
+% abstract 
+
+\abstract{Globally, droughts are becoming longer, more frequent, and
+more severe, and their impacts are multidimensional. These impacts
+typically extend beyond the water balance, as long-term, cumulative
+changes in the water balance can lead to regime shifts in land cover.
+Here, we assess the effects of temporal changes in water supply and
+demand over multiple time scales on vegetation productivity and land
+cover changes in continental Chile, which has experienced a severe
+drought since 2010. Over most of continental Chile, we have observed a
+persistent negative trend in water supply and a positive trend in
+atmospheric water demand since 2000. However, in water-limited zones, we
+have observed a negative trend in the vegetation's water demand. All the
+trends intensify over longer time scales. This long-term decrease in
+water availability has led to a decrease in vegetation productivity,
+especially for the Chilean matorral and the Valdivian temperate forest.
+Drought indices of soil moisture and actual evapotranspiration from
+short- to mid-term time scales primarily explain this decrease. Besides,
+our models indicate that the intensity of the drought explains up to
+78\% of the changes in shrubland land covers, decreasing to 40\% for
+forests, but the change in cropland surface is explained by the surface
+burned. Long-term climate change may cause regime shifts in land cover,
+which context-specific adaptation strategies can mitigate.}
+
+% keywords
+\keywords{drought,  land cover,  water demand,  water supply}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}\label{sec-intro}
+
+Across many regions of the world, droughts are becoming longer, more
+frequent, and more severe\citep{Miranda2023, IPCC2023}, impacting
+ecosystems via tree mortality\citep{Cheng2024}, reducing vegetation
+productivity\citep{Miranda2023} and inducing shifts in land use and
+cover \citep{Crausbay2017}. However, identifying drought events is
+idiosyncratic due to the varying criteria used for classification.
+Droughts can be classified as 1) meteorological, i.e., when
+precipitation in a specific period falls below mean precipitation values
+observed over multiple years \citep{Mishra2010} (usually more than 30
+years); 2) hydrological, i.e., when precipitation anomalies last for
+long periods (months to years) and affect the hydrological system
+\citep{VanLoon2015, VanLoon2016b} (e.g., streamflows, reservoirs and
+groundwater); 3) agricultural, i.e.~when precipitation deficits
+negatively impact plant health, leading to decreases in crop or pasture
+productivity \citep{Wilhite1985}; or 4) ecological, i.e., when water
+availability negatively affect the provisioning of ecosystem services
+and trigger feedbacks in natural or human systems \citep{Crausbay2017}.
+Such feedbacks include drought impacts on human decision making and
+activities, which can lead to land-cover change
+\citep{VanLoon2016, AghaKouchak2021}, which may have cascading effects
+on biodiversity and ecosystem services
+\citep[e.g.,][]{Lawler2014, Newbold2015}. Despite the high degree of
+confidence in the impacts of rising temperatures on the extent,
+frequency, and severity of agricultural and ecological droughts
+\citep{IPCC2023}, which are likely to increase even if global warming
+stabilizes at 1.5°--2°C, the severity of meteorological droughts has
+been remarkably stable globally over the past century
+\citep{Vicente-Serrano2022, Kogan2020}. A global study analyzing drought
+severity trends from 1980 to 2020 reveals that in a few regions (some
+mid-latitudinal and subtropical areas), rising temperatures during the
+warm season have increased atmospheric evaporative demand (AED), leading
+to an increase in agricultural land area \citep{Vicente-Serrano2022}.
+Thus, rising atmospheric water demand may reflect parallel changes in
+land cover---primarily agriculture---that can exacerbate the effects of
+meteorological droughts on ecosystems.
+
+Expanding analyses to include multiple dimensions of droughts can
+provide complementary insights into the Earth's water balance - and its
+impacts - over multiple time scales. Yet, the World Meteorological
+Organization recommends the use of a single drought index for monitoring
+droughts \citep{WMO2012}, i.e., the multi-scale Standardized
+Precipitation Index (SPI; \citep{McKee1993}), which is limited in that
+it only considers water supply in the form of precipitation. The
+Standardized Precipitation Evapotranspiration Index (SPEI;
+\citep{Vicente-Serrano2020}) builds upon SPI by incorporating the
+effects of temperature on drought, and is now used widely for drought
+monitoring \citep[e.g.,][]{Gebrechorkos2023, Liu2024}. Indices derived
+from soil moisture products \citep{Narasimhan2005, Souza2021}, such as
+the Standardized Soil Moisture Index
+\citep[SSI,][]{AghaKouchak2014, AghaKouchak2015} also monitor water
+supply and are thought to better capture water availability for crops,
+thus providing more relevant information for evaluating agricultural
+droughts. To disentangle the effects of precipitation from those of
+temperature \citep{Vicente-Serrano2020}, as well as to capture droughts
+in terms of water atmospheric demand, AED has been integrated into the
+Evaporative Demand Drought Index \citep[EDDI,][]{McEvoy2016}, which is
+particularly effective at detecting the rapid onset or intensification
+of droughts. To quantify vegetation water demand, we must use the actual
+evapotranspiration, or the amount of water removed from a surface by
+evaporation and transpiration; the Standardized Evapotranspiration Index
+(SETI; \citep{Yang2019}) can be used for this purpose. In turn,
+ecological droughts, which capture the joint effects of precipitation
+and temperature in modifying natural and productive ecosystems
+\citep{Camps-Valls2021, Paruelo2016, Helman2014}, are complex to measure
+and can therefore be monitored using multiple drought indices that
+capture the multiple dimensions of drought, e.g., precipitation,
+temperature, evapotranspiration, and AED. Although such an approach
+accounts for the joint effects of changes in natural and productive
+ecosystems, its potential impacts on land cover change have been largely
+unexplored.
+
+From 1960 to 2019, land-use change has impacted approximately one-third
+of the Earth's surface, which is four times more than previously thought
+\citep{Winkler2021}. Despite the considerable interest in land-use
+change dynamics \citep[e.g.,][]{Song2018, Winkler2021}, the direction
+and magnitude of drought impacts on land cover change and vegetation
+productivity remain uncertain \citep{Chen2022, Akinyemi2021, Peng2017}.
+Meteorological droughts are responsible for approximately 37\% of land
+cover change and variability in vegetation productivity globally
+\citep{Peng2017}. However, the evidence supporting these results is
+derived from only one drought index, SPEI, which combines a proxy for
+water supply - precipitation - with a proxy for water demand - AED - at
+one time scale (12 months). The use of only one time scale may bias
+results of drought impacts towards ecosystems dominated by plant growth
+forms such as grasses and herbs that respond more rapidly to drought
+stress (\textless{} 12 months). This is because physiological
+differences among and within dominant plant growth forms may increase
+(or decrease) tolerance of drought stress
+\citep{Craine2013, McDowell2022}. For example, trees growing in more
+arid ecosystems typically respond over longer time scales than those in
+more humid ecosystems \citep{Vicente-Serrano2014}. Another source of
+uncertainty regarding drought impacts on land cover change and
+vegetation productivity are extrinsic factors, such as large-scale
+public policy (e.g., national and international reforestation
+initiatives), agricultural practices (e.g., clearing forest for soybean
+or oil palm), and rural and urban land use planning
+\citep{Karabulut2023}.
+
+To deepen current knowledge on the multidimensional impacts of drought
+on the temporal dynamics of natural and productive ecosystems, we
+evaluate temporal changes in water supply and demand, net primary
+productivity, and land-cover change across terrestrial ecosystems in
+continental Chile for 2000-2023. Chile's diverse climate and ecosystems
+\citep{Beck2023, Luebert2022} make it an ideal natural laboratory for
+assessing the dynamic interactions between climate and ecosystems, and
+potential impacts on land-cover change. Additionally, large parts of
+Chile have experienced severe drought conditions that have significantly
+affected vegetation and water storage in recent years; north-central
+Chile has faced a persistent precipitation deficit (or ``mega-drought'')
+since 2010 \citep{Garreaud2017}, which has broadly impacted native
+forests \citep[e.g.,][]{Miranda2020, UrrutiaJalabert2018, Venegas2018}
+and agricultural productivity
+\citep[e.g.,][]{Zambrano2016, Zambrano2018, Zambrano2023}. However, the
+effects of this prolonged extreme drought may also extend to changes in
+land cover, altering the provision of key ecosystem services and
+agricultural production. Here, we aim to assess: short- to long-term
+time trends in multi-scalar drought indices that capture variation in
+the components of water balance, i.e., water supply (SPI, SPEI, SSI) and
+demand (EDDI, SETI) and their impacts on vegetation productivity and
+land-cover change across continental Chile. By doing so, we aim to
+deepen understanding of how water supply and demand affect vegetation
+productivity and influence changes in the surface of land cover in a
+severely drought-impacted region. This may enhance understanding of the
+alterations, due to drought, to ecosystems in various regions across the
+world.
+
+\section{Materials and Methods}\label{materials-and-methods}
+
+\subsection{Study area}\label{study-area}
+
+Continental Chile has a diverse climate, with strong environmental
+gradients from north to south and east to west \citep{Aceituno2021}
+(Fig. 1a), which, together with its complex topography (Fig. 1b),
+determine its ecosystem diversity \citep{Garreaud2009, Luebert2022}
+(Fig. 1c). We therefore divided Chile into ecoregions
+\citep{Dinerstein2017}, which are regions that share similar geography
+and ecology, and have comparable levels of precipitation and solar
+radiation. There are seven ecoregions: Atacama desert, Central Andean
+dry puna, Southern Andean steppe, Chilean Matorral, Valdivian temperate
+forests, Magellanic subpolar forests, and Patagonian steppe. The Atacama
+desert is predominantly arid with hot (Bwh in the Koppen-Geiger
+classification) and cold (Bwk) temperatures, as well as the northern
+part of the Chilean Matorral. Most of the land in these two northern
+regions is bare, except for a small area where shrublands and grasslands
+are present. With an annual rainfall of less than 400 mm, the Central
+Andean dry puna ecoregion has low, yet highly seasonal precipitation
+with an eight-month dry season, low temperatures (Bwk) and is dominated
+by grasslands, shrublands, and savanna. The climate of the Southern
+Andean steppe ecoregion is cold desert (BWk), with most precipitation
+occurring in the winter. There is little vegetation in this ecoregion
+because the plants have adapted to its windy, dry, and cold climate. In
+central Chile, the climate of the Chilean Matorral changes to that of an
+arid steppe with cold temperatures (Bsk). Then, towards the center-south
+of the country, the climate of the Chilean Matorral changes to a
+Mediterranean climate, with warm to hot summers (Csa and Csb). Land
+cover in this ecoregion consists of a significant amount of shrublands
+and savannas. The Valdivian temperate forests have a mostly oceanic
+climate (Cfb) and a large area of forests and grasslands. The Magellanic
+subpolar forests have a tundra climate. Lastly, the Patagonian steppe
+has high aridity, cold temperatures (Bsk), and primarily consists of
+grasslands.
+
+\subsection{Data}\label{data}
+
+\subsubsection{Gridded meteorological and vegetation
+data}\label{gridded-meteorological-and-vegetation-data}
+
+To derive a proxy for vegetation productivity, we used the Normalized
+Difference Vegetation Index (NDVI) from the MOD13A3 Collection 6.1
+product derived from the MODIS (Moderate-Resolution Imaging
+Spectroradiometer) sensor onboard the Terra satellite. MOD13A3 provides
+vegetation indices with a 1 km spatial resolution and monthly frequency
+\citep{Didan2015}. We also utilized the MOD16A2 collection 6.1
+\citep{Running2017} product from MODIS to gauge the water consumption of
+vegetation. This product gives us monthly actual evapotranspiration (ET)
+and atmospheric evaporative demand (AED) with a \textasciitilde500m
+spatial resolution. For soil moisture, water supply, and water demand
+variables, we used ERA5-Land (ERA5L; ECMWF Reanalysis version 5 over
+land) \citep{MunozSabater2021}, a reanalysis dataset that provides
+atmospheric and land variables since 1950. It has a spatial resolution
+of 0.1° (9 km), hourly frequency, and global coverage. We selected total
+precipitation, maximum and minimum temperature at 2 meters, and
+volumetric soil water layers between 0 and 100 cm of depth (layer 1 to
+layer 3; Supplementary Materials and Methods, Supplementary Tables 2 and
+4).
+
+\subsubsection{Gridded indicators for land
+use}\label{gridded-indicators-for-land-use}
+
+To account for the impacts of human activity on land cover change, we
+obtained data on road density \citep{Meijer2018} and night lights for
+the period 2012--2023 \citep{Roman2018}. These products are frequently
+used in the literature to quantify the human footprint (e.g.,
+\citep{Halpern2015, Halpern2008}) or biodiversity threats (e.g.,
+\citep{Bowler2020, Kennedy2020}).To capture changes on land cover due to
+fires, we calculated the total burned area for 2002-2023
+\citep{Chen2023}.
+
+\subsection{Short- to long-term drought
+trends}\label{short--to-long-term-drought-trends}
+
+\subsubsection{Atmospheric Evaporative Demand
+(AED)}\label{atmospheric-evaporative-demand-aed}
+
+To compute drought indices that use water demand, it is necessary to
+first calculate AED. To do this, we employed the Hargreaves method
+\citep{Hargreaves1994, Hargreaves1985} by applying the following
+equation:
+
+\begin{equation}\phantomsection\label{eq-AED}{AED = 0.0023\cdot Ra\cdot (T+17.8)\cdot (T_{max}-T_{min})^{0.5}}\end{equation}
+
+where \(Ra\) \((MJ\,m^2\, day^{-1})\) is extraterrestrial radiation;
+\(T\), \(T_{max}\), and \(T_{min}\) are mean, maximum, and minimum
+temperature \((°C)\) at 2m. For calculating \(Ra\) we used the
+coordinate of the latitud of the centroid of each pixel as follow:
+
+\begin{equation}\phantomsection\label{eq-Ra}{R_a = \frac{14,400}{\pi}\cdot G_{sc}\cdot d_r \left[\omega_s\cdot sin(\phi)\cdot sin(\delta)+cos(\phi)\cdot cos(\delta)\cdot sin(\omega_s) \right]}\end{equation}
+
+where:
+
+\(Ra\): extraterrestrial radiation \([MJ\, m^{-2} day-1]\),\\
+\(G_{sc}\): solar constant = 0.0820 \([MJ\,m^{-2} min^{-1}]\),\\
+\(d_r\): inverse relative distance Earth-Sun,\\
+\(\omega_s\) sunset hour angle \([rad]\),\\
+\(\phi\): latitude \([rad]\),\\
+\(\delta\): solar declination \([rad]\).
+
+We selected the method of Hargreaves to estimate AED because of its
+simplicity, as it only requires temperature and extraterrestrial
+radiation, and because access to the data needed for alternative methods
+(e.g., Penman-Montieth) is often limited \citep{Vicente-Serrano2014}.
+
+\subsubsection{Drought indices}\label{drought-indices}
+
+To derive the drought indices of water supply and demand we used the
+ERA5L dataset and the MODIS product (MOD13A3 \citep{Didan2015b}), with a
+monthly frequency for 2000--2023. Drought indices capture historical
+anomalies of water supply and demand. To quantify each anomaly, the
+common practice is to derive it following a statistical parametric
+method in which it is assumed that the statistical distribution of the
+data is known \citep{Heim2002}. The use of an erroneous statistical
+distribution that does not fit the data is usually the highest source of
+uncertainty \citep{Laimighofer2022}. In the case of Chile, due to its
+high degree of climatic variability, it is difficult to choose a
+statistical distribution that can be used across its entire extent. We
+therefore use a non-parametric method for the calculation of the drought
+indices, following \citep{Farahmand2015}.
+
+For monitoring water supply, we used the Standardized Precipitation
+Index (SPI; \citep{McKee1993}), which only uses precipitation data. To
+evaluate water demand, we chose the Evaporative Demand Drought Index
+(EDDI; \citep{Hobbins2016} and \citep{McEvoy2016}), which is based on
+AED, and the Standardized Evapotranspiration Index (SETI;
+\citep{Yang2019}), which quantifies actual evapotranspiration, i.e.~the
+amount of water removed from a surface due to evaporation and
+transpiration. To quantify the combined effect of water supply and
+demand, we estimated SPEI \citep{Vicente-Serrano2010}. For SPEI, we
+calculated an auxiliary variable (D) with the following formula:
+
+\[D = P-AED\] where P is precipitation. Soil moisture is often
+considered to be the main driver of vegetation productivity,
+particularly in semi-arid regions \citep{Li2022}. Hence, we used the
+Standardized Soil Moisture Index (SSI) to estimate soil moisture (SM)
+\citep{Hao2013}. For SSI, we used the average soil moisture from ERA5L
+at a depth of 1m. All calculated indices are multi-scalar and can be
+used for the analysis of short- to long-term droughts.
+
+To derive the drought indices, we first calculate the sum of the
+variables with regard to the time scale(s). In this case, for
+generalization purposes, we will use \(V\), referring to variables P,
+AED, D, and SM (Table SSX). We accumulated each over the time series of
+values (months), and for the time scales s:
+
+\begin{equation}\phantomsection\label{eq-sumvar}{A^s_i = \sum_{i=n-s-i+2}^{n-i+1} V_i\,\, \forall\, i\geq n-s+1  }\end{equation}
+
+The \(A^s_i\) corresponds to a moving window (convolution) that sums the
+variable for time scales \(s\). This is summed over \(s\) months,
+starting from the most recent month (\(n\)) back in time until month
+\(n-s+1\). For example, using as a variable the precipitation, a period
+of twelve months (\(n\)), and a time scale of three months (\(s\)):
+
+\[
+\begin{split}
+A^3_1 &= P_{oct} +P_{nov} +P_{dic} \\
+\vdots\,\,\, &= \,\,\,\vdots + \,\,\,\vdots + \,\,\,\vdots \\
+A^3_{10} &= P_{jan}+P_{feb} +P_{mar}
+\end{split}
+\]
+
+Then, we used the empirical Tukey plotting position \citep{Wilks2011}
+over \(A_i^s\) to derive the \(P(A_i^s)\) probabilities across a period
+of interest:
+
+\begin{equation}\phantomsection\label{eq-probPai}{P(A^s_i) = \frac{i-0.33}{n+0.33'}}\end{equation}
+
+An inverse normal approximation \citep{Abramowitz1968} obtains the
+empirically derived probabilities once the variable cumulates over time
+for the scale \(s\). Thus, the drought indices \(SPI\), \(SPEI\),
+\(EDDI\), and \(SSI\) are obtained following the equation:
+
+\begin{equation}\phantomsection\label{eq-DI}{DI(A^s_i) = W - \frac{C_0+C_1\cdot W + c_2 \cdot W^2}{1+d_1\cdot W +d_2\cdot W^2 +d_3\cdot W^3}}\end{equation}
+
+\(DI\) is referring to the drought index calculated for the variable
+\(V\). The values for the constats are: \(C_0 = 2.515517\),
+\(C_1 = 0.802853\), \(C_2 = 0.010328\), \(d_1 = 1.432788\),
+\(d_2 = 0.189269\), and \(d3 = 0.001308\). For \(P(A^s_i) \leq 0.5\),
+W=\(\sqrt{-2\cdot ln(P(A^s_i))}\) , and for \(P(A^s_i) > 0.5\), replace
+\(P(A^s_i)\) with \(1-P(A^s_i)\) and reverse the sign of \(DI(A^s_i)\).
+
+The drought indices were calculated for time scales of 1, 3, 6, 12, 24,
+and 36 months at a monthly frequency for 2000--2023.
+
+\subsubsection{Temporal trends of drought
+indices}\label{temporal-trends-of-drought-indices}
+
+To determine if there are statistically significant positive or negative
+temporal trends for the drought indices, we used the non-parametric
+modified Mann-Kendall test for serially correlated data \citep{Yue2004}.
+To determine the magnitude of the trend, we used Sen's slope
+\citep{Sen1968}. Sen's slope is less affected by outliers than
+parametric ordinary least squares (OLS) regression, and as a
+non-parametric method, it is not influenced by the distribution of the
+data. We applied both methods for SPI, EDDI, SPEI, SETI, and SSI and six
+time scales, resulting in a total of 30 trends. We then aggregated
+temporal trends for each ecoregion and land cover type.
+
+\subsubsection{Vegetation productivity}\label{vegetation-productivity}
+
+We also used the MODIS product to calculate vegetation productivity, and
+calculated anomalies of cumulative NDVI using zcNDVI
+\citep{Zambrano2018}, which was derived from the monthly time series of
+NDVI, with Equations 2 and 4. For vegetation productivity, we selected
+the time scale that best correlates with annual net primary productivity
+(NPP) across continental Chile. For this purpose, we calculated zcNDVI
+for time scales of 1, 3, 6, and 12 months (from December) and compared
+it with the annual NPP. We obtained NPP from MOD17A3HGF90. We chose to
+use six months because the \(R^2\) between zcNDVI and NPP reaches its
+highest value at six months, obtaining an \(R^2\) of 0.31 for forest and
+0.72 for shrubland (Supplementary Information Section S2). We
+subsequently used zcNDVI with a time scale of 6 months and calculated it
+at a monthly frequency for 2000--2023.
+
+\subsection{Drought impacts on vegetation
+productivity}\label{drought-impacts-on-vegetation-productivity}
+
+For each land cover, we analyzed the trend of vegetation productivity.
+To this end, we identified areas within each land cover that are
+persistent over time to reduce the possibility that trends in vegetation
+productivity may be influenced by changes in land cover. We examined the
+correlation between drought indices and vegetation productivity across
+land cover types to determine to the extent to which soil moisture and
+water demand and supply affect vegetation productivity.
+
+We estimated pixel-to-pixel Pearson's correlations between drought
+indices at time scales of 1, 3, 6, 12, 24, and 36 months with zcNDVI. We
+extracted the Pearson correlation coefficient corresponding to the time
+scale with the highest value. For each index, we then generated two
+maps: 1) a raster with values of the time scales and drought index that
+reached the maximum correlation, and 2) a raster with the magnitude of
+the correlation between the drought index and vegetation productivity.
+
+\subsection{Drought impacts on land cover
+change}\label{drought-impacts-on-land-cover-change}
+
+\subsubsection{Land cover change}\label{land-cover-change}
+
+To analyze land cover change, we used the classification scheme of the
+International Geosphere-Biosphere Programme (IGBP) from the product
+MCD12Q1 Collection 6.1 from MODIS. The MCD12Q1 product is produced for
+each year from 2001 to 2023 and defines 17 classes (see Table S1).
+Following the FAO classification \citep{FAO2022}, we classified native
+and planted forests as ``forests'', which represent natural and
+productive ecosystems dominated by large trees. To analyze the land
+cover change, we use the IGBP scheme from the MCD12Q1 product. We
+regrouped the 17 classes into ten macro-classes, as follows: 1-4 to
+forests (native forest and plantations), 5-7 to shrublands, 8-9 to
+savannas, 10 as grasslands, 11 as wetlands, 12 and 14 to croplands, 13
+as urban, 15 as snow and ice, 16 as barren, and 17 as water (Table S3).
+This resulted in a time series of land cover with ten macro-classes for
+2001-2023. We validated the land cover macro-classes using a high
+resolution (30 m) land cover map for 2013-2014 \citep{Zhao2016}. Our
+results showed a global accuracy of \textasciitilde0.82 and a F1 score
+of \textasciitilde0.66 (Supplementary Information, S2).
+
+We calculated the area for each land cover class in the five study
+regions for 2001--2023. We then estimated the temporal change in area
+for each land cover type and macro-class, and determined the statistical
+significance (p-value \textless{} 0.05) and magnitude of the trend as
+described above.
+
+To assess how water demand and supply, and soil moisture affect the
+variation in vegetation productivity across various land cover types, we
+avoid analyzing areas that experienced major land cover changes in the
+2001--2023 period. To assess how zcNDVI varied irrespective of land
+cover change, we developed a persistence mask for land cover, which only
+retains pixels for which the macro-class remained the same for at least
+80\% of the 23 years (Fig. 1d).
+
+\subsection{Relationship between land cover and drought
+trends}\label{relationship-between-land-cover-and-drought-trends}
+
+To identify which drought indices and time scales have a major impact on
+changes in land cover type, we examined the relationships between the
+temporal trends in the surface of land cover classes, drought indices,
+road density, burned area, and night lights, and for each ecoregion. We
+performed the analysis at the sub-basin scale, using 485 river basins,
+which have a surface area between 0.906 and 24,408 km2 and a median area
+of 1,249 km2 (Supplementary Fig. S8/Table S5). For each basin, we
+calculated the trend per land cover, considering the proportion of the
+type relative to the total surface of the basin. For each basin we
+extracted the average trend of all drought indices and at time scales of
+1, 3, 6, 12, 24, and 36 months. In the case of burned area, we used as
+variables the total and the trend of burned area for 2002-2023, and for
+night lights we used the average and the trend of nightlights for
+2012-2023.
+
+Prior to modelling relationships between trends in land cover and
+drought indices, we assessed multi-collinearity among explanatory
+variables, i.e., drought indices, road density, night lights, and burned
+area, with the variance inflation factor (VIF). We analyzed the VIF for
+all drought indices at time scales of 1, 3, 6, 12, 24, and 36 separately
+because each index has a strong correlation across time scales. As VIF
+values greater than five may affect the interpretation of model results
+\citep{Dorman2013}, we therefore excluded SPI from all subsequent
+models.
+
+To assess the relationship between land cover trends and drought
+indices, we modeled trends in the surface of land cover types. We made a
+regression analysis using the random forest method93, which employs
+multiple decision trees. Some advantages of random forest include the
+ability to find non-linear relationships, reduce overfitting, and derive
+variable importance. We incorporated the trends of the five drought
+indices (SPI, SPEI, EDDI, SETI, and SSI), the trends of night lights (2)
+and burned area (2), the road density, for a total of ten predictors. We
+then constructed random forest models for each time scale (1, 3, 6, 12,
+24, and 36) and each land cover class (forest, grassland, shrubland,
+savanna, cropland, and barren land), resulting in a total of 36 RF
+models. We trained each model using 1000 trees, setting the minimum
+number of nodes per decision tree at five and the number of predictors
+per split (boosting) to the square root of the total number of
+predictors. To account for uncertainty, we trained all the models ten
+times using a resampling strategy (ten folds) in a cross-validation
+scheme. Finally, we evaluate model fit by calculating R², root mean
+square error (RMSE), and variable importance. Variable importance
+identifies which variables have a higher contribution to explaining
+model variation. We calculated variable importance by permuting
+out-of-bag (OOB) data per tree and calculating the mean standard error
+of the OOB data. After permuting each predictor variable, we repeated
+the process for the remaining variables. We repeated this process ten
+times per fold to assess model fit.
+
+Finally, we visually explored the relationship between drought indexes
+and changes in land cover across sub basins within Chile. To achieve
+this, we compared the relative changes in land cover surface with the
+drought indices, burned area, nighlights, and road density and other
+variables for the time scale that were deemed more significant in the
+random forest model.
+
+\subsection{Software}\label{software}
+
+For downloading, processing, and analysis of the spatio-temporal data,
+we used the open source software for statistical computing and graphics,
+R \citep{R2023}. For downloading ERA5L, we used the \{ecmwfr\} package
+\citep{Hufkens2019}. For processing raster data, we used \{terra\}
+\citep{Hijmans2023} and \{stars\} \citep{Pebesma2023}. For managing
+vectorial data, we used \{sf\} \citep{Pebesma2018}. For the calculation
+of AED, we used \{SPEI\} \citep{Bergueria2023}. For mapping, we used
+\{tmap\} \citep{Tennekes2018}. For data analysis and visualization, the
+suite \{tidyverse\} \citep{Wickham2019} was used. For the random forest
+modeling, we used the \{tidymodels\} \citep{Kuhn2020} and \{ranger\}
+\citep{Wright2017} packages.
+
+\section{Results}\label{results}
+
+\subsection{The Chilean matorral and Patagonian steppe increase
+atmospheric water demand but decrease vegetation
+evapotranspiration}\label{the-chilean-matorral-and-patagonian-steppe-increase-atmospheric-water-demand-but-decrease-vegetation-evapotranspiration}
+
+For the Atacama desert and the Central Andean Puna, we found a positive
+temporal trend for drought indices of water supply (i.e., SPI, SSI),
+atmospheric water demand (i.e., EDDI), and vegetation water demand
+(i.e., SETI). For the Chilean matorral and Patagonian steppe, EDDI
+presents the higher positive trend and lower negative trends in SPI,
+SPEI, SSI, and SETI. This reflects a critical scenario of drought, where
+a rise in temperature increases atmospheric water demand, but vegetation
+cannot increase evapotranspiration due to a lack of water availability.
+In the Southern Andean steppe, there is a positive trend in AED (i.e.,
+EDDI), but a negative in water supply (i.e., SPI, SPEI, SSI). The
+vegetation water demand (i.e., SETI) has negative trends, but it is
+increasing at higher time scales. The Valdivian temperate forests show a
+negative trend in water supply (i.e., SPI, SPEI, and SSI) and a positive
+trend in both AED and ET, as shown by the EDDI and SETI, respectively.
+Here, an increase in AED implies an increase in ET, likely due to a
+greater availability of water, unlike in the Chilean Matorral and
+Patagonian steppe. The vegetation water demand (SETI) in the Magellanic
+subpolar forests does not exhibit a significant trend over any given
+time scale. The AED and water supply present a positive trend. The
+trends of drought indices in the Patagonian steppe exhibit a similar
+behavior to the Chilean matorral, albeit to a lesser extent. Generally,
+the majority of the indices indicate that the trend (positive or
+negative) intensifies over longer time periods. (Fig. 2)
+
+\subsection{Vegetation productivity has strongly decreased in the
+Chilean matorral and the Patagonian
+steppe.}\label{vegetation-productivity-has-strongly-decreased-in-the-chilean-matorral-and-the-patagonian-steppe.}
+
+We found contrasting temporal trends in vegetation productivity for
+2000-2023 (Fig. 3). The Atacama desert does not exhibit significant
+trends over time. The Chilean Matorral, Patagonian steppe, and the
+Southern Andean steppe exhibit negative trends of -0.023, -0.016, and
+-0.006 (z-score/per decade), respectively. In contrast, the Central
+Andean dry puna, Valdivian temperate forests, and Central Andean dry
+puna show positive trends ranging from 0.01 to 0.03 (z-score/per
+decade). The Chilean matorral was at its lowest point from 2019 to 2022,
+while the Patagonian steppe has experienced an increasingly negative
+trend since 2022.
+
+Forest, savanna, and shrubland exhibit the highest change in surface
+area across ecoregions We also observed significant changes in land
+cover surfaces across continental Chile (Fig. 4). The forest surface has
+increased in the Chilean matorral and in the Valdivian temperate forest
+at rates of 78 and 316 km² yr⁻¹, respectively. Grassland surface has
+diminished in the Southern Andean steppe (-19 km² yr⁻¹) and has
+increased in the Patagonian steppe (90 km² yr⁻¹). Savanna exhibits a
+decrease in the Chilean matorral of -271 km² yr⁻¹ and the Valdivian
+temperate forest of -276 km² yr⁻¹, but an increase at a rate of 133 km²
+yr⁻¹ in the Magellanic subpolar forest. Shrubland has the highest
+increase in the Chilean matorral (160 km² yr⁻¹). Barren land has
+increased in the Central Andean dry puna (36 km² yr⁻¹) and the Southern
+Andean steppe (50 km² yr⁻¹), but has diminished in the Magellanic
+subpolar forest (-81 km² yr⁻¹). \#\# Drought impact on vegetation
+productivity are strongest in the Chilean matorral and Valdivian
+temperate forest
+
+Our results indicate that drought impacts on vegetation productivity are
+highest in the Chilean Matorral and Valdivian temperate forests across
+all land cover types, except forest (Fig. 5, Fig. S5 and Table 1). For
+time scales of 6 and 12 months, SETI and SSI have the strongest positive
+correlation with vegetation productivity among the land cover types.
+Next, we found that grassland and savanna in the Patagonian steppe had
+higher correlations with SPI and SSI over 12 months. Further, there is a
+positive relationship between the vegetation in the Atacama desert and
+drought indices of 12 months of water supply and vegetation water
+demand. However, there is a negative relationship between the vegetation
+and atmospheric water demand over 12 months. All drought indices show a
+positive correlation with the vegetation in the Central Andean dry puna,
+particularly the drought indices of water supply (SPI, SPEI, and SSI) at
+time scales of 24 and vegetation water demand (SETI) at time scales of
+36 months. For the Southern Andean steppe the SETI of 24 months showed
+the highest correlation with savannas, followed by the EDDI of 24
+months. Our analysis also revealed that water demand and supply
+differentially affected the time scales at which vegetation productivity
+of land cover types within each region was most impacted by drought
+(Fig. 5, Fig. S5 and Table 1). While the spatial variation in the
+relationship between drought intensity and vegetation productivity was
+consistent across drought indices, the drought indices that captures
+water supply via soil moisture (Standardized Soil Moisture Index; SSI),
+and via vegetation water demand (Standardized Evapotranspiration Index,
+SETI) tended to show a stronger correlation with vegetation productivity
+over larger areas than the other drought indices (Fig. 5).
+
+\subsection{Drought strongly impacts land cover distribution for
+shrubland}\label{drought-strongly-impacts-land-cover-distribution-for-shrubland}
+
+Our random forest models show that drought indices explain between
+32-79\% of the variation in land cover change across continental Chile
+(Fig. 6). Moreover, these results highlight the importance of
+considering water supply and demand, as drought indices associated with
+both aspects of the water balance had high importance values across most
+ecoregions and land cover types. The variation in the time scale of
+drought indices that provide the strongest correlation with vegetation
+productivity also suggests that different types of vegetation are not
+equally sensitive to droughts of similar intensities (Table 1). The RF
+models show that the drought indices are explaining 71-78\% of the
+variability in land cover surface change for shrublands. Second, the RF
+models explain approximately 58-78\% of the variability in change on
+croplands. In the case of other land cover types, the RF models account
+for approximately 33-59\% of the variability, with drought indices
+explaining less for the forest type (Fig. 6).
+
+Our model has the highest r-squared for shrublands, followed by
+croplands, and barren land (Fig. 6). Ecoregions most frequently observed
+the variables SETI and SSI, which significantly influenced surface
+changes for each land cover (Fig. 7). In cropland, the primary factor is
+not the drought indices, but rather the total surface or trend of the
+burned area. The nightlight variable, which reflects urban areas,
+primarily explains the change in the surface of barren land, followed by
+the drought indices SPEI at time scales of 3 and 6 months (Fig. 7).
+
+Our results also show that drought intensity was associated with the
+magnitude and direction of land cover change (Fig. 8). We observe that
+shrublands are sensitive to both increases and decreases in SETI and
+SSI, reaching a point of equilibrium around a normal climatic situation
+(drought index = 0). This could potentially stem from the fact that
+favorable water supply conditions alter the type and quantity of
+vegetation. Conversely, a reduction in water supply results in the
+shrublands losing their vegetation and transforming into bare soil.
+Thereby, both situations alter the land cover type. Changes in the
+burned surface impact the cropland surface; an increase in the burned
+area leads to an increase in the agricultural surface. Agricultural
+areas likely replace the burned area, explaining this phenomenon. In the
+case of bare soil, values that indicate low urban development
+(nightlights) are associated with a larger surface of bare soil.
+However, when the variable's range extends beyond the normal urban
+situation (zero value), an increase in bare soil correlates with a
+fluctuating increase in urban development. The relationship between SETI
+and SPEI in grasslands is opposite; an increase in SPEI leads to an
+increase in grassland area, while an increase in water demand by
+grasslands, as reflected by SETI, results in a decrease in grassland
+area.
+
+\section{Discussion}\label{discussion}
+
+\subsection{Temporal trends in water supply and
+demand}\label{temporal-trends-in-water-supply-and-demand}
+
+We discovered that the Atacama desert, Central Andean dry puna, and the
+Magellanic subpolar forests experience an increase in water supply (SPI,
+SSI), as well as an increase in atmospheric and vegetation water demand
+(EDDI, SETI). However, in the Magellanic subpolar forests, there is no
+significant increase or decrease in SETI across time scales. Also, we
+found a significant decreasing trend in water supply (SPI, SPEI, and
+SSI) across the Southern Andean steppe, Chilean Matorral
+\citep{Boisier2018, Sarricolea2019}, Valdivian temperate forests, and
+Patagonian steppe, accompanied by an increase in atmospheric water
+demand (EDDI). Our results indicate that the trend of water supply and
+atmospheric demand tends to decrease or increase more strongly over
+longer time scales---a trend that is consistent with the progressive
+intensification of drought severity across much of Chile, as observed in
+other regions facing long-term droughts \citep{Rashid2019, Miro2023}.
+Simultaneously, we observed a divergent trend between the EDDI and SETI
+in various ecoregions. In the majority of ecoregions, a rise in
+atmospheric water demand (EDDI) typically leads to a rise in vegetation
+water demand (SETI). However, in the zones most affected by drought
+(Fig. 3 and Fig. 5), where water availability is limited, an increase in
+atmospheric water demand results in a decrease in vegetation water
+demand. The Chilean matorral and the Patagonian steppe are where this is
+most evident. When combined, our findings demonstrate a persistent
+drying trend in the Chilean matorral, the Patagonian steppe, and the
+Southern Andean steppe. We attribute this trend to a simultaneous
+decrease in precipitation and an increase in atmospheric evaporative
+demand, which leads to a decrease in the water demand for vegetation in
+water-limited zones\citep{Pascoa2021}.
+
+\subsection{Temporal trends in vegetation
+productivity}\label{temporal-trends-in-vegetation-productivity}
+
+The consequences of the persistent drying trend for ecosystems
+throughout continental Chile are manifold. First, the prolonged
+hydrological drought, i.e., precipitation deficit, has reduced
+groundwater storage (SSI, \citep{Taucare2024}), leading to a steady
+decline in vegetation productivity (zcNDVI) since 2000 across the
+Chilean Matorral, Patagonian steppe, and Southern Andean steppe,
+reaching its lowest level between 2020 and 2022, which could be due to
+either a decrease in vegetation area, a loss of biomass or browning in
+forest ecosystems. Reports for natural and productive ecosystems
+\citep{Nicolai-Shaw2017, Jiang2020, Zhou2021} most strongly associate
+this decline with declines in soil moisture and increases in
+evapotranspiration. Second, the sharp decline in vegetation productivity
+in the Chilean Matorral and Valdivian temperate forests showed that
+grasses and shrublands respond to shifts in water supply on higher time
+scales (12 months), in comparison to savanna and croplands (6 months).
+Also, in the Valdivian temperate forest that has a higher surface with
+forest trees, soil moisture (SSI) and vegetation water demand (SETI) at
+higher time scales, 12 and 36 months, respectively, evidence stronger
+correlations. Which is consistent with recent studies showing that
+progressive, long-term water deficits in central Chile have triggered
+forest browning and declines in native forest productivity
+\citep[e.g.,][]{Miranda2023, Miranda2020, Venegas2022}. While our
+analysis do not distinguish between native and planted forests, the
+latter of which are considered to be more drought tolerant in central
+and southern Chile \citep{Carrasco2022}, we show that forest area
+declines more sharply in response to increasing water demand due to
+rising temperatures (EDDI) than decreasing water supply (e.g., SPI, SSI;
+refs. \citep{Fajardo2019, Holz2018}), which may have cascading impacts
+on multiple facets of forest diversity \citep{Segovia2021, Sabatini2022}
+
+Moreover, the strengthening of the correlation between vegetation
+productivity and water supply (SPI, SPEI, SSI) or demand (EDDI, SETI)
+over multiple time scales (up to 36 months) and across land cover types
+(Fig. 5) - demonstrates the impacts of climate change on the water
+balance in Chile. Impacts may extend beyond vegetation productivity, as
+reduced soil moisture in central Chile and the western United States has
+increased wildfire activity\citep{Holden2018, Gonzalez2018}, which is a
+growing concern in Chile and may be further exacerbated by extensive
+plantations of highly flammable tree species, e.g., Eucalyptus spp. and
+Pinus spp. \citep{Bowman2019}. Third, we found that the decline in the
+vegetation productivity of croplands is due to a decrease in the water
+supply and vegetation water demand to a greater extent than to an
+increase in atmospheric water demand \citep{Quiring2010}, causing a
+decline in water availability. This is consistent with evidence that
+more water-intensive crops have replaced less water-intensive crops in
+central Chile, leading to an increase in water extraction from rivers or
+groundwater \citep{Munoz2020, Duran2020}.
+
+\subsection{Drought impacts on land
+cover}\label{drought-impacts-on-land-cover}
+
+We found evidence that temporal decreases in water supply (SPEI, SSI)
+and decreases in vegetation water demand (SETI) are driving shifts not
+only in vegetation productivity but also in land cover across most of
+continental Chile. Shrubland covers were the land cover type most
+sensitive to changes in the water balance over short and long temporal
+scales. In contrast, forest surfaces are the type less affected by
+drought. Moreover, our results provide evidence that, in addition to
+shrublands cover, other land cover types have been affected by water
+deficits, particularly savannas and grasslands. Our results therefore
+suggest that multiple land cover types could be vulnerable to regime
+shifts towards more drought tolerant land cover types
+\citep{Scheffer2001, Martinez-Vilalta2016}, such as forest, whose cover
+increased non-linearly in response to increasing drought intensity.
+Changes in cropland cover are not a direct consequence of drought (Fig.
+7), but rather an indirect one, likely occupying burned areas and
+possibly reflecting the decision of resource-poor farmers to migrate to
+regions with more abundant water resources or to change economic
+activity \citep{AghaKouchak2021, Hermans2021}. In contrast, the increase
+in shrubland cover due to a decrease in savanna cover may be ecological,
+as shrubs may be more drought tolerant than other growth
+forms\citep{Eldridge2011, Gotmark2016}.
+
+We run each model ten times to account for the uncertainty in its
+performance. In the supplementary material (Fig. S12-S17), we show the
+error bar of r-squared; despite the inherent uncertainty, the analysis
+reinforces our results regarding how drought impacts land cover type.
+
+Overall, our results show that long-term declines in water supply and
+demand have induced widespread, multi-dimensional impacts on the
+vegetation productivity and on the extent of land cover types. While
+prolonged droughts may directly cause shifts to more drought-tolerant
+land cover types, such as shrublands, they may also influence land cover
+change through human decision making and activities. This study extends
+current understanding of drought impacts by demonstrating how their
+multidimensionality emerges over multiple time scales and across land
+cover types, which can contribute to developing context-specific
+adaptation strategies for agriculture, biodiversity conservation, and
+natural resource management.
+
+\subsection{Study limitations}\label{study-limitations}
+
+This study has evaluated the impact of water supply and demand on
+vegetation productivity and how land use change influences it, with some
+important limitations to highlight. One of the major limitations of the
+study is the consideration of secondary information. For instance, we
+used estimates of water supply and demand, such as ERA5L and MODIS,
+which, despite their improved estimation capacity, suffer from biases
+and uncertainties \citep{Gomis2023, Clelland2024} in different areas or
+climatic conditions. In this study, we compared the ERA5L data with
+climatic stations (see Table S2) to verify bias and uncertainty, but
+future studies will need to correct the products for a more precise
+measurement. We used zcNDVI \citep{Zambrano2018} (MODIS) as a proxy for
+vegetation productivity, which has proven to be a good estimate of NPP
+(see Fig. S1 and S2), but its quality varies between different types of
+vegetation.
+
+To define land cover, products were used that estimate the classes using
+classification models, which are subject to quality errors that must be
+taken into account \citep{Stehman2019, Verburg2011}. In addition, in our
+case we used macro classes of land cover, where, for example, the
+different types of forests were grouped (e.g., monoculture, native
+forest). This approach hinders our ability to understand the effects of
+drought on the various subclasses within each land use class. When it
+comes to cultivated areas, we cannot distinguish between rainfed and
+irrigated areas using macro classes. However, in this study, we aimed to
+provide a broad overview at a national scale, with the goal of focusing
+on a more detailed level in future research.
+
+Other studies have analyzed how human decisions impact land use change,
+such as population increase \citep{Kleemann2017}. In our case, we
+attempted to consider this by incorporating road density, night lights,
+and burned areas. However, human decisions are complex to consider from
+the point of view of earth observation. On the other hand, earth
+observation tools can analyze land cover change, but each type's use
+depends on social and economic factors, which are challenging to
+quantify \citep{Rindfuss2004, Jenner2024} and necessitate the
+integration of social, natural, and geographic information sciences.
+
+\section{Data availability}\label{data-availability}
+
+The codes generated during the current study are available in the GitHub
+repository, https://github.com/FSEQ210022/drought\_vegetation. The
+datasets generated and/or analyzed during the current study are
+available in the Zenodo repository,
+https://doi.org/10.5281/zenodo.10359547.
+
+\section*{Acknowledgments}\label{acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+The National Research and Development Agency of Chile (ANID) funded this
+study through the drought emergency project FSEQ210022, Fondecyt
+Iniciación N°11190360, Fondecyt Postdoctorado N°3230678, and Fondecyt
+Regular N°1210526.
+
+
+  \bibliography{referencias.bib}
+
+
+
+\end{document}
