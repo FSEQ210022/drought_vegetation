@@ -69,6 +69,6 @@ data3 |>
   ungroup() |>  
   group_by(cuenca,LC_type) |>  
   #summarize(trend  = as.numeric(tidy(lm(sup_km2~year,data))[2,2])) |> 
-  summarize(trend = trend_func(prop,start = c(2001,1),end =c(2022,1),frecuency=1)[2]) |> 
+  summarize(trend = trend_func(prop,start = c(2001,1),end =c(2023,1),frecuency=1)[2]) |> 
   pivot_wider(names_from = 'LC_type',values_from=3) |> 
   saveRDS('data/processed_data/trends_landcover_cuencas_2001-2023.rds')  

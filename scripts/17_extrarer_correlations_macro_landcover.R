@@ -6,15 +6,16 @@ library(sf)
 library(tidyverse)
 
 #paleta colores landcover persistencia
-paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv') |> 
-  dplyr::filter(Name %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land'))
+paleta <- read.csv('data/processed_data/paleta_colores_landcover.csv') 
+# |> 
+#   dplyr::filter(Name %in% c('Forest','Shrubland','Savanna','Grassland','Cropland','Barren land'))
 
 colors <-  rgb(paleta$R,paleta$G,paleta$B,maxColorValue = 255)
 attr(colors,'names') <- paleta$class
 
-lc <- rast('/mnt/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/IGBP80_reclassified.tif')
+lc <- rast('/home/rstudio/discoB/processed/MODIS/IGBP.pers.MCD12Q1.061/IGBP80_reclassified.tif')
 
-dir <- '/mnt/discoB/processed/analysis/correlations/'
+dir <- '/home/rstudio/discoB/processed/analysis/correlations/'
 files <- dir_ls(dir,regexp = 'tif$')
 
 cors <- files |> 
@@ -27,7 +28,11 @@ cors <- rast(cors)
 eco <- read_sf('data/processed_data/spatial/ecoregiones_2017.gpkg') |> 
   st_transform(32719) |> 
   filter(ECO_NAME != "Rock and Ice") |> 
-  mutate(ECO_NAME = fct(ECO_NAME,levels = c("Atacama desert","Chilean Matorral","Valdivian temperate forests","Magellanic subpolar forests","Patagonian steppe"))) 
+  mutate(ECO_NAME = fct(ECO_NAME,levels = 
+                          c("Atacama desert","Central Andean dry puna",
+                            "Southern Andean steppe","Chilean Matorral",
+                            "Valdivian temperate forests","Magellanic subpolar forests",
+                            "Patagonian steppe"))) 
 
 getmode <- function(v) {
   uniqv <- unique(v)
@@ -36,7 +41,7 @@ getmode <- function(v) {
 
 #obtener los indices y escalas de tiempo en dónde se alcanza la máxima correlación
 cors1 <- subset(cors,seq(1,10,2))
-data_ind <- map_df(1:5,function(i){
+data_ind <- map_df(1:7,function(i){
   cors_m <- mask(cors1,eco[i,])
   lc_m <- mask(lc,eco[i,])
   cors_df <- zonal(cors_m,lc_m,getmode)
@@ -64,7 +69,7 @@ data_ind_4gt <- data_ind |>
 #obtener los valores de correlación para los indices y escalas de tiempo en dónde se alcanza la máxima correlación
   
 cors2 <- subset(cors,seq(2,10,2))
-data_r <- map_df(1:5,function(i){
+data_r <- map_df(1:7,function(i){
   cors_m <- mask(cors2,eco[i,])
   lc_m <- mask(lc,eco[i,])
   cors_df <- zonal(cors_m,lc_m,na.rm = TRUE)
@@ -87,22 +92,26 @@ data_r_4gt <- data_r |>
   pivot_wider(names_from=c(clase, name), values_from=value) |> 
   rename_with(\(x) str_c(x,'_r'),-eco)
 
+# data_ind_4gt <-  data_ind_4gt |> pivot_longer(-eco) |> pivot_wider(names_from = eco,values_from = value)
+# data_r_4gt <- data_r_4gt |> pivot_longer(-eco) |> pivot_wider(names_from = 'eco',values_from = 'value')
+# data_r_4gt$name <- str_remove(data_r_4gt$name,'_r')
+# names(data_r_4gt)[2:8] <- paste0(names(data_r_4gt)[2:8],'_r')
+
 tabla_gt <- full_join(data_ind_4gt,data_r_4gt,by = 'eco') 
 # tabla_gt <- tabla_gt |> mutate(macrozone = str_to_title(macro)) |> 
 #   select(-macro) |> relocate(macrozone)
 
 library(gt)
 
-tabla_gt$Forest_SPEI_r[4] <- NA
-tabla_gt$Shrubland_EDDI_r[5] <- NA
-tabla_gt$Shrubland_SETI_r[5] <- NA
-
+tabla_gt$Forest_SPEI_r[6] <- NA
+tabla_gt$Savanna_SSI_r[1] <- NA
+tabla_gt$Shrubland_EDDI_r[7] <- NA
+tabla_gt$Shrubland_SETI_r[7] <- NA
 
 tabla_gt |> 
-  rename(Ecoregion = eco) |> 
-  dplyr::select(1,22:26,27:31,12:16,7:11,2:6,
-                52:56,57:61,42:46,37:41,32:36
-         ) |> 
+  rename(`Ecoregion` = eco) |> 
+  dplyr::select(1,22:31,12:16,7:12,2:6,
+                52:61,42:46,37:41,32:36) |> 
   gt() %>% 
   #opt_stylize(style = 6, color = 'gray')
   data_color(
@@ -131,15 +140,15 @@ plot <- tibble(name = 1:50,value = seq(-0.75,0.75,length.out = 50)) |>
   ggplot(aes(name,value,color=value)) + 
   geom_point() + 
   scale_colour_gradientn(
-    name = 'Pearson \ncorrelation',
+    name = 'Pearson \ncorrelation ',
     colors = RColorBrewer::brewer.pal(10,'RdBu'),
-    breaks = scales::breaks_extended(10)) +
-  theme(legend.text = element_text(size=4),
+    breaks = seq(-0.75,0.75,.35)) +
+  theme(legend.text = element_text(size=7),
         legend.position = 'bottom')
 
 ggpubr::get_legend(plot) |> 
   ggpubr::as_ggplot() |> 
-  ggsave(filename = 'output/figs/leyenda_tabla_correlaciones_macro_suelo.png',scale=2)
+  ggsave(filename = 'output/figs/leyenda_tabla_correlaciones_macro_suelo.png',scale=1)
 
 
   

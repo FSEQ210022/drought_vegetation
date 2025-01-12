@@ -20,8 +20,8 @@ trends <- tapp(trends,ind,prod)
 names(trends) <- indices
 
 # Extrae la tendencia para cada indice. Reemplaza los NaN por 0. Ausencia de tendencia.
-df_scales_1 <- terra::extract(trends,cuencas,mean,na.rm = TRUE) |> 
-  mutate(across(everything(),\(x) replace_na(x,0)))
+df_scales_1 <- terra::extract(trends,cuencas,mean,na.rm = TRUE) 
+  # mutate(across(everything(),\(x) replace_na(x,0))) #sin quitar los nas
 
 # Ahora los índices derivados de MODIS (ET y PET)
 files2 <- files[25:30]
@@ -38,8 +38,8 @@ ind <- sapply(1:length(files2),\(i) rep(i,2)) |> as.numeric()
 trends <- tapp(trends,ind,prod)
 names(trends) <- indices
 
-df_scales_2 <- terra::extract(trends,cuencas,mean,na.rm = TRUE) |> 
-  mutate(across(everything(),\(x) replace_na(x,0)))
+df_scales_2 <- terra::extract(trends,cuencas,mean,na.rm = TRUE)  
+  # mutate(across(everything(),\(x) replace_na(x,0)))
 
 # Ahora los índices derivados de MODIS (zcNDVI)
 files3 <- files[31:34]
@@ -56,8 +56,8 @@ ind <- sapply(1:length(files3),\(i) rep(i,2)) |> as.numeric()
 trends <- tapp(trends,ind,prod)
 names(trends) <- indices
 
-df_scales_3 <- terra::extract(trends,cuencas,mean,na.rm = TRUE) |> 
-  mutate(across(everything(),\(x) replace_na(x,0)))
+df_scales_3 <- terra::extract(trends,cuencas,mean,na.rm = TRUE)  
+  #mutate(across(everything(),\(x) replace_na(x,0)))
 
 
 # Tendencia de área quemada
@@ -128,5 +128,5 @@ df_scales |>
   rename(index = name,trend = value) |> 
   unnest(trend) |> 
   mutate(index = str_remove(index,'.tif')) |> 
-  write_rds('data/processed_data/df_trends_indices_cuencas.rds')
+  write_rds('data/processed_data/df_trends_indices_cuencas_2000-2023.rds')
 

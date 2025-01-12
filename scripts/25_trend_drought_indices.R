@@ -52,7 +52,20 @@ df_zcndvi |>
   theme(axis.title.x = element_blank(),
         strip.text.x = element_text(hjust=0))
 
-ggsave('output/figs/temporal_variation_zcNDVI6_ecoregiones.png',scale = 2,bg = 'white',width=6,height=3)
+ggsave('output/figs/temporal_variation_zcNDVI6_ecoregiones.png',scale = 2,bg = 'white',width=6,height=4)
+
+#calcular la tendencia Mann-Kendall para cada ecoregion
+
+source('R/trend_func.R')
+library(modifiedmk)
+df_zcndvi |> 
+  pivot_longer(-ECO_NAME) |> 
+  drop_na() |> 
+  group_by(ECO_NAME) |> 
+  summarize(trend_sig = trend_func2(value)[1],
+            trend_val = trend_func2(value)[2]) |> 
+  mutate(trend_decade = trend_val*10) |> 
+  arrange(trend_decade)
 
 #Mapa de tendencia Mann-Kendall
 
@@ -275,11 +288,11 @@ trend_zcndvi[trend_zcndvi<0] <- -1
 
 map_zcNDVI <- tm_shape(trend_zcndvi) + 
   tm_raster(palette = c('darkred','darkgreen'),
-            midpoint = 0,title = 'Trend zcNDVI',style = 'cat',colorNA = 'white',textNA = NULL,
+            midpoint = 0,title = 'Trend zcNDVI',style = 'cat',colorNA = 'white',textNA = NULL, alpha = .6,
             labels = c('Negative','Positive')) +
   tm_shape(ecoregions) + 
   #tm_add_legend('fill',title = '',labels = c('Negative','Positive')) +
-  tm_borders(col='black',lty='dashed') +
+  tm_borders(col='black') +
   tm_shape(chl_b) + 
   tm_borders(col='black') +
   #tm_facets(nrow = 1) +
@@ -288,7 +301,7 @@ map_zcNDVI <- tm_shape(trend_zcndvi) +
             legend.text.size = 1.2,
             legend.width = .8,
             frame = FALSE)
-tmap_save(map_zcNDVI,'output/figs/trend_raster_zcNDVI6_2000-2023_v2.png',scale=1)
+tmap_save(map_zcNDVI,'output/figs/trend_raster_zcNDVI6_2000-2023_v2.png',scale=1.5)
 
 mapa1 <- tmap_arrange(map_zcNDVI,map_zcNDVI,widths = c(.2,.8))
 tmap_save(mapa1,'output/figs/trend_raster_zcNDVI6_SPIs.png',asp=.3)
@@ -311,6 +324,7 @@ data_df |>
   ggplot(aes(scale,value*10,color=index)) +
   geom_line() +
   geom_point() +
+  geom_hline(yintercept = 0,linetype = 'dashed',col ='red') +
   scale_colour_viridis_d(name = 'Drought index') +
   scale_y_continuous(breaks= seq(-0.05,0.05,length.out=9)) +
   scale_x_continuous(breaks = c(1,3,6,12,24,36)) +
