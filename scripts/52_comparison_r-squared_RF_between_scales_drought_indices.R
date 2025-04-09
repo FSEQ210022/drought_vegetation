@@ -19,7 +19,7 @@ data |>
   geom_point(aes(shape = ecoregion),size = 3) +
   scale_shape_discrete(name = 'Ecoregion') +
   scale_color_brewer(name = 'Time scale',palette = 'RdBu') +
-  labs(y = 'r-squared')+
+  labs(y = expression(R^2))+
   theme_bw() +
   theme(axis.title.x = element_blank())
 ggsave('output/figs/comparison_r-squared_between_scales_of_drought_indices.png',scale = 1.5)      

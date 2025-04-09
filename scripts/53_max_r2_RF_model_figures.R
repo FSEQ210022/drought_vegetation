@@ -7,7 +7,8 @@ data <- map_df(files,read_rds)
 
 data_max_r2 <- data |> 
   group_by(ecoregion,type) |> 
-  slice_max(mean,n=2) |> filter(ecoregion == 'Chilean Matorral' & type == 'Savanna')
+  slice_max(mean,n=2) |> 
+  #filter(ecoregion == 'Chilean Matorral' & type == 'Savanna') |> 
   filter(ecoregion != 'Rock and Ice') |> 
   mutate(scale =factor(scale,levels = c(1,3,6,12,24,36)),
          type = case_when(
@@ -20,10 +21,10 @@ data_max_r2 |>
   scale_color_brewer(palette = 'RdYlBu',name = 'Time scale') +
   scale_shape_manual(values = c(8,13,15,17:19,21),name = 'Ecoregion') +
   scale_size_discrete(name = 'Time scale') +
-  labs(y = 'r-squared')+
+  labs(y = expression(R^2))+
   theme_bw() +
   theme(axis.title.x = element_blank())
-ggsave('output/figs/comparison_r-squared_between_scales_of_drought_indices.png',scale = 1)    
+ggsave('output/figs/comparison_r-squared_between_scales_of_drought_indices.png',scale = 1.5, width=5)    
 
 files2 <- dir_ls('data/processed_data',regexp = 'tabla_vip*.')
 
